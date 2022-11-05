@@ -1,7 +1,10 @@
 import Head from "next/head";
+import Type from "../components/Type";
+
+const data = ["1", "A", "m", " ", "4", "5", "/", "*"];
 import HomePage from "../Containers/Home/HomePage";
 
-export default function Home({ props }) {
+export default function Home({props}) {
   return (
     <div>
       <Head>
