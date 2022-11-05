@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "ReenieBeanie";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/fonts/ReenieBeanie-Regular.ttf") format("truetype");
+}
+
+.banner {
+  height: 100vh;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 90%), url("../public/images/home/typewriter.jpg") no-repeat center center / cover;
+}
