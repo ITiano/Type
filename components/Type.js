@@ -55,8 +55,19 @@ const Type = ({ data = "" }) => {
   };
 
   const onKeyDown = (e) => {
-    // keyCode 16 => shift
-    if (e.keyCode !== 16) {
+    if (
+      (e.keyCode >= 48 && e.keyCode <= 90) ||
+      (e.keyCode >= 96 && e.keyCode <= 111) ||
+      e.keyCode === 173 ||
+      e.keyCode === 188 ||
+      e.keyCode === 190 ||
+      e.keyCode === 191 ||
+      e.keyCode === 192 ||
+      e.keyCode === 219 ||
+      e.keyCode === 220 ||
+      e.keyCode === 221 ||
+      e.keyCode === 222
+    ) {
       if (!show) setShow(true);
       setTimeout(() => {
         setShow(false);
@@ -83,19 +94,21 @@ const Type = ({ data = "" }) => {
     }, []);
   };
 
+  const HowLengthWord = (wordIndex) => convertForMap().slice(0, wordIndex).join("").split("").length;
+
   return (
     <div className="relative w-full">
-      <div className="w-full flex-wrap flex items-center justify-center">
+      <div className="w-full flex-wrap gap-y-8 flex items-center justify-center">
         {data.split("").length !== 0 &&
           convertForMap().map((item, wordIndex) => {
             return (
-              <span key={wordIndex} className="flex items-center justify-start">
+              <span key={wordIndex} className={`flex items-center justify-start`}>
                 {item.split("").map((item, index) => {
-                  const length = convertForMap().slice(0, wordIndex).join("").split("").length;
+                  const length = HowLengthWord(wordIndex);
                   return (
                     <span
                       key={length + index}
-                      className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative  ${
+                      className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative ${
                         type.length === length + index ? borderLineColor : "border-b-white"
                       } ${showLastErrorClassName(length + index)} ${type[length + index]?.toString() === item?.toString() ? successColor : ""}`}
                     >
