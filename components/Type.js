@@ -1,34 +1,128 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const Type = ({ data }) => {
+const successColor = "bg-green-200";
+const errorColor = "bg-red-400";
+const warningColor = "!bg-orange-300";
+const borderLineColor = "border-b-blue-500";
+
+const Type = ({ data = "" }) => {
   const [type, setType] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState([]);
+  const [show, setShow] = useState(false);
+  const ref = useRef();
 
   const onChange = (e) => {
     const length = type.length;
     const value = e.target.value.split("");
-    if (value[length] === data[length] && value[length] && data[length]) {
+    const pattern = data.split("");
+    if (value[length] && pattern[length] && value[length]?.toString() === pattern[length]?.toString()) {
       setType(e.target.value);
-      setError(false);
-    } else setError(true);
+      // turnoff error
+      const index = error.findIndex((item) => item.id === length);
+      if (index >= 0) {
+        const select = { ...error[index] };
+        select.completed = true;
+        const clone = [...error];
+        clone[index] = select;
+        setError(clone);
+      }
+    } else {
+      //  turnon error and create history error type
+      const index = error.findIndex((item) => item.id === length);
+      if (index >= 0) {
+        const select = { ...error[index] };
+        select.count = select.count + 1;
+        select.history = [...select.history, value[length]];
+        const clone = [...error];
+        clone[index] = select;
+        setError(clone);
+      } else {
+        setError([...error, { id: length, count: 1, history: [value[length]], completed: false }]);
+      }
+    }
+  };
+
+  const showLastErrorClassName = (index) => {
+    const find = error.find((item) => item.id == index);
+    if (find && find.completed) return warningColor;
+    else return "";
+  };
+
+  const showNowError = (index) => {
+    const find = error.find((item) => item.id == index);
+    if (find && !find.completed) return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
+    else return { text: "", className: "" };
+  };
+
+  const onKeyDown = (e) => {
+    // keyCode 16 => shift
+    if (e.keyCode !== 16) {
+      if (!show) setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 300);
+    }
+  };
+
+  useEffect(() => {
+    ref.current.focus();
+  });
+
+  useEffect(() => {
+    const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
+    if (data === type) {
+      alert(`done, You have ${totalError} errors in ${error.length} characters`);
+    }
+  }, [data, error, type]);
+
+  const convertForMap = () => {
+    return data.split(" ").reduce((sum, item, index) => {
+      if (index === 0) sum = [...sum, item];
+      else sum = [...sum, " ", item];
+      return sum;
+    }, []);
   };
 
   return (
-    <div className="relative">
-      <div>
-        {data.length !== 0 &&
-          data.map((item, index) => {
+    <div className="relative w-full">
+      <div className="w-full flex-wrap flex items-center justify-center">
+        {data.split("").length !== 0 &&
+          convertForMap().map((item, wordIndex) => {
             return (
-              <span
-                className={`mx-1 px-1 text-4xl ${index === type.length && error ? "bg-red-100" : ""} ${type[index] === item ? "bg-green-100" : "bg-gray-100"}`}
-                key={index}
-              >
-                {item}
+              <span key={wordIndex} className="flex items-center justify-start">
+                {item.split("").map((item, index) => {
+                  const length = convertForMap().slice(0, wordIndex).join("").split("").length;
+                  return (
+                    <span
+                      key={length + index}
+                      className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative  ${
+                        type.length === length + index ? borderLineColor : "border-b-white"
+                      } ${showLastErrorClassName(length + index)} ${type[length + index]?.toString() === item?.toString() ? successColor : ""}`}
+                    >
+                      {item}
+                      <span
+                        className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
+                          show ? "opacity-100" : "opacity-0"
+                        }  ${showNowError(length + index).className} `}
+                      >
+                        {showNowError(length + index).text}
+                      </span>
+                    </span>
+                  );
+                })}
               </span>
             );
           })}
       </div>
-      <input autoFocus className="resize-none absolute inset-0 opacity-0" type="text" value={type} onChange={onChange} />
+      <input
+        ref={ref}
+        onKeyDown={onKeyDown}
+        autoFocus
+        className="resize-none absolute inset-0 w-full h-full opacity-0"
+        type="text"
+        value={type}
+        onChange={onChange}
+      />
     </div>
   );
 };
