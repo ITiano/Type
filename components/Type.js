@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
+const successColor = "bg-green-200";
+const errorColor = "bg-red-400";
+const warningColor = "!bg-orange-300";
+const borderLineColor = "border-b-blue-500";
+
 const Type = ({ data = "" }) => {
   const [type, setType] = useState("");
   const [error, setError] = useState([]);
@@ -12,7 +17,7 @@ const Type = ({ data = "" }) => {
     const pattern = data.split("");
     if (value[length] && pattern[length] && value[length]?.toString() === pattern[length]?.toString()) {
       setType(e.target.value);
-      // error handling for done
+      // turnoff error
       const index = error.findIndex((item) => item.id === length);
       if (index >= 0) {
         const select = { ...error[index] };
@@ -22,7 +27,7 @@ const Type = ({ data = "" }) => {
         setError(clone);
       }
     } else {
-      // error handling create history type user
+      //  turnon error and create history error type
       const index = error.findIndex((item) => item.id === length);
       if (index >= 0) {
         const select = { ...error[index] };
@@ -37,15 +42,15 @@ const Type = ({ data = "" }) => {
     }
   };
 
-  const errorClassName = (index) => {
+  const showLastErrorClassName = (index) => {
     const find = error.find((item) => item.id == index);
-    if (find && find.completed) return "!bg-orange-300";
+    if (find && find.completed) return warningColor;
     else return "";
   };
 
-  const showLastError = (index) => {
+  const showNowError = (index) => {
     const find = error.find((item) => item.id == index);
-    if (find && !find.completed) return { text: find.history[find.history.length - 1], className: "bg-red-400 text-white text-4xl pb-1" };
+    if (find && !find.completed) return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
     else return { text: "", className: "" };
   };
 
@@ -70,54 +75,44 @@ const Type = ({ data = "" }) => {
     }
   }, [data, error, type]);
 
-  console.log("render");
+  const convertForMap = () => {
+    return data.split(" ").reduce((sum, item, index) => {
+      if (index === 0) sum = [...sum, item];
+      else sum = [...sum, " ", item];
+      return sum;
+    }, []);
+  };
 
   return (
     <div className="relative w-full">
       <div className="w-full flex-wrap flex items-center justify-center">
         {data.split("").length !== 0 &&
-          data
-            .split(" ")
-            .reduce((sum, item, index) => {
-              if (index === 0) sum = [...sum, item];
-              else sum = [...sum, " ", item];
-              return sum;
-            }, [])
-            .map((item, wordIndex) => {
-              return (
-                <span key={wordIndex} className="flex items-center justify-start">
-                  {item.split("").map((item, index) => {
-                    const length = data
-                      .split(" ")
-                      .reduce((sum, item, index) => {
-                        if (index === 0) sum = [...sum, item];
-                        else sum = [...sum, " ", item];
-                        return sum;
-                      }, [])
-                      .slice(0, wordIndex)
-                      .join("")
-                      .split("").length;
-                    return (
+          convertForMap().map((item, wordIndex) => {
+            return (
+              <span key={wordIndex} className="flex items-center justify-start">
+                {item.split("").map((item, index) => {
+                  const length = convertForMap().slice(0, wordIndex).join("").split("").length;
+                  return (
+                    <span
+                      key={length + index}
+                      className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative  ${
+                        type.length === length + index ? borderLineColor : "border-b-white"
+                      } ${showLastErrorClassName(length + index)} ${type[length + index]?.toString() === item?.toString() ? successColor : ""}`}
+                    >
+                      {item}
                       <span
-                        key={length + index}
-                        className={`mx-px min-w-[1.5rem] h-12 flex items-center justify-center text-4xl border-b-4 relative ${
-                          type.length === length + index ? "border-b-blue-500" : "border-b-white"
-                        } ${errorClassName(length + index)} ${type[length + index]?.toString() === item?.toString() ? "bg-green-300" : ""}`}
+                        className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
+                          show ? "opacity-100" : "opacity-0"
+                        }  ${showNowError(length + index).className} `}
                       >
-                        {item}
-                        <span
-                          className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
-                            show ? "opacity-100" : "opacity-0"
-                          }  ${showLastError(length + index).className} `}
-                        >
-                          {showLastError(length + index).text}
-                        </span>
+                        {showNowError(length + index).text}
                       </span>
-                    );
-                  })}
-                </span>
-              );
-            })}
+                    </span>
+                  );
+                })}
+              </span>
+            );
+          })}
       </div>
       <input
         ref={ref}
