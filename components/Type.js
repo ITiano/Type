@@ -79,7 +79,7 @@ const Type = ({ data = "" }) => {
           data
             .split(" ")
             .reduce((sum, item, index) => {
-              if (index === 0 ) sum = [...sum, item];
+              if (index === 0) sum = [...sum, item];
               else sum = [...sum, " ", item];
               return sum;
             }, [])
@@ -90,7 +90,7 @@ const Type = ({ data = "" }) => {
                     const length = data
                       .split(" ")
                       .reduce((sum, item, index) => {
-                        if (index === 0 ) sum = [...sum, item];
+                        if (index === 0) sum = [...sum, item];
                         else sum = [...sum, " ", item];
                         return sum;
                       }, [])
@@ -100,7 +100,7 @@ const Type = ({ data = "" }) => {
                     return (
                       <span
                         key={length + index}
-                        className={`mx-px w-8 h-12 flex items-center justify-center text-4xl border-b-4 relative ${
+                        className={`mx-px min-w-[1.5rem] h-12 flex items-center justify-center text-4xl border-b-4 relative ${
                           type.length === length + index ? "border-b-blue-500" : "border-b-white"
                         } ${errorClassName(length + index)} ${type[length + index]?.toString() === item?.toString() ? "bg-green-300" : ""}`}
                       >
