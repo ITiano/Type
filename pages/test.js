@@ -1,7 +1,8 @@
 import Type from "../components/Type";
 
 const Test = () => {
-  const data = "This is test.";
+  const data =
+    "In publishing and graphic design.";
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center">

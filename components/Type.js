@@ -49,11 +49,14 @@ const Type = ({ data = "" }) => {
     else return { text: "", className: "" };
   };
 
-  const onKeyDown = () => {
-    setShow(true);
-    setTimeout(() => {
-      setShow(false);
-    }, 300);
+  const onKeyDown = (e) => {
+    // keyCode 16 => shift
+    if (e.keyCode !== 16) {
+      if (!show) setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 300);
+    }
   };
 
   useEffect(() => {
@@ -67,29 +70,54 @@ const Type = ({ data = "" }) => {
     }
   }, [data, error, type]);
 
+  console.log("render");
+
   return (
     <div className="relative w-full">
-      <div className="w-full flex items-center justify-center">
+      <div className="w-full flex-wrap flex items-center justify-center">
         {data.split("").length !== 0 &&
-          data.split("").map((item, index) => {
-            return (
-              <span
-                className={`mx-px w-8 h-12 flex items-center justify-center text-4xl border-b-4 relative ${
-                  type.length === index ? "border-b-blue-500" : "border-b-white"
-                } ${errorClassName(index)} ${type[index]?.toString() === item?.toString() ? "bg-green-300" : ""}`}
-                key={index}
-              >
-                {item}
-                <span
-                  className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${show ? "opacity-100" : "opacity-0"}  ${
-                    showLastError(index).className
-                  } `}
-                >
-                  {showLastError(index).text}
+          data
+            .split(" ")
+            .reduce((sum, item, index) => {
+              if (index === 0 ) sum = [...sum, item];
+              else sum = [...sum, " ", item];
+              return sum;
+            }, [])
+            .map((item, wordIndex) => {
+              return (
+                <span key={wordIndex} className="flex items-center justify-start">
+                  {item.split("").map((item, index) => {
+                    const length = data
+                      .split(" ")
+                      .reduce((sum, item, index) => {
+                        if (index === 0 ) sum = [...sum, item];
+                        else sum = [...sum, " ", item];
+                        return sum;
+                      }, [])
+                      .slice(0, wordIndex)
+                      .join("")
+                      .split("").length;
+                    return (
+                      <span
+                        key={length + index}
+                        className={`mx-px w-8 h-12 flex items-center justify-center text-4xl border-b-4 relative ${
+                          type.length === length + index ? "border-b-blue-500" : "border-b-white"
+                        } ${errorClassName(length + index)} ${type[length + index]?.toString() === item?.toString() ? "bg-green-300" : ""}`}
+                      >
+                        {item}
+                        <span
+                          className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
+                            show ? "opacity-100" : "opacity-0"
+                          }  ${showLastError(length + index).className} `}
+                        >
+                          {showLastError(length + index).text}
+                        </span>
+                      </span>
+                    );
+                  })}
                 </span>
-              </span>
-            );
-          })}
+              );
+            })}
       </div>
       <input
         ref={ref}
