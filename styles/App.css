@@ -9,6 +9,21 @@
   src: url("../public/fonts/ReenieBeanie-Regular.ttf") format("truetype");
 }
 
+@layer base {
+  body {
+    @apply bg-light;
+  }
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-dark;
+  }
+}
+
 @layer components {
   .custom-btn {
     @apply px-5 py-2 rounded text-xs sm:text-sm;
@@ -16,9 +31,9 @@
   /* .red-btn {
     @apply bg-red text-white;
   } */
-  .main-btn {
+  /* .main-btn {
     @apply bg-white !text-transparent rounded-full;
-  }
+  } */
   .centering {
     @apply flex justify-center items-center;
   }
@@ -29,7 +44,7 @@
     @apply flex justify-end items-center;
   }
   .flex-start-start {
-    @apply flex justify-start items-start;
+    @apply flex !justify-start !items-start;
   }
   .flex-start-end {
     @apply flex justify-start items-end;
@@ -57,7 +72,17 @@
   }
 }
 
-.banner {
+.cart-container {
+  background: rgb(193, 135, 255);
+  background: linear-gradient(195deg, rgba(193, 135, 255, 1) 0%, rgba(127, 112, 255, 1) 100%);
+}
+
+.main-btn {
+  background: rgb(193, 135, 255);
+  background: linear-gradient(90deg, rgba(193, 135, 255, 1) 0%, rgba(127, 112, 255, 1) 100%);
+}
+
+/* .banner {
   height: 100vh;
   background: rgb(0, 0, 0);
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 90%), url("../public/images/home/typewriter.jpg") no-repeat center center / cover;
@@ -70,4 +95,4 @@
   justify-content: center;
   background: rgb(0, 0, 0);
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 90%), url("../public/images/login/typewriter.jpg") no-repeat center center / cover;
-}
+} */
