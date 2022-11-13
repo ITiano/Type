@@ -26,14 +26,14 @@
 
 @layer components {
   .custom-btn {
-    @apply px-5 py-2 rounded text-xs sm:text-sm;
+    @apply px-5 py-2 text-xs sm:text-sm;
   }
-  /* .red-btn {
-    @apply bg-red text-white;
-  } */
-  /* .main-btn {
-    @apply bg-white !text-transparent rounded-full;
-  } */
+  .line-white-btn {
+    @apply text-white rounded-full border border-white !text-xs mt-6 p-0 px-2;
+  }
+  .full-white-btn {
+    @apply bg-white !text-darkPurple rounded-xl font-semibold;
+  }
   .centering {
     @apply flex justify-center items-center;
   }
@@ -81,18 +81,3 @@
   background: rgb(193, 135, 255);
   background: linear-gradient(90deg, rgba(193, 135, 255, 1) 0%, rgba(127, 112, 255, 1) 100%);
 }
-
-/* .banner {
-  height: 100vh;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 90%), url("../public/images/home/typewriter.jpg") no-repeat center center / cover;
-}
-
-.login {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 90%), url("../public/images/login/typewriter.jpg") no-repeat center center / cover;
-} */

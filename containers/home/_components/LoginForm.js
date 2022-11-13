@@ -35,8 +35,8 @@ const LoginForm = () => {
         <CustomChkbox label="Remember me" />
         <p className="text-xs text-white cursor-pointer">Forgot password?</p>
       </div>
-      <CustomBtn text="Login" className="w-full bg-white mt-3" parentClassName="w-full" />
-      <CustomBtn text="Create an account" className="w-full border border-white text-white rounded-full !text-xs mt-6 p-0 px-2" />
+      <CustomBtn text="Login" className="full-white-btn w-full mt-3" parentClassName="w-full" />
+      <CustomBtn text="Create an account" className="line-white-btn" />
     </div>
   );
 };
