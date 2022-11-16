@@ -3,7 +3,7 @@ const CustomInput = ({ label, formik, name, helper = false, startIcon, className
     <div className="relative">
       {/* <p className="text-sm mb-1 text-white pl-4">{label}</p> */}
       <input
-        className={`w-full px-10 py-2 bg-transparent border-2 rounded-xl border-white text-white text-center ${className}`}
+        className={`w-full px-10 py-2 bg-transparent border-2 rounded-xl border-white text-white text-center ${formik.touched[name] && formik.errors[name] ? "border-pink-500 " : ""} ${className}`}
         name={name}
         value={formik.values[name]}
         // error={formik.touched[name] && Boolean(formik.errors[name])}
@@ -12,8 +12,7 @@ const CustomInput = ({ label, formik, name, helper = false, startIcon, className
         {...rest}
       />
       <span className="absolute top-2 left-2">{startIcon}</span>
-
-      <p className="text-xs pl-4 text-red-400 h-4">{formik.touched[name] && formik.errors[name]}</p>
+      <p className="text-xs pl-4 text-pink-600 h-4 mb-1">{formik.touched[name] && formik.errors[name]}</p>
     </div>
   );
 };

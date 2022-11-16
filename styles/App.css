@@ -75,9 +75,15 @@
 .cart-container {
   background: rgb(193, 135, 255);
   background: linear-gradient(195deg, rgba(193, 135, 255, 1) 0%, rgba(127, 112, 255, 1) 100%);
+  color: #7fffd4;
 }
 
 .main-btn {
   background: rgb(193, 135, 255);
   background: linear-gradient(90deg, rgba(193, 135, 255, 1) 0%, rgba(127, 112, 255, 1) 100%);
+}
+
+.test {
+  background: #e4ebfd;
+  background: linear-gradient(180deg, rgba(193, 135, 255, 0.5) 0%, rgba(127, 112, 255, 0.5) 100%);
 }

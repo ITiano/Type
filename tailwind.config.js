@@ -5,8 +5,8 @@ module.exports = {
       colors: {
         light: "#E4EBFD",
         dark: "#5D6BAB",
-        lightPurple: "rgba(193, 135, 255, 1)",
-        darkPurple: "rgba(127, 112, 255, 1)",
+        lightPurple: "#c187ff",
+        darkPurple: "#7f70ff",
       },
       fontFamily: {
         ReenieBeanie: ["ReenieBeanie"],
