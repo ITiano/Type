@@ -3,13 +3,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        light: "#E4EBFD",
-        dark: "#5D6BAB",
-        lightPurple: "#c187ff",
-        darkPurple: "#7f70ff",
-      },
-      fontFamily: {
-        ReenieBeanie: ["ReenieBeanie"],
+        light: "#F5F5F5",
+        dark: "#1E2229",
+        mainGray: "#AEAEAE",
+        mainBlue: "#B4E9F2",
       },
     },
   },

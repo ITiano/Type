@@ -2,37 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: "ReenieBeanie";
   font-style: normal;
   font-weight: normal;
   src: url("../public/fonts/ReenieBeanie-Regular.ttf") format("truetype");
-}
+} */
 
 @layer base {
   body {
-    @apply bg-light;
-  }
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-dark;
+    @apply text-dark bg-light text-sm;
   }
 }
 
 @layer components {
   .custom-btn {
-    @apply px-5 py-2 text-xs sm:text-sm;
+    @apply px-5 py-2 text-xs sm:text-sm rounded-full;
   }
-  .line-white-btn {
-    @apply text-white rounded-full border border-white !text-xs mt-6 p-0 px-2;
-  }
-  .full-white-btn {
-    @apply bg-white !text-darkPurple rounded-xl font-semibold;
+  .full-black-btn {
+    @apply bg-dark font-bold text-light;
   }
   .centering {
     @apply flex justify-center items-center;
@@ -70,20 +58,18 @@
   .flex-end-start {
     @apply flex justify-end items-start;
   }
-}
 
-.cart-container {
-  background: rgb(193, 135, 255);
-  background: linear-gradient(195deg, rgba(193, 135, 255, 1) 0%, rgba(127, 112, 255, 1) 100%);
-  color: #7fffd4;
-}
+  .frame-letter {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0);
+    background: url("../public/images/login/Frame-letter.png") no-repeat center center / cover;
+  }
 
-.main-btn {
-  background: rgb(193, 135, 255);
-  background: linear-gradient(90deg, rgba(193, 135, 255, 1) 0%, rgba(127, 112, 255, 1) 100%);
-}
-
-.test {
-  background: #e4ebfd;
-  background: linear-gradient(180deg, rgba(193, 135, 255, 0.5) 0%, rgba(127, 112, 255, 0.5) 100%);
+  .form {
+    @apply w-80 border rounded-xl p-8;
+    background: rgba(255, 255, 255, 0.7);
+  }
 }
