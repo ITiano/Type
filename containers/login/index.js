@@ -11,13 +11,13 @@ const initialValues = { email: "", password: "", remember: false };
 
 const LoginContainer = () => {
   const validation = yup.object({
-    email: yup.string().required("ایمیل نمی تواند خالی باشد").email("لطفا ایمیل را به صورت کامل و صحیح وارد کنید"),
+    email: yup.string().required("Email cannot be empty").email("Please enter the email completely and correctly"),
 
     password: yup
       .string()
-      .required("رمز عبور نمی تواند خالی باشد")
-      .min(8, "رمز عبور نمی تواند کمتر از 8 کاراکتر باشد ")
-      .max(64, "رمز عبور نمی تواند بیشتر از 64 کاراکتر باشد"),
+      .required("Password cannot be empty")
+      .min(8, "Password cannot be less than 8 characters")
+      .max(64, "Password cannot be longer than 64 characters"),
 
     remember: yup.boolean(),
   });

@@ -10,19 +10,20 @@ const initialValues = { email: "", password: "", confirmPassword: "" };
 
 const SingUpContainer = () => {
   const validation = yup.object({
-    email: yup.string().required("ایمیل نمی تواند خالی باشد ").email("لطفا ایمیل را به صورت کامل و صحیح وارد کنید"),
+    email: yup.string().required("Email cannot be empty").email("Please enter the email completely and correctly"),
+
     password: yup
       .string()
-      .required("رمز عبور نمی تواند خالی باشد")
-      .matches(/^(?=.*[a-z])/, "رمز عبور باید داری حداقل یک حرف کوچک لاتین باشد")
-      .matches(/^(?=.*[A-Z])/, "رمز عبور باید داری حداقل یک حرف بزرگ لاتین باشد")
-      .matches(/^(?=.*[0-9])/, "رمز عبور باید دارای حداقل یک عدد باشد")
-      .min(8, "رمز عبور نمی تواند کمتر از 8 کاراکتر باشد")
-      .max(64, "رمز عبور نمی تواند بیشتر از 64 کاراکتر باشد"),
+      .required("Password cannot be empty")
+      .matches(/^(?=.*[a-z])/, "The password must be at least one small Latin letter")
+      .matches(/^(?=.*[A-Z])/, "Password must be at least one uppercase Latin letter")
+      .matches(/^(?=.*[0-9])/, "Password must contain at least one number")
+      .min(8, "Password cannot be less than 8 characters")
+      .max(64, "Password cannot be longer than 64 characters"),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref("password"), null], "تایید رمز عبور با رمز عبور برابر نیست")
-      .required("تایید رمز عبور نمی تواند خالی باشد"),
+      .oneOf([yup.ref("password"), null], "Confirm password is not the same as password")
+      .required("Confirm password cannot be empty"),
   });
 
   const onSubmit = async (values) => {};
@@ -41,7 +42,7 @@ const SingUpContainer = () => {
         <p className="text-xs opacity-50 mt-1 mb-6">Please enter your email and password to sign up.</p>
         <CustomInput formik={formik} name="email" label="Email " placeholder="info@gmail.com" />
         <CustomInput formik={formik} name="password" label="Password " placeholder="Enter your password" Password />
-        <CustomInput formik={formik} name="confirmPassword" label="confirm pass " placeholder="Enter your password" Password />
+        <CustomInput formik={formik} name="confirmPassword" label="Confirm Password" placeholder="Enter your password" Password />
         <CustomBtn type="submit" text="sign up" className="black-btn w-full mt-8" />
         <p className="mt-6 text-mainGray flex-start-center gap-1">
           Do you have an account?
