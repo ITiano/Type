@@ -1,9 +1,7 @@
-const { default: LoginContainer } = require("containers/login")
+import LoginContainer from "containers/login";
 
 const index = () => {
-  return (
-    <LoginContainer/>
-  )
-}
+  return <LoginContainer />;
+};
 
-export default index
+export default index;

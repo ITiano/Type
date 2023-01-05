@@ -16,10 +16,10 @@
 }
 
 @layer components {
-  .custom-btn {
-    @apply px-5 py-2 text-xs sm:text-sm rounded-full;
+  .btn {
+    @apply px-5 py-2.5 text-xs sm:text-sm rounded-full;
   }
-  .full-black-btn {
+  .black-btn {
     @apply bg-dark font-bold text-light;
   }
   .centering {
@@ -69,7 +69,6 @@
   }
 
   .form {
-    @apply w-[22rem] border rounded-2xl p-8;
-    background: rgba(255, 255, 255, 0.7);
+    @apply w-[22rem] border rounded-2xl p-8 backdrop-blur-sm bg-[#FFFFFF] bg-opacity-60;
   }
 }

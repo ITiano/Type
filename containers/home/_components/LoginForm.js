@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { useFormik } from "formik";
 import CustomBtn from "components/utils/CustomBtn";
-import CustomChkbox from "components/utils/CustomChkbox";
+import CustomCheckbox from "components/utils/CustomCheckbox";
 import CustomInput from "components/utils/CustomInput";
 import PasswordIcon from "public/icons/PasswordIcon";
 import UserIcon from "public/icons/UserIcon";
@@ -32,7 +32,7 @@ const LoginForm = () => {
       <CustomInput formik={formik} name="email" label="Email " placeholder="info@gmail.com" startIcon={<UserIcon />} />
       <CustomInput formik={formik} name="password" label="Password " placeholder="Enter your password" startIcon={<PasswordIcon />} />
       <div className="flex-between-center w-full mt-6">
-        <CustomChkbox label="Remember me" />
+        <CustomCheckbox label="Remember me" />
         <p className="text-xs text-white cursor-pointer">Forgot password?</p>
       </div>
       <CustomBtn text="Login" className="full-white-btn w-full mt-3" parentClassName="w-full" />
