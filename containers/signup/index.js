@@ -39,11 +39,11 @@ const SingUpContainer = () => {
     <div className="frame-letter">
       <form onSubmit={formik.handleSubmit} className="form">
         <h2 className="text-3xl font-bold">Sign Up</h2>
-        <p className="text-xs opacity-50 mt-1 mb-6">Please enter your email and password to sign up.</p>
+        <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to sign up.</p>
         <CustomInput formik={formik} name="email" label="Email " placeholder="info@gmail.com" />
         <CustomInput formik={formik} name="password" label="Password " placeholder="Enter your password" Password />
         <CustomInput formik={formik} name="confirmPassword" label="Confirm Password" placeholder="Enter your password" Password />
-        <CustomBtn type="submit" text="sign up" className="black-btn w-full mt-8" />
+        <CustomBtn type="submit" text="sign up" className="black-btn w-full mt-6" />
         <p className="mt-6 text-mainGray flex-start-center gap-1">
           Do you have an account?
           <Link className="text-mainBlue font-semibold" href="/login">
@@ -55,9 +55,13 @@ const SingUpContainer = () => {
           <span className="text-mainGray bg-[#fcfcfc] px-3">Or continue with</span>
           <span className="h-px bg-mainGray flex-1"></span>
         </div>
-        <div className="mt-8 centering gap-4">
-          <GoogleIcon />
-          <TwitterIcon />
+        <div className="mt-8 centering gap-3">
+          <span className="w-12 h-12 centering rounded-full bg-gray-100">
+            <GoogleIcon />
+          </span>
+          <span className="w-12 h-12 centering rounded-full bg-gray-100">
+            <TwitterIcon />
+          </span>
         </div>
       </form>
     </div>

@@ -35,18 +35,17 @@ const LoginContainer = () => {
     <div className="frame-letter">
       <form onSubmit={formik.handleSubmit} className="form">
         <h2 className="text-3xl font-bold">Log In</h2>
-        <p className="text-xs opacity-50 mt-1 mb-6">Please enter your email and password to login.</p>
+        <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to login.</p>
         <CustomInput formik={formik} name="email" label="Email " placeholder="info@gmail.com" />
         <CustomInput formik={formik} name="password" label="Password " placeholder="Enter your password" Password />
         <CustomCheckbox label="Remember me" name="remember" />
-        <CustomBtn type="submit" text="log in" className="black-btn w-full mt-8" />
-        <p className="mt-6 text-mainGray flex-start-center gap-1">
+        <CustomBtn type="submit" text="log in" className="black-btn w-full mt-6" />
+        <p className="mt-6 text-mainGray flex-start-center gap-1 mb-2">
           <span>{"Don't have an account?"}</span>
           <Link className="text-mainBlue font-semibold" href="/signup">
             Sign Up
           </Link>
         </p>
-        <p className="text-mainBlue"></p>
         <Link className="text-mainBlue font-semibold" href="/forgot_password">
           Forgot password
         </Link>
@@ -55,9 +54,13 @@ const LoginContainer = () => {
           <span className="text-mainGray bg-[#fcfcfc] px-3">Or continue with</span>
           <span className="h-px bg-mainGray flex-1"></span>
         </div>
-        <div className="mt-8 centering gap-4">
-          <GoogleIcon />
-          <TwitterIcon />
+        <div className="mt-8 centering gap-3">
+          <span className="w-12 h-12 centering rounded-full bg-gray-100">
+            <GoogleIcon />
+          </span>
+          <span className="w-12 h-12 centering rounded-full bg-gray-100">
+            <TwitterIcon />
+          </span>
         </div>
       </form>
     </div>
