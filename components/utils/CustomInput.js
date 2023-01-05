@@ -11,7 +11,7 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
       <div className={`relative`}>
         {/* {startIcon} */}
         <input
-          className={`w-full px-3 py-1.5 bg-transparent text-sm focus:outline-none focus:ring-2 border rounded-lg ${touched[name] && errors[name] ? "border-pink-500 " : ""} ${className} ${Password ? "pr-8" : ""}`}
+          className={`w-full px-3 py-1.5 bg-light text-sm focus:outline-none focus:ring-2 border rounded-lg ${touched[name] && errors[name] ? "border-pink-500 " : ""} ${className} ${Password ? "pr-8" : ""}`}
           name={name}
           value={values[name]}
           onChange={handleChange}
@@ -20,7 +20,7 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
         />
         {/* {endIcon} */}
         {Password && (
-          <span className="absolute top-2 right-2 cursor-pointer" onClick={() => setHidePassword(!HidePassword)}>
+          <span className="absolute top-[.6rem] right-3 cursor-pointer" onClick={() => setHidePassword(!HidePassword)}>
             {HidePassword ? <HideIcon /> : <ShowIcon />}
           </span>
         )}
