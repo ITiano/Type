@@ -71,7 +71,7 @@ const Type = ({ data = "" }) => {
       if (!show) setShow(true);
       setTimeout(() => {
         setShow(false);
-      }, 300);
+      }, 200);
     }
   };
 
@@ -98,7 +98,7 @@ const Type = ({ data = "" }) => {
 
   return (
     <div className="relative w-full">
-      <div className="w-full flex-wrap gap-y-8 flex items-center justify-center">
+      <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">
         {data.split("").length !== 0 &&
           convertForMap().map((item, wordIndex) => {
             return (
