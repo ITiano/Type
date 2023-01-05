@@ -5,6 +5,9 @@ module.exports = {
       fontFamily: {
         sans: ["'Inter', sans-serif"],
       },
+      backgroundImage: {
+        'form': "url('../public/images/login/Frame-letter.png')",
+      },
       colors: {
         light: "#F5F5F5",
         dark: "#1E2229",
