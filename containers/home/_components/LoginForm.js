@@ -1,11 +1,11 @@
+import * as yup from "yup";
+import { useFormik } from "formik";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomChkbox from "components/utils/CustomChkbox";
 import CustomInput from "components/utils/CustomInput";
-import { useFormik } from "formik";
 import PasswordIcon from "public/icons/PasswordIcon";
 import UserIcon from "public/icons/UserIcon";
 import UsersIcon from "public/icons/UsersIcon";
-import * as yup from "yup";
 
 const LoginForm = () => {
   const validation = yup.object({
@@ -29,8 +29,8 @@ const LoginForm = () => {
     <div className="cart-container centering flex-col py-16 px-10 w-80 rounded-3xl">
       <UsersIcon />
       <p className="text-white text-lg mb-6">Login user</p>
-      <CustomInput formik={formik} name="email" placeholder="Email " className="placeholder-white" startIcon={<UserIcon />} />
-      <CustomInput formik={formik} name="password" placeholder="Password " className="placeholder-white" startIcon={<PasswordIcon />} />
+      <CustomInput formik={formik} name="email" label="Email " placeholder="info@gmail.com" startIcon={<UserIcon />} />
+      <CustomInput formik={formik} name="password" label="Password " placeholder="Enter your password" startIcon={<PasswordIcon />} />
       <div className="flex-between-center w-full mt-6">
         <CustomChkbox label="Remember me" />
         <p className="text-xs text-white cursor-pointer">Forgot password?</p>
