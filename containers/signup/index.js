@@ -7,7 +7,7 @@ import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import { useRouter } from "next/router";
 
-const LoginContainer = () => {
+const SingUpContainer = () => {
   const router = useRouter();
   const validation = yup.object({
     email: yup.string().email().required(),
@@ -29,19 +29,18 @@ const LoginContainer = () => {
   return (
     <div className="frame-letter">
       <form onSubmit={formik.handleSubmit} className="form">
-        <h2 className="text-3xl font-bold">Log In</h2>
-        <p className="text-xs opacity-50 mt-1 mb-6">Please enter your email and password to login.</p>
+        <h2 className="text-3xl font-bold">Sign Up</h2>
+        <p className="text-xs opacity-50 mt-1 mb-6">Please enter your email and password to sign up.</p>
         <CustomInput formik={formik} name="email" label="Email " placeholder="info@gmail.com" />
         <CustomInput formik={formik} name="password" label="Password " placeholder="Enter your password" Password />
-        <CustomChkbox label="Remember me" />
-        <CustomBtn type="submit" text="log in" className="full-black-btn w-full mt-8" />
+        <CustomInput formik={formik} name="password" label="confirm pass " placeholder="Enter your password" Password />
+        <CustomBtn type="submit" text="sign up" className="full-black-btn w-full mt-8" />
         <p className="mt-6 text-mainGray">
-          Don't have an account?{" "}
-          <span className="text-mainBlue cursor-pointer" onClick={() => router.push("/signup")}>
-            Sign Up
+          Do you have an account?{" "}
+          <span className="text-mainBlue cursor-pointer" onClick={() => router.push("/login")}>
+            Log In
           </span>
         </p>
-        <p className="text-mainBlue">Forgotten password</p>
         <div className="w-full border-b relative mt-8">
           <span className="absolute -top-3 left-16 text-mainGray bg-[#fcfcfc] px-3">Or continue with</span>
         </div>
@@ -54,4 +53,4 @@ const LoginContainer = () => {
   );
 };
 
-export default LoginContainer;
+export default SingUpContainer;
