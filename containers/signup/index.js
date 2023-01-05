@@ -4,26 +4,34 @@ import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
 import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
+const initialValues = { email: "", password: "", confirmPassword: "" };
+
 const SingUpContainer = () => {
-  const router = useRouter();
   const validation = yup.object({
-    email: yup.string().email().required(),
-    password: yup.string().required(),
+    email: yup.string().required("ایمیل نمی تواند خالی باشد ").email("لطفا ایمیل را به صورت کامل و صحیح وارد کنید"),
+    password: yup
+      .string()
+      .required("رمز عبور نمی تواند خالی باشد")
+      .matches(/^(?=.*[a-z])/, "رمز عبور باید داری حداقل یک حرف کوچک لاتین باشد")
+      .matches(/^(?=.*[A-Z])/, "رمز عبور باید داری حداقل یک حرف بزرگ لاتین باشد")
+      .matches(/^(?=.*[0-9])/, "رمز عبور باید دارای حداقل یک عدد باشد")
+      .min(8, "رمز عبور نمی تواند کمتر از 8 کاراکتر باشد")
+      .max(64, "رمز عبور نمی تواند بیشتر از 64 کاراکتر باشد"),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "تایید رمز عبور با رمز عبور برابر نیست")
+      .required("تایید رمز عبور نمی تواند خالی باشد"),
   });
 
-  const handleSubmit = async (values) => {};
+  const onSubmit = async (values) => {};
 
   const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
+    onSubmit,
+    initialValues,
     enableReinitialize: true,
     validationSchema: validation,
-    onSubmit: handleSubmit,
   });
 
   return (
@@ -33,7 +41,7 @@ const SingUpContainer = () => {
         <p className="text-xs opacity-50 mt-1 mb-6">Please enter your email and password to sign up.</p>
         <CustomInput formik={formik} name="email" label="Email " placeholder="info@gmail.com" />
         <CustomInput formik={formik} name="password" label="Password " placeholder="Enter your password" Password />
-        <CustomInput formik={formik} name="password" label="confirm pass " placeholder="Enter your password" Password />
+        <CustomInput formik={formik} name="confirmPassword" label="confirm pass " placeholder="Enter your password" Password />
         <CustomBtn type="submit" text="sign up" className="black-btn w-full mt-8" />
         <p className="mt-6 text-mainGray flex-start-center gap-1">
           Do you have an account?
