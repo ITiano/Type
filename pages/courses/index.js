@@ -1,3 +1,5 @@
+import CoursesContainer from "containers/courses";
+
 const index = () => {
   return <CoursesContainer />;
 };
