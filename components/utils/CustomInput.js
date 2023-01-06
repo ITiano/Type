@@ -13,7 +13,7 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
         <input
           autoComplete="off"
           className={`w-full px-3 py-1.5 bg-white text-sm border-2 rounded-md ${
-            touched[name] && errors[name] ? "border-pink-500 focus:border-pink-500" : "border-gray-light focus:border-mainBlue"
+            touched[name] && errors[name] ? "border-pink-500 focus:border-pink-500" : "border-gray-2 focus:border-mainBlue"
           } ${className} ${Password ? "pr-8" : ""}`}
           name={name}
           value={values[name]}

@@ -21,12 +21,12 @@ const CoursesElements = ({ item, index }) => {
     3: <LockIcon />,
   };
   return (
-    <div className={`flex-between-center bg-white w-full px-4 rounded-xl ${item.status > 2 ? "grayscale bg-gray-light" : ""} `}>
+    <div className={`flex-between-center bg-white w-full px-4 rounded-xl ${item.status > 2 ? "grayscale bg-gray-2" : ""} `}>
       <div className="flex-start-center gap-3">
         {images[item.id]}
         <div>
           <p className=" font-semibold">{item?.name}</p>
-          <p className="text-gray-dark text-[.65rem]">5min . 8 exercises</p>
+          <p className="text-gray-3 text-[.65rem]">5min . 8 exercises</p>
         </div>
       </div>
       {icons[item.status]}

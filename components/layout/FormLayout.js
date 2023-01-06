@@ -38,9 +38,9 @@ const FormLayout = ({ title, description, formik, options, buttonText, loading, 
 
         {children}
         <div className="w-full centering gap-2 mt-8">
-          <span className="h-px bg-gray-dark flex-1"></span>
+          <span className="h-px bg-gray-3 flex-1"></span>
           <span>Or continue with</span>
-          <span className="h-px bg-gray-dark flex-1"></span>
+          <span className="h-px bg-gray-3 flex-1"></span>
         </div>
         <div className="mt-8 centering gap-3">
           <span className="w-12 h-12 centering rounded-full bg-gray-100 cursor-pointer">

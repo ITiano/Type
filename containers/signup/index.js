@@ -61,7 +61,7 @@ const SingUpContainer = () => {
       formik={formik}
       loading={loading}
     >
-      <p className="mt-6 text-gray-dark flex-start-center gap-1">
+      <p className="mt-6 text-gray-3 flex-start-center gap-1">
         Do you have an account?
         <Link className="text-mainBlue font-semibold" href="/login">
           Log In
