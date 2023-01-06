@@ -1,3 +1,4 @@
+import TopNav from "components/common/TopNav";
 import Head from "next/head";
 import HomePage from "../Containers/Home/HomePage";
 
@@ -13,3 +14,4 @@ export default function Home({ props }) {
     </>
   );
 }
+Home.TopNav = TopNav;
