@@ -7,13 +7,13 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
   const { values, handleChange, touched, errors } = formik;
   return (
     <div>
-      <label>{label}</label>
+      <label className="px-1 mb-1 block">{label}</label>
       <div className={`relative`}>
         {/* {startIcon} */}
         <input
           autoComplete="off"
-          className={`w-full px-3 py-1.5 bg-white text-sm border-2 border-gray-light focus:border-mainBlue rounded-md ${
-            touched[name] && errors[name] ? "border-pink-500 " : ""
+          className={`w-full px-3 py-1.5 bg-white text-sm border-2 rounded-md ${
+            touched[name] && errors[name] ? "border-pink-500 focus:border-pink-500" : "border-gray-light focus:border-mainBlue"
           } ${className} ${Password ? "pr-8" : ""}`}
           name={name}
           value={values[name]}

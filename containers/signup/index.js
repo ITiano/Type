@@ -23,7 +23,9 @@ const SingUpContainer = () => {
       .required("Confirm password cannot be empty"),
   });
 
-  const onSubmit = async (values) => {};
+  const onSubmit = async (values) => {
+    console.log(values);
+  };
 
   const formik = useFormik({
     onSubmit,

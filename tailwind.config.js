@@ -18,7 +18,7 @@ module.exports = {
         dark: "#1E2229",
         "gray-dark": "#AEAEAE",
         "gray-light": "#F2F1F2",
-        mainBlue: "#B4E9F2",
+        mainBlue: "#aae6f0",
       },
     },
   },

@@ -21,7 +21,9 @@ const LoginContainer = () => {
     remember: yup.boolean(),
   });
 
-  const onSubmit = async (values) => {};
+  const onSubmit = async (values) => {
+    console.log(values);
+  };
 
   const formik = useFormik({
     onSubmit,
