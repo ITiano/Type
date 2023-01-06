@@ -9,7 +9,13 @@
     @apply text-dark bg-light text-sm;
   }
   span {
-    @apply text-mainGray;
+    @apply text-gray-dark;
+  }
+  label {
+    @apply px-1 mb-1.5;
+  }
+  input {
+    @apply outline-none ring-0 focus:ring-0 focus:outline-none;
   }
 }
 

@@ -26,8 +26,8 @@ const FormLayout = ({ title, description, formik, options, buttonText, loading, 
           if (item.children)
             return (
               <div className={`flex-start-center gap-3 ${item.className || ""}`}>
-                {item.children.map((child, index) => {
-                  return <div key={index}>{HtmlRendering(child)}</div>;
+                {item.children.map((child) => {
+                  return HtmlRendering(child);
                 })}
               </div>
             );
@@ -35,12 +35,12 @@ const FormLayout = ({ title, description, formik, options, buttonText, loading, 
         })}
 
         <CustomBtn type="submit" text={buttonText} className="black-btn w-full mt-6" loading={loading} />
-        
+
         {children}
         <div className="w-full centering gap-2 mt-8">
-          <span className="h-px bg-mainGray flex-1"></span>
+          <span className="h-px bg-gray-dark flex-1"></span>
           <span>Or continue with</span>
-          <span className="h-px bg-mainGray flex-1"></span>
+          <span className="h-px bg-gray-dark flex-1"></span>
         </div>
         <div className="mt-8 centering gap-3">
           <span className="w-12 h-12 centering rounded-full bg-gray-100">

@@ -2,6 +2,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import Link from "next/link";
 import FormLayout from "components/layout/FormLayout";
+import { useState } from "react";
 
 const initialValues = { email: "", password: "", confirmPassword: "" };
 
@@ -58,7 +59,7 @@ const SingUpContainer = () => {
       formik={formik}
       loading={loading}
     >
-      <p className="mt-6 text-mainGray flex-start-center gap-1">
+      <p className="mt-6 text-gray-dark flex-start-center gap-1">
         Do you have an account?
         <Link className="text-mainBlue font-semibold" href="/login">
           Log In
