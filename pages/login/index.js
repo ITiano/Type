@@ -1,7 +1,13 @@
 import LoginContainer from "containers/login";
+import { NextSeo } from "next-seo";
 
 const index = () => {
-  return <LoginContainer />;
+  return (
+    <>
+      <NextSeo title="login" />
+      <LoginContainer />
+    </>
+  );
 };
 
 export default index;
