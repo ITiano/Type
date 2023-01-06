@@ -1,9 +1,9 @@
-const CustomBtn = ({ text, startIcon, endIcon, OnClick, className, disabled, load, type = "button" }) => {
+const CustomBtn = ({ text, startIcon, endIcon, onClick, className, disabled, loading, type = "button" }) => {
   return (
     <button
       className={`btn centering gap-2 ${className} ${disabled && "opacity-10"}`}
-      disabled={load ? true : disabled}
-      onClick={OnClick}
+      disabled={loading || disabled}
+      onClick={onClick}
       type={type}
     >
       {startIcon}

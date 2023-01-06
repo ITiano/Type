@@ -8,6 +8,9 @@
   body {
     @apply text-dark bg-light text-sm;
   }
+  span {
+    @apply text-mainGray;
+  }
 }
 
 @layer components {
@@ -60,5 +63,9 @@
 
   .form {
     @apply w-[22rem] border rounded-2xl p-8 backdrop-blur-sm bg-[#FFFFFF] bg-opacity-60;
+  }
+
+  .navigate {
+    @apply text-mainBlue font-semibold;
   }
 }
