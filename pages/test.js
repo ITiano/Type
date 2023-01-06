@@ -1,4 +1,4 @@
-import Type from "../components/Type";
+import Type from "../components/common/Type";
 
 const Test = () => {
   const data = "In publishing and graphic design. In publishing and graphic design. In publishing and graphic mmwwnn.";
