@@ -5,7 +5,8 @@ import SEO from "next-seo.config";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <DefaultSeo {...SEO}  />
+      <DefaultSeo {...SEO} />
+      {Component.TopNav && <Component.TopNav />}
       <Component {...pageProps} />
     </>
   );
