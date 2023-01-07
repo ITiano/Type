@@ -1,5 +1,11 @@
+import Keyboard from "components/common/Finger/keyboard";
+
 const HomePage = () => {
-  return <main></main>;
+  return (
+    <main>
+      <Keyboard />
+    </main>
+  );
 };
 
 export default HomePage;
