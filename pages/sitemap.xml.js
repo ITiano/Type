@@ -21,7 +21,7 @@ export const getServerSideProps = async ({ res }) => {
   const { data: posts } = await axios.get("https://jsonplaceholder.typicode.com/posts");
 
   const dynamicPaths = posts.map((singleProduct) => {
-    return `${NEXT_API}/practice/${singleProduct.id}`;
+    return `${NEXT_API}/courses/${singleProduct.id}`;
   });
 
   const allPaths = [...staticPaths, ...dynamicPaths];

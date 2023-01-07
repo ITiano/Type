@@ -1,9 +1,9 @@
 import TopNav from "components/common/TopNav";
 import CoursesContainer from "containers/courses";
 
-const index = () => {
+const CursesPage = () => {
   return <CoursesContainer />;
 };
 
-export default index;
-index.TopNav = TopNav;
+export default CursesPage;
+CursesPage.TopNav = TopNav;
