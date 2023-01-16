@@ -1,4 +1,4 @@
-import LoginContainer from "containers/login";
+import LoginContainer from "containers/login/Login";
 import { NextSeo } from "next-seo";
 
 const index = () => {

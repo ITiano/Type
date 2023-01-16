@@ -1,4 +1,4 @@
-import SingUpContainer from "containers/signup";
+import SingUpContainer from "containers/signup/Signup";
 import { NextSeo } from "next-seo";
 
 const index = () => {

@@ -1,5 +1,5 @@
 import TopNav from "components/common/TopNav";
-import CoursesContainer from "containers/courses";
+import CoursesContainer from "containers/courses/courses";
 
 const CursesPage = () => {
   return <CoursesContainer />;

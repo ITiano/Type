@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -16,7 +16,7 @@ html {
 
 @layer base {
   body {
-    @apply text-dark bg-light text-sm;
+    @apply text-dark text-sm;
   }
   span {
     @apply text-gray-3;
@@ -80,6 +80,9 @@ html {
 
   .navigate {
     @apply text-mainBlue font-semibold;
+  }
+  .max-w-page {
+    @apply 2xl:max-w-screen-2xl container mx-auto;
   }
 }
 
