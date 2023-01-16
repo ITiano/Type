@@ -6,7 +6,7 @@ import WallSvg from "public/images/home/WallSvg";
 
 const HomeSection = () => {
   return (
-    <div className="relative -top-[60px] w-full">
+    <section className="relative -top-[60px] w-full min-h-[900px]">
       <span className="absolute top-[170px] right-0 z-10 ">
         <RoomSvg />
       </span>
@@ -28,7 +28,7 @@ const HomeSection = () => {
           <CustomBtn text="Register" className="font-medium" endIcon={<ArrowRight />} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -82,7 +82,7 @@ html {
     @apply text-mainBlue font-semibold;
   }
   .max-w-page {
-    @apply 2xl:max-w-screen-2xl container mx-auto;
+    @apply 2xl:max-w-[2000px] mx-auto;
   }
 }
 
