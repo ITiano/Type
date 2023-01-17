@@ -10,7 +10,7 @@ const FeaturesSection = () => {
       <Box
         image={Book}
         title="Untitled"
-        description="Description regarding the title tesst ts tesst ts Description regarding the title Description regarding the titlea tesst ts "
+        description="Description regarding the title tesst ts tesst ts Description regarding the title Description regarding the ..."
       />
       <div className="centering flex-col">
         <h4 className="font-semibold text-3xl border-b-[6px] border-b-mainBlue pb-3 mb-3">Features</h4>
@@ -18,13 +18,13 @@ const FeaturesSection = () => {
         <Box
           image={Pencils}
           title="Untitled"
-          description="Description regarding the title tesst ts tesst ts Description regarding the title Description regarding the titlea tesst ts "
+          description="Description regarding the title tesst ts tesst ts Description regarding the title Description regarding the ..."
         />
       </div>
       <Box
         image={Vlc}
         title="Untitled"
-        description="Description regarding the title tesst ts tesst ts Description regarding the title Description regarding the titlea tesst ts "
+        description="Description regarding the title tesst ts tesst ts Description regarding the title Description regarding the ..."
       />
     </section>
   );
@@ -34,8 +34,8 @@ export default FeaturesSection;
 
 const Box = ({ title, description, image }) => {
   return (
-    <div className="centering flex-col bg-white rounded-md w-[23rem] shadow p-10">
-      <Image src={image} alt={title} width="200" height="200" />
+    <div className="centering flex-col bg-white rounded-lg w-[23rem] p-8 border">
+      <Image src={image} alt={title} width="128" height="128" />
       <h5 className="font-medium text-2xl mb-5">{title}</h5>
       <p className="text-gray-4 text-base">{description}</p>
     </div>

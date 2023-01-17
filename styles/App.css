@@ -28,7 +28,7 @@ html {
 
 @layer components {
   .btn {
-    @apply px-5 py-2.5 text-xs sm:text-sm rounded-full;
+    @apply px-6 py-3 text-xs sm:text-sm rounded-full;
   }
   .black-btn {
     @apply bg-dark font-bold text-light;

@@ -1,4 +1,6 @@
 import CustomBtn from "components/utils/CustomBtn";
+import TypingEffect from "components/utils/Typingeffect";
+import Link from "next/link";
 import ArrowRight from "public/icons/ArrowRight";
 import PatternSvg from "public/images/home/PatternSvg";
 import RoomSvg from "public/images/home/RoomSvg";
@@ -21,11 +23,21 @@ const HomeSection = () => {
         <h3 className="font-normal text-2xl text-gray-4 mb-2">Lorem Ipsum is simply dummy text </h3>
         <h2 className="font-extrabold text-6xl mb-8">
           <p>Learn Touch Typing</p>
-          <p>for free</p>
+          <TypingEffect dynamicText={["for free."]} />
+          {/* <p>for free</p> */}
         </h2>
-        <div className="flex-start-center">
-          <CustomBtn text="Get started" className="black-btn" />
-          <CustomBtn text="Register" className="font-medium" endIcon={<ArrowRight />} />
+        <div className="flex-start-center gap-4">
+          <Link href="/courses" className="btn black-btn font-bold text-lg">
+            Get started
+          </Link>
+          <Link href="/signup">
+            <div className="flex-start-center gap-1">
+              <span className="font-medium text-black text-lg">Register</span>
+              <span>
+                <ArrowRight />
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </section>
