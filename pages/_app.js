@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
       <DefaultSeo {...SEO} />
       {Component.TopNav && <Component.TopNav />}
       <Component {...pageProps} />
+      {Component.Footer && <Component.Footer />}
     </>
   );
 }

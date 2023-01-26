@@ -1,3 +1,4 @@
+import Footer from "components/common/Footer";
 import TopNav from "components/common/TopNav";
 import LandingContainer from "../containers/landing/Landing";
 
@@ -7,3 +8,4 @@ const Landing = () => {
 
 export default Landing;
 Landing.TopNav = TopNav;
+Landing.Footer = Footer;
