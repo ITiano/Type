@@ -73,7 +73,7 @@ html {
     @apply bg-form bg-transparent centering h-screen;
   }
   .form {
-    @apply w-[23rem] border rounded-2xl p-8 backdrop-blur-sm bg-[#FFFFFF] bg-opacity-60;
+    @apply w-[23rem] border rounded-2xl p-8 backdrop-blur-sm bg-white bg-opacity-60;
   }
   .navigate {
     @apply text-mainBlue font-semibold;

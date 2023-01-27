@@ -1,5 +1,5 @@
-const Rectangle = () => (
-  <svg width="1440" height="546" viewBox="0 0 1440 546" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Rectangle = ({ className }) => (
+  <svg className={className} width="1440" height="546" viewBox="0 0 1440 546" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g opacity="0.4" clip-path="url(#clip0_438_1881)">
       <line x1="1383" y1="223.5" x2="-105" y2="223.5" stroke="#AEAEAE" />
       <line x1="1383" y1="247.5" x2="-105" y2="247.5" stroke="#AEAEAE" />
