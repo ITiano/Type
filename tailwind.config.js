@@ -16,6 +16,7 @@ module.exports = {
         "gray-3": "#AEAEAE",
         "gray-4": "#949db0",
         mainBlue: "#aae6f0",
+        golden: "#FFD42A",
       },
     },
   },

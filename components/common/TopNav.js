@@ -23,7 +23,7 @@ const TopNav = () => {
       </nav>
       <div className="flex-end-center gap-1">
         <ArrowDownIcon />
-        <UserIcon />
+        <UserIcon className="w-10" />
       </div>
     </header>
   );

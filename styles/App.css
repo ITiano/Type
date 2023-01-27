@@ -28,10 +28,10 @@ html {
 
 @layer components {
   .btn {
-    @apply px-6 py-3 text-xs sm:text-sm rounded-full;
+    @apply px-5 py-2 text-xs sm:text-sm rounded-full font-semibold;
   }
   .black-btn {
-    @apply bg-dark font-bold text-light;
+    @apply bg-dark text-light;
   }
   .centering {
     @apply flex justify-center items-center;
