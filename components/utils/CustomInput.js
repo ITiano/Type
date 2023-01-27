@@ -6,7 +6,7 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
   const [HidePassword, setHidePassword] = useState(true);
   const { values, handleChange, touched, errors } = formik;
   return (
-    <div>
+    <>
       <label className="px-1 block">{label}</label>
       <div className={`relative`}>
         {/* {startIcon} */}
@@ -27,7 +27,7 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
         )}
       </div>
       <p className="text-xs pl-1 text-pink-600 h-4 mb-1">{touched[name] && errors[name]}</p>
-    </div>
+    </>
   );
 };
 

@@ -24,6 +24,9 @@ html {
   input {
     @apply !outline-none !ring-0 focus:!ring-0 !ring-offset-0 placeholder:text-gray-3 focus:!outline-none;
   }
+  textarea {
+    @apply !outline-none !ring-0 focus:!ring-0 !ring-offset-0 placeholder:text-gray-3 focus:!outline-none;
+  }
 }
 
 @layer components {
