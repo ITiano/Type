@@ -6,9 +6,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <DefaultSeo {...SEO} />
-      {Component.TopNav && <Component.TopNav />}
-      <Component {...pageProps} />
-      {Component.Footer && <Component.Footer />}
+      <div className={`${Component.TopNav && Component.Footer ? "min-h-screen  " : ""}`}>
+        {Component.TopNav && <Component.TopNav />}
+        <Component {...pageProps} />
+        {Component.Footer && <Component.Footer />}
+      </div>
     </>
   );
 }

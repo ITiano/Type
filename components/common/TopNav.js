@@ -11,7 +11,7 @@ const TopNav = () => {
     </Link>
   );
   return (
-    <header className="relative flex-between-center max-w-[85rem] mx-auto px-2 mt-5 bg-transparent z-30">
+    <header className="relative flex-between-center max-w-[85rem] mx-auto px-2 mt-5 bg-transparent z-30 w-full">
       <h1>Typiano</h1>
       <nav className="flex-between-center gap-5">
         <DesktopNavElements title="Home" path="/" />
