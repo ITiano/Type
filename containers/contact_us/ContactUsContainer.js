@@ -1,3 +1,4 @@
+import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
 import CustomTextArea from "components/utils/CustomTextArea";
 import { useFormik } from "formik";
@@ -51,6 +52,7 @@ const ContactUsContainer = () => {
           <div className="w-6/12">
             <CustomInput formik={formik} label="Email" placeholder="info@gmail.com" />
             <CustomTextArea formik={formik} label="Message" placeholder="type here..." />
+            <CustomBtn text="Send" arrowBtn />
           </div>
         </div>
       </div>
