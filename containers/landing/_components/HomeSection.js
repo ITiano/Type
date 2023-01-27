@@ -3,13 +3,13 @@ import CustomBtn from "components/utils/CustomBtn";
 import TypingEffect from "components/utils/Typingeffect";
 import Link from "next/link";
 import ArrowRight from "public/icons/ArrowRight";
-import PatternSvg from "public/images/home/PatternSvg";
+import HomePatternSvg from "public/images/home/HomePatternSvg";
 import RoomSvg from "public/images/home/RoomSvg";
 import WallSvg from "public/images/home/WallSvg";
 
 const HomeSection = () => {
   return (
-    <section className="relative -top-[60px] w-full min-h-[900px]">
+    <section className="relative -top-[60px] min-h-[900px]">
       <span className="absolute top-[170px] right-0 z-10 ">
         <RoomSvg />
       </span>
@@ -17,7 +17,7 @@ const HomeSection = () => {
         <WallSvg />
       </span>
       <span className="absolute top-[200px] left-[180px] bg-red">
-        <PatternSvg />
+        <HomePatternSvg />
       </span>
 
       <div className="absolute top-[250px] left-[100px]">

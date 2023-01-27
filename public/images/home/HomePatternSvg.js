@@ -1,4 +1,4 @@
-const PatternSvg = () => {
+const HomePatternSvg = () => {
   return (
     <svg width="708" height="544" viewBox="0 0 708 544" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -29,4 +29,4 @@ const PatternSvg = () => {
   );
 };
 
-export default PatternSvg;
+export default HomePatternSvg;
