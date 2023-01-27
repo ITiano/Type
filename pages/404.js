@@ -1,7 +1,6 @@
+import Image from "next/image";
 import Footer from "components/common/Footer";
 import TopNav from "components/common/TopNav";
-import Image from "next/image";
-
 import vlc from "public/images/public/vlc.png";
 
 const NotFound = () => {

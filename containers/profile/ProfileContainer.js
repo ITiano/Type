@@ -6,7 +6,7 @@ import ShareIcon from "public/icons/ShareIcon";
 import StarIcon from "public/icons/StarIcon";
 import UserIcon from "public/icons/UserIcon";
 
-const initialValues = { email: "", password: "", remember: false };
+const initialValues = {};
 
 const ProfileContainer = () => {
   const onSubmit = async (values) => {
