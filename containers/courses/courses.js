@@ -3,14 +3,14 @@ import CoursesElements from "./_components/CoursesElements";
 
 const CoursesContainer = () => {
   const [data] = useState([
-    { id: 1, name: "Lesson1", status: 1 },
-    { id: 2, name: "Lesson2", status: 1 },
-    { id: 3, name: "Lesson3", status: 1 },
-    { id: 4, name: "Lesson4", status: 2 },
-    { id: 1, name: "Lesson5", status: 3 },
-    { id: 2, name: "Lesson6", status: 3 },
-    { id: 3, name: "Lesson7", status: 3 },
-    { id: 4, name: "Lesson8", status: 3 },
+    { id: 1, name: "Lesson1", status: 1, rating: 4, score:1000, speed: 30, accuracy : 100, duration: "00:04" },
+    { id: 2, name: "Lesson2", status: 1, rating: 4, score:1000, speed: 30, accuracy : 100, duration: "00:04" },
+    { id: 3, name: "Lesson3", status: 1, rating: 4, score:1000, speed: 30, accuracy : 100, duration: "00:04" },
+    { id: 4, name: "Lesson4", status: 2, rating: 4, score:1000, speed: 30, accuracy : 100, duration: "00:04" },
+    { id: 1, name: "Lesson5", status: 3, rating: 4, score:1000, speed: 30, accuracy : 100, duration: "00:04" },
+    { id: 2, name: "Lesson6", status: 3, rating: 4, score:1000, speed: 30, accuracy : 100, duration: "00:04" },
+    { id: 3, name: "Lesson7", status: 3, rating: 4, score:1000, speed: 30, accuracy : 100, duration: "00:04" },
+    { id: 4, name: "Lesson8", status: 3, rating: 4, score:1000, speed: 30, accuracy : 100, duration: "00:04" },
   ]);
   return (
     <div className="max-w-6xl m-auto my-8 px-5 ">

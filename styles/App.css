@@ -36,6 +36,12 @@ html {
   .black-btn {
     @apply bg-dark text-light;
   }
+  .dropdown-container {
+    @apply absolute p-2 bg-white custom-shadow-1 z-50 w-28 top-10 right-5 rounded-lg;
+  }
+  .dropdown-element {
+    @apply p-2 transition hover:bg-mainBlue hover:bg-opacity-50 cursor-pointer rounded-lg text-left;
+  }
   .centering {
     @apply flex justify-center items-center;
   }
