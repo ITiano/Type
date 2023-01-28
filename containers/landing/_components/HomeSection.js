@@ -9,7 +9,7 @@ import WallSvg from "public/images/home/WallSvg";
 
 const HomeSection = () => {
   return (
-    <section className="relative -top-[60px] min-h-[900px]">
+    <section className="min-h-[900px]">
       <span className="absolute top-[170px] right-0 z-10 ">
         <RoomSvg />
       </span>

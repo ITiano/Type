@@ -3,7 +3,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-2 py-14">
-      <h1 className="text-dark font-bold text-center text-xl">Typiano</h1>
+      <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
       <div className="centering gap-8 py-8 border-b-2">
         {elements.map((el, index) => (
           <p className="text-gray-4 text-xs" key={index}>

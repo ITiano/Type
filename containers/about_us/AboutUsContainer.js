@@ -22,21 +22,23 @@ const AboutUsContainer = () => {
   );
 
   return (
-    <>
+    <div className="relative">
       <Rectangle className="absolute top-0 -z-10" />
       <div className="max-w-3xl mx-auto mt-10 mb-20">
         <p className="font-bold text-xl text-center mb-5">Our Team</p>
         <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
-          consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum{" "}
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+          from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+          looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of
+          the word in classical literature, discovered the undoubtable source. Lorem Ipsum{" "}
         </p>
         <div className="flex-between-start mt-8 flex-wrap ">
           {Users.map((user) => (
-            <OurTeamElements user={user} />
+            <OurTeamElements key={user} user={user} />
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

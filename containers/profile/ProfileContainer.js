@@ -23,7 +23,7 @@ const ProfileContainer = () => {
   const rating = [true, true, true, false, false];
 
   return (
-    <>
+    <div className="max-w-page">
       <Rectangle className="absolute top-0 -z-10" />
       <section className="bg-gray-1 rounded-3xl max-w-4xl mx-auto p-10 mt-5">
         <div className="flex-between-center">
@@ -36,7 +36,7 @@ const ProfileContainer = () => {
               <p className="text-base font-semibold mb-0.5 pl-1">Fateme</p>
               <div className="flex-start-center">
                 {rating.map((s) => (
-                  <StarIcon className={!s && "!text-gray-3"} />
+                  <StarIcon key={s} className={!s && "!text-gray-3"} />
                 ))}
               </div>
             </div>
@@ -69,7 +69,7 @@ const ProfileContainer = () => {
           <CustomBtn text="Cancel" />
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

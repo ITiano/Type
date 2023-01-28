@@ -1,21 +1,20 @@
 import Image from "next/image";
-import Footer from "components/common/Footer";
-import TopNav from "components/common/TopNav";
+
 import vlc from "public/images/public/vlc.png";
+import PageLayout from "components/layout/PageLayout";
 
 const NotFound = () => {
   return (
-    <section className="centering gap-8">
-      <Image width={150} src={vlc} alt="" />
-      <div>
-        <p className="text-3xl font-bold">Error!</p>
-        <p className="text-gray-3 text-base my-1">Somethings went wraong please try later</p>
-      </div>
-    </section>
+    <PageLayout>
+      <section className="centering gap-8">
+        <Image width={150} src={vlc} alt="" />
+        <div>
+          <p className="text-3xl font-bold">Error!</p>
+          <p className="text-gray-3 text-base my-1">Somethings went wraong please try later</p>
+        </div>
+      </section>
+    </PageLayout>
   );
 };
 
 export default NotFound;
-
-NotFound.TopNav = TopNav;
-NotFound.Footer = Footer;

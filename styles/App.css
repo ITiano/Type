@@ -16,7 +16,7 @@ html {
 
 @layer base {
   body {
-    @apply text-dark text-sm
+    @apply text-dark bg-gray-1 text-sm;
   }
   span {
     @apply text-gray-3;
@@ -88,7 +88,7 @@ html {
     @apply text-mainBlue font-semibold;
   }
   .max-w-page {
-    @apply w-full 2xl:max-w-[2000px] mx-auto;
+    @apply w-full max-w-[1800px] mx-auto;
   }
 }
 
