@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <DefaultSeo {...SEO} />
-      <div className={`${Component.TopNav && Component.Footer ? "min-h-screen flex flex-col justify-between" : ""}`}>
+      <div className={`${Component.TopNav && Component.Footer ? "min-h-screen flex flex-col justify-between items-stretch" : ""}`}>
         {Component.TopNav && <Component.TopNav />}
         <Component {...pageProps} />
         {Component.Footer && <Component.Footer />}
