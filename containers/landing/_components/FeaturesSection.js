@@ -7,7 +7,7 @@ import FeaturePatternSvg from "public/images/home/FeaturePatternSvg";
 
 const FeaturesSection = () => {
   return (
-    <section className="w-full relative h-[800px]">
+    <section className="w-full relative h-[600px]">
       <FeaturePatternSvg className="w-full absolute inset-x-0" />
       <div className="absolute flex-start-start w-full !justify-center gap-16">
         <Box
