@@ -3,7 +3,7 @@ import ContactUsContainer from "containers/contact_us/ContactUsContainer";
 
 const ContactUs = () => {
   return (
-    <PageLayout>
+    <PageLayout className="bg-white">
       <ContactUsContainer />
     </PageLayout>
   );

@@ -3,7 +3,7 @@ import AboutUsContainer from "containers/about_us/AboutUsContainer";
 
 const AboutUs = () => {
   return (
-    <PageLayout>
+    <PageLayout className="bg-white">
       <AboutUsContainer />
     </PageLayout>
   );

@@ -1,13 +1,9 @@
-import RectangleFooter from "public/images/public/RectangleFooter";
-
 const Footer = ({ className = "" }) => {
   const elements = ["Product", "Features", "Pricing", "Resources", "Careers", "Help", "Privacy"];
 
   return (
     <footer className={`${className}`}>
-      <div className="h-24 overflow-hidden">
-        <RectangleFooter className="w-full" />
-      </div>
+      <div className="h-24 bg-rectangle"></div>
       <div className="bg-gray-2 pt-10 pb-6">
         <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
         <div className="centering gap-8 py-4 border-b-2">

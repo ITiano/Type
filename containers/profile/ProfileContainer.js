@@ -5,7 +5,6 @@ import AssignImgIcon from "public/icons/AssignImgIcon";
 import ShareIcon from "public/icons/ShareIcon";
 import StarIcon from "public/icons/StarIcon";
 import UserIcon from "public/icons/UserIcon";
-import Rectangle from "public/images/public/Rectangle";
 
 const initialValues = {};
 
@@ -24,7 +23,6 @@ const ProfileContainer = () => {
 
   return (
     <div className="max-w-page">
-      <Rectangle className="absolute top-0 -z-10" />
       <section className="bg-gray-1 rounded-3xl max-w-4xl mx-auto p-10 mt-5">
         <div className="flex-between-center">
           <div className="flex-start-center gap-5">

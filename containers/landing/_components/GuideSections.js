@@ -16,7 +16,7 @@ const GuideSections = () => {
 
   return (
     <div className="centering flex-col w-full mt-48 mb-72">
-      <div className="bg-gray-1 p-16 rounded-2xl relative">
+      <div className="bg-gray-1 py-12 px-20 rounded-2xl relative">
         <h2 className="font-semibold text-4xl text-center mb-2">10-finger typing guide</h2>
         <p className="text-base text-gray-3 text-center mb-7">how to place your fingers on the keys of the key board</p>
         <p className="text-2xl text-center mb-7">Try to remember the locations of the buttons</p>
