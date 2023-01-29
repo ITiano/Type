@@ -1,17 +1,24 @@
+import RectangleFooter from "public/images/public/RectangleFooter";
+
 const Footer = ({ className = "" }) => {
-  const elements = ["Our team", "Features", "Contact us", "About us", "Fate BUT", "Bad rohi", "Cat Soheil"];
+  const elements = ["Product", "Features", "Pricing", "Resources", "Careers", "Help", "Privacy"];
 
   return (
-    <footer className={`bg-gray-2 py-14" ${className}`}>
-      <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
-      <div className="centering gap-8 py-8 border-b-2">
-        {elements.map((el, index) => (
-          <p className="text-gray-4 text-xs" key={index}>
-            {el}
-          </p>
-        ))}
+    <footer className={`${className}`}>
+      <div className="h-28 overflow-hidden">
+        <RectangleFooter className="w-full" />
       </div>
-      <p className="text-gray-4 text-xs mt-8 text-center tracking-widest">&copy; 2023 Itiano, All rights reserved</p>
+      <div className="bg-gray-2 pt-14 pb-8">
+        <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
+        <div className="centering gap-8 py-8 border-b-2">
+          {elements.map((el, index) => (
+            <p className="text-gray-4" key={index}>
+              {el}
+            </p>
+          ))}
+        </div>
+        <p className="text-gray-4 text-xs mt-8 text-center tracking-widest">&copy; 2023 Itiano, All rights reserved</p>
+      </div>
     </footer>
   );
 };
