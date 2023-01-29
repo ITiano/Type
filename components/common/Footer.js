@@ -1,8 +1,8 @@
-const Footer = () => {
+const Footer = ({ className = "" }) => {
   const elements = ["Our team", "Features", "Contact us", "About us", "Fate BUT", "Bad rohi", "Cat Soheil"];
 
   return (
-    <footer className="bg-gray-2 py-14">
+    <footer className={`bg-gray-2 py-14" ${className}`}>
       <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
       <div className="centering gap-8 py-8 border-b-2">
         {elements.map((el, index) => (

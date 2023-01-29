@@ -9,7 +9,7 @@ const FeaturesSection = () => {
   return (
     <section className="w-full relative h-[600px]">
       <FeaturePatternSvg className="w-full absolute inset-x-0" />
-      <div className="absolute flex-start-start w-full !justify-center gap-16">
+      <div className="absolute flex-start-start w-full !justify-center gap-20">
         <Box
           image={Book}
           title="Untitled"
@@ -38,7 +38,7 @@ export default FeaturesSection;
 
 const Box = ({ title, description, image }) => {
   return (
-    <div className="centering flex-col bg-white shadow shadow-slate-100 rounded-3xl w-[23rem] h-[23rem] p-8">
+    <div className="centering flex-col bg-white shadow shadow-slate-200 rounded-3xl w-[21rem] h-[21rem] p-8">
       <Image src={image} alt={title} width="150" height="150" />
       <h5 className="font-medium text-2xl mb-5">{title}</h5>
       <p className="text-gray-4 text-base">{description}</p>

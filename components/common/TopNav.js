@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import ArrowDownIcon from "public/icons/ArrowDownIcon";
 import UserIcon from "public/icons/UserIcon";
 
-const TopNav = () => {
+const TopNav = ({ className = "" }) => {
   return (
-    <header className="px-2 py-4 bg-transparent z-30 w-full">
+    <header className={`"px-2 py-4 bg-transparent z-30 w-full" ${className}`}>
       <nav className="max-w-6xl mx-auto flex-between-center">
-        <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
+        <h2 className="text-dark font-bold text-center text-base">Typiano</h2>
         <nav className="flex-between-center gap-5">
           <DesktopNavElements title="Home" path="/" />
           <DesktopNavElements title="Guide" path="/guide" />

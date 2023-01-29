@@ -1,12 +1,12 @@
 import Footer from "components/common/Footer";
 import TopNav from "components/common/TopNav";
 
-const PageLayout = ({ children, className }) => {
+const PageLayout = ({ children, className, topNavClassName, footerClassName }) => {
   return (
-    <main className={className}>
-      <TopNav />
+    <main className={`min-h-screen flex flex-col justify-between items-stretch ${className}`}>
+      <TopNav className={topNavClassName} />
       {children}
-      <Footer />
+      <Footer className={footerClassName} />
     </main>
   );
 };
