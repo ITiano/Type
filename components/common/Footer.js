@@ -5,12 +5,12 @@ const Footer = ({ className = "" }) => {
 
   return (
     <footer className={`${className}`}>
-      <div className="h-28 overflow-hidden">
+      <div className="h-24 overflow-hidden">
         <RectangleFooter className="w-full" />
       </div>
-      <div className="bg-gray-2 pt-14 pb-8">
+      <div className="bg-gray-2 pt-10 pb-6">
         <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
-        <div className="centering gap-8 py-8 border-b-2">
+        <div className="centering gap-8 py-4 border-b-2">
           {elements.map((el, index) => (
             <p className="text-gray-4" key={index}>
               {el}
