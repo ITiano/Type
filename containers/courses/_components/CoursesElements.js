@@ -69,7 +69,7 @@ const CoursesElements = ({ item, index }) => {
         {icons[item.status]}
         <button onClick={() => setOpenMenu(true)} onBlur={handleBlur} className="cursor-pointer relative">
           <MoreCircleIcon />
-          {OpenMenu && <CoursesElementsOptions />}
+         <CoursesElementsOptions open={OpenMenu} />
         </button>
       </div>
     </div>
