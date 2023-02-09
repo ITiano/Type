@@ -1,11 +1,5 @@
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./containers/**/*.{js,ts,jsx,tsx}",
-    "./public/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./containers/**/*.{js,ts,jsx,tsx}", "./public/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -23,6 +17,8 @@ module.exports = {
         "gray-3": "#AEAEAE",
         "gray-4": "#949db0",
         mainBlue: "#aae6f0",
+        mainRed: "#E35757",
+        lightGreen: "#8FE357",
         golden: "#FFD42A",
       },
     },

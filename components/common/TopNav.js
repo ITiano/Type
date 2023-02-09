@@ -1,9 +1,17 @@
 import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import ArrowDownIcon from "public/icons/ArrowDownIcon";
 import UserIcon from "public/icons/UserIcon";
+import ArrowDownIcon from "public/icons/ArrowDownIcon";
+import ActivityModal from "./_component/ActivityModal";
 
 const TopNav = ({ className = "" }) => {
+  const [OpenModal, setOpenModal] = useState(false);
+
+  const handleBlur = (e) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) setOpenModal(false);
+  };
+
   return (
     <header className={`"px-2 py-4 bg-transparent z-30 w-full" ${className}`}>
       <nav className="max-w-6xl mx-auto flex-between-center">
@@ -17,7 +25,10 @@ const TopNav = ({ className = "" }) => {
           <span className=""></span>
         </nav>
         <div className="flex-end-center gap-1">
-          <ArrowDownIcon />
+          <button onClick={() => setOpenModal(true)} onBlur={handleBlur} className="cursor-pointer relative">
+            <ArrowDownIcon />
+            <ActivityModal open={OpenModal} />
+          </button>
           <UserIcon className="w-10" />
         </div>
       </nav>
@@ -31,10 +42,7 @@ const DesktopNavElements = ({ title, path }) => {
   const { pathname } = useRouter();
 
   return (
-    <Link
-      href={path}
-      className={`px-3 py-1.5 font-semibold rounded-full ${pathname === path ? "text-dark bg-mainBlue" : "text-gray-4 "}`}
-    >
+    <Link href={path} className={`px-3 py-1.5 font-semibold rounded-full ${pathname === path ? "text-dark bg-mainBlue" : "text-gray-4 "}`}>
       {title}
     </Link>
   );
