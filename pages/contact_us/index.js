@@ -1,12 +1,12 @@
-import Footer from "components/common/Footer";
-import TopNav from "components/common/TopNav";
+import PageLayout from "components/layout/PageLayout";
 import ContactUsContainer from "containers/contact_us/ContactUsContainer";
 
 const ContactUs = () => {
-  return <ContactUsContainer />;
+  return (
+    <PageLayout className="bg-white">
+      <ContactUsContainer />
+    </PageLayout>
+  );
 };
 
 export default ContactUs;
-
-ContactUs.TopNav = TopNav;
-ContactUs.Footer = Footer;

@@ -1,10 +1,13 @@
-import TopNav from "components/common/TopNav";
+
+import PageLayout from "components/layout/PageLayout";
 import ProfileContainer from "containers/profile/ProfileContainer";
 
 const Profile = () => {
-  return <ProfileContainer />;
+  return (
+    <PageLayout>
+      <ProfileContainer />
+    </PageLayout>
+  );
 };
 
 export default Profile;
-
-Profile.TopNav = TopNav;

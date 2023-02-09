@@ -46,7 +46,7 @@ const CoursesElements = ({ item, index }) => {
   };
 
   return (
-    <div className={`flex-between-center bg-white w-full px-4 rounded-xl ${item.status > 2 ? "grayscale bg-gray-2" : ""} `}>
+    <div className={`flex-between-center w-full p-2 rounded-xl ${item.status > 2 ? "grayscale bg-gray-2" : "bg-white "} `}>
       <div className="flex-start-center gap-3">
         {images[item.id]}
         <div className="flex-start-center gap-20">

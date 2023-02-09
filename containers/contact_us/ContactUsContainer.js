@@ -5,7 +5,6 @@ import { useFormik } from "formik";
 import CallingIcon from "public/icons/CallingIcon";
 import EmailIcon from "public/icons/EmailIcon";
 import LocationIcon from "public/icons/LocationIcon";
-import Rectangle from "public/images/public/Rectangle";
 
 const initialValues = {};
 
@@ -39,9 +38,8 @@ const ContactUsContainer = () => {
 
   return (
     <>
-      <Rectangle className="absolute top-0 -z-10" />
       <div className="w-[48rem] mx-auto mt-10 mb-20">
-        <p className="font-bold text-xl text-center mb-5">Our Team</p>
+        <h2 className="font-bold text-2xl text-center mb-5">Get in touch</h2>
         <p className="text-center">Contact Us for quote, help or collaboration</p>
         <div className="mt-8 custom-shadow-1 p-10 w-full rounded-3xl flex-between-start bg-white">
           <div className="flex flex-col gap-7">
@@ -52,7 +50,7 @@ const ContactUsContainer = () => {
           <div className="w-6/12">
             <CustomInput formik={formik} label="Email" placeholder="info@gmail.com" />
             <CustomTextArea formik={formik} label="Message" placeholder="type here..." />
-            <CustomBtn text="Send" arrowBtn />
+            <CustomBtn text="Send" arrowBtn className="px-0" />
           </div>
         </div>
       </div>
