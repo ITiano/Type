@@ -1,10 +1,10 @@
-import ArrowDownIcon from "public/icons/ArrowDownIcon";
 import ArrowUpIcon from "public/icons/ArrowUpIcon";
 import ArrowUpsIcon from "public/icons/ArrowUpsIcon";
 import FlashIcon from "public/icons/FlashIcon";
 import KeyboardIcon from "public/icons/KeyboardIcon";
 import LampChargeIcon from "public/icons/LampChargeIcon";
 import SettingIcon from "public/icons/SettingIcon";
+import ProgressBar from "./ProgressBar";
 
 const ActivityModal = ({ open }) => {
   const ActivityElementsValues = [
@@ -14,7 +14,7 @@ const ActivityModal = ({ open }) => {
   ];
 
   return (
-    <div className={`dropdown-container border w-[28rem] py-8 px-6 ${open ? "opacity-100" : "opacity-0"}`}>
+    <div className={`dropdown-container border w-[28rem] py-8 px-6 ${open ? "opacity-100" : "opacity-100"}`}>
       <div className="flex-between-center">
         <p className="font-semibold">Your Activity</p>
         <SettingIcon />
@@ -28,6 +28,11 @@ const ActivityModal = ({ open }) => {
       <div className="px-5 flex-between-center my-4">
         <p>Over Active Practice Time</p>
         <span className="bg-lightGreen text-white text-xs p-1 font-semibold rounded">14h, 17min</span>
+      </div>
+      <div className="flex-between-center gap-3 mt-5">
+        <ProgressBar width={6} text="Last week" />
+        <ProgressBar width={9} text="Today" />
+        <ProgressBar width={6} text="This week" />
       </div>
     </div>
   );
