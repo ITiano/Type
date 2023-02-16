@@ -14,14 +14,14 @@ const ActivityModal = ({ open }) => {
   ];
 
   return (
-    <div className={`dropdown-container border w-[28rem] py-8 px-6 ${open ? "opacity-100" : "opacity-100"}`}>
+    <div className={`dropdown-container border w-[28rem] py-8 px-6 ${open ? "opacity-100" : "opacity-0"} cursor-default`}>
       <div className="flex-between-center">
         <p className="font-semibold">Your Activity</p>
         <SettingIcon />
       </div>
       <div className="flex flex-col gap-2 mt-3">
         {ActivityElementsValues.map((value) => (
-          <ActivityElements value={value} />
+          <ActivityElements key={value.title} value={value} />
         ))}
       </div>
       <p className="font-semibold mt-8 text-left">Time Spent</p>

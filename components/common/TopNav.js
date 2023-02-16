@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import UserIcon from "public/icons/UserIcon";
 import ArrowDownIcon from "public/icons/ArrowDownIcon";
 import ActivityModal from "./_component/ActivityModal";
+import HamburgerMenu from "./_component/HamburgerMenu";
+import TopNavElements from "./_component/TopNavElements";
 
 const TopNav = ({ className = "" }) => {
   const [OpenModal, setOpenModal] = useState(false);
@@ -14,22 +14,25 @@ const TopNav = ({ className = "" }) => {
 
   return (
     <header className={`"px-2 py-4 bg-transparent z-30 w-full" ${className}`}>
-      <nav className="max-w-6xl mx-auto flex-between-center">
+      <nav className="max-w-6xl mx-auto flex-between-center px-4">
         <h2 className="text-dark font-bold text-center text-base">Typiano</h2>
-        <nav className="flex-between-center gap-5">
-          <DesktopNavElements title="Home" path="/" />
-          <DesktopNavElements title="Guide" path="/guide" />
-          <DesktopNavElements title="Courses" path="/courses" />
-          <DesktopNavElements title="About us" path="/about_us" />
-          <DesktopNavElements title="Contact us" path="/contact_us" />
+        <nav className="hidden md:flex-between-center gap-5 ">
+          <TopNavElements title="Home" path="/" />
+          <TopNavElements title="Guide" path="/guide" />
+          <TopNavElements title="Courses" path="/courses" />
+          <TopNavElements title="About us" path="/about_us" />
+          <TopNavElements title="Contact us" path="/contact_us" />
           <span className=""></span>
         </nav>
         <div className="flex-end-center gap-1">
-          <button onClick={() => setOpenModal(true)} onBlur={handleBlur} className="cursor-pointer relative">
-            <ArrowDownIcon />
+          <button onBlur={handleBlur} className=" relative">
+            <span onClick={() => setOpenModal(!OpenModal)}>
+              <ArrowDownIcon className={`${OpenModal && "rotate-180"} transition-all duration-500 `} />
+            </span>
             <ActivityModal open={OpenModal} />
           </button>
           <UserIcon className="w-10" />
+          <HamburgerMenu />
         </div>
       </nav>
     </header>
@@ -37,13 +40,3 @@ const TopNav = ({ className = "" }) => {
 };
 
 export default TopNav;
-
-const DesktopNavElements = ({ title, path }) => {
-  const { pathname } = useRouter();
-
-  return (
-    <Link href={path} className={`px-3 py-1.5 font-semibold rounded-full ${pathname === path ? "text-dark bg-mainBlue" : "text-gray-4 "}`}>
-      {title}
-    </Link>
-  );
-};
