@@ -6,7 +6,7 @@ const Footer = ({ className = "" }) => {
       <div className="h-24 bg-rectangle"></div>
       <div className="bg-gray-2 pt-10 pb-6">
         <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
-        <div className="centering gap-8 py-4 border-b-2">
+        <div className="centering flex-wrap gap-8 py-4 border-b-2">
           {elements.map((el, index) => (
             <p className="text-gray-4" key={index}>
               {el}
