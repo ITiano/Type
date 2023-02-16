@@ -22,7 +22,7 @@ const ProfileContainer = () => {
   const rating = [true, true, true, false, false];
 
   return (
-    <div className="max-w-page">
+    <div className="max-w-page px-3">
       <section className="bg-gray-1 rounded-3xl max-w-4xl mx-auto p-10 mt-5">
         <div className="flex-between-center">
           <div className="flex-start-center gap-5">
@@ -44,8 +44,8 @@ const ProfileContainer = () => {
           </div>
         </div>
         <p className="mt-10 mb-5 font-semibold text-base">Edit profile</p>
-        <div className="flex-between-start">
-          <div className="pr-6 w-full border-r border-gray-3 border-opacity-50">
+        <div className="sm:flex-between-start">
+          <div className="sm:pr-6 w-full sm:border-r border-gray-3 border-opacity-50">
             <p className="text-xs text-gray-3 mt-2 mb-3">Personal</p>
             <div className="flex-start-center gap-3">
               <CustomInput formik={formik} label="Firstname" />
@@ -55,7 +55,7 @@ const ProfileContainer = () => {
             <CustomInput formik={formik} label="Password" Password />
             <CustomInput formik={formik} label="Confrim password" Password />
           </div>
-          <div className="pl-6 w-full">
+          <div className="sm:pl-6 w-full">
             <p className="text-xs text-gray-3 mt-2 mb-3">Goal</p>
             <CustomInput formik={formik} label="Daily goal" />
             <CustomInput formik={formik} label="weakly goal" />
