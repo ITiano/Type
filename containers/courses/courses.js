@@ -13,7 +13,7 @@ const CoursesContainer = () => {
     { id: 4, name: "Lesson8", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
   ]);
   return (
-    <div className="max-w-6xl w-full m-auto my-8">
+    <div className="max-w-6xl w-full m-auto my-8 px-3">
       <p className="font-bold text-lg mb-5">Starting with the subject</p>
       <div className="centering flex-col gap-5">
         {data.map((item, index) => (
