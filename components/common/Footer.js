@@ -2,7 +2,7 @@ const Footer = ({ className = "" }) => {
   const elements = ["Product", "Features", "Pricing", "Resources", "Careers", "Help", "Privacy"];
 
   return (
-    <footer className={`${className}`}>
+    <footer className={`${className} mt-20`}>
       <div className="h-24 bg-rectangle"></div>
       <div className="bg-gray-2 pt-10 pb-6">
         <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
