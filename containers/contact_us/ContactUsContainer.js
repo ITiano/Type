@@ -37,24 +37,24 @@ const ContactUsContainer = () => {
   });
 
   return (
-    <>
-      <div className="w-[48rem] mx-auto mt-10 mb-20">
+    <div className="centering px-3">
+      <div>
         <h2 className="font-bold text-2xl text-center mb-5">Get in touch</h2>
         <p className="text-center">Contact Us for quote, help or collaboration</p>
-        <div className="mt-8 custom-shadow-1 p-10 w-full rounded-3xl flex-between-start bg-white">
+        <div className="mt-8 custom-shadow-1 p-10 w-full rounded-3xl sm:flex-between-start bg-white">
           <div className="flex flex-col gap-7">
             {ContactOptions.map((contact, index) => (
               <ContactElements key={index} contact={contact} />
             ))}
           </div>
-          <div className="w-6/12">
+          <div className="mt-7 sm:mt-0 sm:w-6/12">
             <CustomInput formik={formik} label="Email" placeholder="info@gmail.com" />
             <CustomTextArea formik={formik} label="Message" placeholder="type here..." />
             <CustomBtn text="Send" arrowBtn className="px-0" />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
