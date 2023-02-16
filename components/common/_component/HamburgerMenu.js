@@ -5,6 +5,14 @@ import MenuBarIcon from "public/icons/MenuBarIcon";
 const HamburgerMenu = () => {
   const [OpenMenu, setOpenMenu] = useState(false);
 
+  if (typeof window !== "undefined") {
+    if (OpenMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }
+
   const handleBlur = (e) => {
     if (!e.currentTarget.contains(e.relatedTarget)) setOpenMenu(false);
   };
