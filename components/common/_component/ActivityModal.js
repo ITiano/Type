@@ -14,7 +14,7 @@ const ActivityModal = ({ open }) => {
   ];
 
   return (
-    <div className={`dropdown-container border w-[28rem] py-8 px-6 ${open ? "opacity-100" : "opacity-0"} cursor-default`}>
+    <div className={`dropdown-container border w-[28rem] py-8 px-6 ${open ? "opacity-100" : "opacity-0 hidden"} cursor-default`}>
       <div className="flex-between-center">
         <p className="font-semibold">Your Activity</p>
         <SettingIcon />

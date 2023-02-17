@@ -3,7 +3,7 @@ import CoursesContainer from "containers/courses/courses";
 
 const CursesPage = () => {
   return (
-    <PageLayout footerClassName="hidden">
+    <PageLayout className="!justify-start" footerClassName="hidden">
       <CoursesContainer />
     </PageLayout>
   );

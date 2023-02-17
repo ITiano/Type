@@ -66,6 +66,9 @@ html {
   .flex-around-center {
     @apply flex justify-around items-center;
   }
+  .flex-center-start {
+    @apply flex justify-center items-start;
+  }
   .flex-center-end {
     @apply flex justify-center items-end;
   }
