@@ -14,7 +14,7 @@ const AboutUsContainer = () => {
 
   return (
     <div className="relative">
-      <div className="max-w-6xl mx-auto mt-10 mb-20">
+      <div className="max-w-6xl mx-auto">
         <h2 className="font-bold text-2xl text-center mb-5">Our Team</h2>
         <p className="mb-8 px-6 mx-auto">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,

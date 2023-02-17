@@ -3,7 +3,7 @@ import ProfileContainer from "containers/profile/ProfileContainer";
 
 const Profile = () => {
   return (
-    <PageLayout className="bg-white">
+    <PageLayout className="bg-white pb-20" footerClassName="hidden ">
       <ProfileContainer />
     </PageLayout>
   );
