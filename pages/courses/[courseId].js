@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import DATA from "db";
-import CourseContainer from "containers/course/Course";
+import CourseContainer from "containers/course/CourseContainer";
 
 const STRING_TEST = "In publishing and graphic design. In publishing and graphic design. In publishing and graphic.";
 
