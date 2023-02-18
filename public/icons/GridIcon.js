@@ -5,4 +5,5 @@ const GridIcon = ({className}) => (
   </svg>
 );
 
-export default GridIcon;
+export default GridIcon
+;

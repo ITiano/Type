@@ -20,7 +20,7 @@ const NotFound = () => {
         <div>
           <p className="text-5xl font-bold">Error!</p>
           <p className="text-gray-3 text-base my-1">Somethings went wrang please try later</p>
-          <CustomBtn text="Retry" className="px-0" arrowBtn onClick={navigateHandler} />
+          <CustomBtn text="Retry" className="px-0" arrowEndBtn onClick={navigateHandler} />
         </div>
       </section>
     </PageLayout>

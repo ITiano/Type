@@ -50,7 +50,7 @@ const ContactUsContainer = () => {
           <div className="mt-7 sm:mt-0 sm:w-6/12">
             <CustomInput formik={formik} label="Email" placeholder="info@gmail.com" />
             <CustomTextArea formik={formik} label="Message" placeholder="type here..." />
-            <CustomBtn text="Send" arrowBtn className="px-0" />
+            <CustomBtn text="Send" arrowEndBtn className="px-0" />
           </div>
         </div>
       </div>

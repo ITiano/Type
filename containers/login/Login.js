@@ -1,8 +1,8 @@
 import * as yup from "yup";
-import { useFormik } from "formik";
 import Link from "next/link";
-import FormLayout from "components/layout/FormLayout";
 import { useState } from "react";
+import { useFormik } from "formik";
+import FormLayout from "components/layout/FormLayout";
 
 const initialValues = { email: "", password: "", remember: false };
 

@@ -2,7 +2,7 @@ import Footer from "components/common/Footer";
 import CustomBtn from "components/utils/CustomBtn";
 import TypingEffect from "components/utils/Typingeffect";
 import Link from "next/link";
-import ArrowRight from "public/icons/ArrowRight";
+import ArrowRightIcon from "public/icons/ArrowRightIconIcon";
 import HomePatternSvg from "public/images/home/HomePatternSvg";
 import RoomSvg from "public/images/home/RoomSvg";
 import WallSvg from "public/images/home/WallSvg";
@@ -35,7 +35,7 @@ const HomeSection = () => {
             <div className="flex-start-center gap-1">
               <span className="font-medium text-black text-lg">Register</span>
               <span>
-                <ArrowRight />
+                <ArrowRightIcon />
               </span>
             </div>
           </Link>
