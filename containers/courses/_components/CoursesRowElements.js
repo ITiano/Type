@@ -1,6 +1,7 @@
 import StarIcon from "public/icons/StarIcon";
 import { CoursesIcons, CoursesImages } from "helper/Methods";
 import CoursesElementsOptions from "./CoursesElementsOptions";
+import Stars from "components/utils/Stars";
 
 const CoursesRowElements = ({ item }) => {
   return (
@@ -33,14 +34,6 @@ export default CoursesRowElements;
 const CoursesElementsOption = ({ title, value }) => (
   <div className="hidden md:inline">
     <p className="text-gray-3 text-xs pb-1.5">{title}</p>
-    {title === "Starts" ? (
-      <div className="flex-start-center">
-        {[1, 2, 3, 4, 5].map((s) => (
-          <StarIcon className={s > value && "!text-gray-3"} />
-        ))}
-      </div>
-    ) : (
-      <div className="font-bold text-xs">{value}</div>
-    )}
+    {title === "Starts" ? <Stars value={value} /> : <div className="font-bold text-xs">{value}</div>}
   </div>
 );
