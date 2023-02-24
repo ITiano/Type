@@ -2,7 +2,7 @@ import Footer from "components/common/Footer";
 import CustomBtn from "components/utils/CustomBtn";
 import TypingEffect from "components/utils/Typingeffect";
 import Link from "next/link";
-import ArrowRightIcon from "public/icons/ArrowRightIconIcon";
+import ArrowRightIcon from "public/icons/ArrowRightIcon";
 import HomePatternSvg from "public/images/home/HomePatternSvg";
 import RoomSvg from "public/images/home/RoomSvg";
 import WallSvg from "public/images/home/WallSvg";
