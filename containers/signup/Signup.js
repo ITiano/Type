@@ -9,7 +9,7 @@ const initialValues = { email: "", password: "", confirmPassword: "" };
 const SingUpContainer = () => {
   const [loading, setLoading] = useState(false);
 
-  const validation = yup.object({
+  const validationSchema = yup.object({
     email: yup.string().required("Email cannot be empty").email("Please enter the email completely and correctly"),
 
     password: yup
@@ -30,8 +30,8 @@ const SingUpContainer = () => {
   const formik = useFormik({
     onSubmit,
     initialValues,
+    validationSchema,
     enableReinitialize: true,
-    validationSchema: validation,
   });
 
   const options = [
