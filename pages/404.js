@@ -14,16 +14,14 @@ const NotFound = () => {
   };
 
   return (
-    <PageLayout className="bg-white">
-      <section className="centering gap-12">
-        <Image width={200} src={notFoundImage} alt="" />
-        <div>
-          <p className="text-5xl font-bold">Error!</p>
-          <p className="text-gray-3 text-base my-1">Somethings went wrang please try later</p>
-          <CustomBtn text="Retry" className="px-0" arrowEndBtn onClick={navigateHandler} />
-        </div>
-      </section>
-    </PageLayout>
+    <section className="centering gap-12">
+      <Image width={200} src={notFoundImage} alt="" />
+      <div>
+        <p className="text-5xl font-bold">Error!</p>
+        <p className="text-gray-3 text-base my-1">Somethings went wrang please try later</p>
+        <CustomBtn text="Retry" className="px-0" arrowEndBtn onClick={navigateHandler} />
+      </div>
+    </section>
   );
 };
 

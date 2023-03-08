@@ -4,7 +4,7 @@ import React from "react";
 import useViewport from "hooks/useViewport";
 
 // components
-import Footer from "./Footer/Footer";
+import Footer from "./Footer";
 import Header from "./Header/Header";
 import PageLayout from "./PageLayout";
 
@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
   return (
     <div style={{ minHeight }} className="flex flex-col">
       <Header />
-      <PageLayout>{children}</PageLayout>
+      <PageLayout className="flex-1 flex [&>*]:w-full">{children}</PageLayout>
       <Footer />
     </div>
   );
