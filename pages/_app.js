@@ -1,31 +1,33 @@
-// Apollo client
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
 // Global css
 import "../styles/App.css";
 
 // SEO
-import { DefaultSeo } from "next-seo";
 import SEO from "next-seo.config";
+import { DefaultSeo } from "next-seo";
 
 // Layout components
-import Layout from "components/layout/Layout";
+import Header from "components/layout/Header/Header";
+import Footer from "components/layout/Footer";
+import useViewport from "hooks/useViewport";
 
-const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_GRAPH_CMS_API,
-  cache: new InMemoryCache(),
-});
+// Apollo client
+import { ApolloProvider } from "@apollo/client";
+import client from "graphql/client";
 
 const MyApp = ({ Component, pageProps }) => {
+  const { height: minHeight } = useViewport("px");
+
   return (
     <ApolloProvider client={client}>
       <DefaultSeo {...SEO} />
       {Component.disableLayout ? (
         <Component {...pageProps} />
       ) : (
-        <Layout>
+        <div style={{ minHeight }} className="flex flex-col">
+          <Header />
           <Component {...pageProps} />
-        </Layout>
+          <Footer />
+        </div>
       )}
     </ApolloProvider>
   );

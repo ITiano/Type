@@ -4,11 +4,11 @@ import HomeSection from "./_components/HomeSection";
 
 const LandingContainer = () => {
   return (
-    <main className="max-w-page">
+    <>
       <HomeSection />
       <FeaturesSection />
       <GuideSections />
-    </main>
+    </>
   );
 };
 

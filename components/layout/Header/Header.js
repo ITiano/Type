@@ -20,10 +20,10 @@ const Header = () => {
   return (
     <header
       className={`fixed w-full top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-[250ms] ${
-        scrollY && "bg-white shadow"
+        scrollY ? "bg-white/40 backdrop-blur-md shadow" : "bg-transparent"
       }`}
     >
-      <PageLayout TagName="div" className="flex-between-center p-3 md:px-4">
+      <PageLayout TagName="div" className="flex-between-center p-3 md:px-4 !mt-0 !mb-0">
         <h2 className="text-dark font-bold text-center text-base">Typiano</h2>
         <Navbar navItems={navItems} />
         <UserProfile navItems={navItems} />
