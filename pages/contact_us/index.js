@@ -1,7 +1,12 @@
+import PageLayout from "components/layout/PageLayout";
 import ContactUsContainer from "containers/contact_us/ContactUsContainer";
 
 const ContactUs = () => {
-  return <ContactUsContainer />;
+  return (
+    <PageLayout>
+      <ContactUsContainer />
+    </PageLayout>
+  );
 };
 
 export default ContactUs;

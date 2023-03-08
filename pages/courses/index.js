@@ -4,8 +4,8 @@ import DATA from "db";
 
 const CursesPage = ({ data }) => {
   return (
-    <PageLayout>
-      <CoursesContainer data={data} />;
+    <PageLayout disableFooter>
+      <CoursesContainer data={data} />
     </PageLayout>
   );
 };

@@ -91,7 +91,7 @@ html {
     @apply text-mainBlue font-semibold;
   }
   .layout-max-w {
-    @apply max-w-[1400px] mx-auto w-full
+    @apply max-w-[1400px] mx-auto w-full;
   }
 }
 
