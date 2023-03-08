@@ -1,10 +1,11 @@
+import PageLayout from 'layout/PageLayout';
 import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            
-        </div>
+    <PageLayout TagName="footer">
+        
+      </PageLayout>
     );
 };
 

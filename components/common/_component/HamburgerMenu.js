@@ -2,7 +2,7 @@ import { useState } from "react";
 import TopNavElements from "./TopNavElements";
 import MenuBarIcon from "public/icons/MenuBarIcon";
 
-const HamburgerMenu = () => {
+const HamburgerMenu = ({ navElements }) => {
   const [OpenMenu, setOpenMenu] = useState(false);
 
   if (typeof window !== "undefined") {
@@ -23,13 +23,15 @@ const HamburgerMenu = () => {
         <span onClick={() => setOpenMenu(true)}>
           <MenuBarIcon className="cursor-pointer " />
         </span>
-        <div className={`fixed lg:hidden top-0 bg-white w-72 z-50 shadow-lg h-screen left-0 cursor-default  ${OpenMenu ? "opacity-100" : "opacity-0 hidden"}`}>
+        <div
+          className={`fixed lg:hidden top-0 bg-white w-72 z-50 shadow-lg h-screen left-0 cursor-default  ${
+            OpenMenu ? "opacity-100" : "opacity-0 hidden"
+          }`}
+        >
           <div className="flex flex-col px-5 py-8 gap-5">
-            <TopNavElements title="Home" path="/" />
-            <TopNavElements title="Guide" path="/guide" />
-            <TopNavElements title="Courses" path="/courses" />
-            <TopNavElements title="About us" path="/about_us" />
-            <TopNavElements title="Contact us" path="/contact_us" />
+            {navElements.map((navElement) => (
+              <TopNavElements key={navElement.path} title={navElement.title} path={navElement.path} />
+            ))}
           </div>
         </div>
       </button>

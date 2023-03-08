@@ -6,6 +6,7 @@ import useViewport from "hooks/useViewport";
 // components
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
+import PageLayout from "./PageLayout";
 
 const Layout = ({ children }) => {
   const { height: minHeight } = useViewport("px");
@@ -13,8 +14,8 @@ const Layout = ({ children }) => {
   return (
     <div style={{ minHeight }} className="flex flex-col">
       <Header />
-      {children}
-      <Footer />
+      {/* <PageLayout>{children}</PageLayout> */}
+      {/* <Footer /> */}
     </div>
   );
 };
