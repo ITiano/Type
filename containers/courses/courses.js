@@ -18,7 +18,7 @@ const CoursesContainer = () => {
   const [rowKind, setRowKind] = useState(1);
 
   return (
-    <div className="w-full mx-auto my-4 px-3">
+    <div className="w-full mx-auto px-3">
       <div className="flex-col sm:flex-row flex-between-center mb-5 gap-3">
         <p className="font-bold text-lg w-full sm:w-auto">Starting with the subject</p>
         <div className="flex-end-center gap-3 w-full sm:w-auto">
