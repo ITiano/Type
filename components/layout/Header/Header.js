@@ -15,7 +15,7 @@ const Header = () => {
       return () => window.removeEventListener("scroll", calcScrollY);
     }
   }, [scrollY]);
-
+ 
   return (
     <header
       className={`fixed w-full h-16 top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-[250ms] ${

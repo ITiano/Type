@@ -6,7 +6,7 @@ const Landing = () => {
   return (
     <PageLayout className="!mt-0">
       <CustomModal open={true} />
-      {/* <LandingContainer /> */}
+      <LandingContainer />
     </PageLayout>
   );
 };
