@@ -1,5 +1,4 @@
 import PageLayout from "components/layout/PageLayout";
-import ModalContainer from "components/utils/ModalContainer";
 import LandingContainer from "../containers/landing/Landing";
 
 const Landing = () => {

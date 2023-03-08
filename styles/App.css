@@ -96,6 +96,12 @@ html {
   .p-layout {
     @apply px-4;
   }
+  .fade-out {
+    @apply translate-y-2 opacity-0 invisible;
+  }
+  .fade-in {
+    @apply transition-all duration-[500ms] translate-y-0 opacity-100 visible;
+  }
 }
 
 .custom-shadow-1 {

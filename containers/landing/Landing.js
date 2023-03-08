@@ -4,11 +4,11 @@ import HomeSection from "./_components/HomeSection";
 
 const LandingContainer = () => {
   return (
-    <>
+    <div>
       <HomeSection />
       <FeaturesSection />
       <GuideSections />
-    </>
+    </div>
   );
 };
 
