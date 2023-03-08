@@ -1,46 +1,45 @@
-import { useState } from "react";
-import TopNavElements from "./TopNavElements";
+import { useEffect, useRef, useState } from "react";
 import MenuBarIcon from "public/icons/MenuBarIcon";
+import useViewport from "hooks/useViewport";
+import NavItem from "layout/Header/NavItem";
 
-const HamburgerMenu = ({ navElements }) => {
-  const [OpenMenu, setOpenMenu] = useState(false);
+const HamburgerMenu = ({ navItems }) => {
+  const menuRef = useRef();
+  const [open, setOpen] = useState(false);
+  const { height: minHeight } = useViewport("px");
 
-  if (typeof window !== "undefined") {
-    if (OpenMenu) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }
+  const closeHandler = (e) => !menuRef.current.contains(e.target) && setOpen(false);
 
-  const handleBlur = (e) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) setOpenMenu(false);
-  };
+  useEffect(() => {
+    if (typeof window !== "undefined") document.body.style.overflow = open ? "hidden" : "auto";
+  }, [open]);
 
   return (
-    <>
-      <button onBlur={handleBlur} className="md:hidden">
-        <span onClick={() => setOpenMenu(true)}>
-          <MenuBarIcon className="cursor-pointer " />
-        </span>
-        <div
-          className={`fixed lg:hidden top-0 bg-white w-72 z-50 shadow-lg h-screen left-0 cursor-default  ${
-            OpenMenu ? "opacity-100" : "opacity-0 hidden"
-          }`}
-        >
-          <div className="flex flex-col px-5 py-8 gap-5">
-            {navElements.map((navElement) => (
-              <TopNavElements key={navElement.path} title={navElement.title} path={navElement.path} />
-            ))}
-          </div>
-        </div>
+    <div className="md:hidden">
+      <button onClick={() => setOpen(true)}>
+        <MenuBarIcon className="cursor-pointer" />
       </button>
-      {setOpenMenu && (
-        <div className={` ${OpenMenu ? "opacity-100" : "opacity-0 hidden"}`}>
-          <div className="fixed md:hidden inset-0 z-40 bg-black bg-opacity-30 backdrop-blur-sm"></div>
-        </div>
-      )}
-    </>
+
+      <div
+        ref={menuRef}
+        style={{ minHeight }}
+        className={`fixed top-0 left-0 max-w-[230px] w-full bg-white z-50 flex flex-col gap-4 transition-all duration-300 p-4 ${
+          open ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {navItems.map((navItem) => (
+          <NavItem key={navItem.path} navItem={navItem} />
+        ))}
+      </div>
+
+      <div
+        style={{ minHeight }}
+        onClick={closeHandler}
+        className={`fixed top-0 left-0 w-full bg-black/10 transition-all duration-300 ${
+          open ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      ></div>
+    </div>
   );
 };
 
