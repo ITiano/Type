@@ -1,5 +1,5 @@
 import CustomBtn from "components/utils/CustomBtn";
-import Stars from "components/utils/Stars";
+import Stars from "components/common/Stars";
 import { CoursesImages } from "helper/Methods";
 
 const CourseRating = () => {
