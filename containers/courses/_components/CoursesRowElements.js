@@ -1,7 +1,7 @@
 import StarIcon from "public/icons/StarIcon";
 import { CoursesIcons, CoursesImages } from "helper/Methods";
 import CoursesElementsOptions from "./CoursesElementsOptions";
-import Stars from "components/utils/Stars";
+import Stars from "components/common/Stars";
 
 const CoursesRowElements = ({ item }) => {
   return (

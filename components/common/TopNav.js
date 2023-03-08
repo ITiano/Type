@@ -1,9 +1,9 @@
 import { useState } from "react";
 import UserIcon from "public/icons/UserIcon";
 import ArrowDownIcon from "public/icons/ArrowDownIcon";
-import ActivityModal from "./_component/ActivityModal";
-import HamburgerMenu from "./_component/HamburgerMenu";
-import TopNavElements from "./_component/TopNavElements";
+import ActivityModal from "./ActivityModal";
+import HamburgerMenu from "./HamburgerMenu";
+import TopNavElements from "./TopNavElements";
 
 const TopNav = ({ className = "" }) => {
   const [OpenModal, setOpenModal] = useState(false);

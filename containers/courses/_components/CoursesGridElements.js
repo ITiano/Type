@@ -1,4 +1,4 @@
-import Stars from "components/utils/Stars";
+import Stars from "components/common/Stars";
 import { CoursesIcons, CoursesImages } from "helper/Methods";
 import CoursesElementsOptions from "./CoursesElementsOptions";
 

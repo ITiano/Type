@@ -23,7 +23,11 @@ const HamburgerMenu = () => {
         <span onClick={() => setOpenMenu(true)}>
           <MenuBarIcon className="cursor-pointer " />
         </span>
-        <div className={`fixed lg:hidden top-0 bg-white w-72 z-50 shadow-lg h-screen left-0 cursor-default  ${OpenMenu ? "opacity-100" : "opacity-0 hidden"}`}>
+        <div
+          className={`fixed lg:hidden top-0 bg-white w-72 z-50 shadow-lg h-screen left-0 cursor-default  ${
+            OpenMenu ? "opacity-100" : "opacity-0 hidden"
+          }`}
+        >
           <div className="flex flex-col px-5 py-8 gap-5">
             <TopNavElements title="Home" path="/" />
             <TopNavElements title="Guide" path="/guide" />
