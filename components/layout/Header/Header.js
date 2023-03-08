@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import routes from "routes/routes";
-import PageLayout from "../PageLayout";
 import Navbar from "./Navbar";
 import UserProfile from "./UserProfile";
 
@@ -23,11 +22,11 @@ const Header = () => {
         scrollY ? "bg-white/40 backdrop-blur-md shadow" : "bg-transparent"
       }`}
     >
-      <PageLayout TagName="div" className="flex-between-center p-3 md:px-4 !mt-0 !mb-0">
+      <div className="layout-max-w flex-between-center p-3 md:px-4">
         <h2 className="text-dark font-bold text-center text-base">Typiano</h2>
         <Navbar navItems={navItems} />
         <UserProfile navItems={navItems} />
-      </PageLayout>
+      </div>
     </header>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import PageLayout from "./PageLayout";
 
 const elements = ["Product", "Features", "Pricing", "Resources", "Careers", "Help", "Privacy"];
 
@@ -12,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-2 pb-6 mt-auto">
       <div className="h-24 bg-rectangle"></div>
-      <PageLayout TagName="div" className="pt-10 !mt-0 !mb-0">
+      <div className="layout-max-w pt-10">
         <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
         <div className="centering flex-wrap gap-8 py-4 border-b-2">
           {elements.map((element) => (
@@ -22,7 +21,7 @@ const Footer = () => {
           ))}
         </div>
         <p className="text-gray-4 text-xs mt-8 text-center tracking-widest">&copy; ${calcYear()} Itiano, All rights reserved</p>
-      </PageLayout>
+      </div>
     </footer>
   );
 };

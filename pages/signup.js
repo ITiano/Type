@@ -11,5 +11,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-Signup.disableLayout = true;

@@ -90,11 +90,8 @@ html {
   .navigate {
     @apply text-mainBlue font-semibold;
   }
-  .max-w-page {
-    @apply w-full max-w-[1800px] mx-auto;
-  }
-  .pageLayout {
-    @apply max-w-[1400px] max-auto
+  .layout-max-w {
+    @apply max-w-[1400px] mx-auto w-full
   }
 }
 
