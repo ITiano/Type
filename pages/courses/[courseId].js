@@ -20,4 +20,3 @@ export const getServerSideProps = async ({ req, query }) => {
     },
   };
 };
-
