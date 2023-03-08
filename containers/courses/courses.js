@@ -2,38 +2,48 @@ import { useState } from "react";
 import RowVerticalIcon from "public/icons/GridIcon";
 import RowHorizontalIcon from "public/icons/RowIcon";
 import CoursesRowElements from "./_components/CoursesRowElements";
-import CoursesGridElements from "./_components/CoursesGridElements";
+
+const data = [
+  { id: 1, name: "Lesson1", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
+  { id: 2, name: "Lesson2", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
+  { id: 3, name: "Lesson3", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
+  { id: 4, name: "Lesson4", status: 2, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
+  { id: 1, name: "Lesson5", status: 2, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
+  { id: 2, name: "Lesson6", status: 3, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
+  { id: 3, name: "Lesson7", status: 3, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
+  { id: 4, name: "Lesson8", status: 3, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
+];
 
 const CoursesContainer = () => {
-  const [RowKind, setRowKind] = useState(1);
+  const [rowKind, setRowKind] = useState(1);
 
-  const [data] = useState([
-    { id: 1, name: "Lesson1", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-    { id: 2, name: "Lesson2", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-    { id: 3, name: "Lesson3", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-    { id: 4, name: "Lesson4", status: 2, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-    { id: 1, name: "Lesson5", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-    { id: 2, name: "Lesson6", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-    { id: 3, name: "Lesson7", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-    { id: 4, name: "Lesson8", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-  ]);
   return (
-    <div className="max-w-6xl w-full m-auto my-4 px-3">
-      <div className="flex-between-center mb-5">
-        <p className="font-bold text-lg ">Starting with the subject</p>
-        <div className="flex-end-center gap-3">
+    <div className="w-full mx-auto my-4 px-3">
+      <div className="flex-col sm:flex-row flex-between-center mb-5 gap-3">
+        <p className="font-bold text-lg w-full sm:w-auto">Starting with the subject</p>
+        <div className="flex-end-center gap-3 w-full sm:w-auto">
           <p className="text-gray-3">View</p>
-          <span className="flex-end-center gap-3 bg-gray-3 bg-opacity-20 px-1.5 py-1 rounded-full">
-            <span onClick={() => setRowKind(1)} className={`p-2 rounded-full transition ${RowKind === 1 ? " bg-mainBlue" : "cursor-pointer"}`}>
-              <RowVerticalIcon className={`${RowKind === 1 ? "text-white" : ""}`} />
+          <div className="flex-end-center gap-2 bg-gray-3 bg-opacity-20 px-1.5 py-1 rounded-full">
+            <span
+              onClick={() => setRowKind(1)}
+              className={`p-2 rounded-full transition ${rowKind === 1 ? " bg-mainBlue" : "cursor-pointer"}`}
+            >
+              <RowVerticalIcon className={`${rowKind === 1 ? "text-white" : ""}`} />
             </span>
-            <span onClick={() => setRowKind(2)} className={`p-2 rounded-full transition ${RowKind === 2 ? " bg-mainBlue" : "cursor-pointer"}`}>
-              <RowHorizontalIcon className={`${RowKind === 2 ? "text-white" : ""}`} />
+            <span
+              onClick={() => setRowKind(2)}
+              className={`p-2 rounded-full transition ${rowKind === 2 ? " bg-mainBlue" : "cursor-pointer"}`}
+            >
+              <RowHorizontalIcon className={`${rowKind === 2 ? "text-white" : ""}`} />
             </span>
-          </span>
+          </div>
         </div>
       </div>
-      <div className={`${RowKind === 1 ? "centering flex-col" : "flex-center-start lg:flex-between-start flex-wrap"} gap-5`}>{data.map((item, index) => (RowKind === 1 ? <CoursesRowElements key={index} item={item} /> : <CoursesGridElements key={index} item={item} />))}</div>
+      <div className={`centering ${rowKind === 1 ? " flex-col" : "flex-row flex-wrap"} gap-5`}>
+        {data.map((item) => (
+          <CoursesRowElements key={item.id} item={item} kind={rowKind} />
+        ))}
+      </div>
     </div>
   );
 };
