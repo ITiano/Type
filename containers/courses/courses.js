@@ -39,7 +39,11 @@ const CoursesContainer = () => {
           </div>
         </div>
       </div>
-      <div className={`centering ${rowKind === 1 ? " flex-col" : "flex-row flex-wrap"} gap-5`}>
+      <div
+        className={`${
+          rowKind === 1 ? "centering flex-col gap-5" : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
+        } `}
+      >
         {data.map((item) => (
           <CoursesRowElements key={item.id} item={item} kind={rowKind} />
         ))}
