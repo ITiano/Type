@@ -28,6 +28,9 @@ module.exports = {
         lightGreen: "#8FE357",
         golden: "#FFD42A",
       },
+      screens: {
+        "xs": "450px"
+      }
     },
   },
   plugins: [require("@tailwindcss/forms")],
