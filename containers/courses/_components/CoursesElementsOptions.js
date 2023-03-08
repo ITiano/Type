@@ -11,7 +11,7 @@ const CoursesElementsOptions = ({ status }) => {
       <span onClick={() => status === 1 && setOpen(!open)} className="cursor-pointer">
         <MoreCircleIcon />
       </span>
-      <ul className={`dropdown-container cursor-default ${open ? "opacity-100" : "opacity-0"}`}>
+      <ul className={`dropdown-container cursor-default ${open ? "opacity-100 block" : "opacity-0 hidden"}`}>
         <li className={`dropdown-element ${open ? "cursor-pointer opacity-100" : "!cursor-default opacity-0"}`}>Video</li>
         <li className={`dropdown-element ${open ? "cursor-pointer opacity-100" : "!cursor-default opacity-0"}`}>History</li>
       </ul>

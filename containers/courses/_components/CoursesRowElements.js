@@ -2,6 +2,7 @@ import StarIcon from "public/icons/StarIcon";
 import { CoursesIcons, CoursesImages } from "helper/Methods";
 import CoursesElementsOptions from "./CoursesElementsOptions";
 import Stars from "components/common/Stars";
+import Link from "next/link";
 
 const CoursesRowElements = ({ item, kind }) => {
   return (
@@ -26,7 +27,7 @@ const CoursesRowElements = ({ item, kind }) => {
       <div className={`${kind === 1 ? "hidden md:flex-start-center gap-8" : "centering flex-col gap-3"}`}>
         <div className="centering gap-4">
           {item.status === 1 && <CoursesElements title="Starts" value={item.rating} kind={kind} star />}
-          {kind === 2 && CoursesIcons[item.status]}
+          {kind === 2 && <Link href={`/courses/${item.id}`}>{CoursesIcons[item.status]}</Link>}
         </div>
         <div className={`${kind === 1 ? "hidden md:flex-start-center gap-8" : "grid grid-cols-4 gap-3"}`}>
           {item.status === 1 && (
@@ -42,7 +43,7 @@ const CoursesRowElements = ({ item, kind }) => {
 
       {kind === 1 && (
         <div className="flex-end-center gap-1">
-          {CoursesIcons[item.status]}
+          <Link href={`/courses/${item.id}`}>{CoursesIcons[item.status]}</Link>
           <CoursesElementsOptions status={item.status} />
         </div>
       )}

@@ -4,7 +4,6 @@ import { CoursesImages } from "helper/Methods";
 const CourseReview = ({ setStep }) => {
   return (
     <>
-      {/* this line must convert progress component dont touch Soheil  */}
       <div className="bg-gray-3 bg-opacity-30 h-3 w-10/12 mt-14 rounded-full"></div>
       <div className="centering flex-col gap-2 w-96">
         {CoursesImages(140)[1]}
