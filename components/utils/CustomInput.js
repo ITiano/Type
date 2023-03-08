@@ -7,7 +7,7 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
   const { values, handleChange, touched, errors } = formik;
   return (
     <div>
-      <label className="px-1 block">{label}</label>
+      <label className="px-1 block mb-1">{label}</label>
       <div className={`relative`}>
         {/* {startIcon} */}
         <input

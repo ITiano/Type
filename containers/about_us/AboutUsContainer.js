@@ -37,7 +37,7 @@ export default AboutUsContainer;
 
 const OurTeamElements = ({ user }) => (
   <div className="flex-1 self-start w-full max-w-[300px] mx-auto sm:max-w-full p-6 custom-shadow-1 rounded-3xl centering flex-col bg-white">
-    <Image width={150} src={user.image} alt={user.name} />
+    <Image width={120} src={user.image} alt={user.name} />
     <p className="text-gray-3 mt-5">{user.position}</p>
     <p className="text-lg font-bold mt-1">{user.name}</p>
   </div>
