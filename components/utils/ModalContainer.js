@@ -11,7 +11,7 @@ const classes = {
   innerContainer: "bg-white overflow-auto max-h-full disable-scrollbar p-[17px] min-w-full xs:min-w-[400px]",
 };
 
-const CustomModal = ({
+const ModalContainer = ({
   open,
   title,
   clear,
@@ -88,4 +88,4 @@ const CustomModal = ({
   );
 };
 
-export default CustomModal;
+export default ModalContainer;
