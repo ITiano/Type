@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 // Icons
-// import CloseIcon from "public/CloseIcon";
+import CloseIcon from "public/icons/CloseIcon";
 
 const classes = {
   transition: "transition-all duration-[350ms]",
@@ -51,34 +52,37 @@ const CustomModal = ({
   const innerWrapperYerOrNoModalCondition = yesOrNoModal ? "centering" : "flex-center-end 2xs:items-center";
   const innerContainerYerOrNoModalCondition = yesOrNoModal ? "rounded-[10px]" : "rounded-[10px_10px_0px_0px] 2xs:rounded-[10px]";
 
-  return portalRef ? (
-    <div
-      ref={modalRef}
-      onClick={necessaryCloseHandler}
-      className={`${classes.transition} ${classes.outerWrapper} ${outerWrapperOpenCondition} ${outerWrapperYerOrNoModalCondition}`}
-    >
+  return portalRef && mounted ? (
+    createPortal(
       <div
-        className={`${classes.innerWrapper} ${classes.transition} ${innerWrapperOpenCondition} ${innerWrapperYerOrNoModalCondition}`}
+        ref={modalRef}
+        onClick={necessaryCloseHandler}
+        className={`${classes.transition} ${classes.outerWrapper} ${outerWrapperOpenCondition} ${outerWrapperYerOrNoModalCondition}`}
       >
         <div
-          style={size}
-          onClick={(e) => e.stopPropagation()}
-          className={`${innerContainerYerOrNoModalCondition} ${classes.innerContainer} ${className}`}
+          className={`${classes.innerWrapper} ${classes.transition} ${innerWrapperOpenCondition} ${innerWrapperYerOrNoModalCondition}`}
         >
-          {(clear || title) && (
-            <div className="flex-between-center mb-3">
-              {title && <div>{title}</div>}
-              {clear && (
-                <span onClick={() => setOpen && setOpen(false)} className="cursor-pointer">
-                  {/* <CloseIcon /> */}
-                </span>
-              )}
-            </div>
-          )}
-          {children}
+          <div
+            style={size}
+            onClick={(e) => e.stopPropagation()}
+            className={`${innerContainerYerOrNoModalCondition} ${classes.innerContainer} ${className}`}
+          >
+            {(clear || title) && (
+              <div className="flex-between-center mb-3">
+                {title && <div>{title}</div>}
+                {clear && (
+                  <span onClick={() => setOpen && setOpen(false)} className="cursor-pointer">
+                    <CloseIcon />
+                  </span>
+                )}
+              </div>
+            )}
+            {children}
+          </div>
         </div>
-      </div>
-    </div>
+      </div>,
+      portalRef?.current
+    )
   ) : (
     <></>
   );
