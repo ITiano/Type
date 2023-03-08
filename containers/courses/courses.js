@@ -7,11 +7,11 @@ const data = [
   { id: 1, name: "Lesson1", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
   { id: 2, name: "Lesson2", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
   { id: 3, name: "Lesson3", status: 1, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
-  { id: 4, name: "Lesson4", status: 2, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
-  { id: 1, name: "Lesson5", status: 2, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
-  { id: 2, name: "Lesson6", status: 3, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
-  { id: 3, name: "Lesson7", status: 3, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
-  { id: 4, name: "Lesson8", status: 3, rating: 0, score: 0, speed: 0, accuracy: 0, duration: "00:00" },
+  { id: 4, name: "Lesson4", status: 2, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
+  { id: 5, name: "Lesson5", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
+  { id: 6, name: "Lesson6", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
+  { id: 7, name: "Lesson7", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
+  { id: 8, name: "Lesson8", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
 ];
 
 const CoursesContainer = () => {
@@ -39,7 +39,11 @@ const CoursesContainer = () => {
           </div>
         </div>
       </div>
-      <div className={`centering ${rowKind === 1 ? " flex-col" : "flex-row flex-wrap"} gap-5`}>
+      <div
+        className={`${
+          rowKind === 1 ? "centering flex-col gap-5" : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
+        } `}
+      >
         {data.map((item) => (
           <CoursesRowElements key={item.id} item={item} kind={rowKind} />
         ))}
