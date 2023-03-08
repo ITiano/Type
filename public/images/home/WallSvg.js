@@ -13,8 +13,8 @@ const WallSvg = () => {
           y2="307.87"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#D9D9D9" />
-          <stop offset="0.670534" stop-color="white" stop-opacity="0" />
+          <stop stopColor="#D9D9D9" />
+          <stop offset="0.670534" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_3_509"
@@ -24,8 +24,8 @@ const WallSvg = () => {
           y2="411.538"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.0858567" stop-color="#F5F5F5" />
-          <stop offset="0.753548" stop-color="white" stop-opacity="0" />
+          <stop offset="0.0858567" stopColor="#F5F5F5" />
+          <stop offset="0.753548" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_3_509"
@@ -35,9 +35,9 @@ const WallSvg = () => {
           y2="1812"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.360446" stop-color="#D9D9D9" />
-          <stop offset="0.503661" stop-color="white" />
-          <stop offset="1" stop-color="white" />
+          <stop offset="0.360446" stopColor="#D9D9D9" />
+          <stop offset="0.503661" stopColor="white" />
+          <stop offset="1" stopColor="white" />
         </linearGradient>
       </defs>
     </svg>

@@ -29,8 +29,10 @@ module.exports = {
         golden: "#FFD42A",
       },
       screens: {
+        "2md": "890px",
         "2xs": "510px",
         "xs": "440px",
+        "xxs": "400px",
         "xxs": "370px"
       }
     },

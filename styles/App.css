@@ -16,7 +16,7 @@ html {
 
 @layer base {
   body {
-    @apply text-dark bg-gray-1 text-sm;
+    @apply text-dark bg-white text-sm;
   }
   span {
     @apply text-gray-3;
@@ -91,7 +91,7 @@ html {
     @apply text-mainBlue font-semibold;
   }
   .layout-max-w {
-    @apply max-w-[1400px] mx-auto w-full;
+    @apply max-w-[1250px] mx-auto w-full;
   }
   .p-layout {
     @apply px-4;
