@@ -1,4 +1,3 @@
-import CustomBtn from "components/utils/CustomBtn";
 import { useEffect, useRef, useState } from "react";
 
 const successColor = "bg-green-200";
@@ -51,12 +50,25 @@ const Type = ({ data = "", setStep }) => {
 
   const showNowError = (index) => {
     const find = error.find((item) => item.id == index);
-    if (find && !find.completed) return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
+    if (find && !find.completed)
+      return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
     else return { text: "", className: "" };
   };
 
   const onKeyDown = (e) => {
-    if ((e.keyCode >= 48 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 111) || e.keyCode === 173 || e.keyCode === 188 || e.keyCode === 190 || e.keyCode === 191 || e.keyCode === 192 || e.keyCode === 219 || e.keyCode === 220 || e.keyCode === 221 || e.keyCode === 222) {
+    if (
+      (e.keyCode >= 48 && e.keyCode <= 90) ||
+      (e.keyCode >= 96 && e.keyCode <= 111) ||
+      e.keyCode === 173 ||
+      e.keyCode === 188 ||
+      e.keyCode === 190 ||
+      e.keyCode === 191 ||
+      e.keyCode === 192 ||
+      e.keyCode === 219 ||
+      e.keyCode === 220 ||
+      e.keyCode === 221 ||
+      e.keyCode === 222
+    ) {
       if (!show) setShow(true);
       setTimeout(() => {
         setShow(false);
@@ -72,8 +84,9 @@ const Type = ({ data = "", setStep }) => {
     const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
     if (data === type) {
       alert(`done, You have ${totalError} errors in ${error.length} characters`);
+      setStep(3);
     }
-  }, [data, error, type]);
+  }, [data, error, setStep, type]);
 
   const convertForMap = () => {
     return data.split(" ").reduce((sum, item, index) => {
@@ -100,12 +113,20 @@ const Type = ({ data = "", setStep }) => {
                     return (
                       <span
                         key={length + index}
-                        className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative ${type.length === length + index ? borderLineColor : "border-b-white"} ${showLastErrorClassName(length + index)} ${
+                        className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative ${
+                          type.length === length + index ? borderLineColor : "border-b-white"
+                        } ${showLastErrorClassName(length + index)} ${
                           type[length + index]?.toString() === item?.toString() ? successColor : ""
                         }`}
                       >
                         {item}
-                        <span className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${show ? "opacity-100" : "opacity-0"}  ${showNowError(length + index).className} `}>{showNowError(length + index).text}</span>
+                        <span
+                          className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
+                            show ? "opacity-100" : "opacity-0"
+                          }  ${showNowError(length + index).className} `}
+                        >
+                          {showNowError(length + index).text}
+                        </span>
                       </span>
                     );
                   })}
@@ -113,10 +134,15 @@ const Type = ({ data = "", setStep }) => {
               );
             })}
         </div>
-        <input ref={ref} onKeyDown={onKeyDown} autoFocus className="resize-none absolute inset-0 w-full h-full opacity-0" type="text" value={type} onChange={onChange} />
-      </div>
-      <div className="bg-white py-10 px-16 w-full flex-end-center">
-        <CustomBtn arrowEndBtn text="Skip" onClick={() => setStep(3)} />
+        <input
+          ref={ref}
+          onKeyDown={onKeyDown}
+          autoFocus
+          className="resize-none absolute inset-0 w-full h-full opacity-0"
+          type="text"
+          value={type}
+          onChange={onChange}
+        />
       </div>
     </>
   );
