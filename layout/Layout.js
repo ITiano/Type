@@ -14,8 +14,8 @@ const Layout = ({ children }) => {
   return (
     <div style={{ minHeight }} className="flex flex-col">
       <Header />
-      {/* <PageLayout>{children}</PageLayout> */}
-      {/* <Footer /> */}
+      <PageLayout>{children}</PageLayout>
+      <Footer />
     </div>
   );
 };

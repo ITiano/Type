@@ -3,9 +3,9 @@ import LandingContainer from "../containers/landing/Landing";
 
 const Landing = () => {
   return (
-    <PageLayout className="relative bg-white" topNavClassName="absolute inset-x-0">
+    // <PageLayout className="relative bg-white" topNavClassName="absolute inset-x-0">
       <LandingContainer />
-    </PageLayout>
+    // </PageLayout>
   );
 };
 
