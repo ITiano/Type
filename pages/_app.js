@@ -1,3 +1,6 @@
+// Apollo client
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
 // Global css
 import "../styles/App.css";
 
@@ -8,9 +11,14 @@ import SEO from "next-seo.config";
 // Layout components
 import Layout from "layout/Layout";
 
+const client = new ApolloClient({
+  uri: process.env.NEXT_PUBLIC_GRAPH_CMS_API,
+  cache: new InMemoryCache(),
+});
+
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <>
+    <ApolloProvider client={client}>
       <DefaultSeo {...SEO} />
       {Component.disableLayout ? (
         <Component {...pageProps} />
@@ -19,7 +27,7 @@ const MyApp = ({ Component, pageProps }) => {
           <Component {...pageProps} />
         </Layout>
       )}
-    </>
+    </ApolloProvider>
   );
 };
 

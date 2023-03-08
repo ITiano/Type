@@ -93,7 +93,6 @@ html {
   .max-w-page {
     @apply w-full max-w-[1800px] mx-auto;
   }
-
   .pageLayout {
     @apply max-w-[1400px] max-auto
   }
