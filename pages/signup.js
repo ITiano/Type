@@ -1,7 +1,7 @@
 import SingUpContainer from "containers/signup/Signup";
 import { NextSeo } from "next-seo";
 
-const index = () => {
+const Signup = () => {
   return (
     <>
       <NextSeo title="Sign up" />
@@ -10,4 +10,6 @@ const index = () => {
   );
 };
 
-export default index;
+export default Signup;
+
+Signup.disableLayout = true;

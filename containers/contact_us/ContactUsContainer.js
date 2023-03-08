@@ -37,7 +37,7 @@ const ContactUsContainer = () => {
   });
 
   return (
-    <div className="centering px-3">
+    <div className="centering px-3 mt-20">
       <div>
         <h2 className="font-bold text-2xl text-center mb-5">Get in touch</h2>
         <p className="text-center">Contact Us for quote, help or collaboration</p>

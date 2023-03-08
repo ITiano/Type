@@ -18,7 +18,7 @@ const CoursesContainer = () => {
     { id: 4, name: "Lesson8", status: 3, rating: 4, score: 1000, speed: 30, accuracy: 100, duration: "00:04" },
   ]);
   return (
-    <div className="max-w-6xl w-full m-auto my-4 px-3">
+    <div className="max-w-6xl w-full m-auto my-4 px-3 mt-20">
       <div className="flex-between-center mb-5">
         <p className="font-bold text-lg ">Starting with the subject</p>
         <div className="flex-end-center gap-3">

@@ -1,6 +1,6 @@
-import PageLayout from "layout/PageLayout";
 import React, { useEffect, useState } from "react";
 import routes from "routes/routes";
+import PageLayout from "../PageLayout";
 import Navbar from "./Navbar";
 import UserProfile from "./UserProfile";
 
@@ -23,7 +23,7 @@ const Header = () => {
         scrollY && "bg-white shadow"
       }`}
     >
-      <PageLayout TagName="div" className="flex-between-center p-4">
+      <PageLayout TagName="div" className="flex-between-center p-3 md:px-4">
         <h2 className="text-dark font-bold text-center text-base">Typiano</h2>
         <Navbar navItems={navItems} />
         <UserProfile navItems={navItems} />

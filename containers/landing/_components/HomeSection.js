@@ -1,5 +1,3 @@
-import Footer from "components/common/Footer";
-import CustomBtn from "components/utils/CustomBtn";
 import TypingEffect from "components/utils/Typingeffect";
 import Link from "next/link";
 import ArrowRightIcon from "public/icons/ArrowRightIcon";

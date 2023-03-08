@@ -13,7 +13,7 @@ const AboutUsContainer = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative mt-20">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-bold text-2xl text-center mb-5">Our Team</h2>
         <p className="mb-8 px-6 mx-auto">

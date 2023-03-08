@@ -1,7 +1,7 @@
 import LoginContainer from "containers/login/Login";
 import { NextSeo } from "next-seo";
 
-const index = () => {
+const Login = () => {
   return (
     <>
       <NextSeo title="login" />
@@ -10,4 +10,6 @@ const index = () => {
   );
 };
 
-export default index;
+export default Login;
+
+Login.disableLayout = true;

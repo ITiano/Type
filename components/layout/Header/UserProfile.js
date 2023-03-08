@@ -1,8 +1,8 @@
-import ActivityModal from "components/common/_component/ActivityModal";
-import HamburgerMenu from "components/common/_component/HamburgerMenu";
 import ArrowDownIcon from "public/icons/ArrowDownIcon";
 import UserIcon from "public/icons/UserIcon";
 import React, { useState } from "react";
+import ActivityModal from "./ActivityModal";
+import HamburgerMenu from "./HamburgerMenu";
 
 const UserProfile = ({ navItems }) => {
   const [OpenModal, setOpenModal] = useState(false);

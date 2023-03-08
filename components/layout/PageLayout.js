@@ -1,14 +1,7 @@
-import Footer from "components/common/Footer";
-import TopNav from "components/common/TopNav";
+import React from "react";
 
-const PageLayout = ({ children, className, topNavClassName, footerClassName }) => {
-  return (
-    <main className={`min-h-screen flex flex-col justify-between items-stretch ${className}`}>
-      <TopNav className={topNavClassName} />
-      {children}
-      <Footer className={footerClassName} />
-    </main>
-  );
+const PageLayout = ({ TagName = "main", className, children }) => {
+  return <TagName className={`max-w-6xl w-full mx-auto ${className}`}>{children}</TagName>;
 };
 
 export default PageLayout;

@@ -9,7 +9,7 @@ import { DefaultSeo } from "next-seo";
 import SEO from "next-seo.config";
 
 // Layout components
-import Layout from "layout/Layout";
+import Layout from "components/layout/Layout";
 
 const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_GRAPH_CMS_API,
