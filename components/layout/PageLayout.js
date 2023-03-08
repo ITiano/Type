@@ -7,13 +7,15 @@ import Header from "./Header/Header";
 // hooks
 import useViewport from "hooks/useViewport";
 
-const PageLayout = ({ className, children, disableHeader, disableFooter }) => {
+const PageLayout = ({ className, style, children, disableHeader, disableFooter }) => {
   const { height: minHeight } = useViewport("px");
 
   return (
     <div style={{ minHeight }} className="flex flex-col">
       {!disableHeader && <Header />}
-      <main className={`layout-max-w mt-[65px] mb-[35px] ${className}`}>{children}</main>
+      <main style={style} className={`layout-max-w p-layout pb-[50px] ${disableHeader ? "pt-[65px]" : "pt-[90px]"} ${className}`}>
+        {children}
+      </main>
       {!disableFooter && <Footer />}
     </div>
   );

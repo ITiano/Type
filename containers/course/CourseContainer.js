@@ -29,7 +29,7 @@ const CourseContainer = ({ data }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between items-center">
+    <div className="min-h-screen flex flex-col justify-between items-center p-layout">
       {step === 1 && <CourseReview data={data} setStep={setStep} />}
       {step === 2 && <Type data={data?.course} setStep={setStep} />}
       {step === 3 && <CourseRating data={data} setStep={setStep} />}

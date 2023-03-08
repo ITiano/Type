@@ -93,6 +93,9 @@ html {
   .layout-max-w {
     @apply max-w-[1400px] mx-auto w-full;
   }
+  .p-layout {
+    @apply px-4;
+  }
 }
 
 .custom-shadow-1 {

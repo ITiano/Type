@@ -1,11 +1,10 @@
 import PageLayout from "components/layout/PageLayout";
-import CustomModal from "components/utils/CustomModal";
+import ModalContainer from "components/utils/ModalContainer";
 import LandingContainer from "../containers/landing/Landing";
 
 const Landing = () => {
   return (
-    <PageLayout className="!mt-0">
-      <CustomModal open={true} />
+    <PageLayout className="!pt-0">
       <LandingContainer />
     </PageLayout>
   );

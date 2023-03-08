@@ -27,7 +27,7 @@ const ContactUsContainer = () => {
   });
 
   return (
-    <div className="centering w-full px-4">
+    <>
       <div className="w-full max-w-3xl mx-auto">
         <h2 className="font-bold text-2xl text-center mb-5">Get in touch</h2>
         <p className="text-center mb-8">Contact Us for quote, help or collaboration</p>
@@ -44,7 +44,7 @@ const ContactUsContainer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
