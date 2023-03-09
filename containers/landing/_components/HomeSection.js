@@ -17,7 +17,7 @@ const HomeSection = () => {
             <RoomSvg />
           </span>
         </div>
-        <div className="max-h-[350px] xxs:max-h-[420px] xs:max-h-[500px] 2xs:max-h-[550px] sm:max-h-[600px] h-full [&>*]:h-full">
+        <div className="absolute top-0 left-0 max-w-full max-h-full w-full h-full [&>*]:w-full [&>*]:h-full">
           <HomePatternSvg />
         </div>
         <Text />
