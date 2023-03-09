@@ -31,13 +31,13 @@ module.exports = {
       screens: {
         "2md": "890px",
         "2xs": "510px",
-        "xs": "440px",
-        "xxs": "400px",
-        "xxs": "370px"
-      }
+        xs: "440px",
+        xxs: "400px",
+        xxs: "370px",
+      },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/line-clamp")],
 };
 
 // #E9EFFB

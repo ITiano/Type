@@ -1,9 +1,14 @@
-import TypingEffect from "components/utils/Typingeffect";
 import Link from "next/link";
-import ArrowRightIcon from "public/icons/ArrowRightIcon";
-import HomePatternSvg from "public/images/home/HomePatternSvg";
+
+// typing effect
+import TypingEffect from "components/utils/Typingeffect";
+
+// images
 import RoomSvg from "public/images/home/RoomSvg";
 import WallSvg from "public/images/home/WallSvg";
+import ArrowRightIcon from "public/icons/ArrowRightIcon";
+import HomeTopPatternSvg from "public/images/home/HomeTopPatternSvg";
+import HomeBottomPatternSvg from "public/images/home/HomeBottomPatternSvg";
 
 const HomeSection = () => {
   return (
@@ -17,9 +22,8 @@ const HomeSection = () => {
             <RoomSvg />
           </span>
         </div>
-        <div className="absolute top-0 left-0 max-w-full max-h-full w-full h-full [&>*]:w-full [&>*]:h-full">
-          <HomePatternSvg />
-        </div>
+        <HomeTopPatternSvg className="absolute top-[30px] left-0 max-w-[50%] max-h-[50%] w-full h-full [&>*]:w-full [&>*]:h-full" />
+        <HomeBottomPatternSvg className="absolute top-[calc(50%_-_10px)] left-0 max-w-[50%] max-h-[50%] w-full h-full [&>*]:w-full [&>*]:h-full" />
         <Text />
       </section>
       <Buttons className="md:hidden" />

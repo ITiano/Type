@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 const TypingEffect = ({ dynamicText = [], defaultText = "" }) => {
   const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
   const [blink, setBlink] = useState(true);
+  const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const TypingEffect = ({ dynamicText = [], defaultText = "" }) => {
   }, [blink]);
 
   return (
-    <div className="flex-start-center gap-1">
+    <div className="flex-start-center">
       <p className={defaultText ? "" : "opacity-0 w-0"}>{defaultText ? defaultText : "_"}</p>
       <p>{dynamicText[index].substring(0, subIndex)}</p>
       <p className="!w-[7px] overflow-hidden">{blink ? "|" : " "}</p>
