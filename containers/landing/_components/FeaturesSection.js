@@ -24,7 +24,7 @@ const boxData = [
 
 const FeaturesSection = () => {
   return (
-    <section className="w-full relative mt-[170px]">
+    <section className="w-full relative mt-[130px] md:mt-[170px]">
       <FeaturePatternSvg className="w-full absolute top-1/2 -translate-y-1/2" />
       <div className="flex-center-start flex-col lg:flex-row w-full gap-10 lg:gap-12 relative z-20 [&>*]:flex-1">
         <FeaturesText className="lg:hidden mb-3" />

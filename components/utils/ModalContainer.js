@@ -7,8 +7,9 @@ import CloseIcon from "public/icons/CloseIcon";
 const classes = {
   transition: "transition-all duration-[350ms]",
   outerWrapper: "fixed top-0 left-0 z-50 min-h-screen centering w-full h-full bg-black/70",
-  innerWrapper: "max-h-[90vh] xs:max-h-[85vh] lg:max-h-[1023px] h-full w-full mt-auto xs:my-auto max-w-[1400px] overflow-hidden",
-  innerContainer: "bg-white overflow-auto max-h-full disable-scrollbar p-[17px] min-w-full xs:min-w-[400px]",
+  innerWrapper:
+    "max-h-[90vh] 2xs:max-h-[85vh] lg:max-h-[1023px] h-full w-full mt-auto 2xs:my-auto max-w-[1400px] overflow-hidden",
+  innerContainer: "bg-white overflow-auto max-h-full disable-scrollbar p-[17px] min-w-full 2xs:min-w-[400px]",
 };
 
 const ModalContainer = ({
@@ -48,9 +49,9 @@ const ModalContainer = ({
 
   const outerWrapperOpenCondition = open ? "opacity-100 visible backdrop-blur-sm" : "opacity-0 invisible";
   const outerWrapperYerOrNoModalCondition = yesOrNoModal ? "p-3" : "lg:py-8";
-  const innerWrapperOpenCondition = `${open ? "translate-y-0" : "translate-y-full"} xs:!translate-y-0`;
-  const innerWrapperYerOrNoModalCondition = yesOrNoModal ? "centering" : "flex-center-end xs:items-center";
-  const innerContainerYerOrNoModalCondition = yesOrNoModal ? "rounded-[10px]" : "rounded-[10px_10px_0px_0px] xs:rounded-[10px]";
+  const innerWrapperOpenCondition = `${open ? "translate-y-0" : "translate-y-full"} 2xs:!translate-y-0`;
+  const innerWrapperYerOrNoModalCondition = yesOrNoModal ? "centering" : "flex-center-end 2xs:items-center";
+  const innerContainerYerOrNoModalCondition = yesOrNoModal ? "rounded-[10px]" : "rounded-[10px_10px_0px_0px] 2xs:rounded-[10px]";
 
   return portalRef && mounted ? (
     createPortal(
