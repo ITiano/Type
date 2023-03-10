@@ -82,7 +82,7 @@ html {
     @apply flex justify-end items-start;
   }
   .form {
-    @apply max-w-[400px] w-full border rounded-2xl p-8 backdrop-blur-sm bg-white bg-opacity-60;
+    @apply max-w-[400px] w-full border rounded-2xl backdrop-blur-sm bg-white bg-opacity-60 py-8 px-4 2xs:p-8;
   }
   .navigate {
     @apply text-mainBlue font-semibold;

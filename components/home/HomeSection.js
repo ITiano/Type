@@ -1,4 +1,5 @@
 import Link from "next/link";
+import routes from "routes/routes";
 
 // typing effect
 import TypingEffect from "components/utils/Typingeffect";
@@ -51,10 +52,10 @@ const Text = () => {
 const Buttons = ({ className }) => {
   return (
     <div className={`flex-start-center gap-4 ${className}`}>
-      <Link href="/courses" className="btn black-btn font-bold text-lg">
+      <Link href={routes.courses.path} className="btn black-btn font-bold text-lg">
         Get started
       </Link>
-      <Link href="/signup">
+      <Link href={routes.signup.path}>
         <div className="flex-start-center gap-1">
           <span className="font-medium text-black text-lg">Register</span>
           <span>

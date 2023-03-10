@@ -44,17 +44,17 @@ const KeyboardImageSection = () => {
         <KeyboardIcon />
       </div>
       <Image
-        src="/icons/Finger/FingerLeft.png"
         alt=""
         width="400"
         height="400"
+        src="/icons/Finger/FingerLeft.png"
         className="absolute left-[10%] top-[calc(50%_-_20px)] max-w-[40%]"
       />
       <Image
-        src="/icons/Finger/FingerRight.png"
         alt=""
         width="400"
         height="400"
+        src="/icons/Finger/FingerRight.png"
         className="absolute right-[10%] top-[calc(50%_-_20px)] max-w-[40%]"
       />
     </div>
