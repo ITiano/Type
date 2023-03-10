@@ -1,6 +1,6 @@
-const KeyboardIcon = () => {
+const KeyboardIcon = ({ className }) => {
   return (
-    <svg width="894" height="363" viewBox="0 0 894 363" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 894 363" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
       <path
         d="M52.4281 56.2816H12.179C8.36036 56.2816 5.26477 59.3772 5.26477 63.1958V103.445C5.26477 107.264 8.36036 110.359 12.179 110.359H52.4281C56.2467 110.359 59.3423 107.264 59.3423 103.445V63.1958C59.3423 59.3772 56.2467 56.2816 52.4281 56.2816Z"
         fill="white"

@@ -3,14 +3,11 @@ import React from "react";
 const elements = ["Product", "Features", "Pricing", "Resources", "Careers", "Help", "Privacy"];
 
 const Footer = () => {
-  const calcYear = () => {
-    const now = new Date();
-    return now.getFullYear();
-  };
+  const calcYear = () => new Date().getFullYear();
 
   return (
     <div className="mt-auto">
-      <div className="h-24 bg-rectangle"></div>
+      <div className="h-24 bg-rectangle bg-red-200">s</div>
       <footer className="pb-6 mt-auto bg-gray-2">
         <div className="layout-max-w pt-10 pb-2">
           <h2 className="text-dark font-bold text-center text-xl">Typiano</h2>
@@ -21,7 +18,7 @@ const Footer = () => {
               </p>
             ))}
           </div>
-          <p className="text-gray-4 text-xs mt-8 text-center tracking-widest">&copy; ${calcYear()} Itiano, All rights reserved</p>
+          <p className="text-gray-4 text-xs mt-8 text-center tracking-widest">&copy; {calcYear()} Itiano, All rights reserved</p>
         </div>
       </footer>
     </div>
