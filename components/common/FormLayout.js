@@ -10,7 +10,8 @@ const FormLayout = ({ title, description, formik, options, buttonText, loading, 
       case "input":
         return <CustomInput formik={formik} {...item} />;
       case "checkbox":
-        return <CustomCheckbox formik={formik} {...item} />;
+        <></>
+        // return <CustomCheckbox formik={formik} {...item} />;
       default:
         return <></>;
     }
@@ -37,7 +38,7 @@ const FormLayout = ({ title, description, formik, options, buttonText, loading, 
         <CustomBtn type="submit" text={buttonText} className="black-btn w-full mt-4" loading={loading} />
 
         {children}
-        <div className="w-full centering gap-2 mt-8">
+        {/* <div className="w-full centering gap-2 mt-8">
           <span className="h-px bg-gray-3 flex-1"></span>
           <span>Or continue with</span>
           <span className="h-px bg-gray-3 flex-1"></span>
@@ -49,7 +50,7 @@ const FormLayout = ({ title, description, formik, options, buttonText, loading, 
           <span className="w-12 h-12 centering rounded-full bg-gray-100 cursor-pointer">
             <TwitterIcon />
           </span>
-        </div>
+        </div> */}
       </form>
     </div>
   );

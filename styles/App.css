@@ -81,11 +81,8 @@ html {
   .flex-end-start {
     @apply flex justify-end items-start;
   }
-  .frame-letter {
-    @apply bg-form bg-transparent centering h-screen;
-  }
   .form {
-    @apply w-[23rem] border rounded-2xl p-8 backdrop-blur-sm bg-white bg-opacity-60;
+    @apply max-w-[400px] w-full border rounded-2xl p-8 backdrop-blur-sm bg-white bg-opacity-60;
   }
   .navigate {
     @apply text-mainBlue font-semibold;

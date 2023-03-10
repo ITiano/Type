@@ -1,9 +1,25 @@
 import ArrowLeftIcon from "public/icons/ArrowLeftIcon";
 import ArrowRightIcon from "public/icons/ArrowRightIcon";
 
-const CustomBtn = ({ text, startIcon, endIcon, onClick, className, disabled, loading, type = "button", arrowEndBtn, arrowStartBtn }) => {
+const CustomBtn = ({
+  text,
+  endIcon,
+  onClick,
+  loading,
+  disabled,
+  className,
+  startIcon,
+  arrowEndBtn,
+  arrowStartBtn,
+  type = "button",
+}) => {
   return (
-    <button className={`btn centering gap-2 ${className} ${disabled && "opacity-10"}`} disabled={loading || disabled} onClick={onClick} type={type}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={loading || disabled}
+      className={`btn centering gap-2 ${className} ${disabled && "opacity-70"}`}
+    >
       {startIcon}
       {arrowStartBtn && <ArrowLeftIcon />}
       {text}

@@ -1,69 +1,58 @@
-import * as yup from "yup";
-import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
+
+// Yup and formik
+import * as Yup from "yup";
 import { useFormik } from "formik";
-import FormLayout from "components/common/FormLayout";
 
-const initialValues = { email: "", password: "", remember: false };
+// hooks
+import useViewport from "hooks/useViewport";
 
-const LoginContainer = () => {
+// Components
+import CustomBtn from "components/utils/CustomBtn";
+import CustomInput from "components/utils/CustomInput";
+import CustomCheckbox from "components/utils/CustomCheckbox";
+
+const initialValues = {
+  email: "",
+  password: "",
+  remember: true,
+};
+
+const validationSchema = Yup.object({
+  email: Yup.string().required("Email is a required property").email("Please enter a valid email"),
+  password: Yup.string()
+    .required("password is a required property")
+    .min(8, "Password must be at least 8 characters")
+    .max(64, "Password cant be longer than 64 characters"),
+});
+
+const Login2 = () => {
   const [loading, setLoading] = useState(false);
+  const { height: minHeight } = useViewport("px");
 
-  const validation = yup.object({
-    email: yup.string().required("Email cannot be empty").email("Please enter the email completely and correctly"),
-
-    password: yup
-      .string()
-      .required("Password cannot be empty")
-      .min(8, "Password cannot be less than 8 characters")
-      .max(64, "Password cannot be longer than 64 characters"),
-
-    remember: yup.boolean(),
-  });
-
-  const onSubmit = async (values) => {
+  const onSubmit = (values) => {
+    // setLoading(true);
     console.log(values);
   };
 
-  const formik = useFormik({
-    onSubmit,
-    initialValues,
-    validationSchema: validation,
-    enableReinitialize: true,
-  });
-
-  const options = [
-    { formType: "input", name: "email", label: "Email ", placeholder: "info@gmail.com" },
-    {
-      formType: "input",
-      name: "password",
-      label: "Password ",
-      placeholder: "Enter your password",
-      Password: true,
-    },
-    { formType: "checkbox", label: "Remember me", name: "remember" },
-  ];
+  const formik = useFormik({ initialValues, onSubmit, validationSchema, validateOnMount: true });
 
   return (
-    <FormLayout
-      title="Log In"
-      description="Please enter your email and password to login."
-      buttonText="log in"
-      options={options}
-      formik={formik}
-      loading={loading}
-    >
-      <p className="mt-6 flex-start-center gap-1 mb-2">
-        <span>{"Don't have an account?"}</span>
-        <Link className="navigate" href="/signup">
-          Sign Up
-        </Link>
-      </p>
-      <Link className="navigate" href="/forgot_password">
-        Forgot password
-      </Link>
-    </FormLayout>
+    <div style={{ minHeight }} className="bg-form centering py-[70px] px-[10px]">
+      <div className="form">
+        <h1 className="text-3xl font-bold">Login</h1>
+        <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to login</p>
+        <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+          <CustomInput name="email" label="Email" placeholder="info@gmail.com" formik={formik} />
+          <CustomInput name="password" label="Password" placeholder="Enter your password" Password formik={formik} />
+          <div className="pt-4">
+            <CustomCheckbox name="remember" label="Remember me" formik={formik} />
+          </div>
+          <CustomBtn type="submit" text="log in" className="black-btn w-full mt-4" loading={loading} disabled={!formik.isValid} />
+        </form>
+      </div>
+    </div>
   );
 };
 
-export default LoginContainer;
+export default Login2;
