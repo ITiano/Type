@@ -11,9 +11,9 @@ const HomeBottomPatternSvg = ({ className }) => {
       />
       <defs>
         <linearGradient id="paint0_linear_299_173" x1="865.5" y1="155" x2="-337" y2="132" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#F6F7F9" stop-opacity="0" />
-          <stop offset="0.5" stop-color="#F6F7F9" />
-          <stop offset="1" stop-color="#F6F7F9" stop-opacity="0" />
+          <stop stopColor="#F6F7F9" stopOpacity="0" />
+          <stop offset="0.5" stopColor="#F6F7F9" />
+          <stop offset="1" stopColor="#F6F7F9" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
