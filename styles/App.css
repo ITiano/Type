@@ -84,6 +84,9 @@ html {
   .form {
     @apply max-w-[400px] w-full border rounded-2xl backdrop-blur-sm bg-white bg-opacity-60 py-8 px-4 2xs:p-8;
   }
+  .input {
+    @apply w-full px-3 py-1 bg-white text-sm border-2 rounded-md transition-all duration-200
+  }
   .navigate {
     @apply text-mainBlue font-semibold;
   }

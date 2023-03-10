@@ -18,7 +18,7 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
           value={values[name]}
           onChange={handleChange}
           type={Password ? (HidePassword ? "password" : "text") : type}
-          className={`w-full px-3 py-1 bg-white text-sm border-2 rounded-md transition-all duration-200 ${
+          className={`input ${
             touched[name] && errors[name] ? "border-pink-500 focus:border-pink-500" : "border-gray-2 focus:border-mainBlue"
           } ${className} ${Password ? "pr-8" : ""}`}
         />

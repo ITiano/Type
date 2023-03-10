@@ -53,7 +53,7 @@ const ModalContainer = ({
   const innerWrapperYerOrNoModalCondition = yesOrNoModal ? "centering" : "flex-center-end 2xs:items-center";
   const innerContainerYerOrNoModalCondition = yesOrNoModal ? "rounded-[10px]" : "rounded-[10px_10px_0px_0px] 2xs:rounded-[10px]";
 
-  return portalRef && mounted ? (
+  return portalRef?.current && mounted ? (
     createPortal(
       <div
         ref={modalRef}
@@ -72,7 +72,7 @@ const ModalContainer = ({
               <div className="flex-between-center mb-3">
                 {title && <div>{title}</div>}
                 {clear && (
-                  <span onClick={() => setOpen && setOpen(false)} className="cursor-pointer">
+                  <span onClick={() => setOpen(false)} className="cursor-pointer">
                     <CloseIcon />
                   </span>
                 )}
