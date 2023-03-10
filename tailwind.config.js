@@ -13,8 +13,8 @@ module.exports = {
         sans: ["'Poppins', sans-serif"],
       },
       backgroundImage: {
-        form: "url('../public/images/login/Frame-letter.png')",
-        rectangle: "url('../public/images/public/Rectangle.png')",
+        form: "url('/images/login/Frame-letter.png')",
+        rectangle: "url('/images/public/Rectangle.png')",
       },
       colors: {
         light: "#F5F5F5",
