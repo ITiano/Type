@@ -6,8 +6,8 @@ import DATA from "db";
 // Components
 import PageLayout from "components/layout/PageLayout";
 import CoursesSection from "components/courses/CoursesSection";
-import HistoryModal from "../../components/courses/HistoryModal";
 import KindSwitcherSection from "components/courses/KindSwitcherSection";
+import CourseHistoryModal from "../../components/courses/CourseHistoryModal";
 
 const CursesPage = ({ courses }) => {
   const [kind, setKind] = useState(1);
@@ -18,7 +18,7 @@ const CursesPage = ({ courses }) => {
     <PageLayout disableFooter>
       <KindSwitcherSection {...props} />
       <CoursesSection {...props} />
-      <HistoryModal {...props} />
+      <CourseHistoryModal {...props} />
     </PageLayout>
   );
 };

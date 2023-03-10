@@ -5,7 +5,7 @@ import CourseDetail from "./CourseDetail";
 import CourseHistory from "./CourseHistory";
 import ModalContainer from "components/utils/ModalContainer";
 
-const HistoryModal = ({ open, setOpen }) => {
+const CourseHistoryModal = ({ open, setOpen }) => {
   return (
     <ModalContainer open={open} setOpen={setOpen} width="700px" clear>
       <div className="flex-start-center [&>*]:flex-row mb-4">
@@ -20,4 +20,4 @@ const HistoryModal = ({ open, setOpen }) => {
   );
 };
 
-export default HistoryModal;
+export default CourseHistoryModal;
