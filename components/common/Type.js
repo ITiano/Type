@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-const successColor = "bg-green-200";
-const errorColor = "bg-red-400";
-const warningColor = "!bg-orange-300";
-const borderLineColor = "border-b-blue-500";
+const successColor = "bg-blue-200 text-black";
+const errorColor = "bg-red-400 text-2xl";
+const warningColor = "!bg-orange-300 text-black";
+const activeColor = "border-b-blue-500";
 
 const Type = ({ data = "", setStep }) => {
   const [type, setType] = useState("");
@@ -51,7 +51,7 @@ const Type = ({ data = "", setStep }) => {
   const showNowError = (index) => {
     const find = error.find((item) => item.id == index);
     if (find && !find.completed)
-      return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
+      return { text: find.history[find.history.length - 1], className: `${errorColor} text-white pb-1` };
     else return { text: "", className: "" };
   };
 
@@ -99,52 +99,48 @@ const Type = ({ data = "", setStep }) => {
   const HowLengthWord = (wordIndex) => convertForMap().slice(0, wordIndex).join("").split("").length;
 
   return (
-    <>
-      <div className="bg-gray-3 bg-opacity-30 h-3 w-10/12 mt-14 rounded-full"></div>
-
-      <div className="relative w-full">
-        <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">
-          {data.split("").length !== 0 &&
-            convertForMap().map((item, wordIndex) => {
-              return (
-                <span key={wordIndex} className={`flex items-center justify-start`}>
-                  {item.split("").map((item, index) => {
-                    const length = HowLengthWord(wordIndex);
-                    return (
+    <div className="relative w-full font-type">
+      <div className="w-full flex-wrap gap-y-4 flex items-center justify-start">
+        {data.split("").length !== 0 &&
+          convertForMap().map((item, wordIndex) => {
+            return (
+              <span key={wordIndex} className={`flex items-center justify-start`}>
+                {item.split("").map((item, index) => {
+                  const length = HowLengthWord(wordIndex);
+                  return (
+                    <span
+                      key={length + index}
+                      className={`mx-px min-w-[1.5rem] h-11 flex items-center justify-center text-2xl border-b-4 rounded-sm relative ${
+                        type.length === length + index ? activeColor : "border-b-white"
+                      } ${showLastErrorClassName(length + index)} ${
+                        type[length + index]?.toString() === item?.toString() ? successColor : ""
+                      }`}
+                    >
+                      {index === 0 ? item.toUpperCase() : item}
                       <span
-                        key={length + index}
-                        className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative ${
-                          type.length === length + index ? borderLineColor : "border-b-white"
-                        } ${showLastErrorClassName(length + index)} ${
-                          type[length + index]?.toString() === item?.toString() ? successColor : ""
-                        }`}
+                        className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
+                          show ? "opacity-100" : "opacity-0"
+                        }  ${showNowError(length + index).className} `}
                       >
-                        {item}
-                        <span
-                          className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
-                            show ? "opacity-100" : "opacity-0"
-                          }  ${showNowError(length + index).className} `}
-                        >
-                          {showNowError(length + index).text}
-                        </span>
+                        {showNowError(length + index).text}
                       </span>
-                    );
-                  })}
-                </span>
-              );
-            })}
-        </div>
-        <input
-          ref={ref}
-          onKeyDown={onKeyDown}
-          autoFocus
-          className="resize-none absolute inset-0 w-full h-full opacity-0"
-          type="text"
-          value={type}
-          onChange={onChange}
-        />
+                    </span>
+                  );
+                })}
+              </span>
+            );
+          })}
       </div>
-    </>
+      <input
+        ref={ref}
+        onKeyDown={onKeyDown}
+        autoFocus
+        className="resize-none absolute inset-0 w-full h-full opacity-0"
+        type="text"
+        value={type}
+        onChange={onChange}
+      />
+    </div>
   );
 };
 

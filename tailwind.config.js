@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["'Poppins', sans-serif"],
+        type: ["'Nunito', sans-serif"],
       },
       backgroundImage: {
         form: "url('/images/login/Frame-letter.png')",
