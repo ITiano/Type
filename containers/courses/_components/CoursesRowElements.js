@@ -27,7 +27,15 @@ const CoursesRowElements = ({ data, kind }) => {
       <div className={`${kind === 1 ? "hidden md:flex-start-center gap-8" : "centering flex-col gap-3"}`}>
         <div className="centering gap-4">
           {data.status === 1 && <CoursesElements title="Starts" value={data.rating} kind={kind} star />}
-          {kind === 2 && <Link href={`/courses/${data.id}`}>{CoursesIcons[data.status]}</Link>}
+          {kind === 2 && (
+            <>
+              {data.status === 3 ? (
+                CoursesIcons[data.status]
+              ) : (
+                <Link href={`/courses/${data.id}`}>{CoursesIcons[data.status]}</Link>
+              )}
+            </>
+          )}
         </div>
         <div className={`${kind === 1 ? "hidden md:flex-start-center gap-8" : "grid grid-cols-4 gap-3"}`}>
           {data.status === 1 && (
@@ -43,7 +51,8 @@ const CoursesRowElements = ({ data, kind }) => {
 
       {kind === 1 && (
         <div className="flex-end-center gap-1">
-          <Link href={`/courses/${data.id}`}>{CoursesIcons[data.status]}</Link>
+          {data.status === 3 ? CoursesIcons[data.status] : <Link href={`/courses/${data.id}`}>{CoursesIcons[data.status]}</Link>}
+
           <CoursesElementsOptions status={data.status} />
         </div>
       )}
