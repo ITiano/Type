@@ -2,12 +2,10 @@ import Image from "next/image";
 import notFoundImage from "public/images/public/404.png";
 import CustomBtn from "components/utils/CustomBtn";
 import { useRouter } from "next/router";
-import useViewport from "hooks/useViewport";
 import PageLayout from "components/layout/PageLayout";
 
 const NotFound = () => {
   const router = useRouter();
-  const { height } = useViewport("px");
 
   const navigateHandler = () => {
     router.push("/");
