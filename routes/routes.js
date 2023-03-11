@@ -3,9 +3,10 @@ const routes = {
   guide: { title: "Guide", path: "/guide" },
   login: { title: "Login", path: "/login" },
   signup: { title: "Signup", path: "/signup" },
-  courses: { title: "Courses", path: "/courses" },
   aboutUs: { title: "About us", path: "/about_us" },
   contactUs: { title: "Contact us", path: "/contact_us" },
+  
+  courses: { title: "Courses", path: "/courses" },
   courseId: { title: "Course", path: (id = "courseId") => `/courses/${id}` },
 };
 
