@@ -5,13 +5,14 @@ import DATA from "db";
 
 // Components
 import PageLayout from "components/layout/PageLayout";
-import CoursesSection from "components/courses/CoursesSection";
-import KindSwitcherSection from "components/courses/KindSwitcherSection";
-import CourseHistoryModal from "../../components/courses/CourseHistoryModal";
+import CoursesSection from "components/pages/courses/CoursesSection";
+import KindSwitcherSection from "components/pages/courses/KindSwitcherSection";
+import CourseHistoryModal from "../../components/pages/courses/CourseHistoryModal";
 
 const CursesPage = ({ courses }) => {
   const [kind, setKind] = useState(1);
   const [open, setOpen] = useState(false);
+
   const props = { kind, setKind, open, setOpen, courses };
 
   return (
@@ -25,10 +26,4 @@ const CursesPage = ({ courses }) => {
 
 export default CursesPage;
 
-export const getServerSideProps = async () => {
-  return {
-    props: {
-      courses: DATA,
-    },
-  };
-};
+export const getServerSideProps = async () => ({ props: { courses: DATA } });

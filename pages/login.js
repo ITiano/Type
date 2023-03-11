@@ -84,7 +84,7 @@ const LoginBottomForm = () => {
           {routes.signup.title}
         </Link>
       </p>
-      <Link className="text-mainBlue font-semibold mt-3 inline-block" href="/">
+      <Link className="text-mainBlue font-semibold mt-3 inline-block" href="#">
         Forget password
       </Link>
       <div className="w-full centering gap-2 mt-6">

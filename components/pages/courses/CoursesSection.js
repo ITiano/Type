@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import routes from "routes/routes";
 
 // Icons
 import { CoursesIcons } from "helper/Methods";
@@ -48,7 +49,7 @@ const CourseElement = ({ course, kind, setOpen }) => {
         {course.status === 3 ? (
           CoursesIcons[course.status]
         ) : (
-          <Link href={`/courses/${course.id}`}>{CoursesIcons[course.status]}</Link>
+          <Link href={routes.courseId.path(course.id)}>{CoursesIcons[course.status]}</Link>
         )}
         <CourseOptions {...props} />
       </div>

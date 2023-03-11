@@ -2,8 +2,8 @@ import React from "react";
 
 // Components
 import PageLayout from "components/layout/PageLayout";
-import ProfileForm from "components/profile/ProfileForm";
-import ProfileHeader from "components/profile/ProfileHeader";
+import ProfileForm from "components/pages/profile/ProfileForm";
+import ProfileHeader from "components/pages/profile/ProfileHeader";
 
 const Profile = () => {
   return (
