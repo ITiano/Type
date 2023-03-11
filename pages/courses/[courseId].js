@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import DATA from "db";
-import CourseContainer from "containers/course/CourseContainer";
+import CourseContainer from "components/course/CourseContainer";
 
 const CourseInfo = ({ data }) => {
   return (
