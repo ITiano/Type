@@ -1,16 +1,12 @@
 import Image from "next/image";
-import Mobina from "public/images/avatar/Mobina.png";
-import Soheil from "public/images/avatar/Soheil.png";
-import Fateme from "public/images/avatar/Fateme.png";
-import Ruhollah from "public/images/avatar/Ruhollah.png";
 
 const AboutUsContainer = () => {
   const Users = [
-    { name: "Mobina Mirbagheri", position: "UiUx Design", image: Mobina },
-    { name: "Fateme Rasolzadeh", position: "FrontEnd Developer", image: Fateme },
-    { name: "Amir Shafikhani", position: "FrontEnd Developer", image: Soheil },
-    { name: "Soheil jafarnejad", position: "FrontEnd Developer", image: Soheil },
-    { name: "Ruhollah Mozafari", position: "BackEnd Developer  ", image: Ruhollah },
+    { name: "Mobina Mirbagheri", position: "UiUx Design", image: "/images/avatar/Mobina.png" },
+    { name: "Fateme Rasolzadeh", position: "FrontEnd Developer", image: "/images/avatar/Fateme.png" },
+    { name: "Amir Shafikhani", position: "FrontEnd Developer", image: "/images/avatar/Soheil.png" },
+    { name: "Soheil jafarnejad", position: "FrontEnd Developer", image: "/images/avatar/Soheil.png" },
+    { name: "Ruhollah Mozafari", position: "BackEnd Developer  ", image: "/images/avatar/Ruhollah.png" },
   ];
 
   return (
@@ -37,7 +33,7 @@ export default AboutUsContainer;
 
 const OurTeamElements = ({ user }) => (
   <div className="flex-1 self-start w-full max-w-[300px] mx-auto sm:max-w-full p-6 custom-shadow-1 rounded-3xl centering flex-col bg-white">
-    <Image width={120} src={user.image} alt={user.name} />
+    <Image width={120} height={120} src={user.image} alt={user.name} />
     <p className="text-gray-3 mt-5">{user.position}</p>
     <p className="text-lg font-bold mt-1">{user.name}</p>
   </div>
