@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import LighteningIcon from "public/icons/LighteningIcon";
 
-const successColor = "bg-green-200";
 const errorColor = "bg-red-400";
+const successColor = "bg-green-200";
 const warningColor = "!bg-orange-300";
 const borderLineColor = "border-b-blue-500";
 
@@ -91,17 +91,9 @@ const Type = ({ data = "", setStep }) => {
     setConvertedText(converted);
   }, [data]);
 
-  useEffect(() => {
-    const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
-    if (data === type) {
-      alert(`done, You have ${totalError} errors in ${error.length} characters`);
-      setStep(3);
-    }
-  }, [data, error, setStep, type]);
-
   return (
     <>
-      <ProgressLine data={data} type={type} />
+      <ProgressLine data={data} type={type} error={error} setStep={setStep} />
 
       <div className="relative w-full">
         <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">
@@ -152,22 +144,31 @@ const Type = ({ data = "", setStep }) => {
 
 export default Type;
 
-const ProgressLine = ({ data, type }) => {
-  const [percent, setPercent] = useState(0);
+const ProgressLine = ({ data, type, error, setStep }) => {
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
-    setPercent((type.length * 100) / data.length);
+    setProgress((type.length * 100) / data.length);
   }, [data.length, type.length]);
+
+  useEffect(() => {
+    if (progress === 100) {
+      const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
+      alert(`done, You have ${totalError} errors in ${error.length} characters`);
+      setStep(3);
+    }
+  }, [data, error, error.length, progress, setStep, type]);
 
   return (
     <div className="relative w-10/12 mt-14">
       <div className="bg-gray-3 bg-opacity-30 h-3 rounded-full relative overflow-hidden">
         <span
-          style={{ width: percent + "%" }}
+          style={{ width: progress + "%" }}
           className="absolute top-1/2 left-0 -translate-y-1/2 bg-black h-full transition-all duration-200"
         ></span>
       </div>
       <span
-        style={{ left: `calc(${percent}% - 13px)` }}
+        style={{ left: `calc(${progress}% - 13px)` }}
         className={`absolute top-1/2 -translate-y-1/2 w-[26px] h-[26px] bg-black rounded-full centering p-1 transition-all duration-200`}
       >
         <LighteningIcon />
