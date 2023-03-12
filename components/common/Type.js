@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import LighteningIcon from "public/icons/LighteningIcon";
 
 const successColor = "bg-green-200";
 const errorColor = "bg-red-400";
@@ -6,10 +7,11 @@ const warningColor = "!bg-orange-300";
 const borderLineColor = "border-b-blue-500";
 
 const Type = ({ data = "", setStep }) => {
+  const ref = useRef();
   const [type, setType] = useState("");
   const [error, setError] = useState([]);
   const [show, setShow] = useState(false);
-  const ref = useRef();
+  const [convertedText, setConvertedText] = useState([]);
 
   const onChange = (e) => {
     const length = type.length;
@@ -42,10 +44,11 @@ const Type = ({ data = "", setStep }) => {
     }
   };
 
+  const currentWordLength = (wordIndex) => convertedText.slice(0, wordIndex).join("").split("").length;
+
   const showLastErrorClassName = (index) => {
     const find = error.find((item) => item.id == index);
-    if (find && find.completed) return warningColor;
-    else return "";
+    return find && find.completed ? warningColor : "";
   };
 
   const showNowError = (index) => {
@@ -78,7 +81,15 @@ const Type = ({ data = "", setStep }) => {
 
   useEffect(() => {
     ref.current.focus();
-  });
+  }, []);
+
+  useEffect(() => {
+    const splitted = data.split(" ");
+    const converted = splitted.reduce((sum, item, index) => {
+      return index ? [...sum, " ", item] : [...sum, item];
+    }, []);
+    setConvertedText(converted);
+  }, [data]);
 
   useEffect(() => {
     const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
@@ -88,28 +99,18 @@ const Type = ({ data = "", setStep }) => {
     }
   }, [data, error, setStep, type]);
 
-  const convertForMap = () => {
-    return data.split(" ").reduce((sum, item, index) => {
-      if (index === 0) sum = [...sum, item];
-      else sum = [...sum, " ", item];
-      return sum;
-    }, []);
-  };
-
-  const HowLengthWord = (wordIndex) => convertForMap().slice(0, wordIndex).join("").split("").length;
-
   return (
     <>
-      <div className="bg-gray-3 bg-opacity-30 h-3 w-10/12 mt-14 rounded-full"></div>
+      <ProgressLine data={data} type={type} />
 
       <div className="relative w-full">
         <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">
           {data.split("").length !== 0 &&
-            convertForMap().map((item, wordIndex) => {
+            convertedText.map((item, wordIndex) => {
               return (
-                <span key={wordIndex} className={`flex items-center justify-start`}>
+                <span key={wordIndex} className="flex items-center justify-start">
                   {item.split("").map((item, index) => {
-                    const length = HowLengthWord(wordIndex);
+                    const length = currentWordLength(wordIndex);
                     return (
                       <span
                         key={length + index}
@@ -134,14 +135,15 @@ const Type = ({ data = "", setStep }) => {
               );
             })}
         </div>
+
         <input
           ref={ref}
-          onKeyDown={onKeyDown}
           autoFocus
-          className="resize-none absolute inset-0 w-full h-full opacity-0"
           type="text"
           value={type}
           onChange={onChange}
+          onKeyDown={onKeyDown}
+          className="resize-none absolute inset-0 w-full h-full opacity-0"
         />
       </div>
     </>
@@ -149,3 +151,27 @@ const Type = ({ data = "", setStep }) => {
 };
 
 export default Type;
+
+const ProgressLine = ({ data, type }) => {
+  const [percent, setPercent] = useState(0);
+  useEffect(() => {
+    setPercent((type.length * 100) / data.length);
+  }, [data.length, type.length]);
+
+  return (
+    <div className="relative w-10/12 mt-14">
+      <div className="bg-gray-3 bg-opacity-30 h-3 rounded-full relative overflow-hidden">
+        <span
+          style={{ width: percent + "%" }}
+          className="absolute top-1/2 left-0 -translate-y-1/2 bg-black h-full transition-all duration-200"
+        ></span>
+      </div>
+      <span
+        style={{ left: `calc(${percent}% - 13px)` }}
+        className={`absolute top-1/2 -translate-y-1/2 w-[26px] h-[26px] bg-black rounded-full centering p-1 transition-all duration-200`}
+      >
+        <LighteningIcon />
+      </span>
+    </div>
+  );
+};
