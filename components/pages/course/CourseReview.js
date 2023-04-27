@@ -1,4 +1,3 @@
-import CustomBtn from "components/utils/CustomBtn";
 import { CoursesImages } from "helper/Methods";
 
 const CourseReview = ({ data }) => {

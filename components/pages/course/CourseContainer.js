@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Type from "components/common/Type";
+import Type from "components/pages/course/Type";
 import CourseRating from "./CourseRating";
 import CourseReview from "./CourseReview";
 import CustomBtn from "components/utils/CustomBtn";

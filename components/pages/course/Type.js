@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import LighteningIcon from "public/icons/LighteningIcon";
+import ProgressLine from "./ProgressLine";
 
 const errorColor = "bg-red-400";
 const successColor = "bg-green-200";
@@ -53,25 +53,12 @@ const Type = ({ data = "", setStep }) => {
 
   const showNowError = (index) => {
     const find = error.find((item) => item.id == index);
-    if (find && !find.completed)
-      return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
+    if (find && !find.completed) return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
     else return { text: "", className: "" };
   };
 
   const onKeyDown = (e) => {
-    if (
-      (e.keyCode >= 48 && e.keyCode <= 90) ||
-      (e.keyCode >= 96 && e.keyCode <= 111) ||
-      e.keyCode === 173 ||
-      e.keyCode === 188 ||
-      e.keyCode === 190 ||
-      e.keyCode === 191 ||
-      e.keyCode === 192 ||
-      e.keyCode === 219 ||
-      e.keyCode === 220 ||
-      e.keyCode === 221 ||
-      e.keyCode === 222
-    ) {
+    if ((e.keyCode >= 48 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 111) || e.keyCode === 173 || e.keyCode === 188 || e.keyCode === 190 || e.keyCode === 191 || e.keyCode === 192 || e.keyCode === 219 || e.keyCode === 220 || e.keyCode === 221 || e.keyCode === 222) {
       if (!show) setShow(true);
       setTimeout(() => {
         setShow(false);
@@ -94,7 +81,6 @@ const Type = ({ data = "", setStep }) => {
   return (
     <>
       <ProgressLine data={data} type={type} error={error} setStep={setStep} />
-
       <div className="relative w-full">
         <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">
           {data.split("").length !== 0 &&
@@ -106,20 +92,12 @@ const Type = ({ data = "", setStep }) => {
                     return (
                       <span
                         key={length + index}
-                        className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative ${
-                          type.length === length + index ? borderLineColor : "border-b-white"
-                        } ${showLastErrorClassName(length + index)} ${
+                        className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative ${type.length === length + index ? borderLineColor : "border-b-white"} ${showLastErrorClassName(length + index)} ${
                           type[length + index]?.toString() === item?.toString() ? successColor : ""
                         }`}
                       >
                         {item}
-                        <span
-                          className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
-                            show ? "opacity-100" : "opacity-0"
-                          }  ${showNowError(length + index).className} `}
-                        >
-                          {showNowError(length + index).text}
-                        </span>
+                        <span className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${show ? "opacity-100" : "opacity-0"}  ${showNowError(length + index).className} `}>{showNowError(length + index).text}</span>
                       </span>
                     );
                   })}
@@ -128,51 +106,10 @@ const Type = ({ data = "", setStep }) => {
             })}
         </div>
 
-        <input
-          ref={ref}
-          autoFocus
-          type="text"
-          value={type}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          className="resize-none absolute inset-0 w-full h-full opacity-0"
-        />
+        <input ref={ref} autoFocus type="text" value={type} onChange={onChange} onKeyDown={onKeyDown} className="resize-none absolute inset-0 w-full h-full opacity-0" />
       </div>
     </>
   );
 };
 
 export default Type;
-
-const ProgressLine = ({ data, type, error, setStep }) => {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    setProgress((type.length * 100) / data.length);
-  }, [data.length, type.length]);
-
-  useEffect(() => {
-    if (progress === 100) {
-      const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
-      alert(`done, You have ${totalError} errors in ${error.length} characters`);
-      setStep(3);
-    }
-  }, [data, error, error.length, progress, setStep, type]);
-
-  return (
-    <div className="relative w-10/12 mt-14">
-      <div className="bg-gray-3 bg-opacity-30 h-3 rounded-full relative overflow-hidden">
-        <span
-          style={{ width: progress + "%" }}
-          className="absolute top-1/2 left-0 -translate-y-1/2 bg-black h-full transition-all duration-200"
-        ></span>
-      </div>
-      <span
-        style={{ left: `calc(${progress}% - 13px)` }}
-        className={`absolute top-1/2 -translate-y-1/2 w-[26px] h-[26px] bg-black rounded-full centering p-1 transition-all duration-200`}
-      >
-        <LighteningIcon />
-      </span>
-    </div>
-  );
-};
