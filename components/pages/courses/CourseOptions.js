@@ -6,8 +6,10 @@ import MoreCircleIcon from "public/icons/MoreCircleIcon";
 const CourseOptions = ({ course, setOpen }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const onBlur = (e) => !e.currentTarget.contains(e.relatedTarget) && setMenuOpen(false);
+
   return (
-    <button className={`relative ${course?.status !== 1 && "invisible"}`}>
+    <button onBlur={onBlur} className={`relative ${course?.status !== 1 && "invisible"}`}>
       <span onClick={() => course?.status === 1 && setMenuOpen(!menuOpen)} className="cursor-pointer">
         <MoreCircleIcon />
       </span>
