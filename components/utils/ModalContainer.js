@@ -58,11 +58,11 @@ const ModalContainer = ({
       <div
         ref={modalRef}
         onClick={necessaryCloseHandler}
-        className={`${classes.transition} ${classes.outerWrapper} ${outerWrapperOpenCondition} ${outerWrapperYerOrNoModalCondition}`}
+        className={`${open && classes.transition} ${
+          classes.outerWrapper
+        } ${outerWrapperOpenCondition} ${outerWrapperYerOrNoModalCondition}`}
       >
-        <div
-          className={`${classes.innerWrapper} ${classes.transition} ${innerWrapperOpenCondition} ${innerWrapperYerOrNoModalCondition}`}
-        >
+        <div className={`${classes.innerWrapper} ${innerWrapperOpenCondition} ${innerWrapperYerOrNoModalCondition}`}>
           <div
             style={size}
             onClick={(e) => e.stopPropagation()}
