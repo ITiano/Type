@@ -1,7 +1,7 @@
 import React from "react";
 
 // formik
-import { useFormik } from "formik";
+// import { useFormik } from "formik";
 
 // Components
 import CustomInput from "components/utils/CustomInput";
@@ -14,16 +14,16 @@ const ProfileForm = () => {
     console.log(values);
   };
 
-  const formik = useFormik({
-    onSubmit,
-    initialValues,
-    enableReinitialize: true,
-  });
+  // const formik = useFormik({
+  //   onSubmit,
+  //   initialValues,
+  //   enableReinitialize: true,
+  // });
 
   return (
     <>
       <p className="mt-10 mb-5 font-semibold text-base">Edit profile</p>
-      <form onSubmit={formik.handleSubmit}>
+      {/* <form onSubmit={formik.handleSubmit}>
         <div className="flex flex-col md:flex-row md:divide-x-2 [&>*]:flex-1">
           <div className="md:pr-6">
             <p className="text-xs text-gray-3 mt-2 mb-3">Personal</p>
@@ -46,7 +46,7 @@ const ProfileForm = () => {
           <CustomBtn text="Save change" className="black-btn" disabled={!formik.isValid} />
           <CustomBtn text="Cancel" />
         </div>
-      </form>
+      </form> */}
     </>
   );
 };

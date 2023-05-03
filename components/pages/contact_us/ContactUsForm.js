@@ -1,7 +1,7 @@
 import React from "react";
 
 // formik
-import { useFormik } from "formik";
+// import { useFormik } from "formik";
 
 // Components
 import CustomBtn from "components/utils/CustomBtn";
@@ -26,11 +26,11 @@ const ContactUsForm = () => {
     console.log(values);
   };
 
-  const formik = useFormik({
-    onSubmit,
-    initialValues,
-    enableReinitialize: true,
-  });
+  // const formik = useFormik({
+  //   onSubmit,
+  //   initialValues,
+  //   enableReinitialize: true,
+  // });
   return (
     <div className="flex-between-center flex-col sm:flex-row gap-10 shadow-lg p-10 w-full rounded-3xl bg-white">
       <div className="flex flex-col gap-6 w-full sm:w-auto">
@@ -38,11 +38,11 @@ const ContactUsForm = () => {
           <ContactElements key={contact.title} {...contact} />
         ))}
       </div>
-      <form onSubmit={formik.handleSubmit} className="flex-1">
+      {/* <form onSubmit={formik.handleSubmit} className="flex-1">
         <CustomInput formik={formik} label="Email" placeholder="info@gmail.com" />
         <CustomTextArea formik={formik} label="Message" placeholder="type here..." />
         <CustomBtn text="Send" arrowEndBtn className="px-0" />
-      </form>
+      </form> */}
     </div>
   );
 };

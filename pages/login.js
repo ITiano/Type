@@ -4,7 +4,7 @@ import routes from "routes/routes";
 
 // Yup and formik
 import * as Yup from "yup";
-import { useFormik } from "formik";
+// import { useFormik } from "formik";
 
 // Seo
 import { NextSeo } from "next-seo";
@@ -42,7 +42,7 @@ const Login = () => {
     console.log(values);
   };
 
-  const formik = useFormik({ initialValues, onSubmit, validationSchema, validateOnMount: true });
+  // const formik = useFormik({ initialValues, onSubmit, validationSchema, validateOnMount: true });
 
   return (
     <>
@@ -52,7 +52,7 @@ const Login = () => {
         <div className="form">
           <h1 className="text-3xl font-bold">Login</h1>
           <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to login</p>
-          <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+          {/* <form className="flex flex-col" onSubmit={formik.handleSubmit}>
             <CustomInput name="email" label="Email" placeholder="info@gmail.com" formik={formik} />
             <CustomInput name="password" label="Password" placeholder="Enter your password" Password formik={formik} />
             <div className="pt-4">
@@ -65,7 +65,7 @@ const Login = () => {
               disabled={!formik.isValid}
               className="black-btn w-full mt-4"
             />
-          </form>
+          </form> */}
           <LoginBottomForm />
         </div>
       </div>
