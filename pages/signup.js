@@ -17,15 +17,13 @@ import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
+import { useGetAccountQuery } from "services/authApi";
 
 const initialValues = { email: "", password: "", confirmPassword: "" };
 
 const validationSchema = Yup.object({
   email: Yup.string().required("Email is a required property").email("Please enter a valid email"),
-  password: Yup.string()
-    .required("password is a required property")
-    .min(8, "Password must be at least 8 characters")
-    .max(64, "Password cant be longer than 64 characters"),
+  password: Yup.string().required("password is a required property").min(8, "Password must be at least 8 characters").max(64, "Password cant be longer than 64 characters"),
   confirmPassword: Yup.string()
     .required("password is a required property")
     .oneOf([Yup.ref("password"), null], "Passwords doesnt match"),
@@ -45,7 +43,7 @@ const Signup = () => {
   return (
     <>
       <NextSeo title="Sign up" />
-
+      {data}
       <div style={{ minHeight }} className="bg-form centering py-[70px] px-[10px]">
         <div className="form">
           <h1 className="text-3xl font-bold">Sign up</h1>
