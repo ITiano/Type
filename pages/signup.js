@@ -1,10 +1,11 @@
-import React, { useState } from "react";
 import Link from "next/link";
 import routes from "routes/routes";
+import { useRouter } from "next/router";
 
 // Yup and formik
 import * as Yup from "yup";
-// import { useFormik } from "formik";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 // Seo
 import { NextSeo } from "next-seo";
@@ -17,9 +18,10 @@ import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
-import { useGetAccountQuery } from "services/authApi";
 
-const initialValues = { email: "", password: "", confirmPassword: "" };
+import { useRegisterUserMutation } from "services/authApi";
+
+const defaultValues = { email: "", password: "", confirmPassword: "" };
 
 const validationSchema = Yup.object({
   email: Yup.string().required("Email is a required property").email("Please enter a valid email"),
@@ -30,42 +32,37 @@ const validationSchema = Yup.object({
 });
 
 const Signup = () => {
-  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const { height: minHeight } = useViewport("px");
+  const [register, { isLoading }] = useRegisterUserMutation();
+
+  const form = useForm({
+    defaultValues,
+    resolver: yupResolver(validationSchema),
+  });
 
   const onSubmit = (values) => {
-    // setLoading(true);
     console.log(values);
+    register(values).then((res) => {
+      console.log(res);
+      // router.push(routes.login.path);
+      // redirect to pervious page or home page???
+    });
   };
-
-  // const formik = useFormik({ initialValues, onSubmit, validationSchema, validateOnMount: true });
 
   return (
     <>
       <NextSeo title="Sign up" />
-      {data}
       <div style={{ minHeight }} className="bg-form centering py-[70px] px-[10px]">
         <div className="form">
           <h1 className="text-3xl font-bold">Sign up</h1>
           <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to login</p>
-          {/* <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-            <CustomInput name="email" label="Email" placeholder="info@gmail.com" formik={formik} />
-            <CustomInput name="password" label="Password" placeholder="Enter your password" Password formik={formik} />
-            <CustomInput
-              Password
-              formik={formik}
-              name="confirmPassword"
-              label="Confirm Password"
-              placeholder="Enter your confirm password"
-            />
-            <CustomBtn
-              type="submit"
-              text="Sign up"
-              loading={loading}
-              disabled={!formik.isValid}
-              className="black-btn w-full mt-4"
-            />
-          </form> */}
+          <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
+            <CustomInput name="email" label="Email" placeholder="info@gmail.com" form={form} />
+            <CustomInput name="password" label="Password" placeholder="Enter your password" Password form={form} />
+            <CustomInput name="confirmPassword" label="Confirm Password" placeholder="Enter your confirm password" Password form={form} />
+            <CustomBtn type="submit" text="log in" loading={isLoading} className="black-btn w-full mt-4" />
+          </form>
           <SignUpBottomForm />
         </div>
       </div>

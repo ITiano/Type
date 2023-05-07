@@ -13,9 +13,9 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     //Query for get Apis
     //Example: const { data = [], error, isLoading } = useGetAccountQuery();
-    getAccount: builder.query({
-      query: () => `auth/account/`,
-    }),
+    // getAccount: builder.query({
+      // query: () => `auth/account/`,
+    // }),
     //Mutation for post Apis
     //Exaple: const [addPost, {isLoading}] = useRegisterUserMutation();
     registerUser: builder.mutation({

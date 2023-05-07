@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import Link from "next/link";
 import routes from "routes/routes";
+import { useRouter } from "next/router";
 
 // Yup
 import * as Yup from "yup";
@@ -18,8 +18,8 @@ import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
+
 import { useLoginUserMutation } from "services/authApi";
-import { useRouter } from "next/router";
 
 const defaultValues = {
   email: "",
@@ -42,11 +42,11 @@ const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = (values) => {
     console.log(values);
     login(values).then((res) => {
       localStorage.setItem("token", res.data.token);
-      router.push(routes.home.path);
+      // router.push(routes.home.path);
       // redirect to pervious page or home page???
     });
   };
