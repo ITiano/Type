@@ -18,8 +18,8 @@ import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
-import CustomCheckbox from "components/utils/CustomCheckbox";
 import { useLoginUserMutation } from "services/authApi";
+import { useRouter } from "next/router";
 
 const defaultValues = {
   email: "",
@@ -33,24 +33,27 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+  const router = useRouter();
   const { height: minHeight } = useViewport("px");
-
   const [login, { isLoading }] = useLoginUserMutation();
 
   const form = useForm({
     defaultValues,
-    //  resolver: yupResolver(validationSchema),
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = async (values) => {
     console.log(values);
-    await login(values);
+    login(values).then((res) => {
+      localStorage.setItem("token", res.data.token);
+      router.push(routes.home.path);
+      // redirect to pervious page or home page???
+    });
   };
 
   return (
     <>
       <NextSeo title="login" />
-
       <div style={{ minHeight }} className="bg-form centering py-[70px] px-[10px]">
         <div className="form">
           <h1 className="text-3xl font-bold">Login</h1>
