@@ -2,9 +2,10 @@ import HideIcon from "public/icons/HideIcon";
 import ShowIcon from "public/icons/ShowIcon";
 import { useState } from "react";
 
-const CustomInput = ({ label, formik, name, className, Password, type = "text", ...rest }) => {
+const CustomInput = ({ label, name, form, className, Password, handleBlur, type = "text", ...rest }) => {
   const [HidePassword, setHidePassword] = useState(true);
-  const { values, handleChange, touched, errors, handleBlur } = formik;
+
+  const { register, errors } = form;
 
   return (
     <div>
@@ -12,15 +13,12 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
       <div className={`relative`}>
         <input
           {...rest}
+          {...register(name)}
           name={name}
           autoComplete="off"
           onBlur={handleBlur}
-          value={values[name]}
-          onChange={handleChange}
           type={Password ? (HidePassword ? "password" : "text") : type}
-          className={`input ${
-            touched[name] && errors[name] ? "border-pink-500 focus:border-pink-500" : "border-gray-2 focus:border-mainBlue"
-          } ${className} ${Password ? "pr-8" : ""}`}
+          // className={`input ${errors[name] ? "border-pink-500 focus:border-pink-500" : "border-gray-2 focus:border-mainBlue"} ${className} ${Password ? "pr-8" : ""}`}
         />
         {Password && (
           <span className="absolute top-[.6rem] right-3 cursor-pointer" onClick={() => setHidePassword(!HidePassword)}>
@@ -28,7 +26,7 @@ const CustomInput = ({ label, formik, name, className, Password, type = "text", 
           </span>
         )}
       </div>
-      <p className="text-xs pl-1 text-pink-600 h-4 mb-1">{touched[name] && errors[name]}</p>
+      {/* <p className="text-xs pl-1 text-pink-600 h-4 mb-1">{errors[name]?.message}</p> */}
     </div>
   );
 };

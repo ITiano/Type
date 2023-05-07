@@ -25,10 +25,17 @@ export const authApi = createApi({
         body: user,
       }),
     }),
+    loginUser: builder.mutation({
+      query: (user) => ({
+        url: "auth/login/",
+        method: "POST",
+        body: user,
+      }),
+    }),
   }),
 });
 
-export const { useGetAccountQuery, useRegisterUserMutation } = authApi;
+export const { useGetAccountQuery, useRegisterUserMutation, useLoginUserMutation } = authApi;
 
 // export endpoints for use in SSR
 // export const { getPokemonByName, getPokemonList } = pokemonApi.endpoints;
