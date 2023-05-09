@@ -1,9 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { staggeredBaseQueryWithBailOut } from "./interceptor";
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://typiano-back.iran.liara.run/" }),
+  baseQuery: staggeredBaseQueryWithBailOut,
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath];
@@ -14,7 +15,7 @@ export const authApi = createApi({
     //Query for get Apis
     //Example: const { data = [], error, isLoading } = useGetAccountQuery();
     // getAccount: builder.query({
-      // query: () => `auth/account/`,
+    // query: () => `auth/account/`,
     // }),
     //Mutation for post Apis
     //Exaple: const [addPost, {isLoading}] = useRegisterUserMutation();

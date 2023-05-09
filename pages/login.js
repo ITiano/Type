@@ -1,5 +1,6 @@
 import Link from "next/link";
 import routes from "routes/routes";
+import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 // Yup
@@ -42,13 +43,14 @@ const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
-    login(values).then((res) => {
-      localStorage.setItem("token", res.data.token);
-      // router.push(routes.home.path);
+  const onSubmit = async (values) => {
+    let { data } = await login(values);
+    if (data) {
+      localStorage.setItem("token", data?.token);
+      toast.success("Login was successful");
+      router.push(routes.home.path);
       // redirect to pervious page or home page???
-    });
+    }
   };
 
   return (

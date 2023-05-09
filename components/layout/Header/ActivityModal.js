@@ -31,7 +31,7 @@ const ActivityModal = ({ open }) => {
       <p className="font-semibold mt-8 text-left">Time Spent</p>
       <div className="px-5 flex-between-center my-4">
         <p>Over Active Practice Time</p>
-        <span className="bg-lightGreen text-white text-xs p-1 font-semibold rounded">14h, 17min</span>
+        <span className="bg-mainGreen text-white text-xs p-1 font-semibold rounded">14h, 17min</span>
       </div>
       <div className="flex-between-center gap-3 mt-5">
         <ProgressBar width={6} text="Last week" />
@@ -51,7 +51,7 @@ const ActivityElements = ({ value }) => (
       <p className="font-semibold">{value.title}</p>
     </div>
     <div className="flex-start-center gap-3">
-      <p className={` flex-start-center ${value.extraAmount > 0 ? "text-lightGreen" : "text-mainRed"}`}>
+      <p className={` flex-start-center ${value.extraAmount > 0 ? "text-mainGreen" : "text-mainRed"}`}>
         {value.extraAmount && (value.extraAmount > 0 ? <ArrowUpIcon /> : <ArrowUpsIcon />)}
         {value.extraAmount}
       </p>
