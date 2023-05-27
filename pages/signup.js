@@ -1,5 +1,6 @@
 import Link from "next/link";
 import routes from "routes/routes";
+import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 // Yup and formik
@@ -41,13 +42,12 @@ const Signup = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
-    register(values).then((res) => {
-      console.log(res);
-      // router.push(routes.login.path);
-      // redirect to pervious page or home page???
-    });
+  const onSubmit = async (values) => {
+    let { data } = await register(values);
+    if (data) {
+      toast.success("Register was successful");
+      router.push(routes.home.path);
+    }
   };
 
   return (
