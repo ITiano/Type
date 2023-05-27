@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 // Yup and formik
-import * as Yup from "yup";
+import { registerValidation } from "helper/Validations";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -24,14 +24,6 @@ import { useRegisterUserMutation } from "services/authApi";
 
 const defaultValues = { email: "", password: "", confirmPassword: "" };
 
-const validationSchema = Yup.object({
-  email: Yup.string().required("Email is a required property").email("Please enter a valid email"),
-  password: Yup.string().required("password is a required property").min(8, "Password must be at least 8 characters").max(64, "Password cant be longer than 64 characters"),
-  confirmPassword: Yup.string()
-    .required("password is a required property")
-    .oneOf([Yup.ref("password"), null], "Passwords doesnt match"),
-});
-
 const Signup = () => {
   const router = useRouter();
   const { height: minHeight } = useViewport("px");
@@ -39,7 +31,7 @@ const Signup = () => {
 
   const form = useForm({
     defaultValues,
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(registerValidation),
   });
 
   const onSubmit = async (values) => {

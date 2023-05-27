@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 // Yup
-import * as Yup from "yup";
 import { useForm } from "react-hook-form";
+import { loginValidation } from "helper/Validations";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Seo
@@ -28,11 +28,6 @@ const defaultValues = {
   // remember: true,
 };
 
-const validationSchema = Yup.object({
-  email: Yup.string().required("Email is a required property").email("Please enter a valid email"),
-  password: Yup.string().required("Password is a required property").min(8, "Password must be at least 8 characters").max(64, "Password cant be longer than 64 characters"),
-});
-
 const Login = () => {
   const router = useRouter();
   const { height: minHeight } = useViewport("px");
@@ -40,14 +35,14 @@ const Login = () => {
 
   const form = useForm({
     defaultValues,
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(loginValidation),
   });
 
   const onSubmit = async (values) => {
     let { data } = await login(values);
     if (data) {
       localStorage.setItem("token", data?.token);
-      toast.success("Login was successful");
+      toast.success("Login was successful :)");
       router.push(routes.home.path);
       // redirect to pervious page or home page???
     }
