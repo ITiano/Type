@@ -37,7 +37,7 @@ const Signup = () => {
   const onSubmit = async (values) => {
     let { data } = await register(values);
     if (data) {
-      toast.success("Register was successful");
+      toast.success("Register was successful :)");
       router.push(routes.home.path);
     }
   };

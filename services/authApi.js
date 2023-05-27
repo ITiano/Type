@@ -33,6 +33,9 @@ export const authApi = createApi({
         body: user,
       }),
     }),
+    getAccount: builder.query({
+      query: () => `auth/account/`
+    })
   }),
 });
 
