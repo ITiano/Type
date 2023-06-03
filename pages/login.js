@@ -11,9 +11,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 // Seo
 import { NextSeo } from "next-seo";
 
-// hooks
-import useViewport from "hooks/useViewport";
-
 // Components
 import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
@@ -30,7 +27,6 @@ const defaultValues = {
 
 const Login = () => {
   const router = useRouter();
-  const { height: minHeight } = useViewport("px");
   const [login, { isLoading }] = useLoginUserMutation();
 
   const form = useForm({
@@ -51,7 +47,7 @@ const Login = () => {
   return (
     <>
       <NextSeo title="login" />
-      <div style={{ minHeight }} className="bg-form centering py-[70px] px-[10px]">
+      <div className="bg-form centering py-[70px] px-[10px] min-h-[100svh]">
         <div className="form">
           <h1 className="text-3xl font-bold">Login</h1>
           <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to login</p>

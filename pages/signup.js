@@ -26,7 +26,6 @@ const defaultValues = { email: "", password: "", confirmPassword: "" };
 
 const Signup = () => {
   const router = useRouter();
-  const { height: minHeight } = useViewport("px");
   const [register, { isLoading }] = useRegisterUserMutation();
 
   const form = useForm({
@@ -45,7 +44,7 @@ const Signup = () => {
   return (
     <>
       <NextSeo title="Sign up" />
-      <div style={{ minHeight }} className="bg-form centering py-[70px] px-[10px]">
+      <div className="bg-form centering py-[70px] px-[10px] min-h-[100svh]">
         <div className="form">
           <h1 className="text-3xl font-bold">Sign up</h1>
           <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to login</p>
