@@ -2,16 +2,16 @@ import { fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 import toast from "react-hot-toast";
 
 export const staggeredBaseQueryWithBailOut = retry(async (args, api, extraOptions) => {
-  const result = await fetchBaseQuery({
+  const result = fetchBaseQuery({
     baseUrl: "https://typiano-back.iran.liara.run/",
     prepareHeaders: (headers) => {
-      let token = localStorage.getItem("token")
+      let token = localStorage.getItem("token");
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
       return headers;
     },
-  })(args, api, extraOptions);
+  });
   if (result?.error) {
     if (result?.error?.data?.detail) toast.error(result?.error?.data?.detail);
     else {
@@ -23,5 +23,5 @@ export const staggeredBaseQueryWithBailOut = retry(async (args, api, extraOption
     }
     retry.fail(result?.error);
   }
-  return result;
+  return await result(args, api, extraOptions);
 });

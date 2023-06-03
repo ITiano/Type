@@ -11,15 +11,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 // Seo
 import { NextSeo } from "next-seo";
 
-// hooks
-import useViewport from "hooks/useViewport";
-
 // Components
 import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
-
 import { useRegisterUserMutation } from "services/authApi";
 
 const defaultValues = { email: "", password: "", confirmPassword: "" };
@@ -27,11 +23,7 @@ const defaultValues = { email: "", password: "", confirmPassword: "" };
 const Signup = () => {
   const router = useRouter();
   const [register, { isLoading }] = useRegisterUserMutation();
-
-  const form = useForm({
-    defaultValues,
-    resolver: yupResolver(registerValidation),
-  });
+  const form = useForm({ defaultValues, resolver: yupResolver(registerValidation) });
 
   const onSubmit = async (values) => {
     let { data } = await register(values);
@@ -51,7 +43,13 @@ const Signup = () => {
           <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
             <CustomInput name="email" label="Email" placeholder="info@gmail.com" form={form} />
             <CustomInput name="password" label="Password" placeholder="Enter your password" Password form={form} />
-            <CustomInput name="confirmPassword" label="Confirm Password" placeholder="Enter your confirm password" Password form={form} />
+            <CustomInput
+              Password
+              form={form}
+              name="confirmPassword"
+              label="Confirm Password"
+              placeholder="Enter your confirm password"
+            />
             <CustomBtn type="submit" text="log in" loading={isLoading} className="black-btn w-full mt-4" />
           </form>
           <SignUpBottomForm />
