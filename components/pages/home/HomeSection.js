@@ -37,9 +37,7 @@ export default HomeSection;
 const Text = () => {
   return (
     <div className="absolute top-[70px] 2xs:top-[80px] 3xs:top-[90px] 2md:top-[150px] left-0 2md: z-40">
-      <h3 className="font-normal text-gray-4 mb-2 text-sm xs:xs:text-base 2xs:text-lg 3xs:text-xl sm:text-2xl 2md:text-3xl lg:text-4xl">
-        Lorem Ipsum is simply dummy text
-      </h3>
+      <h3 className="font-normal text-gray-4 mb-2 text-sm xs:xs:text-base 2xs:text-lg 3xs:text-xl sm:text-2xl 2md:text-3xl">Become a typist with typiano</h3>
       <h2 className="font-extrabold mb-8 text-sm xs:text-base 2xs:text-lg 3xs:text-2xl sm:text-4xl 2md:text-5xl lg:text-6xl">
         <p>Learn Touch Typing</p>
         <TypingEffect dynamicText={["for free."]} />
