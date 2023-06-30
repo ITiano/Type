@@ -26,7 +26,7 @@ module.exports = {
         "gray-4": "#949db0",
         mainBlue: "#aae6f0",
         mainRed: "#E35757",
-        lightGreen: "#8FE357",
+        mainGreen: "#8FE357",
         golden: "#FFD42A",
       },
       screens: {
@@ -37,7 +37,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/line-clamp")],
+  plugins: [],
 };
-
-// #E9EFFB

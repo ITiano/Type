@@ -6,10 +6,10 @@ const CustomCheckbox = ({ label, formik, name, className }) => {
       <div className="flex-start-center gap-1 px-1">
         <input
           id={name}
-          className={`text-mainBlue rounded cursor-pointer p-1.5 selection:red ${className}`}
           type="checkbox"
-          value={values[name]}
+          checked={values[name]}
           onChange={handleChange}
+          className={`text-mainBlue rounded cursor-pointer p-1.5 selection:red ${className}`}
         />
         <label htmlFor={name} className="text-xs opacity-70 cursor-pointer">
           {label}

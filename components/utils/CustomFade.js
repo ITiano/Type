@@ -2,22 +2,21 @@ import { Children, cloneElement, useEffect, useRef, useState } from "react";
 
 const CustomFade = ({ children }) => {
   const parentRef = useRef([]);
-  const [fadeAdded, setFadeAdded] = useState(false);
 
   useEffect(() => {
     const Observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !fadeAdded) {
+          if (entry.isIntersecting) {
             entry.target.classList.add("fade-in");
-            setFadeAdded(true);
+            Observer.disconnect(entry);
           }
         });
       },
-      { rootMargin: "0px 0px -200px 0px" }
+      { rootMargin: "0px 0px -100px 0px" }
     );
     parentRef?.current?.forEach((child) => Observer.observe(child));
-  }, [fadeAdded]);
+  }, []);
 
   return Children.map(children, (child, index) =>
     cloneElement(child, {

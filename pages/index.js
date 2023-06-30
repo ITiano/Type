@@ -1,9 +1,9 @@
 import PageLayout from "components/layout/PageLayout";
 
-// Sections
-import FeaturesSection from "containers/landing/_components/FeaturesSection";
-import GuideSections from "containers/landing/_components/GuideSections";
-import HomeSection from "containers/landing/_components/HomeSection";
+// Components
+import FeaturesSection from "components/pages/home/FeaturesSection";
+import GuideSections from "components/pages/home/GuideSections";
+import HomeSection from "components/pages/home/HomeSection";
 
 const Landing = () => {
   return (

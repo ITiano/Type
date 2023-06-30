@@ -6,13 +6,13 @@
 @tailwind utilities;
 
 html {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 @layer base {
@@ -37,12 +37,34 @@ html {
   .black-btn {
     @apply bg-dark text-light;
   }
+  .p-layout {
+    @apply px-4;
+  }
+  .layout-max-w {
+    @apply max-w-[1250px] mx-auto w-full;
+  }
+  .navigate {
+    @apply text-mainBlue font-semibold;
+  }
+  .fade-out {
+    @apply translate-y-2 opacity-0 invisible;
+  }
+  .fade-in {
+    @apply transition-all duration-[500ms] translate-y-0 opacity-100 visible;
+  }
   .dropdown-container {
-    @apply absolute p-2 transition duration-300 bg-white custom-shadow-1 z-50 w-28 top-10 right-5 rounded-lg;
+    @apply absolute p-2 transition duration-300 bg-white shadow-lg z-50 w-28 top-10 right-5 rounded-lg;
   }
   .dropdown-element {
     @apply p-2 transition duration-300 hover:bg-mainBlue hover:bg-opacity-50 cursor-pointer rounded-lg text-left;
   }
+  .input {
+    @apply w-full px-3 py-1 bg-white text-sm border-2 rounded-md transition-all duration-200;
+  }
+  .form {
+    @apply max-w-[400px] w-full border rounded-2xl backdrop-blur-sm bg-white bg-opacity-60 py-8 px-4 2xs:p-8;
+  }
+
   .centering {
     @apply flex justify-center items-center;
   }
@@ -82,36 +104,4 @@ html {
   .flex-end-start {
     @apply flex justify-end items-start;
   }
-  .frame-letter {
-    @apply bg-form bg-transparent centering h-screen;
-  }
-  .form {
-    @apply w-[23rem] border rounded-2xl p-8 backdrop-blur-sm bg-white bg-opacity-60;
-  }
-  .navigate {
-    @apply text-mainBlue font-semibold;
-  }
-  .layout-max-w {
-    @apply max-w-[1250px] mx-auto w-full;
-  }
-  .p-layout {
-    @apply px-4;
-  }
-  .fade-out {
-    @apply translate-y-2 opacity-0 invisible;
-  }
-  .fade-in {
-    @apply transition-all duration-[500ms] translate-y-0 opacity-100 visible;
-  }
 }
-
-.custom-shadow-1 {
-  box-shadow: 8px 8px 32px rgba(122, 119, 119, 0.16);
-}
-
-/* div {
-  background: #949db0;
-  background: #aeaeae;
-  background: #f2f1f2;
-  background: #f5f5f5;
-} */
