@@ -4,14 +4,12 @@ import CourseRating from "./CourseRating";
 import CourseReview from "./CourseReview";
 import CustomBtn from "components/utils/CustomBtn";
 import { useRouter } from "next/router";
-import useViewport from "hooks/useViewport";
 
 // const STRING_TEST = "In publishing and graphic design. In publishing and graphic design. In publishing and graphic.";
 
 const CourseContainer = ({ data }) => {
   const [step, setStep] = useState(1);
   const { push, query } = useRouter();
-  const { height: minHeight } = useViewport("px");
 
   useEffect(() => {
     data && setStep(1);
@@ -30,7 +28,7 @@ const CourseContainer = ({ data }) => {
   };
 
   return (
-    <div style={{ minHeight }} className="flex flex-col justify-between items-center p-layout">
+    <div className="flex flex-col justify-between items-center p-layout min-h-[100svh]">
       {step === 1 && <CourseReview data={data} setStep={setStep} />}
       {step === 2 && <Type data={data?.course} setStep={setStep} />}
       {step === 3 && <CourseRating data={data} setStep={setStep} />}

@@ -4,15 +4,12 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 // Yup
-import * as Yup from "yup";
 import { useForm } from "react-hook-form";
+import { loginValidation } from "helper/Validations";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Seo
 import { NextSeo } from "next-seo";
-
-// hooks
-import useViewport from "hooks/useViewport";
 
 // Components
 import GoogleIcon from "public/icons/GoogleIcon";
@@ -28,26 +25,20 @@ const defaultValues = {
   // remember: true,
 };
 
-const validationSchema = Yup.object({
-  email: Yup.string().required("Email is a required property").email("Please enter a valid email"),
-  password: Yup.string().required("Password is a required property").min(8, "Password must be at least 8 characters").max(64, "Password cant be longer than 64 characters"),
-});
-
 const Login = () => {
   const router = useRouter();
-  const { height: minHeight } = useViewport("px");
   const [login, { isLoading }] = useLoginUserMutation();
 
   const form = useForm({
     defaultValues,
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(loginValidation),
   });
 
   const onSubmit = async (values) => {
     let { data } = await login(values);
     if (data) {
       localStorage.setItem("token", data?.token);
-      toast.success("Login was successful");
+      toast.success("Login was successful :)");
       router.push(routes.home.path);
       // redirect to pervious page or home page???
     }
@@ -56,7 +47,7 @@ const Login = () => {
   return (
     <>
       <NextSeo title="login" />
-      <div style={{ minHeight }} className="bg-form centering py-[70px] px-[10px]">
+      <div className="bg-form centering py-[70px] px-[10px] min-h-[100svh]">
         <div className="form">
           <h1 className="text-3xl font-bold">Login</h1>
           <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to login</p>

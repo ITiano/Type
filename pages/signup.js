@@ -1,66 +1,55 @@
 import Link from "next/link";
 import routes from "routes/routes";
+import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 // Yup and formik
-import * as Yup from "yup";
+import { registerValidation } from "helper/Validations";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Seo
 import { NextSeo } from "next-seo";
 
-// hooks
-import useViewport from "hooks/useViewport";
-
 // Components
 import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
-
 import { useRegisterUserMutation } from "services/authApi";
 
 const defaultValues = { email: "", password: "", confirmPassword: "" };
 
-const validationSchema = Yup.object({
-  email: Yup.string().required("Email is a required property").email("Please enter a valid email"),
-  password: Yup.string().required("password is a required property").min(8, "Password must be at least 8 characters").max(64, "Password cant be longer than 64 characters"),
-  confirmPassword: Yup.string()
-    .required("password is a required property")
-    .oneOf([Yup.ref("password"), null], "Passwords doesnt match"),
-});
-
 const Signup = () => {
   const router = useRouter();
-  const { height: minHeight } = useViewport("px");
   const [register, { isLoading }] = useRegisterUserMutation();
+  const form = useForm({ defaultValues, resolver: yupResolver(registerValidation) });
 
-  const form = useForm({
-    defaultValues,
-    resolver: yupResolver(validationSchema),
-  });
-
-  const onSubmit = (values) => {
-    console.log(values);
-    register(values).then((res) => {
-      console.log(res);
-      // router.push(routes.login.path);
-      // redirect to pervious page or home page???
-    });
+  const onSubmit = async (values) => {
+    let { data } = await register(values);
+    if (data) {
+      toast.success("Register was successful :)");
+      router.push(routes.home.path);
+    }
   };
 
   return (
     <>
       <NextSeo title="Sign up" />
-      <div style={{ minHeight }} className="bg-form centering py-[70px] px-[10px]">
+      <div className="bg-form centering py-[70px] px-[10px] min-h-[100svh]">
         <div className="form">
           <h1 className="text-3xl font-bold">Sign up</h1>
           <p className="text-xs opacity-40 mt-1 mb-6 font-medium">Please enter your email and password to login</p>
           <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
             <CustomInput name="email" label="Email" placeholder="info@gmail.com" form={form} />
             <CustomInput name="password" label="Password" placeholder="Enter your password" Password form={form} />
-            <CustomInput name="confirmPassword" label="Confirm Password" placeholder="Enter your confirm password" Password form={form} />
+            <CustomInput
+              Password
+              form={form}
+              name="confirmPassword"
+              label="Confirm Password"
+              placeholder="Enter your confirm password"
+            />
             <CustomBtn type="submit" text="log in" loading={isLoading} className="black-btn w-full mt-4" />
           </form>
           <SignUpBottomForm />
