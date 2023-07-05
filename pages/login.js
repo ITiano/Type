@@ -1,48 +1,42 @@
+import { useCallback, useState } from "react";
 import Link from "next/link";
 import routes from "routes/routes";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
-
 // Yup
 import { useForm } from "react-hook-form";
 import { loginValidation } from "helper/Validations";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+// Services
+import { loginUser } from "services/auth/authApi";
 // Seo
 import { NextSeo } from "next-seo";
-
 // Components
 import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
 
-import { useLoginUserMutation } from "services/authApi";
-
-const defaultValues = {
-  email: "",
-  password: "",
-  // remember: true,
-};
+const defaultValues = { email: "", password: "" };
 
 const Login = () => {
   const router = useRouter();
-  const [login, { isLoading }] = useLoginUserMutation();
+  const [loading, setLoading] = useState(false);
+  const form = useForm({ defaultValues, resolver: yupResolver(loginValidation) });
 
-  const form = useForm({
-    defaultValues,
-    resolver: yupResolver(loginValidation),
-  });
-
-  const onSubmit = async (values) => {
-    let { data } = await login(values);
-    if (data) {
-      localStorage.setItem("token", data?.token);
-      toast.success("Login was successful :)");
-      router.push(routes.home.path);
-      // redirect to pervious page or home page???
-    }
-  };
+  const onSubmit = useCallback(
+    async (values) => {
+      setLoading(true);
+      loginUser(values)
+        .then((res) => {
+          localStorage.setItem("token", res?.token);
+          toast.success("Login was successful :)");
+          router.push(routes.home.path);
+        })
+        .finally(() => setLoading(false));
+    },
+    [router]
+  );
 
   return (
     <>
@@ -54,8 +48,7 @@ const Login = () => {
           <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
             <CustomInput name="email" label="Email" placeholder="info@gmail.com" form={form} />
             <CustomInput name="password" label="Password" placeholder="Enter your password" Password form={form} />
-            <div className="pt-4">{/* <CustomCheckbox name="remember" label="Remember me" formik={formik} /> */}</div>
-            <CustomBtn type="submit" text="log in" loading={isLoading} className="black-btn w-full mt-4" />
+            <CustomBtn type="submit" text="log in" loading={loading} className="black-btn w-full mt-4" />
           </form>
           <LoginBottomForm />
         </div>

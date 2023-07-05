@@ -1,9 +1,7 @@
 import React from "react";
-
 import CustomInput from "components/utils/CustomInput";
-import CustomBtn from "components/utils/CustomBtn";
-import { useGetAccountQuery } from "services/authApi";
 import { useForm } from "react-hook-form";
+import { useAuth } from "context/AuthContextProvider";
 
 const defaultValues = {
   firstName: "",
@@ -12,9 +10,7 @@ const defaultValues = {
 };
 
 const ProfileForm = () => {
-  const { data = [], error, isLoading } = useGetAccountQuery();
-
-  console.log("Profile", data);
+  const [user, setUser] = useAuth();
 
   const onSubmit = async (values) => {
     console.log(values);

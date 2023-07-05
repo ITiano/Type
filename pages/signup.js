@@ -2,35 +2,39 @@ import Link from "next/link";
 import routes from "routes/routes";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
-
 // Yup and formik
 import { registerValidation } from "helper/Validations";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 // Seo
 import { NextSeo } from "next-seo";
-
 // Components
 import GoogleIcon from "public/icons/GoogleIcon";
 import TwitterIcon from "public/icons/TwitterIcon";
 import CustomBtn from "components/utils/CustomBtn";
 import CustomInput from "components/utils/CustomInput";
-import { useRegisterUserMutation } from "services/authApi";
+// Services
+import { signupUser } from "services/auth/authApi";
+import { useAuth } from "context/AuthContextProvider";
+import { useState } from "react";
 
 const defaultValues = { email: "", password: "", confirmPassword: "" };
 
 const Signup = () => {
+  const [_, setUser] = useAuth();
   const router = useRouter();
-  const [register, { isLoading }] = useRegisterUserMutation();
+  const [loading, setLoading] = useState(false);
   const form = useForm({ defaultValues, resolver: yupResolver(registerValidation) });
 
   const onSubmit = async (values) => {
-    let { data } = await register(values);
-    if (data) {
-      toast.success("Register was successful :)");
-      router.push(routes.home.path);
-    }
+    setLoading(true);
+    signupUser(values)
+      .then((res) => {
+        setUser(res);
+        toast.success("Register was successful :)");
+        router.push(routes.home.path);
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -50,7 +54,7 @@ const Signup = () => {
               label="Confirm Password"
               placeholder="Enter your confirm password"
             />
-            <CustomBtn type="submit" text="log in" loading={isLoading} className="black-btn w-full mt-4" />
+            <CustomBtn type="submit" text="log in" loading={loading} className="black-btn w-full mt-4" />
           </form>
           <SignUpBottomForm />
         </div>
