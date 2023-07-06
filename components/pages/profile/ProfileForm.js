@@ -3,11 +3,7 @@ import CustomInput from "components/utils/CustomInput";
 import { useForm } from "react-hook-form";
 import { useAuth } from "context/AuthContextProvider";
 
-const defaultValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-};
+const defaultValues = { firstName: "", lastName: "", email: "" };
 
 const ProfileForm = () => {
   const [user, setUser] = useAuth();

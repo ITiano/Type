@@ -37,7 +37,7 @@ const UserProvider = ({ children }) => {
     !user &&
       getUserData()
         .then((res) => setUser(res))
-        .catch((err) => console.log(err));
+        .catch(() => null);
   }, [setUser, user]);
 
   return children;
