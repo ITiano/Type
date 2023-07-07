@@ -50,12 +50,12 @@ const FeaturesText = ({ className }) => {
   );
 };
 
-const Box = ({ title, description, image }) => {
+const Box = ({ title, description, image, className }) => {
   return (
     <div className="centering flex-col bg-white shadow shadow-slate-200 rounded-3xl p-6">
-      <Image src={image} alt="" width="150" height="150" />
+      <Image src={image} alt="" width="150" height="150" className={className} />
       <h5 className="font-medium text-2xl mb-5">{title}</h5>
-      <p className="text-gray-4 text-base line-clamp-3 text-justify">{description}</p>
+      <p className="text-gray-4 text-base line-clamp-3 text-center">{description}</p>
     </div>
   );
 };
