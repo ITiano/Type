@@ -21,7 +21,7 @@ const UserProfile = ({ navItems }) => {
           <Spinner />
         </div>
       ) : user === null ? (
-        <Link href="/" className="btn black-btn !py-1.5 !text-sm">
+        <Link href={routes.auth.path} className="btn black-btn !py-1.5 !text-sm">
           Register
         </Link>
       ) : (

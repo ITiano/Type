@@ -25,14 +25,12 @@ const ModalContainer = ({
   height = "fit-content",
 }) => {
   const modalRef = useRef();
-  const portalRef = useRef();
   const [mounted, setMounted] = useState(false);
   const [size, setSize] = useState({ width, height });
 
   const necessaryCloseHandler = (e) => !necessary && modalRef.current.contains(e.target) && setOpen && setOpen(false);
 
   useEffect(() => {
-    portalRef.current = document.getElementById("modal-portal");
     setMounted(true);
   }, []);
 
@@ -53,7 +51,7 @@ const ModalContainer = ({
   const innerWrapperYerOrNoModalCondition = yesOrNoModal ? "centering" : "flex-center-end 3xs:items-center";
   const innerContainerYerOrNoModalCondition = yesOrNoModal ? "rounded-[10px]" : "rounded-[10px_10px_0px_0px] 3xs:rounded-[10px]";
 
-  return portalRef?.current && mounted ? (
+  return mounted ? (
     createPortal(
       <div
         ref={modalRef}
@@ -82,7 +80,7 @@ const ModalContainer = ({
           </div>
         </div>
       </div>,
-      portalRef?.current
+      document.body
     )
   ) : (
     <></>

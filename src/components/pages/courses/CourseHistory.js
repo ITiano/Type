@@ -1,14 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import routes from "@routes/routes";
-
-// Icons
+import Stars from "@components/common/Stars";
 import { CoursesIcons } from "@helper/Methods";
 
-// Components
-import Stars from "@components/common/Stars";
+const CourseHistory = ({ course, history, kind }) => {
+  const { status, id } = course;
+  const { rating, score, speed, accuracy, duration } = history;
 
-const CourseHistory = ({ course: { id, status, rating, score, speed, accuracy, duration }, kind }) => {
   const elementsData = [
     { title: "Score", value: score },
     { title: "Speed", value: speed },
@@ -17,14 +16,14 @@ const CourseHistory = ({ course: { id, status, rating, score, speed, accuracy, d
   ];
 
   return (
-    <div className={`${kind === 1 ? "hidden md:flex-start-center gap-8" : "centering flex-col gap-3"}`}>
+    <div className={`${kind === 1 ? "flex-start-center gap-8" : "centering flex-col gap-3"}`}>
       <div className="centering gap-4 ">
         {status === 1 && <ElementBox title="Starts" value={rating} kind={kind} star />}
         {kind === 2 &&
           (status === 3 ? CoursesIcons[status] : <Link href={routes.courseId.path(id)}>{CoursesIcons[status]}</Link>)}
       </div>
       {status === 1 && (
-        <div className={kind === 1 ? "hidden md:flex-start-center gap-8" : "grid grid-cols-4 gap-3 flex-1"}>
+        <div className={kind === 1 ? "flex-start-center gap-8" : "grid grid-cols-4 gap-3 flex-1"}>
           {elementsData.map((element) => (
             <ElementBox key={element.title} {...element} kind={kind} />
           ))}
