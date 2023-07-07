@@ -1,5 +1,4 @@
-import { updateUser } from "@services/authApi";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { updateUser, getUser } from "@services/authApi";
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -17,20 +16,19 @@ const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
-  const supabase = createClientComponentClient();
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data, error } = await supabase.auth.getUser();
+    const getUserData = async () => {
+      const { data, error } = await getUser();
       setUser(error ? null : data.user);
-      if (data) {
+      if (data.user) {
         const { name, lastName, goals } = data.user.user_metadata;
         if (!goals) updateUser({ ...initialUserData, ...data.user.user_metadata });
         if (!name || !lastName) toast.error(<div className="text-xs">Please complete your profile from your panel</div>);
       }
     };
-    getUser();
-  }, [supabase.auth]);
+    getUserData();
+  }, []);
 
   return <AuthContext.Provider value={[user, setUser]}>{children}</AuthContext.Provider>;
 };
