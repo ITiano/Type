@@ -8,16 +8,16 @@ import { CoursesIcons } from "@helper/Methods";
 // Components
 import CourseDetail from "./CourseDetail";
 import CourseHistory from "./CourseHistory";
-import CourseOptions from "./CourseOptions";
+import HistoryIcon from "@public/icons/HistoryIcon";
 
-const CoursesSection = ({ kind, courses, setOpen }) => {
+const CoursesSection = ({ kind, data, setOpen }) => {
   return (
     <section
       className={`${
         kind === 1 ? "centering flex-col gap-5" : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
       } `}
     >
-      {courses.map((course) => (
+      {data.map((course) => (
         <CourseElement key={course?.id} course={course} kind={kind} setOpen={setOpen} />
       ))}
     </section>
@@ -27,7 +27,7 @@ const CoursesSection = ({ kind, courses, setOpen }) => {
 export default CoursesSection;
 
 const CourseElement = ({ course, kind, setOpen }) => {
-  const props = { course, kind, setOpen };
+  const props = { course, kind };
 
   return (
     <div
@@ -35,23 +35,27 @@ const CourseElement = ({ course, kind, setOpen }) => {
         kind === 1 ? "w-full" : "flex-col w-full max-w-[300px] sm:max-w-full mx-auto h-[280px] pb-8 pt-3"
       }`}
     >
-      {/* Options btn in kind 2 */}
-      <div className={`${kind === 2 ? "flex-end-center" : "hidden"} w-full `}>
-        <CourseOptions {...props} />
-      </div>
+      {course.status === 1 && (
+        <button className={`${kind === 2 ? "flex-end-center" : "hidden"} w-full`} onClick={() => setOpen(course)}>
+          <HistoryIcon />
+        </button>
+      )}
 
       <CourseDetail {...props} />
 
-      <CourseHistory {...props} />
+      {course.bestHistory && <CourseHistory {...props} history={course.bestHistory} />}
 
-      {/* Options btn in kind 1*/}
-      <div className={`${kind === 1 ? "flex-end-center" : "hidden"} gap-1`}>
+      <div className={`${kind === 1 ? "flex-end-center" : "hidden"} gap-2`}>
         {course.status === 3 ? (
           CoursesIcons[course.status]
         ) : (
           <Link href={routes.courseId.path(course.id)}>{CoursesIcons[course.status]}</Link>
         )}
-        <CourseOptions {...props} />
+        {course.status === 1 && (
+          <button onClick={() => setOpen(course)}>
+            <HistoryIcon />
+          </button>
+        )}
       </div>
     </div>
   );

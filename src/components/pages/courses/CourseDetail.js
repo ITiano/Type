@@ -7,7 +7,6 @@ const CourseDetail = ({ course, kind }) => {
       {CoursesImages()[course.kind]}
       <div className="text-center">
         <p className="font-semibold pb-1.5">{course?.name}</p>
-        <p className="text-gray-3 text-[.65rem]">5 min . 8 exercises</p>
       </div>
     </div>
   );

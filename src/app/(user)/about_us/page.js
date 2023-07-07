@@ -1,5 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import routes from "@routes/routes";
+
+export const metadata = { title: routes.aboutUs.title };
 
 const teamMembers = [
   { name: "Mobina Mirbagheri", position: "UiUx Design", image: "/images/avatar/Mobina.png" },

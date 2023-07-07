@@ -2,6 +2,9 @@ import React from "react";
 import CallingIcon from "public/icons/CallingIcon";
 import EmailIcon from "public/icons/EmailIcon";
 import LocationIcon from "public/icons/LocationIcon";
+import routes from "@routes/routes";
+
+export const metadata = { title: routes.contactUs.title };
 
 const ContactOptions = [
   { title: "Location", value: "Any where", icon: <LocationIcon /> },
