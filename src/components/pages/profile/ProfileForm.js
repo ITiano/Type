@@ -1,13 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import CustomInput from "@components/utils/CustomInput";
 import { useForm } from "react-hook-form";
 import { useAuth } from "src/context/AuthContextProvider";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { profileValidation } from "@helper/validation";
+import CustomBtn from "@components/utils/CustomBtn";
+import Spinner from "@components/utils/Spinner";
+import routes from "@routes/routes";
+import { useRouter } from "next/navigation";
 
-const defaultValues = { firstName: "", lastName: "", email: "" };
+const defaultValues = { name: "", lastName: "", email: "" };
 
 const ProfileForm = () => {
+  const router = useRouter();
   const [user, setUser] = useAuth();
 
   const onSubmit = (values) => {
@@ -16,10 +23,19 @@ const ProfileForm = () => {
 
   const form = useForm({
     defaultValues,
-    // resolver: yupResolver(loginValidation),
+    resolver: yupResolver(profileValidation),
   });
 
-  return (
+  useEffect(() => {
+    if (user) {
+      const { name, lastName } = user.user_metadata;
+      form.setValue("name", name || "");
+      form.setValue("email", user.email);
+      form.setValue("lastName", lastName || "");
+    } else if (user === null) router.push(routes.home.path);
+  }, [form, router, user]);
+
+  return user ? (
     <>
       <p className="mt-10 mb-5 font-semibold text-base">Edit profile</p>
       <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -27,7 +43,7 @@ const ProfileForm = () => {
           <div className="md:pr-6">
             <p className="text-xs text-gray-3 mt-2 mb-3">Personal</p>
             <div className="md:flex gap-3">
-              <CustomInput form={form} name="firstName" label="First name" />
+              <CustomInput form={form} name="name" label="First name" />
               <CustomInput form={form} name="lastName" label="Last name" />
             </div>
             <CustomInput form={form} name="email" label="Email" />
@@ -41,12 +57,13 @@ const ProfileForm = () => {
             <CustomInput form={form} label="first day of week" /> */}
           </div>
         </div>
-        {/* <div className="flex-end-center gap-2">
+        <div className="flex-end-center gap-2">
           <CustomBtn text="Save change" className="black-btn" disabled={!form.isValid} />
-          <CustomBtn text="Cancel" />
-        </div> */}
+        </div>
       </form>
     </>
+  ) : (
+    <Spinner />
   );
 };
 

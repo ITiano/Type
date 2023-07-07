@@ -35,9 +35,9 @@ const UserProfile = ({ navItems }) => {
           <Link href={routes.profile.path}>
             <UserIcon className="w-10" />
           </Link>
-          <HamburgerMenu navItems={navItems} />
         </>
       )}
+      <HamburgerMenu navItems={navItems} />
     </div>
   );
 };

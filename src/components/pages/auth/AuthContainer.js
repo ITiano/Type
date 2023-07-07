@@ -9,11 +9,7 @@ import { verifyUser } from "@services/authApi";
 import { useAuth } from "src/context/AuthContextProvider";
 import { useRouter } from "next/navigation";
 import routes from "@routes/routes";
-import * as Yup from "yup";
-
-const loginValidation = Yup.object({
-  email: Yup.string().required().email(),
-});
+import { loginValidation } from "@helper/validation";
 
 const defaultValues = { email: "" };
 
