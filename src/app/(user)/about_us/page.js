@@ -11,7 +11,7 @@ const teamMembers = [
 
 const AboutUs = () => {
   return (
-    <section className="px-4 mt-20">
+    <section className="px-4 mt-28">
       <h2 className="font-bold text-2xl text-center mb-5">Our Team</h2>
       <p className="text-justify mb-10">
         Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature

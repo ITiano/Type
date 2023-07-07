@@ -1,14 +1,4 @@
 import React from "react";
-
-// formik
-// import { useFormik } from "formik";
-
-// Components
-import CustomBtn from "@components/utils/CustomBtn";
-import CustomInput from "@components/utils/CustomInput";
-import CustomTextArea from "@components/utils/CustomTextArea";
-
-// Icons
 import CallingIcon from "public/icons/CallingIcon";
 import EmailIcon from "public/icons/EmailIcon";
 import LocationIcon from "public/icons/LocationIcon";
@@ -32,25 +22,22 @@ const ContactUsForm = () => {
   //   enableReinitialize: true,
   // });
   return (
-    // JUST TRY TO FOCUS
-    //   <section className="w-full max-w-3xl mx-auto my-8">
-    //   <h2 className="font-bold text-2xl text-center mb-5">Get in touch</h2>
-    //   <p className="text-center mb-8">Contact Us for quote, help or collaboration</p>
-    //   <ContactUsForm />
-    // </section>
-
-    <div className="flex-between-center flex-col sm:flex-row gap-10 shadow-lg p-10 w-full rounded-3xl bg-white">
-      <div className="flex flex-col gap-6 w-full sm:w-auto">
-        {ContactOptions.map((contact) => (
-          <ContactElements key={contact.title} {...contact} />
-        ))}
-      </div>
-      {/* <form onSubmit={formik.handleSubmit} className="flex-1">
+    <section className="w-full max-w-3xl mx-auto mb-8 mt-28">
+      <h2 className="font-bold text-2xl text-center mb-5">Get in touch</h2>
+      <p className="text-center mb-8">Contact Us for quote, help or collaboration</p>
+      <div className="flex-between-center flex-col sm:flex-row gap-10 shadow-lg p-10 w-full rounded-3xl bg-white">
+        <div className="flex flex-col gap-6 w-full sm:w-auto">
+          {ContactOptions.map((contact) => (
+            <ContactElements key={contact.title} {...contact} />
+          ))}
+        </div>
+        {/* <form onSubmit={formik.handleSubmit} className="flex-1">
         <CustomInput formik={formik} label="Email" placeholder="info@gmail.com" />
         <CustomTextArea formik={formik} label="Message" placeholder="type here..." />
         <CustomBtn text="Send" arrowEndBtn className="px-0" />
       </form> */}
-    </div>
+      </div>
+    </section>
   );
 };
 

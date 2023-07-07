@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 import CustomInput from "@components/utils/CustomInput";
 import { useForm } from "react-hook-form";
-import { useAuth } from "context/AuthContextProvider";
+import { useAuth } from "src/context/AuthContextProvider";
 
 const defaultValues = { firstName: "", lastName: "", email: "" };
 

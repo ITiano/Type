@@ -1,15 +1,9 @@
-import Link from "next/link";
-import routes from "@routes/routes";
-
-// typing effect
 import TypingEffect from "@components/utils/Typingeffect";
-
-// images
 import RoomSvg from "public/images/home/RoomSvg";
 import WallSvg from "public/images/home/WallSvg";
-import ArrowRightIcon from "public/icons/ArrowRightIcon";
 import HomeTopPatternSvg from "public/images/home/HomeTopPatternSvg";
 import HomeBottomPatternSvg from "public/images/home/HomeBottomPatternSvg";
+import NavigateLinks from "./NavigateLinks";
 
 const HomeSection = () => {
   return (
@@ -27,7 +21,7 @@ const HomeSection = () => {
         <HomeBottomPatternSvg className="absolute top-[calc(50%_-_10px)] left-0 max-w-[50%] max-h-[50%] w-full h-full [&>*]:w-full [&>*]:h-full" />
         <Text />
       </section>
-      <Buttons className="md:hidden" />
+      <NavigateLinks className="md:hidden" />
     </div>
   );
 };
@@ -44,25 +38,7 @@ const Text = () => {
         <p>Learn Touch Typing</p>
         <TypingEffect dynamicText={["for free."]} />
       </h2>
-      <Buttons className="hidden md:flex" />
-    </div>
-  );
-};
-
-const Buttons = ({ className }) => {
-  return (
-    <div className={`flex-start-center gap-4 ${className}`}>
-      <Link href={routes.courses.path} className="btn black-btn font-bold text-lg">
-        Get started
-      </Link>
-      <Link href={routes.auth.path}>
-        <div className="flex-start-center gap-1">
-          <span className="font-medium text-black text-lg">Register</span>
-          <span>
-            <ArrowRightIcon />
-          </span>
-        </div>
-      </Link>
+      <NavigateLinks className="hidden md:flex" />
     </div>
   );
 };
