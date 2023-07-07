@@ -51,9 +51,9 @@ const ProfileForm = () => {
           </div>
           <div className="md:pl-6">
             <p className="text-xs text-gray-3 mt-2 mb-3">Goal</p>
-            <CustomDropDown form={form} name="daily" label="Daily goal" />
-            <CustomDropDown form={form} name="weekly" label="weakly goal" />
-            <CustomDropDown form={form} name="monthly" label="first day of week" />
+            {/* <CustomDropDown form={form} name="daily" label="Daily goal" /> */}
+            {/* <CustomDropDown form={form} name="weekly" label="weakly goal" /> */}
+            {/* <CustomDropDown form={form} name="monthly" label="first day of week" /> */}
           </div>
         </div>
         <div className="flex-end-center gap-2">
