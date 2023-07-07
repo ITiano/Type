@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import HideIcon from "public/icons/HideIcon";
@@ -15,7 +15,7 @@ const CustomInput = ({ label, name, form, className, Password, handleBlur, type 
   return (
     <div>
       <label className="px-1 block mb-1">{label}</label>
-      <div className={`relative`}>
+      <div className="relative">
         <input
           {...rest}
           {...register(name)}
@@ -23,7 +23,9 @@ const CustomInput = ({ label, name, form, className, Password, handleBlur, type 
           autoComplete="off"
           onBlur={handleBlur}
           type={Password ? (HidePassword ? "password" : "text") : type}
-          className={`input ${errors[name] ? "border-mainRed focus:border-mainRed" : "border-gray-2 focus:border-mainBlue"} ${className} ${Password ? "pr-8" : ""}`}
+          className={`input ${
+            errors[name] ? "border-mainRed focus:border-mainRed" : "border-gray-2 focus:border-mainBlue"
+          } ${className} ${Password ? "pr-8" : ""}`}
         />
         {Password && (
           <span className="absolute top-[.6rem] right-3 cursor-pointer" onClick={() => setHidePassword(!HidePassword)}>

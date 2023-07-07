@@ -10,6 +10,7 @@ import CustomBtn from "@components/utils/CustomBtn";
 import Spinner from "@components/utils/Spinner";
 import routes from "@routes/routes";
 import { useRouter } from "next/navigation";
+import CustomDropDown from "@components/utils/CustomDropDown";
 
 const defaultValues = { firstName: "", lastName: "", email: "" };
 
@@ -47,14 +48,12 @@ const ProfileForm = () => {
               <CustomInput form={form} name="lastName" label="Last name" />
             </div>
             <CustomInput form={form} name="email" label="Email" />
-            {/* <CustomInput form={form} label="Password" Password />
-            <CustomInput form={form} label="Confirm password" Password /> */}
           </div>
           <div className="md:pl-6">
             <p className="text-xs text-gray-3 mt-2 mb-3">Goal</p>
-            {/* <CustomInput form={form} label="Daily goal" />
-            <CustomInput form={form} label="weakly goal" />
-            <CustomInput form={form} label="first day of week" /> */}
+            <CustomDropDown form={form} name="daily" label="Daily goal" />
+            <CustomDropDown form={form} name="weekly" label="weakly goal" />
+            <CustomDropDown form={form} name="monthly" label="first day of week" />
           </div>
         </div>
         <div className="flex-end-center gap-2">
