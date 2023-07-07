@@ -38,7 +38,6 @@ const DATA = [
     accuracy: 100,
     duration: "03:04",
   },
-
   {
     id: 4,
     course: "dd DD Dd dD",

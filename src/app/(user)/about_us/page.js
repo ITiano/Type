@@ -11,22 +11,20 @@ const teamMembers = [
 
 const AboutUs = () => {
   return (
-    <div>
-      <section className="px-4">
-        <h2 className="font-bold text-2xl text-center mb-5">Our Team</h2>
-        <p className="text-justify mb-10">
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
-          from 45 BC, making it over 2000 years old. Richard McClinton, a Latin professor at Hampden-Sydney College in Virginia,
-          looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of
-          the word in classical literature, discovered the uncountable source. Lorem Ipsum
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {teamMembers.map((teamMember) => (
-            <TeamMember key={teamMember.name} {...teamMember} />
-          ))}
-        </div>
-      </section>
-    </div>
+    <section className="px-4 mt-20">
+      <h2 className="font-bold text-2xl text-center mb-5">Our Team</h2>
+      <p className="text-justify mb-10">
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+        from 45 BC, making it over 2000 years old. Richard McClinton, a Latin professor at Hampden-Sydney College in Virginia,
+        looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the
+        word in classical literature, discovered the uncountable source. Lorem Ipsum
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        {teamMembers.map((teamMember) => (
+          <TeamMember key={teamMember.name} {...teamMember} />
+        ))}
+      </div>
+    </section>
   );
 };
 

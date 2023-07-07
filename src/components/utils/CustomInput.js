@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 import HideIcon from "public/icons/HideIcon";
 import ShowIcon from "public/icons/ShowIcon";

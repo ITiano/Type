@@ -13,7 +13,7 @@ import HomeBottomPatternSvg from "public/images/home/HomeBottomPatternSvg";
 
 const HomeSection = () => {
   return (
-    <>
+    <div className="relative">
       <section className="min-h-[350px] xs:min-h-[420px] 2xs:min-h-[500px] 3xs:min-h-[550px] sm:min-h-[600px]">
         <div className="max-w-[750px] relative ml-auto w-full">
           <span className="absolute right-0 w-full max-h-[500px] [&>*]:h-full centering">
@@ -28,7 +28,7 @@ const HomeSection = () => {
         <Text />
       </section>
       <Buttons className="md:hidden" />
-    </>
+    </div>
   );
 };
 
@@ -55,7 +55,7 @@ const Buttons = ({ className }) => {
       <Link href={routes.courses.path} className="btn black-btn font-bold text-lg">
         Get started
       </Link>
-      <Link href={routes.signup.path}>
+      <Link href={routes.auth.path}>
         <div className="flex-start-center gap-1">
           <span className="font-medium text-black text-lg">Register</span>
           <span>

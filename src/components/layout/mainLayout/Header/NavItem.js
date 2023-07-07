@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const NavItem = ({ navItem, setOpen }) => {
-  const { pathname } = useRouter();
+  const pathname = usePathname();
 
   return (
     <Link

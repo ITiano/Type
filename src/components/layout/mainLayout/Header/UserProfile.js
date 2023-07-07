@@ -3,8 +3,10 @@ import UserIcon from "public/icons/UserIcon";
 import React, { useState } from "react";
 import ActivityModal from "./ActivityModal";
 import HamburgerMenu from "./HamburgerMenu";
+import { useAuth } from "src/context/AuthContextProvider";
 
 const UserProfile = ({ navItems }) => {
+  const [user] = useAuth();
   const [OpenModal, setOpenModal] = useState(false);
 
   const handleBlur = (e) => !e.currentTarget.contains(e.relatedTarget) && setOpenModal(false);
