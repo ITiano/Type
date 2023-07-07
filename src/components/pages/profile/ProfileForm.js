@@ -11,7 +11,7 @@ import Spinner from "@components/utils/Spinner";
 import routes from "@routes/routes";
 import { useRouter } from "next/navigation";
 
-const defaultValues = { name: "", lastName: "", email: "" };
+const defaultValues = { firstName: "", lastName: "", email: "" };
 
 const ProfileForm = () => {
   const router = useRouter();
@@ -29,7 +29,7 @@ const ProfileForm = () => {
   useEffect(() => {
     if (user) {
       const { name, lastName } = user.user_metadata;
-      form.setValue("name", name || "");
+      form.setValue("firstName", name || "");
       form.setValue("email", user.email);
       form.setValue("lastName", lastName || "");
     } else if (user === null) router.push(routes.home.path);
@@ -43,7 +43,7 @@ const ProfileForm = () => {
           <div className="md:pr-6">
             <p className="text-xs text-gray-3 mt-2 mb-3">Personal</p>
             <div className="md:flex gap-3">
-              <CustomInput form={form} name="name" label="First name" />
+              <CustomInput form={form} name="firstName" label="First name" />
               <CustomInput form={form} name="lastName" label="Last name" />
             </div>
             <CustomInput form={form} name="email" label="Email" />

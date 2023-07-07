@@ -1,9 +1,8 @@
 import { updateUser, getUser } from "@services/authApi";
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { toast } from "react-hot-toast";
 
 const initialUserData = {
-  name: "",
+  firstName: "",
   lastName: "",
   goals: {
     daily: 3000,
@@ -21,10 +20,9 @@ const AuthContextProvider = ({ children }) => {
     const getUserData = async () => {
       const { data, error } = await getUser();
       setUser(error ? null : data.user);
-      if (data.user) {
-        const { name, lastName, goals } = data.user.user_metadata;
+      if (data) {
+        const { goals } = data.user.user_metadata;
         if (!goals) updateUser({ ...initialUserData, ...data.user.user_metadata });
-        if (!name || !lastName) toast.error(<div className="text-xs">Please complete your profile from your panel</div>);
       }
     };
     getUserData();
