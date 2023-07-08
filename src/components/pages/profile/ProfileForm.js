@@ -36,7 +36,6 @@ const ProfileForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(value);
   };
 
   useEffect(() => {

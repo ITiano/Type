@@ -23,7 +23,6 @@ const ContactUsForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log();
   };
 
   return (
