@@ -1,11 +1,11 @@
+"use client";
 import { useEffect, useState } from "react";
 import Type from "@components/pages/course/Type";
 import CourseRating from "./CourseRating";
 import CourseReview from "./CourseReview";
 import CustomBtn from "@components/utils/CustomBtn";
-import { useRouter } from "next/router";
-
-const STRING_TEST = `text this is a test this is a test of typing is a test of typing  test is a test typing tis is a rest of typing test is a test of typing`;
+import { useRouter } from "next/navigation";
+import React from "react";
 
 const CourseContainer = ({ data }) => {
   const [step, setStep] = useState(1);

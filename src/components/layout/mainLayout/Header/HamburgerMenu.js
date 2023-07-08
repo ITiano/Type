@@ -20,7 +20,7 @@ const HamburgerMenu = ({ navItems }) => {
 
       <div
         ref={menuRef}
-        className={`min-h-[100svh] fixed top-0 left-0 max-w-[230px] w-full bg-white z-50 flex flex-col gap-4 transition-all duration-300 p-4 pt-10 ${
+        className={`min-h-[100svh] fixed top-0 left-0 max-w-[230px] w-full bg-white z-50 flex flex-col gap-4 transition p-4 pt-10 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -31,7 +31,7 @@ const HamburgerMenu = ({ navItems }) => {
 
       <div
         onClick={closeHandler}
-        className={`min-h-[100svh] fixed top-0 left-0 w-full bg-black/10 transition-all duration-300 ${
+        className={`min-h-[100svh] fixed top-0 left-0 w-full bg-black/10 transition ${
           open ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       ></div>

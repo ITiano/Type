@@ -5,7 +5,7 @@ import ModalContainer from "@components/utils/ModalContainer";
 
 const CourseHistoryModal = ({ open, setOpen }) => {
   return (
-    <ModalContainer open={open} setOpen={setOpen} width="700px" clear>
+    <ModalContainer open={open} setOpen={setOpen} width="700px" clear title="Course histories">
       {open && (
         <>
           <div className="flex-start-center [&>*]:flex-row mb-4">

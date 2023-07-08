@@ -1,7 +1,8 @@
 const DATA = [
   {
     id: 1,
-    course: "AA aa Aa aA",
+    course:
+      "text this is a test this is a test of typing is a test of typing  test is a test typing tis is a rest of typing test is a test of typing",
     SEO: { title: "Lesson 1", description: "" },
     name: "Lesson 1",
     status: 1,

@@ -20,7 +20,7 @@ const AuthContextProvider = ({ children }) => {
     const getUserData = async () => {
       const { data, error } = await getUser();
       setUser(error ? null : data.user);
-      if (data) {
+      if (data.user) {
         const { goals } = data.user.user_metadata;
         if (!goals) updateUser({ ...initialUserData, ...data.user.user_metadata });
       }

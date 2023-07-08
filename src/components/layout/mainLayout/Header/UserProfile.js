@@ -12,7 +12,7 @@ const UserProfile = ({ navItems }) => {
   const [user] = useAuth();
   const [OpenModal, setOpenModal] = useState(false);
 
-  const handleBlur = (e) => !e.currentTarget.contains(e.relatedTarget) && setOpenModal(false);
+  const onBlur = (e) => !e.currentTarget.contains(e.relatedTarget) && setOpenModal(false);
 
   return (
     <div className="flex-end-center gap-1 min-w-[100px] h-[40px]">
@@ -26,9 +26,9 @@ const UserProfile = ({ navItems }) => {
         </Link>
       ) : (
         <>
-          <button onBlur={handleBlur} className="relative">
+          <button onBlur={onBlur} className="relative">
             <span onClick={() => setOpenModal(!OpenModal)}>
-              <ArrowDownIcon className={`${OpenModal && "rotate-180"} transition-all duration-500`} />
+              <ArrowDownIcon className={`${OpenModal && "rotate-180"} transition`} />
             </span>
             <ActivityModal open={OpenModal} />
           </button>

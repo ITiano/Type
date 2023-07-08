@@ -1,5 +1,6 @@
 import Stars from "@components/common/Stars";
 import { CoursesImages } from "@helper/Methods";
+import React from "react";
 
 const CourseRating = ({ data: { kind, name, score, accuracy, speed, duration } }) => {
   const elements = [

@@ -1,4 +1,5 @@
 import { CoursesImages } from "@helper/Methods";
+import React from "react";
 
 const CourseReview = ({ data }) => {
   return (

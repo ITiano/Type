@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full h-[64px] top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-[250ms] ${
+      className={`fixed w-full h-[64px] top-0 left-1/2 -translate-x-1/2 z-50 transition ${
         scrollData.offsetY ? "bg-white/40 backdrop-blur-md shadow" : "bg-transparent"
       } ${scrollData.isScrollingDown ? "-translate-y-full" : "-translate-y-0"}`}
     >

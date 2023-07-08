@@ -15,7 +15,7 @@ const ActivityModal = ({ open }) => {
 
   return (
     <div
-      className={`dropdown-container border w-[28rem] py-8 px-6 transition-all duration-300 ${
+      className={`dropdown-container border w-[28rem] py-8 px-6 transition ${
         open ? "opacity-100 visible" : "opacity-0 invisible"
       } cursor-default`}
     >

@@ -28,6 +28,9 @@ html {
   textarea {
     @apply !outline-none !ring-0 focus:!ring-0 !ring-offset-0 placeholder:text-gray-3 focus:!outline-none resize-none;
   }
+  .transition {
+    @apply transition-all duration-300;
+  }
 }
 
 @layer components {
@@ -50,16 +53,16 @@ html {
     @apply translate-y-2 opacity-0 invisible;
   }
   .fade-in {
-    @apply transition-all duration-[500ms] translate-y-0 opacity-100 visible;
+    @apply transition translate-y-0 opacity-100 visible;
   }
   .dropdown-container {
-    @apply absolute p-2 transition duration-300 bg-white shadow-lg z-50 w-28 top-10 right-5 rounded-lg;
+    @apply absolute p-2 transition bg-white shadow-lg z-50 w-28 top-10 right-5 rounded-lg;
   }
   .dropdown-element {
-    @apply p-2 transition duration-300 hover:bg-mainBlue hover:bg-opacity-50 cursor-pointer rounded-lg text-left;
+    @apply p-2 transition hover:bg-mainBlue hover:bg-opacity-50 cursor-pointer rounded-lg text-left;
   }
   .input {
-    @apply w-full px-3 py-1 bg-white text-sm border-2 rounded-md transition-all duration-200;
+    @apply w-full px-3 py-1 bg-white text-sm border-2 rounded-md transition;
   }
   .form {
     @apply max-w-[400px] w-full border rounded-2xl backdrop-blur-sm bg-white bg-opacity-60 py-8 px-4 2xs:p-8;

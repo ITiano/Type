@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import CloseIcon from "public/icons/CloseIcon";
 
 const classes = {
-  transition: "transition-all duration-[350ms]",
+  transition: "transition",
   outerWrapper: "fixed top-0 left-0 z-50 min-h-screen centering w-full h-full bg-black/70",
   innerWrapper:
     "max-h-[90vh] 3xs:max-h-[85vh] lg:max-h-[900px] h-full w-full mt-auto 3xs:my-auto max-w-[1400px] overflow-hidden 3xs:px-5",

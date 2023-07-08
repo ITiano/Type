@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ProgressLine from "./ProgressLine";
+import React from "react";
 
 const errorColor = "bg-red-400";
 const successColor = "bg-mainGreen-200";
@@ -113,7 +114,7 @@ const Type = ({ data = "", setStep }) => {
                       >
                         {item}
                         <span
-                          className={`transition-all duration-100 absolute inset-0 flex items-center justify-center ${
+                          className={`transition absolute inset-0 flex items-center justify-center ${
                             show ? "opacity-100" : "opacity-0"
                           }  ${showNowError(length + index).className} `}
                         >

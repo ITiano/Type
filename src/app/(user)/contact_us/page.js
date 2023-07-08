@@ -1,8 +1,12 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import CallingIcon from "public/icons/CallingIcon";
 import EmailIcon from "public/icons/EmailIcon";
 import LocationIcon from "public/icons/LocationIcon";
 import routes from "@routes/routes";
+import CustomTextArea from "@components/utils/CustomTextArea";
+import CustomInput from "@components/utils/CustomInput";
+import CustomBtn from "@components/utils/CustomBtn";
 
 export const metadata = { title: routes.contactUs.title };
 
@@ -12,18 +16,16 @@ const ContactOptions = [
   { title: "Email", value: "itiano@gmail.com", icon: <EmailIcon /> },
 ];
 
-const initialValues = {};
+const initialValues = { title: "", description: "" };
 
 const ContactUsForm = () => {
-  const onSubmit = async (values) => {
-    console.log(values);
+  const [value, setValue] = useState(initialValues);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log();
   };
 
-  // const formik = useFormik({
-  //   onSubmit,
-  //   initialValues,
-  //   enableReinitialize: true,
-  // });
   return (
     <section className="w-full max-w-3xl mx-auto mb-8 mt-28">
       <h2 className="font-bold text-2xl text-center mb-5">Get in touch</h2>
@@ -34,11 +36,11 @@ const ContactUsForm = () => {
             <ContactElements key={contact.title} {...contact} />
           ))}
         </div>
-        {/* <form onSubmit={formik.handleSubmit} className="flex-1">
-        <CustomInput formik={formik} label="Email" placeholder="info@gmail.com" />
-        <CustomTextArea formik={formik} label="Message" placeholder="type here..." />
-        <CustomBtn text="Send" arrowEndBtn className="px-0" />
-      </form> */}
+        <form onSubmit={onSubmit} className="flex-1">
+          <CustomInput value={value} setValue={setValue} label="Email" name="title" placeholder="info@gmail.com" />
+          <CustomTextArea value={value} setValue={setValue} label="Message" name="description" placeholder="type here..." />
+          <CustomBtn text="Send" arrowEndBtn className="px-0" />
+        </form>
       </div>
     </section>
   );
