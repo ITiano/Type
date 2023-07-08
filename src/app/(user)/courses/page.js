@@ -4,6 +4,8 @@ import { getCourses, getHistories } from "@services/coursesApi";
 
 export const metadata = { title: routes.courses.title };
 
+export const dynamic = "force-dynamic";
+
 const Courses = async () => {
   const { data: courses, error: coursesError } = await getCourses();
   const { data: allHistories, error: historiesError } = await getHistories();
