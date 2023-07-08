@@ -1,14 +1,13 @@
-import React from "react";
-import Link from "next/link";
+import React, { useCallback } from "react";
 import routes from "@routes/routes";
-
-// Icons
 import { CoursesIcons } from "@helper/Methods";
-
-// Components
 import CourseDetail from "./CourseDetail";
 import CourseHistory from "./CourseHistory";
 import { HistoryIcon } from "@assets/icons/icons";
+import CustomBtn from "@components/utils/CustomBtn";
+import { useAuth } from "src/context/AuthContextProvider";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 const CoursesSection = ({ kind, data, setOpen }) => {
   return (
@@ -27,7 +26,13 @@ const CoursesSection = ({ kind, data, setOpen }) => {
 export default CoursesSection;
 
 const CourseElement = ({ course, kind, setOpen }) => {
+  const [user] = useAuth();
+  const router = useRouter();
   const props = { course, kind };
+
+  const navigateHandler = useCallback(() => {
+    user ? router.push(routes.courseId.path(course.id)) : toast.error("You need to login first :)");
+  }, [course.id, router, user]);
 
   return (
     <div
@@ -45,11 +50,11 @@ const CourseElement = ({ course, kind, setOpen }) => {
 
       {course.bestHistory && <CourseHistory {...props} history={course.bestHistory} />}
 
-      <div className={`${kind === 1 ? "flex-end-center" : "hidden"} gap-2`}>
+      <div className={`${kind === 1 ? "flex-end-center" : "hidden"} gap-3`}>
         {course.status === 3 ? (
           CoursesIcons[course.status]
         ) : (
-          <Link href={routes.courseId.path(course.id)}>{CoursesIcons[course.status]}</Link>
+          <CustomBtn onClick={navigateHandler} text={CoursesIcons[course.status]} className="px-0" />
         )}
         {course.status === 1 && (
           <button onClick={() => setOpen(course)}>

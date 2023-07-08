@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import routes from "@routes/routes";
 import Navbar from "./Navbar";
 import UserProfile from "./UserProfile";
+import Link from "next/link";
 
 const navItems = [routes.home, routes.guide, routes.courses, routes.aboutUs, routes.contactUs];
 
@@ -28,7 +29,9 @@ const Header = () => {
       } ${scrollData.isScrollingDown ? "-translate-y-full" : "-translate-y-0"}`}
     >
       <div className="layout-max-w flex-between-center p-3 md:px-4">
-        <h2 className="text-dark font-bold text-center text-base">Typiano</h2>
+        <Link className="text-dark font-bold text-center text-base" href={routes.home.path}>
+          Typiano
+        </Link>
         <Navbar navItems={navItems} />
         <UserProfile navItems={navItems} />
       </div>

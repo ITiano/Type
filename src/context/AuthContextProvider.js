@@ -19,11 +19,7 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const getUserData = async () => {
       const { data, error } = await getUser();
-      setUser(error ? null : data.user);
-      if (data.user) {
-        const { goals } = data.user.user_metadata;
-        if (!goals) updateUser({ ...initialUserData, ...data.user.user_metadata });
-      }
+      setUser(error ? null : { ...data.user, user_metadata: { ...initialUserData, ...data.user.user_metadata } });
     };
     getUserData();
   }, []);
