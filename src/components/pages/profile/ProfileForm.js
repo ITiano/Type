@@ -1,42 +1,37 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CustomInput from "@components/utils/CustomInput";
 import { useAuth } from "src/context/AuthContextProvider";
 import CustomBtn from "@components/utils/CustomBtn";
 import { useRouter } from "next/navigation";
 import CustomDropDown from "@components/utils/CustomDropDown";
+import { dailyGoalList, monthlyGoalList, weeklyGoalList } from "@helper/utils";
+import { updateUser } from "@services/authApi";
+import { toast } from "react-hot-toast";
 
 const defaultValues = { firstName: "", lastName: "", email: "", daily: "", weekly: "", monthly: "" };
-
-const dailyList = [
-  { value: 40, label: "40 min" },
-  { value: 30, label: "30 min" },
-  { value: 20, label: "20 min" },
-];
-
-const weeklyList = [
-  { value: 40, label: "40 min" },
-  { value: 30, label: "30 min" },
-  { value: 20, label: "20 min" },
-];
-
-const monthlyList = [
-  { value: 40, label: "40 min" },
-  { value: 30, label: "30 min" },
-  { value: 20, label: "20 min" },
-];
 
 const ProfileForm = () => {
   const router = useRouter();
   const [user, setUser] = useAuth();
+  const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(defaultValues);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    
-  };
+  const onSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      const { data, error } = await updateUser(value);
+      if (error) toast.error("Sth went wrong please try again :(");
+      else {
+        setUser(data.user);
+        toast.success("Profile updated successfully :)");
+      }
+      setLoading(false);
+    },
+    [setUser, value]
+  );
 
   useEffect(() => {
     setValue((prev) => ({ ...prev, email: user.email, ...user.user_metadata }));
@@ -60,14 +55,14 @@ const ProfileForm = () => {
           <div className="md:pl-6">
             <p className="text-xs text-gray-3 mt-2 mb-3">Goal</p>
             <div className="flex flex-col gap-3">
-              <CustomDropDown value={value} setValue={setValue} name="daily" label="Daily goal" list={dailyList} />
-              <CustomDropDown value={value} setValue={setValue} name="weekly" label="weakly goal" list={weeklyList} />
-              <CustomDropDown value={value} setValue={setValue} name="monthly" label="first day of week" list={monthlyList} />
+              <CustomDropDown value={value} setValue={setValue} name="daily" label="Daily goal" list={dailyGoalList} />
+              <CustomDropDown value={value} setValue={setValue} name="weekly" label="weakly goal" list={weeklyGoalList} />
+              <CustomDropDown value={value} setValue={setValue} name="monthly" label="first day of week" list={monthlyGoalList} />
             </div>
           </div>
         </div>
         <div className="flex-end-center mt-4">
-          <CustomBtn text="Save change" className="black-btn" disabled={disabled} />
+          <CustomBtn type="submit" text="Save change" className="black-btn" disabled={disabled} loading={loading} />
         </div>
       </form>
     </>

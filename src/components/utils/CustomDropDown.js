@@ -3,13 +3,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import CustomInput from "./CustomInput";
 
-const CustomDropDown = ({ label, className, list, setValue, name }) => {
+const CustomDropDown = ({ label, className, list, setValue, value, name }) => {
   const [form, setForm] = useState({ search: "" });
   const [open, setOpen] = useState(false);
   const containerRef = useRef();
 
   const onClick = (item) => {
-    setValue((prev) => ({ ...prev, [name]: item.value }));
+    setValue((prev) => ({ ...prev, [name]: item }));
     setForm({ search: item.label });
     setOpen(false);
   };
@@ -21,6 +21,10 @@ const CustomDropDown = ({ label, className, list, setValue, name }) => {
       return () => window.removeEventListener("click", blurHandler);
     }
   }, [open]);
+
+  useEffect(() => {
+    value && value[name] && setForm({ search: value[name].label });
+  }, [name, value]);
 
   return (
     <div className="relative" ref={containerRef}>
