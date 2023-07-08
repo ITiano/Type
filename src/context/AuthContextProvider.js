@@ -5,6 +5,7 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 const initialUserData = {
   firstName: "",
   lastName: "",
+  profile_cover: null,
   daily: dailyGoalList[0],
   weekly: weeklyGoalList[1],
   monthly: monthlyGoalList[2],

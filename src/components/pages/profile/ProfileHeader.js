@@ -1,10 +1,15 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Stars from "@components/common/Stars";
 import { AssignImgIcon, ShareIcon, UserIcon } from "@assets/icons/icons";
 import { useAuth } from "src/context/AuthContextProvider";
+import { toast } from "react-hot-toast";
+import { updateUser, uploadProfile } from "@services/authApi";
+import Image from "next/image";
 
 const ProfileHeader = () => {
-  const [user] = useAuth();
+  const inputRef = useRef();
+  const [user, setUser] = useAuth();
+  const [value, setValue] = useState(null);
 
   const { email, lastName, firstName } = useMemo(() => {
     const email = user?.email;
@@ -13,12 +18,50 @@ const ProfileHeader = () => {
     return { email, firstName, lastName };
   }, [user?.email, user?.user_metadata?.firstName, user?.user_metadata?.lastName]);
 
+  useEffect(() => {
+    const updateProfile = () => {
+      const promise = new Promise(async (resolve, reject) => {
+        const { data: uploadData, error: uploadError } = await uploadProfile(value);
+        if (uploadError) reject();
+        else {
+          const { data, error } = await updateUser({ ...user.metadata, profile_cover: "user_profile/" + uploadData.path });
+          if (error) reject();
+          else {
+            setUser(data.user);
+            resolve();
+          }
+        }
+        setValue(null);
+      });
+      toast.promise(promise, {
+        loading: "pending",
+        error: "Sth went wrong please try again later",
+        success: "Profile photo updated successfully :)",
+      });
+    };
+    value && updateProfile();
+  }, [setUser, user.metadata, value]);
+
   return (
     <div className="flex-between-center">
       <div className="flex-start-center gap-4 2xs:gap-5">
         <div className="relative">
-          <UserIcon className="w-16 2xs:w-20 md:w-28" />
-          <AssignImgIcon className="absolute bottom-0 right-0 cursor-pointer w-7 h-7" />
+          {user?.user_metadata?.profile_cover ? (
+            <Image
+              height={50}
+              width={50}
+              quality={100}
+              className="w-16 2xs:w-20 md:w-28"
+              alt={user.user_metadata.profile_cover}
+              src={process.env.NEXT_PUBLIC_IMAGE_URL + user.user_metadata.profile_cover}
+            />
+          ) : (
+            <UserIcon className="w-16 2xs:w-20 md:w-28" />
+          )}
+          <input type="file" className="hidden" ref={inputRef} onChange={(e) => setValue(e.target.files[0])} />
+          <span onClick={() => inputRef.current.click()}>
+            <AssignImgIcon className="absolute bottom-0 right-0 cursor-pointer w-7 h-7" />
+          </span>
         </div>
         <div>
           <p className="text-base font-semibold mb-0.5 pl-1">
@@ -30,7 +73,6 @@ const ProfileHeader = () => {
         </div>
       </div>
       <div className="bg-white rounded-full w-8 h-8 centering cursor-pointer">
-        
         <ShareIcon />
       </div>
     </div>
