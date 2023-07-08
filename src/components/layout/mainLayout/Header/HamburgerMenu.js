@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import MenuBarIcon from "public/icons/MenuBarIcon";
 import NavItem from "./NavItem";
+import { MenuBarIcon } from "@assets/icons/icons";
 
 const HamburgerMenu = ({ navItems }) => {
   const menuRef = useRef();

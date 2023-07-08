@@ -1,8 +1,6 @@
+import { CloseIcon } from "@assets/icons/icons";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-
-// Icons
-import CloseIcon from "public/icons/CloseIcon";
 
 const classes = {
   transition: "transition",

@@ -1,12 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import CallingIcon from "public/icons/CallingIcon";
-import EmailIcon from "public/icons/EmailIcon";
-import LocationIcon from "public/icons/LocationIcon";
 import routes from "@routes/routes";
 import CustomTextArea from "@components/utils/CustomTextArea";
 import CustomInput from "@components/utils/CustomInput";
 import CustomBtn from "@components/utils/CustomBtn";
+import { CallingIcon, EmailIcon, LocationIcon } from "@assets/icons/icons";
 
 export const metadata = { title: routes.contactUs.title };
 

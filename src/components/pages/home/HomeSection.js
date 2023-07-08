@@ -1,8 +1,8 @@
 import TypingEffect from "@components/utils/Typingeffect";
-import RoomSvg from "public/images/home/RoomSvg";
-import WallSvg from "public/images/home/WallSvg";
-import HomeTopPatternSvg from "public/images/home/HomeTopPatternSvg";
-import HomeBottomPatternSvg from "public/images/home/HomeBottomPatternSvg";
+import RoomSvg from "@assets/vectors/RoomSvg";
+import WallSvg from "@assets/vectors/WallSvg";
+import HomeTopPatternSvg from "@assets/vectors/HomeTopPatternSvg";
+import HomeBottomPatternSvg from "@assets/vectors/HomeBottomPatternSvg";
 import NavigateLinks from "./NavigateLinks";
 
 const HomeSection = () => {

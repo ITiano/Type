@@ -1,5 +1,5 @@
-import ArrowLeftIcon from "public/icons/ArrowLeftIcon";
-import ArrowRightIcon from "public/icons/ArrowRightIcon";
+
+import { ArrowLeftIcon, ArrowRightIcon } from "@assets/icons/icons";
 import Spinner from "./Spinner";
 
 const CustomBtn = ({ text, endIcon, onClick, loading, disabled, className, startIcon, arrowEndBtn, arrowStartBtn, type = "button" }) => {

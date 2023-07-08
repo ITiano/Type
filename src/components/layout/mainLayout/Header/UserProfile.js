@@ -1,12 +1,11 @@
-import ArrowDownIcon from "public/icons/ArrowDownIcon";
-import UserIcon from "public/icons/UserIcon";
 import React, { useState } from "react";
-import ActivityModal from "./ActivityModal";
 import HamburgerMenu from "./HamburgerMenu";
 import { useAuth } from "src/context/AuthContextProvider";
 import Link from "next/link";
 import Spinner from "@components/utils/Spinner";
 import routes from "@routes/routes";
+import ActivityModal from "./ActivityModal";
+import { ArrowDownIcon, UserIcon } from "@assets/icons/icons";
 
 const UserProfile = ({ navItems }) => {
   const [user] = useAuth();

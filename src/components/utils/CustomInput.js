@@ -1,20 +1,19 @@
 "use client";
+import { HideIcon, ShowIcon } from "@assets/icons/icons";
 import { useState } from "react";
 import React from "react";
-import HideIcon from "public/icons/HideIcon";
-import ShowIcon from "public/icons/ShowIcon";
 
 const CustomInput = ({
-  label,
   name,
-  className,
+  value,
+  label,
   onBlur,
   onFocus,
   Password,
-  setValue,
-  value,
-  type = "text",
   disabled,
+  setValue,
+  className,
+  type = "text",
   placeholder = "",
 }) => {
   const [HidePassword, setHidePassword] = useState(true);

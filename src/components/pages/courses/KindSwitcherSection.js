@@ -1,8 +1,5 @@
 import React from "react";
-
-// Icons
-import RowVerticalIcon from "public/icons/GridIcon";
-import RowHorizontalIcon from "public/icons/RowIcon";
+import { GridIcon, RowIcon } from "@assets/icons/icons";
 
 const KindSwitcherSection = ({ kind, setKind }) => {
   return (
@@ -15,13 +12,13 @@ const KindSwitcherSection = ({ kind, setKind }) => {
             onClick={() => setKind(1)}
             className={`p-2 rounded-full transition ${kind === 1 ? " bg-mainBlue" : "cursor-pointer"}`}
           >
-            <RowVerticalIcon className={`${kind === 1 ? "text-white" : ""}`} />
+            <GridIcon className={`${kind === 1 ? "text-white" : ""}`} />
           </span>
           <span
             onClick={() => setKind(2)}
             className={`p-2 rounded-full transition ${kind === 2 ? " bg-mainBlue" : "cursor-pointer"}`}
           >
-            <RowHorizontalIcon className={`${kind === 2 ? "text-white" : ""}`} />
+            <RowIcon className={`${kind === 2 ? "text-white" : ""}`} />
           </span>
         </div>
       </div>

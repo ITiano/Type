@@ -1,9 +1,4 @@
-import ArrowUpIcon from "public/icons/ArrowUpIcon";
-import ArrowUpsIcon from "public/icons/ArrowUpsIcon";
-import FlashIcon from "public/icons/FlashIcon";
-import KeyboardIcon from "public/icons/KeyboardIcon";
-import LampChargeIcon from "public/icons/LampChargeIcon";
-import SettingIcon from "public/icons/SettingIcon";
+import { ArrowUpIcon, ArrowUpsIcon, FlashIcon, KeyboardIcon, LampChargeIcon, SettingIcon } from "@assets/icons/icons";
 import ProgressBar from "./ProgressBar";
 
 const ActivityModal = ({ open }) => {

@@ -1,14 +1,8 @@
 "use client"
 
 import React from "react";
-
-// Components
 import Stars from "@components/common/Stars";
-
-// Icons
-import AssignImgIcon from "public/icons/AssignImgIcon";
-import ShareIcon from "public/icons/ShareIcon";
-import UserIcon from "public/icons/UserIcon";
+import { AssignImgIcon, ShareIcon, UserIcon } from "@assets/icons/icons";
 
 const ProfileHeader = () => {
   return (

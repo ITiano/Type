@@ -1,5 +1,5 @@
+import { LighteningIcon } from "@assets/icons/icons";
 import { useEffect, useState } from "react";
-import LighteningIcon from "public/icons/LighteningIcon";
 import React from "react";
 
 const ProgressLine = ({ data, type, error, setStep }) => {

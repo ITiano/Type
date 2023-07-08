@@ -1,7 +1,5 @@
 import Image from "next/image";
-
-// keyboard icon
-import KeyboardIcon from "public/icons/Finger/KeyboardIcon";
+import KeyboardVector from "@assets/vectors/KeyboardVector";
 
 const GuideSections = () => {
   return (
@@ -41,7 +39,7 @@ const KeyboardImageSection = () => {
   return (
     <div className="relative">
       <div className="max-w-full w-full [&>*]:w-full">
-        <KeyboardIcon />
+        <KeyboardVector />
       </div>
       <Image
         alt=""

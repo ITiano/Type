@@ -1,4 +1,6 @@
-const KeyboardIcon = ({ className }) => {
+import React from "react";
+
+const KeyboardVector = ({ className }) => {
   return (
     <svg viewBox="0 0 894 363" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
       <path
@@ -805,4 +807,4 @@ const KeyboardIcon = ({ className }) => {
   );
 };
 
-export default KeyboardIcon;
+export default KeyboardVector;

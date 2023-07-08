@@ -1,6 +1,6 @@
 "use client";
 
-import ArrowRightIcon from "@public/icons/ArrowRightIcon";
+import { ArrowRightIcon } from "@assets/icons/icons";
 import routes from "@routes/routes";
 import Link from "next/link";
 import React from "react";

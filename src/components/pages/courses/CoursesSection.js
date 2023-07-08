@@ -8,7 +8,7 @@ import { CoursesIcons } from "@helper/Methods";
 // Components
 import CourseDetail from "./CourseDetail";
 import CourseHistory from "./CourseHistory";
-import HistoryIcon from "@public/icons/HistoryIcon";
+import { HistoryIcon } from "@assets/icons/icons";
 
 const CoursesSection = ({ kind, data, setOpen }) => {
   return (

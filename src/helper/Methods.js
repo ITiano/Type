@@ -1,7 +1,5 @@
+import { CheckIcon, LockIcon, PlayIcon } from "@assets/icons/icons";
 import Image from "next/image";
-import CheckIcon from "public/icons/CheckIcon";
-import LockIcon from "public/icons/LockIcon";
-import PlayIcon from "public/icons/PlayIcon";
 
 export const CoursesImages = (width = 70) => ({
   1: <Image src="/images/courses/Pencils.png" width={width} height={width} alt="image" />,

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import FeaturePatternSvg from "public/images/home/FeaturePatternSvg";
+import FeaturePatternSvg from "@assets/vectors/FeaturePatternSvg";
 
 const boxData = [
   {

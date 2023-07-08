@@ -1,4 +1,5 @@
-import StarIcon from "public/icons/StarIcon";
+import React from "react";
+import { StarIcon } from "@assets/icons/icons";
 
 const Stars = ({ value }) => (
   <div className="flex-start-center">
