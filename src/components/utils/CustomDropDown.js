@@ -25,7 +25,7 @@ const CustomDropDown = ({ label, className, list, setValue, name }) => {
   return (
     <div className="relative" ref={containerRef}>
       <CustomInput value={form} label={label} name="search" className={className} onFocus={() => setOpen(true)} />
-      <div className={`overflow-hidden absolute w-full top-[calc(100%_-_15px)] ${open ? "fade-in" : "fade-out"} z-40`}>
+      <div className={`overflow-hidden absolute w-full top-[calc(100%)] ${open ? "fade-in" : "fade-out"} z-40`}>
         <ul className="bg-white rounded-md overflow-hidden">
           {list.map((item) => {
             return (
