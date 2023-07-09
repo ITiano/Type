@@ -1,12 +1,12 @@
-import supabaseClient from "./supabase-client";
+import clientSupabase from "./supabase-client";
 
-export const verifyUser = (value) => supabaseClient.auth.signInWithOtp(value);
+export const verifyUser = (value) => clientSupabase.auth.signInWithOtp(value);
 
-export const updateUser = (data) => supabaseClient.auth.updateUser({ data });
+export const updateUser = (data) => clientSupabase.auth.updateUser({ data });
 
-export const getUser = () => supabaseClient.auth.getUser();
+export const getUser = () => clientSupabase.auth.getUser();
 
 export const uploadProfile = (value) =>
-  supabaseClient.storage.from("user_profile").upload(value.name, value, {
+  clientSupabase.storage.from("user_profile").upload(value.name, value, {
     upsert: true,
   });
