@@ -18,7 +18,7 @@ const ProgressBar = ({ width, text }) => {
             // Path color
             // strokeWidth: ".9rem",
             stroke: `#aae6f0`,
-          //  strokeWidth: "12",
+            //  strokeWidth: "12",
             //  strokeDasharray: "12, 8",
             // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
             strokeLinecap: "round",
@@ -51,10 +51,10 @@ const ProgressBar = ({ width, text }) => {
           },
         }}
       >
-        <p className={`text-mainBlue font-bold ${width < 9 ? "text-base" : "text-3xl"}`}>{percentage}</p>
+        <p className={`text-primary-900 font-bold ${width < 9 ? "text-base" : "text-3xl"}`}>{percentage}</p>
         <p className={` ${width < 9 ? "text-xs" : "text-sm"}`}>of 3 hours</p>
       </CircularProgressbarWithChildren>
-      <p className={`mt-1 ${width < 9 ? "text-sm text-gray-3 " : "text-lg font-bold "}`}>{text}</p>
+      <p className={`mt-1 ${width < 9 ? "text-sm text-gray-800 " : "text-lg font-bold "}`}>{text}</p>
     </div>
   );
 };

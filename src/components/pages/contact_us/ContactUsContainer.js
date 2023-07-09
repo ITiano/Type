@@ -47,9 +47,9 @@ export default ContactUsContainer;
 
 const ContactElements = ({ icon, title, value }) => (
   <div className="flex-start-center gap-2">
-    <span className="bg-gray-1 w-12 h-12 rounded-full centering">{icon}</span>
+    <span className="bg-gray-600 w-12 h-12 rounded-full centering">{icon}</span>
     <div>
-      <p className="text-gray-3">{title}</p>
+      <p className="text-gray-800">{title}</p>
       <p className="font-semibold mt-1">{value}</p>
     </div>
   </div>

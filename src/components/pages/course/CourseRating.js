@@ -12,7 +12,7 @@ const CourseRating = ({ data: { kind, name, score, accuracy, speed, duration } }
 
   return (
     <>
-      <div className="bg-gray-3 bg-opacity-30 h-3 w-10/12 mt-14 rounded-full"></div>
+      <div className="bg-gray-800 bg-opacity-30 h-3 w-10/12 mt-14 rounded-full"></div>
       <div className="centering flex-col gap-2 w-96">
         {CoursesImages(140)[kind]}
         <p className=" font-semibold pb-1.5 mt-1 text-2xl">{name}</p>

@@ -37,7 +37,7 @@ export default CourseHistory;
 
 const ElementBox = ({ title, value, star, kind }) => (
   <div className={`${kind === 1 ? "hidden md:flex-start-start flex-col" : "centering flex-col"} gap-2`}>
-    {!star && <p className="text-gray-3 text-xs">{title}</p>}
+    {!star && <p className="text-gray-800 text-xs">{title}</p>}
     {star ? <Stars value={value} /> : <p className="font-bold text-xs">{value}</p>}
   </div>
 );

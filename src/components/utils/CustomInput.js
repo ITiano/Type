@@ -38,7 +38,7 @@ const CustomInput = ({
           type={Password ? (showPassword ? "password" : "text") : type}
           className={`input ${
             // errors[name]
-            [].length ? "border-mainRed focus:border-mainRed" : "border-gray-2 focus:border-mainBlue"
+            [].length ? "border-red-900 focus:border-red-900" : "border-gray-700 focus:border-primary-900"
           } ${className} ${Password ? "pr-8" : ""} ${disabled && "opacity-80"}`}
         />
         {Password && (
@@ -47,7 +47,7 @@ const CustomInput = ({
           </span>
         )}
       </div>
-      {/* <p className="text-xs pl-1 text-mainRed h-4 mb-1">{errors[name]?.message}</p> */}
+      {/* <p className="text-xs pl-1 text-red-900 h-4 mb-1">{errors[name]?.message}</p> */}
     </div>
   );
 };

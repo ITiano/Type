@@ -29,7 +29,7 @@ const Header = () => {
       } ${scrollData.isScrollingDown ? "-translate-y-full" : "-translate-y-0"}`}
     >
       <div className="layout-max-w flex-between-center p-3 md:px-4">
-        <Link className="text-dark font-bold text-center text-base" href={routes.home.path}>
+        <Link className="text-dark-900 font-bold text-center text-base" href={routes.home.path}>
           Typiano
         </Link>
         <Navbar navItems={navItems} />

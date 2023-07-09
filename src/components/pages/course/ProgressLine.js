@@ -19,7 +19,7 @@ const ProgressLine = ({ data, type, error, setStep }) => {
 
   return (
     <div className="relative w-10/12 mt-14">
-      <div className="bg-gray-3 bg-opacity-30 h-3 rounded-full relative overflow-hidden">
+      <div className="bg-gray-800 bg-opacity-30 h-3 rounded-full relative overflow-hidden">
         <span
           style={{ width: progress + "%" }}
           className="absolute top-1/2 left-0 -translate-y-1/2 bg-black h-full transition"

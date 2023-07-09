@@ -36,7 +36,7 @@ const CourseElement = ({ course, kind, setOpen }) => {
 
   return (
     <div
-      className={`flex-between-center p-2 rounded-xl shadow ${course.status === 3 ? "grayscale bg-gray-2" : "bg-white"} ${
+      className={`flex-between-center p-2 rounded-xl shadow ${course.status === 3 ? "grayscale bg-gray-700" : "bg-white"} ${
         kind === 1 ? "w-full" : "flex-col w-full max-w-[300px] sm:max-w-full mx-auto h-[280px] pb-8 pt-3"
       }`}
     >

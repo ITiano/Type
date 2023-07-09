@@ -45,7 +45,7 @@ const ProfileForm = () => {
       <form onSubmit={onSubmit}>
         <div className="flex flex-col md:flex-row md:divide-x-2 [&>*]:flex-1">
           <div className="md:pr-6">
-            <p className="text-xs text-gray-3 mt-2 mb-3">Personal</p>
+            <p className="text-xs text-gray-800 mt-2 mb-3">Personal</p>
             <div className="md:flex gap-3 mb-3">
               <CustomInput value={value} setValue={setValue} name="firstName" label="First name" />
               <CustomInput value={value} setValue={setValue} name="lastName" label="Last name" />
@@ -53,7 +53,7 @@ const ProfileForm = () => {
             <CustomInput value={value} setValue={setValue} name="email" label="Email" disabled />
           </div>
           <div className="md:pl-6">
-            <p className="text-xs text-gray-3 mt-2 mb-3">Goal</p>
+            <p className="text-xs text-gray-800 mt-2 mb-3">Goal</p>
             <div className="flex flex-col gap-3">
               <CustomDropDown value={value} setValue={setValue} name="daily" label="Daily goal" list={dailyGoalList} />
               <CustomDropDown value={value} setValue={setValue} name="weekly" label="weakly goal" list={weeklyGoalList} />

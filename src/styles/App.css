@@ -16,17 +16,29 @@ html {
 }
 
 @layer base {
+  :root {
+    --primary-900: 170, 230, 240;
+    --dark-900: 30, 34, 41;
+    --gray-900: 148, 157, 176;
+    --gray-800: 174, 174, 174;
+    --gray-700: 242, 241, 242;
+    --gray-600: 245, 245, 245;
+    --red-900: 227, 87, 87;
+    --red-800: 248, 113, 113;
+    --green-900: 143, 227, 87;
+  }
+
   body {
-    @apply text-dark bg-white text-sm;
+    @apply text-dark-900 bg-white text-sm;
   }
   span {
-    @apply text-gray-3;
+    @apply text-gray-800;
   }
   input {
-    @apply !outline-none !ring-0 focus:!ring-0 !ring-offset-0 placeholder:text-gray-3 focus:!outline-none;
+    @apply !outline-none !ring-0 focus:!ring-0 !ring-offset-0 placeholder:text-gray-800 focus:!outline-none;
   }
   textarea {
-    @apply !outline-none !ring-0 focus:!ring-0 !ring-offset-0 placeholder:text-gray-3 focus:!outline-none resize-none;
+    @apply !outline-none !ring-0 focus:!ring-0 !ring-offset-0 placeholder:text-gray-800 focus:!outline-none resize-none;
   }
   .transition {
     @apply transition-all duration-300;
@@ -38,7 +50,7 @@ html {
     @apply px-5 py-2 text-xs sm:text-sm rounded-full font-semibold;
   }
   .black-btn {
-    @apply bg-dark text-light;
+    @apply bg-dark-900 text-gray-600;
   }
   .p-layout {
     @apply px-4;
@@ -47,7 +59,7 @@ html {
     @apply max-w-[1250px] mx-auto w-full;
   }
   .navigate {
-    @apply text-mainBlue font-semibold;
+    @apply text-primary-900 font-semibold;
   }
   .fade-out {
     @apply translate-y-2 opacity-0 invisible;
@@ -59,7 +71,7 @@ html {
     @apply absolute p-2 transition bg-white shadow-lg z-50 w-28 top-10 right-5 rounded-lg;
   }
   .dropdown-element {
-    @apply p-2 transition hover:bg-mainBlue hover:bg-opacity-50 cursor-pointer rounded-lg text-left;
+    @apply p-2 transition hover:bg-primary-900 hover:bg-opacity-50 cursor-pointer rounded-lg text-left;
   }
   .input {
     @apply w-full px-3 py-1 bg-white text-sm border-2 rounded-md transition;

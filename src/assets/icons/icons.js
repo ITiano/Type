@@ -171,7 +171,7 @@ export const GoogleIcon = () => (
 
 export const GridIcon = ({ className }) => (
   <svg
-    className={`text-gray-3 ${className}`}
+    className={`text-gray-800 ${className}`}
     width="17"
     height="16"
     viewBox="0 0 17 16"
@@ -347,7 +347,7 @@ export const PlayIcon = () => (
 
 export const RowIcon = ({ className }) => (
   <svg
-    className={`text-gray-3 ${className}`}
+    className={`text-gray-800 ${className}`}
     width="19"
     height="18"
     viewBox="0 0 16 16"
@@ -434,7 +434,7 @@ export const ShowIcon = () => (
 export const StarIcon = ({ className }) => {
   return (
     <svg
-      className={`text-golden ${className}`}
+      className={`text-[#FFD42A] ${className}`}
       width="24"
       height="24"
       viewBox="0 0 46 46"
