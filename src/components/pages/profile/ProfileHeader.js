@@ -45,28 +45,29 @@ const ProfileHeader = () => {
   return (
     <div className="flex-between-center">
       <div className="flex-start-center gap-4 2xs:gap-5">
-        <div className="relative">
-          {user?.user_metadata?.profile_cover ? (
-            <Image
-              height={50}
-              width={50}
-              quality={100}
-              className="w-16 2xs:w-20 md:w-28"
-              alt={user.user_metadata.profile_cover}
-              src={process.env.NEXT_PUBLIC_IMAGE_URL + user.user_metadata.profile_cover}
-            />
-          ) : (
-            <UserIcon className="w-16 2xs:w-20 md:w-28" />
-          )}
+        <div className="relative cursor-pointer" onClick={() => inputRef.current.click()}>
+          <div className="relative rounded-full overflow-hidden w-16 2xs:w-20 md:w-28 h-16 2xs:h-20 md:h-28">
+            {user?.user_metadata?.profile_cover ? (
+              <Image
+                height={50}
+                width={50}
+                quality={100}
+                alt={user.user_metadata.profile_cover}
+                onLoadingComplete={(element) => element.classList.remove("opacity-0")}
+                src={process.env.NEXT_PUBLIC_IMAGE_URL + user.user_metadata.profile_cover}
+                className="w-full h-full object-center object-cover opacity-0 transition duration-500"
+              />
+            ) : (
+              <UserIcon className="h-full w-full" />
+            )}
+          </div>
           <input type="file" className="hidden" ref={inputRef} onChange={(e) => setValue(e.target.files[0])} />
-          <span onClick={() => inputRef.current.click()}>
+          <span>
             <AssignImgIcon className="absolute bottom-0 right-0 cursor-pointer w-7 h-7" />
           </span>
         </div>
         <div>
-          <p className="text-base font-semibold mb-0.5 pl-1">
-            {firstName || data.lastName ? `${firstName} - ${lastName}` : email}
-          </p>
+          <p className="text-base font-semibold mb-0.5 pl-1">{firstName || lastName ? `${firstName} - ${lastName}` : email}</p>
           <div className="flex-start-center">
             <Stars value={3} />
           </div>

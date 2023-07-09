@@ -18,9 +18,7 @@ const NavigateLinks = ({ className = "" }) => {
         <Link href={routes.auth.path}>
           <div className="flex-start-center gap-1">
             <span className="font-medium text-black text-lg">Register</span>
-            <span>
-              <ArrowRightIcon />
-            </span>
+            <ArrowRightIcon />
           </div>
         </Link>
       )}
