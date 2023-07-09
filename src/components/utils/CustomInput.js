@@ -16,7 +16,7 @@ const CustomInput = ({
   type = "text",
   placeholder = "",
 }) => {
-  const [HidePassword, setHidePassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(true);
 
   const onChange = ({ target }) => {
     !disabled && setValue((prev) => ({ ...prev, [name]: target.value }));
@@ -35,15 +35,15 @@ const CustomInput = ({
           disabled={disabled}
           placeholder={placeholder}
           value={value && name && value[name]}
-          type={Password ? (HidePassword ? "password" : "text") : type}
+          type={Password ? (showPassword ? "password" : "text") : type}
           className={`input ${
             // errors[name]
             [].length ? "border-mainRed focus:border-mainRed" : "border-gray-2 focus:border-mainBlue"
           } ${className} ${Password ? "pr-8" : ""} ${disabled && "opacity-80"}`}
         />
         {Password && (
-          <span className="absolute top-[.6rem] right-3 cursor-pointer" onClick={() => setHidePassword(!HidePassword)}>
-            {HidePassword ? <HideIcon /> : <ShowIcon />}
+          <span className="absolute top-[.6rem] right-3 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <HideIcon /> : <ShowIcon />}
           </span>
         )}
       </div>
