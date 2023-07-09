@@ -6,7 +6,7 @@ const CustomTextArea = ({ name, label, value, setValue, className, placeholder, 
   };
 
   return (
-    <>
+    <div>
       <label className="px-1 block mb-1">{label}</label>
       <textarea
         rows={4}
@@ -22,7 +22,7 @@ const CustomTextArea = ({ name, label, value, setValue, className, placeholder, 
         } ${className} `}
       />
       {/* <p className="text-xs pl-1 text-pink-600 h-4 mb-1">{touched[name] && errors[name]}</p> */}
-    </>
+    </div>
   );
 };
 
