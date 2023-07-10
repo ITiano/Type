@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import UserProfile from "./UserProfile";
 import Link from "next/link";
 
-const navItems = [routes.home, routes.guide, routes.courses, routes.aboutUs, routes.contactUs];
+const navItems = [routes.home, routes.courses, routes.aboutUs, routes.contactUs];
 
 const Header = () => {
   const [scrollData, setScrollData] = useState({ offsetY: 0, isScrollingDown: false });

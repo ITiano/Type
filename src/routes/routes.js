@@ -1,7 +1,6 @@
 const routes = {
   home: { title: "Home", path: "/" },
   auth: { title: "Auth", path: "/auth" },
-  guide: { title: "Guide", path: "/guide" },
   profile: { title: "Profile", path: "/profile" },
   aboutUs: { title: "About us", path: "/about_us" },
   contactUs: { title: "Contact us", path: "/contact_us" },
