@@ -36,7 +36,7 @@ export default AboutUs;
 const TeamMember = ({ image, name, position }) => (
   <div className="flex-1 self-start w-full max-w-[300px] mx-auto sm:max-w-full p-6 shadow-lg rounded-3xl centering flex-col bg-white">
     <Image width={120} height={120} src={image} alt={name} />
-    <p className="text-gray-3 mt-5">{position}</p>
+    <p className="text-gray-800 mt-5">{position}</p>
     <p className="text-lg font-bold mt-1">{name}</p>
   </div>
 );

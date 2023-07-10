@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 import routes from "@routes/routes";
 import ContactUsContainer from "@components/pages/contact_us/ContactUsContainer";
 

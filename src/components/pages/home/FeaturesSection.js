@@ -47,8 +47,8 @@ export default FeaturesSection;
 const FeaturesText = ({ className }) => {
   return (
     <div className={`centering flex-col w-full ${className}`}>
-      <h4 className="font-semibold text-3xl border-b-[6px] border-b-mainBlue pb-3 mb-3">Features</h4>
-      <p className="text-gray-4">Description regarding the title</p>
+      <h4 className="font-semibold text-3xl border-b-[6px] border-b-primary-900 pb-3 mb-3">Features</h4>
+      <p className="text-gray-900">Description regarding the title</p>
     </div>
   );
 };
@@ -58,7 +58,7 @@ const Box = ({ title, description, icon }) => {
     <div className="centering flex-col bg-white shadow shadow-slate-200 rounded-3xl p-6">
       <span className="w-[150px] h-[150px] centering [&>*]:w-full [&>*]:h-full overflow-hidden">{icon}</span>
       <h5 className="font-medium text-2xl mb-5">{title}</h5>
-      <p className="text-gray-4 text-base line-clamp-3 text-center">{description}</p>
+      <p className="text-gray-900 text-base line-clamp-3 text-center">{description}</p>
     </div>
   );
 };

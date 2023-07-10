@@ -1,3 +1,11 @@
+/** @type {import('tailwindcss').Config} */
+
+const withOpacity = (variableName) => {
+  return ({ opacityValue }) => {
+    return opacityValue !== undefined ? `rgba(var(${variableName}), ${opacityValue})` : `rgb(var(${variableName}))`;
+  };
+};
+
 module.exports = {
   content: ["./public/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -11,16 +19,25 @@ module.exports = {
         rectangle: "url('/images/public/Rectangle.png')",
       },
       colors: {
-        light: "#F5F5F5",
-        dark: "#1E2229",
-        "gray-1": "#F5F5F5",
-        "gray-2": "#F2F1F2",
-        "gray-3": "#AEAEAE",
-        "gray-4": "#949db0",
-        mainBlue: "#aae6f0",
-        mainRed: "#E35757",
-        mainGreen: "#8FE357",
-        golden: "#FFD42A",
+        gray: {
+          900: withOpacity("--gray-900"),
+          800: withOpacity("--gray-800"),
+          700: withOpacity("--gray-700"),
+          600: withOpacity("--gray-600"),
+        },
+        red: {
+          900: withOpacity("--red-900"),
+          800: withOpacity("--red-800"),
+        },
+        green: {
+          900: withOpacity("--green-900"),
+        },
+        primary: {
+          900: withOpacity("--primary-900"),
+        },
+        dark: {
+          900: withOpacity("--dark-900"),
+        },
       },
       screens: {
         "2md": "890px",

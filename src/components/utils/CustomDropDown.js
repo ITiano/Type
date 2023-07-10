@@ -34,7 +34,7 @@ const CustomDropDown = ({ label, className, list, setValue, value, name }) => {
           {list.map((item) => {
             return (
               <li
-                className="px-4 py-1.5 cursor-pointer transition hover:bg-mainBlue/40"
+                className="px-4 py-1.5 cursor-pointer transition hover:bg-primary-900/40"
                 onClick={() => onClick(item)}
                 key={item.value}
               >

@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import ProgressLine from "./ProgressLine";
 import React from "react";
 
-const errorColor = "bg-red-400";
-const successColor = "bg-mainGreen-200";
+const errorColor = "bg-red-800";
+const successColor = "bg-green-900/50";
 const warningColor = "!bg-orange-300";
 const borderLineColor = "border-b-blue-500";
 

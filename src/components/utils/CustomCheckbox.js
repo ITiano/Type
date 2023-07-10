@@ -9,7 +9,7 @@ const CustomCheckbox = ({ label, formik, name, className }) => {
           type="checkbox"
           checked={values[name]}
           onChange={handleChange}
-          className={`text-mainBlue rounded cursor-pointer p-1.5 selection:red ${className}`}
+          className={`text-primary-900 rounded cursor-pointer p-1.5 ${className}`}
         />
         <label htmlFor={name} className="text-xs opacity-70 cursor-pointer">
           {label}

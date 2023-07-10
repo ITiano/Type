@@ -4,8 +4,7 @@ import { useAuth } from "src/context/AuthContextProvider";
 import Link from "next/link";
 import Spinner from "@components/utils/Spinner";
 import routes from "@routes/routes";
-import ActivityModal from "./ActivityModal";
-import { ArrowDownIcon, ArrowRightIcon, UserIcon } from "@assets/icons/icons";
+import { ArrowRightIcon, UserIcon } from "@assets/icons/icons";
 
 const UserProfile = ({ navItems }) => {
   const [user] = useAuth();

@@ -12,17 +12,17 @@ const CourseRating = ({ data }) => {
           <p>Score</p>
           <p className="font-semibold mt-2">{data.score}</p>
         </div>
-        <div className=" w-px h-5 bg-gray-3 bg-opacity-30"></div>
+        <div className=" w-px h-5 bg-gray-800 bg-opacity-30"></div>
         <div className="text-center">
           <p>Accuracy</p>
           <p className="font-semibold mt-2">{data.accuracy}</p>
         </div>
-        <div className=" w-px h-5 bg-gray-3 bg-opacity-30"></div>
+        <div className=" w-px h-5 bg-gray-800 bg-opacity-30"></div>
         <div className="text-center">
           <p>Speed</p>
           <p className="font-semibold mt-2">{data.speed}</p>
         </div>
-        <div className=" w-px h-5 bg-gray-3 bg-opacity-30"></div>
+        <div className=" w-px h-5 bg-gray-800 bg-opacity-30"></div>
         <div className="text-center">
           <p>Time</p>
           <p className="font-semibold mt-2">{data.duration}</p>
