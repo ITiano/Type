@@ -31,7 +31,7 @@ const ContactUsContainer = () => {
         if (error) toast.error("Sth went wrong please try again later :(");
         else {
           setValue(initialValues);
-          toast.success("Form submitted successfully and we will see it soon :)");
+          toast.success("Form submitted successfully and we will see it soon");
         }
         setLoading(false);
       } else toast.error("Please login first");

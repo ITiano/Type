@@ -36,7 +36,7 @@ const ProfileHeader = () => {
       toast.promise(promise, {
         loading: "pending",
         error: "Sth went wrong please try again later",
-        success: "Profile photo updated successfully :)",
+        success: "Profile photo updated successfully",
       });
     };
     value && updateProfile();

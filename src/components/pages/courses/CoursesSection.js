@@ -31,7 +31,7 @@ const CourseElement = ({ course, kind, setOpen }) => {
   const props = { course, kind };
 
   const navigateHandler = useCallback(() => {
-    user ? router.push(routes.courseId.path(course.id)) : toast.error("You need to login first :)");
+    user ? router.push(routes.courseId.path(course.id)) : toast.error("You need to login first");
   }, [course.id, router, user]);
 
   return (
