@@ -4,7 +4,9 @@ import CustomBtn from "@components/utils/CustomBtn";
 import CustomInput from "@components/utils/CustomInput";
 import React, { useCallback, useState } from "react";
 import { verifyUser } from "@services/authApi";
-import LogoTypiano from "@assets/vectors/LogoTypiano";
+import { GoogleIcon, TwitterIcon } from "@assets/icons/icons";
+import Spinner from "@components/utils/Spinner";
+import { toast } from "react-hot-toast";
 
 const AuthContainer = () => {
   const [step, setStep] = useState(1);
@@ -16,10 +18,10 @@ const AuthContainer = () => {
       e.preventDefault();
       setLoading(true);
       const { error } = await verifyUser(value);
-      !error && setStep(2);
+      if (!error) step === 1 ? setStep(2) : toast.success("please check your email address.");
       setLoading(false);
     },
-    [value]
+    [value, step]
   );
 
   return (
@@ -33,11 +35,43 @@ const AuthContainer = () => {
               <CustomInput setValue={setValue} name="email" label="Email" placeholder="info@gmail.com" />
               <CustomBtn type="submit" text="Submit" loading={loading} className="black-btn w-full mt-4" />
             </form>
+            <div className="w-full centering gap-2 mt-6">
+              <span className="h-px bg-gray-300 flex-1"></span>
+              <span>Or continue with</span>
+              <span className="h-px bg-gray-300 flex-1"></span>
+            </div>
+            <div className="centering gap-3 mt-6">
+              <span className="w-12 h-12 centering rounded-full bg-gray-100 cursor-pointer">
+                <GoogleIcon />
+              </span>
+              <span className="w-12 h-12 centering rounded-full bg-gray-100 cursor-pointer">
+                <TwitterIcon />
+              </span>
+            </div>
           </>
         ) : (
-          <div className="leading-6">
-            a verification email has been sent to <strong>{value.email}</strong>. please check your email address.
-          </div>
+          <>
+            <div className="leading-6">
+              a verification email has been sent to <strong>{value.email}</strong>. please check your email address.
+            </div>
+            <div className="w-full centering gap-2 mt-6 mb-4">
+              <span className="h-px bg-gray-300 flex-1"></span>
+              <span>You need help</span>
+              <span className="h-px bg-gray-300 flex-1"></span>
+            </div>
+            <div className="flex-between-center gap-2 flex-wrap w-full">
+              <button onClick={() => setStep(1)} className="hover:text-primary-900 transition text-left">
+                Is your email wrong ?
+              </button>
+              {loading ? (
+                <Spinner />
+              ) : (
+                <button onClick={onSubmit} className="hover:text-primary-900 transition text-left">
+                  Don’t send email ?
+                </button>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>

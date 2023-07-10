@@ -23,7 +23,7 @@ const ProfileForm = () => {
       e.preventDefault();
       setLoading(true);
       const { data, error } = await updateUser(value);
-      if (error) toast.error("Sth went wrong please try again :(");
+      if (error) toast.error("Sth went wrong please try again");
       else {
         setUser(data.user);
         toast.success("Profile updated successfully");
