@@ -1,6 +1,4 @@
 "use client";
-
-import DATA from "db";
 import React, { useState } from "react";
 import KindSwitcherSection from "@components/pages/courses/KindSwitcherSection";
 import CoursesSection from "@components/pages/courses/CoursesSection";

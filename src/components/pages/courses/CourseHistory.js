@@ -6,7 +6,7 @@ import { CoursesIcons } from "@helper/Methods";
 
 const CourseHistory = ({ course, history, kind }) => {
   const { status, id } = course;
-  const { rating, score, speed, accuracy, duration } = history;
+  const { score, speed, accuracy, duration } = history;
 
   const elementsData = [
     { title: "Score", value: score },
@@ -18,7 +18,7 @@ const CourseHistory = ({ course, history, kind }) => {
   return (
     <div className={`${kind === 1 ? "flex-start-center gap-8" : "centering flex-col gap-3"}`}>
       <div className="centering gap-4 ">
-        {status === 1 && <ElementBox title="Starts" value={rating} kind={kind} star />}
+        {status === 1 && <ElementBox title="Starts" value={score} kind={kind} star />}
         {kind === 2 &&
           (status === 3 ? CoursesIcons[status] : <Link href={routes.courseId.path(id)}>{CoursesIcons[status]}</Link>)}
       </div>

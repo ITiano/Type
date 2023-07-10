@@ -7,14 +7,33 @@ const successColor = "bg-mainGreen-200";
 const warningColor = "!bg-orange-300";
 const borderLineColor = "border-b-blue-500";
 
-const Type = ({ data = "", setStep }) => {
+const Type = ({ data = "", setStep, setValue }) => {
   const ref = useRef();
   const [type, setType] = useState("");
   const [error, setError] = useState([]);
   const [show, setShow] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
   const [convertedText, setConvertedText] = useState([]);
 
+  useEffect(() => {
+    if (isStarted) {
+      const interval = setInterval(
+        () =>
+          setValue((prev) => {
+            const allTypeEntries = type.length;
+            const timePerMinute = prev.duration / 60;
+            const speed = Math.floor(allTypeEntries / 5 / timePerMinute) || 0;
+            return { ...prev, speed, duration: prev.duration + 1 };
+          }),
+
+        1000
+      );
+      return () => clearInterval(interval);
+    }
+  }, [isStarted, setValue, type.length]);
+
   const onChange = (e) => {
+    setIsStarted(true);
     const length = type.length;
     const value = e.target.value.split("");
     const pattern = data.split("");
@@ -93,7 +112,7 @@ const Type = ({ data = "", setStep }) => {
   }, [data]);
 
   return (
-    <div>
+    <div className="bg-red-100">
       <ProgressLine data={data} type={type} error={error} setStep={setStep} />
       <div className="relative w-full">
         <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">
