@@ -40,26 +40,26 @@ const CourseElement = ({ course, kind, setOpen }) => {
         kind === 1 ? "w-full" : "flex-col w-full max-w-[300px] sm:max-w-full mx-auto h-[280px] pb-8 pt-3"
       }`}
     >
-      {course.status === 1 && (
-        <button className={`${kind === 2 ? "flex-end-center" : "hidden"} w-full`} onClick={() => setOpen(course)}>
-          <HistoryIcon />
-        </button>
-      )}
+      <button
+        className={`${kind === 2 ? (course.status === 1 ? "flex-end-center" : "invisible") : "hidden"} w-full`}
+        onClick={() => course.status === 1 && setOpen(course)}
+      >
+        <HistoryIcon />
+      </button>
 
       <CourseDetail {...props} />
 
-      {course.bestHistory && <CourseHistory {...props} history={course.bestHistory} />}
+      <CourseHistory {...props} history={course.bestHistory} />
 
       <div className={`${kind === 1 ? "flex-end-center" : "hidden"} gap-3`}>
+        <button className={course.status === 1 ? "" : "invisible"} onClick={() => course.status === 1 && setOpen(course)}>
+          <HistoryIcon />
+        </button>
+
         {course.status === 3 ? (
           CoursesIcons[course.status]
         ) : (
           <CustomBtn onClick={navigateHandler} text={CoursesIcons[course.status]} className="px-0" />
-        )}
-        {course.status === 1 && (
-          <button onClick={() => setOpen(course)}>
-            <HistoryIcon />
-          </button>
         )}
       </div>
     </div>

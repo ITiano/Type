@@ -5,6 +5,7 @@ import ProfileHeader from "./ProfileHeader";
 import ProfileForm from "./ProfileForm";
 import Spinner from "@components/utils/Spinner";
 import { useAuth } from "src/context/AuthContextProvider";
+import ProfileActivity from "@components/pages/profile/ProfileActivity";
 
 const ProfileContainer = () => {
   const [user] = useAuth();
@@ -18,6 +19,7 @@ const ProfileContainer = () => {
       ) : (
         <>
           <ProfileHeader />
+          <ProfileActivity />
           <ProfileForm />
         </>
       )}

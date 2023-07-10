@@ -57,7 +57,7 @@ const ProfileForm = () => {
             <div className="flex flex-col gap-3">
               <CustomDropDown value={value} setValue={setValue} name="daily" label="Daily goal" list={dailyGoalList} />
               <CustomDropDown value={value} setValue={setValue} name="weekly" label="weakly goal" list={weeklyGoalList} />
-              <CustomDropDown value={value} setValue={setValue} name="monthly" label="first day of week" list={monthlyGoalList} />
+              <CustomDropDown value={value} setValue={setValue} name="monthly" label="monthly goal" list={monthlyGoalList} />
             </div>
           </div>
         </div>

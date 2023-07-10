@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import HamburgerMenu from "./HamburgerMenu";
 import { useAuth } from "src/context/AuthContextProvider";
 import Link from "next/link";
@@ -8,16 +8,6 @@ import { ArrowRightIcon, UserIcon } from "@assets/icons/icons";
 
 const UserProfile = ({ navItems }) => {
   const [user] = useAuth();
-  const [openModal, setOpenModal] = useState(false);
-
-  const { email, lastName, firstName } = useMemo(() => {
-    const email = user?.email;
-    const firstName = user?.user_metadata?.firstName;
-    const lastName = user?.user_metadata?.lastName;
-    return { email, firstName, lastName };
-  }, [user?.email, user?.user_metadata?.firstName, user?.user_metadata?.lastName]);
-
-  const onBlur = (e) => !e.currentTarget.contains(e.relatedTarget) && setOpenModal(false);
 
   return (
     <div className="flex-end-center gap-1 w-[100px] h-[40px]">
@@ -33,18 +23,9 @@ const UserProfile = ({ navItems }) => {
           </div>
         </Link>
       ) : (
-        <div className="flex-start-center gap-2">
-          {/* <button onBlur={onBlur} className="relative">
-            <span onClick={() => setOpenModal(!openModal)}>
-              <ArrowDownIcon className={`${openModal && "rotate-180"} transition`} />
-            </span>
-            <ActivityModal open={openModal} />
-          </button> */}
-          <p>{email}</p>
-          <Link href={routes.profile.path}>
-            <UserIcon className="w-10" />
-          </Link>
-        </div>
+        <Link className="flex-start-center gap-2" href={routes.profile.path}>
+          <UserIcon className="w-10 border-2 border-primary-900 rounded-full" />
+        </Link>
       )}
       <HamburgerMenu navItems={navItems} />
     </div>

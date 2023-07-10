@@ -1,13 +1,11 @@
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
-const ProgressBar = ({ width, text }) => {
-  const percentage = 66;
-
+const ProgressBar = ({ width, label, totalLabel, value }) => {
   return (
-    <div className="flex flex-col">
+    <div className="centering flex-col gap-4 select-none">
       <CircularProgressbarWithChildren
         // strokeWidth={"14"}
-        value={percentage}
+        value={value}
         styles={{
           // Customize the root svg element
           root: {
@@ -31,7 +29,7 @@ const ProgressBar = ({ width, text }) => {
           // Customize the circle behind the path, i.e. the "total progress"
           trail: {
             // Trail color
-            stroke: "#F5F5F5",
+            stroke: "white",
             // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
             strokeLinecap: "butt",
             // Rotate the trail
@@ -51,10 +49,10 @@ const ProgressBar = ({ width, text }) => {
           },
         }}
       >
-        <p className={`text-primary-900 font-bold ${width < 9 ? "text-base" : "text-3xl"}`}>{percentage}</p>
-        <p className={` ${width < 9 ? "text-xs" : "text-sm"}`}>of 3 hours</p>
+        <p className={`text-primary-900 font-bold ${width < 9 ? "text-base" : "text-3xl"}`}>{value}</p>
+        <p className={` ${width < 9 ? "text-xs" : "text-sm"}`}>{totalLabel}</p>
       </CircularProgressbarWithChildren>
-      <p className={`mt-1 ${width < 9 ? "text-sm text-gray-800 " : "text-lg font-bold "}`}>{text}</p>
+      <p className={`font-bold ${width < 9 ? "text-sm" : "text-lg"}`}>{label}</p>
     </div>
   );
 };

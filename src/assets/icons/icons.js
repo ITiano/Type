@@ -209,7 +209,7 @@ export const HideIcon = () => (
   </svg>
 );
 
-export const HistoryIcon = () => {
+export const HistoryIcon = ({ className }) => {
   return (
     <svg
       height="21px"
@@ -219,6 +219,7 @@ export const HistoryIcon = () => {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsSketch="http://www.bohemiancoding.com/sketch/ns"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      className={className}
     >
       <title />
       <desc />
