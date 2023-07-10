@@ -1,8 +1,7 @@
-import Image from "next/image";
 import FeaturePatternSvg from "@assets/vectors/FeaturePatternSvg";
 import BookSvg from "@assets/vectors/BookSvg";
-import VlcSvg from "@assets/vectors/vlcSvg";
 import PencelSvg from "@assets/vectors/PencelSvg";
+import VlcSvg from "@assets/vectors/VlcSvg";
 
 const boxData = [
   {
