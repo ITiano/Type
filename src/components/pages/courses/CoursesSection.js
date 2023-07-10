@@ -8,6 +8,7 @@ import CustomBtn from "@components/utils/CustomBtn";
 import { useAuth } from "src/context/AuthContextProvider";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import Link from "next/link";
 
 const CoursesSection = ({ kind, data, setOpen }) => {
   return (
@@ -59,7 +60,17 @@ const CourseElement = ({ course, kind, setOpen }) => {
         {course.status === 3 ? (
           CoursesIcons[course.status]
         ) : (
-          <CustomBtn onClick={navigateHandler} text={CoursesIcons[course.status]} className="px-0" />
+          <Link
+            href={routes.courseId.path(course.id)}
+            onClick={(e) => {
+              if (!user) {
+                e.preventDefault();
+                toast.error("You need to login first :)");
+              }
+            }}
+          >
+            {CoursesIcons[course.status]}
+          </Link>
         )}
       </div>
     </div>
