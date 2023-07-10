@@ -1,34 +1,33 @@
 "use client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Type from "@components/pages/course/Type";
 import CourseRating from "./CourseRating";
 import CourseReview from "./CourseReview";
 import CustomBtn from "@components/utils/CustomBtn";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const initialState = { score: 5, speed: 0, accuracy: 100 };
 
 const CourseContainer = ({ data }) => {
-  const { push, refresh } = useRouter();
-  const { id } = useParams();
   const [value, setValue] = useState(initialState);
+  const { push, refresh } = useRouter();
   const [step, setStep] = useState(1);
   const [time, setTime] = useState(0);
 
   const nextBtnOption = {
     1: { text: "Get Started", onClick: () => setStep(2), hidden: false },
     2: { text: "Next", onClick: () => setStep(3), hidden: true },
-    3: { text: "Next lesson", onClick: () => push(`/courses/${id}`), hidden: false },
+    3: { text: "Next lesson", onClick: () => push(`/courses/${data.next.id}`), hidden: !data.next },
   };
 
   const backBtnOption = {
-    1: { text: "previous lesson", onClick: () => push("/courses"), hidden: false },
+    1: { text: "previous lesson", onClick: () => push(`/courses/${data.prev.id}`), hidden: !data.prev },
     2: { text: "back", onClick: () => setStep(1), hidden: false },
     3: {
       text: "Again",
       onClick: () => {
-        refresh(`/courses/${id}`);
+        refresh(`/courses/${data.id}`);
         setValue(initialState);
         setStep(1);
       },
@@ -48,12 +47,17 @@ const CourseContainer = ({ data }) => {
       )}
       {step === 3 && <CourseRating data={data} setStep={setStep} value={value} time={time} />}
       <div className="bg-white py-10 px-16 w-full flex-between-center">
-        {!backBtnOption[step].hidden && (
-          <CustomBtn text={backBtnOption[step].text} onClick={backBtnOption[step].onClick} arrowStartBtn />
-        )}
-        {!nextBtnOption[step].hidden && (
-          <CustomBtn text={nextBtnOption[step].text} onClick={nextBtnOption[step].onClick} arrowEndBtn />
-        )}
+        <div>
+          {!backBtnOption[step].hidden && (
+            <CustomBtn text={backBtnOption[step].text} onClick={backBtnOption[step].onClick} arrowStartBtn />
+          )}
+        </div>
+
+        <div>
+          {!nextBtnOption[step].hidden && (
+            <CustomBtn text={nextBtnOption[step].text} onClick={nextBtnOption[step].onClick} arrowEndBtn />
+          )}
+        </div>
       </div>
     </div>
   );
