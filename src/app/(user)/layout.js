@@ -6,7 +6,7 @@ import Header from "@components/layout/mainLayout/Header/Header";
 const MainLayout = ({ children }) => {
   return (
     <div>
-      <div className="flex flex-col min-h-[100svh]">
+      <div className="flex flex-col min-h-screen">
         <Header />
         <main className="layout-max-w p-layout pb-[50px]">
           {Children.map(children, (child) => (

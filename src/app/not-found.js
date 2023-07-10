@@ -13,7 +13,7 @@ const NotFound = () => {
   }, [push]);
 
   return (
-    <div className="min-h-[100svh] centering flex-col gap-4 lg:flex-row lg:gap-16">
+    <div className="min-h-screen centering flex-col gap-4 lg:flex-row lg:gap-16">
       <Image width={180} height={180} src="/images/public/404.png" alt="" />
       <div className="centering lg:justify-start lg:items-start flex-col gap-2">
         <p className="text-3xl lg:text-5xl font-bold">Error!</p>

@@ -7,7 +7,9 @@ const successColor = "bg-green-900/50";
 const warningColor = "!bg-orange-300";
 const borderLineColor = "border-b-blue-500";
 
-const Type = ({ data = "", setStep, setValue }) => {
+const defaultAccuracy = 10;
+
+const Type = ({ data = "", setStep, setValue, time, setTime }) => {
   const ref = useRef();
   const [type, setType] = useState("");
   const [error, setError] = useState([]);
@@ -17,20 +19,29 @@ const Type = ({ data = "", setStep, setValue }) => {
 
   useEffect(() => {
     if (isStarted) {
-      const interval = setInterval(
-        () =>
-          setValue((prev) => {
-            const allTypeEntries = type.length;
-            const timePerMinute = prev.duration / 60;
-            const speed = Math.floor(allTypeEntries / 5 / timePerMinute) || 0;
-            return { ...prev, speed, duration: prev.duration + 1 };
-          }),
-
-        1000
-      );
+      const interval = setInterval(() => {
+        const updatedTime = time + 1;
+        setValue(() => {
+          const typeEntries = type.length;
+          const timePerMinute = updatedTime / 60;
+          const speed = Math.ceil(typeEntries / 5 / timePerMinute) || 0;
+          const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
+          let accuracy = ((typeEntries - totalError) * 100) / typeEntries;
+          accuracy = Math.ceil(accuracy > 0 ? accuracy : defaultAccuracy);
+          const score = Math.ceil(accuracy / 20);
+          return { speed, score, accuracy };
+        });
+      }, 1000);
       return () => clearInterval(interval);
     }
-  }, [isStarted, setValue, type.length]);
+  }, [error, isStarted, setValue, type.length, time]);
+
+  useEffect(() => {
+    if (isStarted) {
+      const interval = setInterval(() => setTime(time + 1), 1000);
+      return () => clearInterval(interval);
+    }
+  }, [isStarted, setTime, time]);
 
   const onChange = (e) => {
     setIsStarted(true);
@@ -112,9 +123,9 @@ const Type = ({ data = "", setStep, setValue }) => {
   }, [data]);
 
   return (
-    <div className="bg-red-100">
+    <div className="flex-start-start flex-col">
       <ProgressLine data={data} type={type} error={error} setStep={setStep} />
-      <div className="relative w-full">
+      <div className="relative w-full flex-1">
         <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">
           {data.split("").length !== 0 &&
             convertedText.map((item, wordIndex) => {

@@ -22,7 +22,7 @@ const AuthContainer = () => {
   );
 
   return (
-    <div className="bg-form centering py-[70px] px-[10px] min-h-[100svh]">
+    <div className="bg-form centering py-[70px] px-[10px] min-h-screen">
       <div className="form">
         {step === 1 ? (
           <>

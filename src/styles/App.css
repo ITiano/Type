@@ -43,6 +43,9 @@ html {
   .transition {
     @apply transition-all duration-300;
   }
+  .min-h-screen {
+    @apply min-h-[100svh];
+  }
 }
 
 @layer components {
