@@ -34,7 +34,7 @@ const Text = () => {
       <h3 className="font-normal text-gray-900 mb-2 text-sm xs:xs:text-base 2xs:text-lg 3xs:text-xl sm:text-2xl 2md:text-3xl">
         Become a typist with typiano
       </h3>
-      <h2 className="font-extrabold mb-8 text-sm xs:text-base 2xs:text-lg 3xs:text-2xl sm:text-4xl 2md:text-5xl lg:text-6xl">
+      <h2 className="font-extrabold mb-8 text-sm xs:text-base 2xs:text-lg 3xs:text-2xl sm:text-4xl 2md:text-5xl lg:text-6xl select-none">
         <p>Learn Touch Typing</p>
         <TypingEffect dynamicText={["for free."]} />
       </h2>

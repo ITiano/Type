@@ -42,7 +42,7 @@ const ProfileForm = () => {
   return (
     <>
       <p className="mt-10 mb-5 font-semibold text-base">Edit profile</p>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} noValidate>
         <div className="flex flex-col md:flex-row md:divide-x-2 [&>*]:flex-1">
           <div className="md:pr-6">
             <p className="text-xs text-gray-800 mt-2 mb-3">Personal</p>
@@ -50,7 +50,7 @@ const ProfileForm = () => {
               <CustomInput value={value} setValue={setValue} name="firstName" label="First name" />
               <CustomInput value={value} setValue={setValue} name="lastName" label="Last name" />
             </div>
-            <CustomInput value={value} setValue={setValue} name="email" label="Email" disabled />
+            <CustomInput value={value} setValue={setValue} name="email" type="email" label="Email" disabled />
           </div>
           <div className="md:pl-6">
             <p className="text-xs text-gray-800 mt-2 mb-3">Goal</p>

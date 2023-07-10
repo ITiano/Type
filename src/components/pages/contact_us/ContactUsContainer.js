@@ -49,15 +49,15 @@ const ContactUsContainer = () => {
             <ContactElements key={contact.title} {...contact} />
           ))}
         </div>
-        <form onSubmit={onSubmit} className="flex-1 flex flex-col gap-3">
-          <CustomInput value={value} setValue={setValue} label="Title" name="title" placeholder="info@gmail.com" />
-          <CustomTextArea value={value} setValue={setValue} label="Message" name="message" placeholder="type here..." />
+        <form onSubmit={onSubmit} className="flex-1 flex flex-col gap-2">
+          <CustomInput value={value} setValue={setValue} label="Title" name="title" placeholder="Subject" />
+          <CustomTextArea value={value} setValue={setValue} label="Message" name="message" placeholder="Type here..." />
           <div>
             <CustomBtn
               text="Send"
               arrowEndBtn
               type="submit"
-              className="px-0"
+              className="px-0 mt-1"
               loading={loading}
               disabled={!value.title || !value.message}
             />

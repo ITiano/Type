@@ -1,7 +1,7 @@
 "use client";
 
 import CustomBtn from "@components/utils/CustomBtn";
-import CustomInput from "@components/utils/CustomInput";
+import CustomInput, { isEmailValidation } from "@components/utils/CustomInput";
 import React, { useCallback, useState } from "react";
 import { verifyUser } from "@services/authApi";
 import { GoogleIcon, TwitterIcon } from "@assets/icons/icons";
@@ -12,14 +12,18 @@ const AuthContainer = () => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState({ email: "" });
+  const [error, setError] = useState(null);
 
   const onSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      setLoading(true);
-      const { error } = await verifyUser(value);
-      if (!error) step === 1 ? setStep(2) : toast.success("please check your email address.");
-      setLoading(false);
+      const formError = isEmailValidation(value.email);
+      if (!formError) {
+        setLoading(true);
+        const { error } = await verifyUser(value);
+        if (!error) step === 1 ? setStep(2) : toast.success("please check your email address.");
+        setLoading(false);
+      } else setError(formError);
     },
     [value, step]
   );
@@ -31,8 +35,17 @@ const AuthContainer = () => {
         {step === 1 ? (
           <>
             <p className="text-xs opacity-40 mt-3 mb-6 font-medium">Please enter your email to continue</p>
-            <form className="flex flex-col" onSubmit={onSubmit}>
-              <CustomInput setValue={setValue} name="email" label="Email" placeholder="info@gmail.com" />
+            <form className="flex flex-col" onSubmit={onSubmit} noValidate>
+              <CustomInput
+                name="email"
+                type="email"
+                label="Email"
+                value={value}
+                error={error}
+                setValue={setValue}
+                setError={setError}
+                placeholder="info@gmail.com"
+              />
               <CustomBtn type="submit" text="Submit" loading={loading} className="black-btn w-full mt-4" />
             </form>
             <div className="w-full centering gap-2 mt-6">
