@@ -29,7 +29,7 @@ const Profile = async () => {
   thisWeek.setHours(0, 0, 0, 0);
   Today.setHours(0, 0, 0, 0);
 
-  const { data, error } = await getHistories();
+  const { data = [], error } = await getHistories();
 
   const convertData = data.reduce((previous, current) => {
     const courseDate = withoutTime(current.created_at).getTime();

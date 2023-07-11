@@ -19,7 +19,7 @@ const ProfileHeader = ({ data }) => {
     return { email, firstName, lastName };
   }, [user?.email, user?.user_metadata?.firstName, user?.user_metadata?.lastName]);
 
-  const { lastWeek, thisWeek } = data || {};
+  const { lastWeek = {}, thisWeek = {} } = data || {};
 
   const score = useMemo(() => {
     const value = lastWeek.accuracy + thisWeek.accuracy;

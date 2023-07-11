@@ -7,7 +7,7 @@ import { useMemo } from "react";
 const ProfileActivity = ({ data }) => {
   const [user] = useAuth();
   const { daily, weekly } = user?.user_metadata;
-  const { lastWeek, today, thisWeek } = data || {};
+  const { lastWeek = {}, today = {}, thisWeek = {} } = data || {};
 
   const ActivityElementsValues = useMemo(() => {
     const thisWeekSpeed = averageGenerator(thisWeek.speed, thisWeek.length);

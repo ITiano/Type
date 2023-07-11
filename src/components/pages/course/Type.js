@@ -25,7 +25,7 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
           const typeEntries = type.length;
           let timePerMinute = updatedTime / 60;
           timePerMinute = timePerMinute < 0 ? 1 : timePerMinute;
-          const speed = Math.ceil(typeEntries / timePerMinute) || 0;
+          const speed = Math.ceil(typeEntries / 5 / timePerMinute) || 0;
           const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
           let accuracy = ((typeEntries - totalError) * 100) / typeEntries;
           accuracy = Math.ceil(accuracy > 0 ? accuracy : defaultAccuracy);
