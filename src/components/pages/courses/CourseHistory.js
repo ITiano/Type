@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import routes from "@routes/routes";
 import Stars from "@components/common/Stars";
-import { CoursesIcons } from "@helper/Methods";
+import { CoursesIcons } from "@helper/utils";
 
 const CourseHistory = ({ course, history, kind }) => {
   const { status, id } = course;

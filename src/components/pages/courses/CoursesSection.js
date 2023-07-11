@@ -1,14 +1,13 @@
 import React, { useCallback } from "react";
 import routes from "@routes/routes";
-import { CoursesIcons } from "@helper/Methods";
 import CourseDetail from "./CourseDetail";
 import CourseHistory from "./CourseHistory";
 import { HistoryIcon } from "@assets/icons/icons";
-import CustomBtn from "@components/utils/CustomBtn";
 import { useAuth } from "src/context/AuthContextProvider";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
+import { CoursesIcons } from "@helper/utils";
 
 const CoursesSection = ({ kind, data, setOpen }) => {
   return (

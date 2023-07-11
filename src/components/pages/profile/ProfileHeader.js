@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Stars from "@components/common/Stars";
-import { AssignImgIcon, ShareIcon, UserIcon } from "@assets/icons/icons";
+import { AssignImgIcon, LogOutIcon, ShareIcon, UserIcon } from "@assets/icons/icons";
 import { useAuth } from "src/context/AuthContextProvider";
 import { toast } from "react-hot-toast";
 import { updateUser, uploadProfile } from "@services/authApi";
 import Image from "next/image";
+import { averageGenerator } from "@helper/utils";
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ data }) => {
   const inputRef = useRef();
   const [user, setUser] = useAuth();
   const [value, setValue] = useState(null);
@@ -17,6 +18,15 @@ const ProfileHeader = () => {
     const lastName = user?.user_metadata?.lastName;
     return { email, firstName, lastName };
   }, [user?.email, user?.user_metadata?.firstName, user?.user_metadata?.lastName]);
+
+  const { lastWeek, today, thisWeek } = data || {};
+
+  const score = useMemo(() => {
+    const value = lastWeek.accuracy + today.accuracy + thisWeek.accuracy;
+    const length = lastWeek.length + today.length + thisWeek.length;
+    const accuracy = averageGenerator(value, length);
+    return Math.ceil(accuracy / 20);
+  }, [lastWeek, thisWeek, today]);
 
   useEffect(() => {
     const updateProfile = () => {
@@ -69,12 +79,18 @@ const ProfileHeader = () => {
         <div>
           <p className="text-base font-semibold mb-0.5 pl-1">{firstName || lastName ? `${firstName} - ${lastName}` : email}</p>
           <div className="flex-start-center">
-            <Stars value={3} />
+            <Stars value={score} />
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-full w-8 h-8 centering cursor-pointer">
-        <ShareIcon />
+
+      <div className="flex-end-center gap-3">
+        <span className="bg-white rounded-full w-8 h-8 centering cursor-pointer">
+          <LogOutIcon />
+        </span>
+        <span className="bg-white rounded-full w-8 h-8 centering cursor-pointer">
+          <ShareIcon />
+        </span>
       </div>
     </div>
   );

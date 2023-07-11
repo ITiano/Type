@@ -18,7 +18,7 @@ const ProfileContainer = ({ data }) => {
         </div>
       ) : (
         <>
-          <ProfileHeader />
+          <ProfileHeader  data={data}/>
           <ProfileActivity data={data} />
           <ProfileForm />
         </>

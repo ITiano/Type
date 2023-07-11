@@ -15,7 +15,7 @@ const Profile = async () => {
   const initialData = {
     lastWeek: { speed: 0, accuracy: 0, duration: 0, length: 0 },
     thisWeek: { speed: 0, accuracy: 0, duration: 0, length: 0 },
-    current: { speed: 0, accuracy: 0, duration: 0, length: 0 },
+    today: { speed: 0, accuracy: 0, duration: 0, length: 0 },
   };
 
   const lastWeek = new Date();
@@ -50,10 +50,10 @@ const Profile = async () => {
     }
 
     if (courseDate === Today.getTime()) {
-      previous.current.speed += current.speed;
-      previous.current.accuracy += current.accuracy;
-      previous.current.duration += current.duration;
-      previous.current.length += 1;
+      previous.today.speed += current.speed;
+      previous.today.accuracy += current.accuracy;
+      previous.today.duration += current.duration;
+      previous.today.length += 1;
     }
 
     return previous;

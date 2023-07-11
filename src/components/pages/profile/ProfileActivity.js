@@ -1,26 +1,57 @@
 import { ArrowUpIcon, ArrowUpsIcon, FlashIcon, LampChargeIcon, SettingIcon } from "@assets/icons/icons";
 import ProgressBar from "../../layout/mainLayout/Header/ProgressBar";
 import { useAuth } from "src/context/AuthContextProvider";
-
-const ActivityElementsValues = [
-  { title: "Current speed", icon: <FlashIcon />, amount: "20 wpm", extraAmount: +13 },
-  { title: "Accuracy", icon: <LampChargeIcon />, amount: "20%", extraAmount: -20 },
-];
-
-const percentGenerator = (value, total) => Math.ceil((value * 100) / total);
+import { averageGenerator, percentGenerator, twoPercentGenerator } from "@helper/utils";
+import { useMemo } from "react";
 
 const ProfileActivity = ({ data }) => {
-  const [user, setUser] = useAuth();
-
+  const [user] = useAuth();
   const { daily, weekly } = user?.user_metadata;
+  const { lastWeek, today, thisWeek } = data || {};
 
-  const { lastWeek, current, thisWeek } = data || {};
+  const ActivityElementsValues = useMemo(() => {
+    
+    const thisWeekSpeed = averageGenerator(thisWeek.speed, thisWeek.length);
+    const lastWeekSpeed = averageGenerator(lastWeek.speed, lastWeek.length);
+    const thisWeekAccuracy = averageGenerator(thisWeek.accuracy, thisWeek.length);
+    const lastWeekAccuracy = averageGenerator(lastWeek.accuracy, lastWeek.length);
 
-  const charts = [
-    { id: 1, width: 6, label: "Last week", value: percentGenerator(lastWeek?.duration, weekly.value), totalLabel: weekly.label },
-    { id: 2, width: 9, label: "Today", value: percentGenerator(current?.duration, daily.value), totalLabel: daily.label },
-    { id: 3, width: 6, label: "This week", value: percentGenerator(thisWeek?.duration, weekly.value), totalLabel: weekly.label },
-  ];
+    return [
+      {
+        title: "Current speed",
+        icon: <FlashIcon />,
+        amount: thisWeekSpeed + " wpm ",
+        extraAmount: twoPercentGenerator(thisWeekSpeed, lastWeekSpeed),
+      },
+      {
+        title: "Accuracy",
+        icon: <LampChargeIcon />,
+        amount: thisWeekAccuracy + " % ",
+        extraAmount: twoPercentGenerator(thisWeekAccuracy, lastWeekAccuracy),
+      },
+    ];
+  }, [lastWeek.accuracy, lastWeek.length, lastWeek.speed, thisWeek.accuracy, thisWeek.length, thisWeek.speed]);
+
+  const charts = useMemo(
+    () => [
+      {
+        id: 1,
+        width: 6,
+        label: "Last week",
+        value: percentGenerator(lastWeek?.duration, weekly.value),
+        totalLabel: weekly.label,
+      },
+      { id: 2, width: 9, label: "Today", value: percentGenerator(today?.duration, daily.value), totalLabel: daily.label },
+      {
+        id: 3,
+        width: 6,
+        label: "This week",
+        value: percentGenerator(thisWeek?.duration, weekly.value),
+        totalLabel: weekly.label,
+      },
+    ],
+    [daily, weekly, lastWeek?.duration, thisWeek?.duration, today?.duration]
+  );
 
   return (
     <div>
@@ -53,10 +84,12 @@ const ActivityElements = ({ value }) => (
       <p className="font-semibold">{value.title}</p>
     </div>
     <div className="flex-start-center gap-3">
-      <p className={` flex-start-center ${value.extraAmount > 0 ? "text-green-600" : "text-red-600"}`}>
-        {value.extraAmount && (value.extraAmount > 0 ? <ArrowUpIcon /> : <ArrowUpsIcon />)}
-        {value.extraAmount}
-      </p>
+      {value.extraAmount !== 0 && (
+        <p className={` flex-start-center ${value.extraAmount > 0 ? "text-green-600" : "text-red-600"}`}>
+          {value.extraAmount > 0 ? <ArrowUpIcon /> : <ArrowUpsIcon />}
+          {value.extraAmount}%
+        </p>
+      )}
       <p className="font-semibold">{value.amount}</p>
     </div>
   </div>
