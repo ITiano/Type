@@ -1,3 +1,4 @@
+import LogoTypiano from "@assets/vectors/LogoTypiano";
 import routes from "@routes/routes";
 import Link from "next/link";
 import React from "react";
@@ -11,8 +12,8 @@ const Footer = () => {
     <div className="mt-auto">
       <div className="h-24 bg-rectangle"></div>
       <footer className="pb-6 mt-auto bg-gray-700">
-        <div className="layout-max-w pt-10 pb-2">
-          <h2 className="text-dark-900 font-bold text-center text-xl">Typiano</h2>
+        <div className="layout-max-w pt-6 pb-2">
+          <LogoTypiano className="text-dark-900 font-bold mb-4" />
           <div className="centering flex-wrap gap-8 py-4 border-b-2">
             {navItems.map((element) => (
               <Link className="text-gray-900" href={element.path} key={element.path}>

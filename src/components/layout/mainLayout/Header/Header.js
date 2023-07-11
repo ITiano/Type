@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import routes from "@routes/routes";
 import Navbar from "./Navbar";
 import UserProfile from "./UserProfile";
-import Link from "next/link";
+import LogoTypiano from "@assets/vectors/LogoTypiano";
 
 const navItems = [routes.home, routes.courses, routes.aboutUs, routes.contactUs];
 
@@ -29,9 +29,7 @@ const Header = () => {
       } ${scrollData.isScrollingDown ? "-translate-y-full" : "-translate-y-0"}`}
     >
       <div className="layout-max-w flex-between-center p-3 md:px-4">
-        <Link className="text-dark-900 font-bold text-center text-base" href={routes.home.path}>
-          Typiano
-        </Link>
+        <LogoTypiano className="text-dark-900 font-bold text-center text-base" />
         <Navbar navItems={navItems} />
         <UserProfile navItems={navItems} />
       </div>

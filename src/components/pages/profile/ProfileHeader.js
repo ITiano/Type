@@ -36,14 +36,14 @@ const ProfileHeader = () => {
       toast.promise(promise, {
         loading: "pending",
         error: "Sth went wrong please try again later",
-        success: "Profile photo updated successfully :)",
+        success: "Profile photo updated successfully",
       });
     };
     value && updateProfile();
   }, [setUser, user.metadata, value]);
 
   return (
-    <div className="flex-between-center">
+    <div className="flex-between-center mb-8">
       <div className="flex-start-center gap-4 2xs:gap-5">
         <div className="relative cursor-pointer" onClick={() => inputRef.current.click()}>
           <div className="relative rounded-full overflow-hidden w-16 2xs:w-20 md:w-28 h-16 2xs:h-20 md:h-28">

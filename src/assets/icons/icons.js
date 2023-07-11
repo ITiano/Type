@@ -209,7 +209,7 @@ export const HideIcon = () => (
   </svg>
 );
 
-export const HistoryIcon = () => {
+export const HistoryIcon = ({ className }) => {
   return (
     <svg
       height="21px"
@@ -217,13 +217,13 @@ export const HistoryIcon = () => {
       viewBox="0 0 20 21"
       width="20px"
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsSketch="http://www.bohemiancoding.com/sketch/ns"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      className={className}
     >
       <title />
       <desc />
       <defs />
-      <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" strokeWidth="1">
+      <g fill="none" fillRule="evenodd" id="Page-1" stroke="none" strokeWidth="1">
         <g fill="#000000" id="Core" opacity="0.9" transform="translate(-464.000000, -254.000000)">
           <g id="history" transform="translate(464.000000, 254.500000)">
             <path
