@@ -123,7 +123,7 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
   }, [data]);
 
   return (
-    <div className="flex-start-start flex-col">
+    <div className="flex-start-start flex-col w-full max-w-7xl mx-auto px-4">
       <ProgressLine data={data} type={type} error={error} setStep={setStep} />
       <div className="relative w-full flex-1">
         <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">

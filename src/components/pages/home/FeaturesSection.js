@@ -1,23 +1,21 @@
 import FeaturePatternSvg from "@assets/vectors/FeaturePatternSvg";
-import BookSvg from "@assets/vectors/BookSvg";
-import PencelSvg from "@assets/vectors/PencelSvg";
-import VlcSvg from "@assets/vectors/VlcSvg";
+import CoursesImages from "@components/common/CoursesImages";
 
 const boxData = [
   {
-    icon: <BookSvg />,
+    image: { kind: 4, size: 120 },
     title: "Untitled",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos ipsa omnis officia consequatur amet corrupti ipsum libero exercitationem, repellendus pariatur, soluta ea quia iste animi voluptas fugit illo hic id.",
   },
   {
-    icon: <VlcSvg />,
+    image: { kind: 5, size: 160 },
     title: "Untitled",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos ipsa omnis officia consequatur amet corrupti ipsum libero exercitationem, repellendus pariatur, soluta ea quia iste animi voluptas fugit illo hic id.",
   },
   {
-    icon: <PencelSvg />,
+    image: { kind: 6, size: 160 },
     title: "Untitled",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos ipsa omnis officia consequatur amet corrupti ipsum libero exercitationem, repellendus pariatur, soluta ea quia iste animi voluptas fugit illo hic id.",
@@ -52,10 +50,10 @@ const FeaturesText = ({ className }) => {
   );
 };
 
-const Box = ({ title, description, icon }) => {
+const Box = ({ title, description, image }) => {
   return (
     <div className="centering flex-col bg-white shadow shadow-slate-200 rounded-3xl p-6">
-      <span className="w-[150px] h-[150px] centering [&>*]:w-full [&>*]:h-full overflow-hidden">{icon}</span>
+      <CoursesImages kind={image.kind} size={image.size} />
       <h5 className="font-medium text-2xl mb-5">{title}</h5>
       <p className="text-gray-900 text-base line-clamp-3 text-center">{description}</p>
     </div>

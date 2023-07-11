@@ -1,14 +1,13 @@
 import React from "react";
 
-const PencelSvg = ({ style = {} }) => {
+const PencelSvg = () => {
   return (
     <svg
       width="340"
       height="340"
       viewBox="0 0 340 340"
       fill="none"
-      style={style}
-      className="scale-[250%]"
+      className="scale-[280%] pt-2 w-full h-full"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >

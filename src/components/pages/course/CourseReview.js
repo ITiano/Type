@@ -1,10 +1,10 @@
-import { CoursesImages } from "@helper/Methods";
+import CoursesImages from "@components/common/CoursesImages";
 import React from "react";
 
 const CourseReview = ({ data }) => {
   return (
-    <div className="centering flex-col gap-2 w-96">
-      {CoursesImages(140)[data.kind]}
+    <div className="centering flex-col gap-2">
+      <CoursesImages kind={data.kind} size={120} />
       <p className=" font-semibold pb-1.5 mt-1 text-2xl">{data.name}</p>
       <p className="text-gray-800 text-xs">5min . 8 exercises</p>
       <div className="w-full centering gap-2 my-5">
