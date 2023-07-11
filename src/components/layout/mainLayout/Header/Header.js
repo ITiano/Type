@@ -29,7 +29,7 @@ const Header = () => {
         scrollData.offsetY ? "bg-white/40 backdrop-blur-md shadow" : "bg-transparent"
       } ${scrollData.isScrollingDown ? "-translate-y-full" : "-translate-y-0"}`}
     >
-      <div className="layout-max-w flex-between-center p-3 md:px-4">
+      <div className="max-w-layout flex-between-center p-3 md:px-4">
         <LogoTypiano className="text-dark-900 font-bold text-center text-base" />
         <Navbar navItems={navItems} />
         <UserProfile navItems={navItems} />

@@ -123,20 +123,20 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
   }, [data]);
 
   return (
-    <div className="flex-start-start flex-col w-full max-w-7xl mx-auto px-4">
+    <div className="flex-start-start flex-col w-full">
       <ProgressLine data={data} type={type} error={error} setStep={setStep} />
       <div className="relative w-full flex-1">
-        <div className="w-full flex-wrap gap-y-8 flex items-center justify-start">
+        <div className="w-full flex-wrap gap-y-8 flex-start-center">
           {data.split("").length !== 0 &&
             convertedText.map((item, wordIndex) => {
               return (
-                <span key={wordIndex} className="flex items-center justify-start">
+                <span key={wordIndex} className="flex-start-center">
                   {item.split("").map((item, index) => {
                     const length = currentWordLength(wordIndex);
                     return (
                       <span
                         key={length + index}
-                        className={`mx-px min-w-[1.5rem] h-14 flex items-center justify-center text-4xl border-b-4 rounded-sm relative ${
+                        className={`mx-px min-w-[1.5rem] h-14 flex-start-center text-4xl border-b-4 rounded-sm relative ${
                           type.length === length + index ? borderLineColor : "border-b-white"
                         } ${showLastErrorClassName(length + index)} ${
                           type[length + index]?.toString() === item?.toString() ? successColor : ""
@@ -144,9 +144,9 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
                       >
                         {item}
                         <span
-                          className={`transition absolute inset-0 flex items-center justify-center ${
-                            show ? "opacity-100" : "opacity-0"
-                          }  ${showNowError(length + index).className} `}
+                          className={`transition absolute inset-0 flex-start-center ${show ? "opacity-100" : "opacity-0"}  ${
+                            showNowError(length + index).className
+                          } `}
                         >
                           {showNowError(length + index).text}
                         </span>

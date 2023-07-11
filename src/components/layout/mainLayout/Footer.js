@@ -12,7 +12,7 @@ const Footer = () => {
     <div className="mt-auto">
       <div className="h-24 bg-rectangle"></div>
       <footer className="pb-6 mt-auto bg-gray-700">
-        <div className="layout-max-w pt-6 pb-2">
+        <div className="max-w-layout pt-6 pb-2">
           <LogoTypiano className="text-dark-900 font-bold mb-4" />
           <div className="centering flex-wrap gap-8 py-4 border-b-2">
             {navItems.map((element) => (

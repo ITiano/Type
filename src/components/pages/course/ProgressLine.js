@@ -11,11 +11,11 @@ const ProgressLine = ({ data, type, error, setStep }) => {
 
   useEffect(() => {
     if (progress === 100) {
-      const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
-      alert(`done, You have ${totalError} errors in ${error.length} characters`);
+      // const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
+      // alert(`done, You have ${totalError} errors in ${error.length} characters`);
       setStep(3);
     }
-  }, [data, error, error.length, progress, setStep, type]);
+  }, [progress, setStep]);
 
   return (
     <div className="relative w-full my-14">

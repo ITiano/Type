@@ -7,12 +7,11 @@ const withOpacity = (variableName) => {
 };
 
 module.exports = {
-  content: ["./public/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["'Poppins', sans-serif"],
-        type: ["'Nunito', sans-serif"],
+        sans: ["var(--font-poppins)"],
       },
       backgroundImage: {
         form: "url('/images/login/Frame-letter.png')",

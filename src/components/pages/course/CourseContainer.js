@@ -35,7 +35,7 @@ const CourseContainer = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-col justify-between items-center p-layout min-h-screen max-w-7xl mx-auto px-4">
+    <div className="flex-between-center flex-col p-layout min-h-screen max-w-layout px-4">
       {step === 1 && (
         <div className="flex-1 centering">
           <CourseReview data={data} setStep={setStep} />
@@ -45,7 +45,7 @@ const CourseContainer = ({ data }) => {
         <Type data={data?.course} setStep={setStep} setValue={setValue} value={value} time={time} setTime={setTime} />
       )}
       {step === 3 && <CourseRating data={data} setStep={setStep} value={value} time={time} />}
-      <div className="py-10 w-full flex-between-center z-50 relative max-w-7xl mx-auto">
+      <div className="py-10 w-full flex-between-center z-50 relative">
         <div>
           {!backBtnOption[step].hidden && (
             <CustomBtn text={backBtnOption[step].text} onClick={backBtnOption[step].onClick} arrowStartBtn />
