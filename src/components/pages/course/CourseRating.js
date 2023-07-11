@@ -1,4 +1,5 @@
 import Stars from "@components/common/Stars";
+import Confetti from "@components/common/Confetti";
 import { CoursesImages } from "@helper/Methods";
 import { addHistory } from "@services/courseApi";
 import React, { useEffect } from "react";
@@ -13,8 +14,7 @@ const CourseRating = ({ data: { kind, name, id }, value, time }) => {
 
   return (
     <>
-      <div className="bg-gray-800 bg-opacity-30 h-3 w-10/12 mt-14 rounded-full"></div>
-      <div className="centering flex-col gap-2 w-96">
+      <div className="centering flex-col gap-2 max-w-xs mx-auto flex-1">
         {CoursesImages(140)[kind]}
         <p className=" font-semibold pb-1.5 mt-1 text-2xl">{name}</p>
         <Stars value={value.score} />
@@ -25,6 +25,7 @@ const CourseRating = ({ data: { kind, name, id }, value, time }) => {
           <CourseRatingElement name="Time" value={time} />
         </div>
       </div>
+      <Confetti />
     </>
   );
 };

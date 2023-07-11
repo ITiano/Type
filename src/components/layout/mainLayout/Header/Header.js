@@ -17,6 +17,7 @@ const Header = () => {
         const offsetY = window.scrollY;
         setScrollData({ offsetY, isScrollingDown: offsetY > scrollData.offsetY });
       };
+      updateScrollData();
       window.addEventListener("scroll", updateScrollData);
       return () => window.removeEventListener("scroll", updateScrollData);
     }

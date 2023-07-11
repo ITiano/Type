@@ -2,16 +2,18 @@
 import React, { useEffect, useRef } from "react";
 
 const Confetti = () => {
+  const ref = useRef();
+
   useEffect(() => {
     //-----------Var Inits--------------
-    let canvas = document.getElementById("canvas");
+    const canvas = ref.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
       const confetti = [];
-      const confettiCount = 300;
+      const confettiCount = canvas.width >= 786 ? 400 : 100;
       const gravity = 0.5;
       const terminalVelocity = 5;
       const drag = 0.075;
@@ -110,14 +112,19 @@ const Confetti = () => {
       });
 
       //------------Click------------
-      window.addEventListener("click", function () {
-        initConfetti();
-      });
+      // window.addEventListener("click", function () {
+      //   initConfetti();
+      // });
+      initConfetti();
       render();
     }
   }, []);
 
-  return <canvas id="canvas"></canvas>;
+  return (
+    <div className="fixed inset-0 z-10 overflow-hidden">
+      <canvas ref={ref}></canvas>;
+    </div>
+  );
 };
 
 export default Confetti;
