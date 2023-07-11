@@ -1,11 +1,65 @@
 import ProfileContainer from "@components/pages/profile/ProfileContainer";
 import routes from "@routes/routes";
+import { getHistories } from "@services/coursesApi";
 import React from "react";
 
 export const metadata = { title: routes.profile.title };
 
-const Profile = () => {
-  return <ProfileContainer />;
+const withoutTime = (date) => {
+  const convert = new Date(date);
+  convert.setHours(0, 0, 0, 0);
+  return convert;
+};
+
+const Profile = async () => {
+  const initialData = {
+    lastWeek: { speed: 0, accuracy: 0, duration: 0, length: 0 },
+    thisWeek: { speed: 0, accuracy: 0, duration: 0, length: 0 },
+    current: { speed: 0, accuracy: 0, duration: 0, length: 0 },
+  };
+
+  const lastWeek = new Date();
+  const thisWeek = new Date();
+  const Today = new Date();
+  console.log(Today);
+  const TodayDayOfWeek = Today.getDay() + 2;
+  lastWeek.setDate(Today.getDate() - 7 - TodayDayOfWeek);
+  thisWeek.setDate(Today.getDate() - TodayDayOfWeek);
+
+  lastWeek.setHours(0, 0, 0, 0);
+  thisWeek.setHours(0, 0, 0, 0);
+  Today.setHours(0, 0, 0, 0);
+
+  const { data, error } = await getHistories();
+
+  const convertData = data.reduce((previous, current) => {
+    const courseDate = withoutTime(current.created_at).getTime();
+
+    if (courseDate >= lastWeek.getTime() && courseDate < thisWeek.getTime()) {
+      previous.lastWeek.speed += current.speed;
+      previous.lastWeek.accuracy += current.accuracy;
+      previous.lastWeek.duration += current.duration;
+      previous.lastWeek.length += 1;
+    }
+
+    if (courseDate >= thisWeek.getTime() && courseDate < Today.getTime()) {
+      previous.thisWeek.speed += current.speed;
+      previous.thisWeek.accuracy += current.accuracy;
+      previous.thisWeek.duration += current.duration;
+      previous.thisWeek.length += 1;
+    }
+
+    if (courseDate === Today.getTime()) {
+      previous.current.speed += current.speed;
+      previous.current.accuracy += current.accuracy;
+      previous.current.duration += current.duration;
+      previous.current.length += 1;
+    }
+
+    return previous;
+  }, initialData);
+
+  return <ProfileContainer data={convertData} />;
 };
 
 export default Profile;

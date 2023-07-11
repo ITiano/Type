@@ -1,4 +1,4 @@
-import { dailyGoalList, monthlyGoalList, weeklyGoalList } from "@helper/utils";
+import { dailyGoalList, weeklyGoalList } from "@helper/utils";
 import { getUser } from "@services/authApi";
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 
@@ -8,7 +8,6 @@ const initialUserData = {
   profile_cover: null,
   daily: dailyGoalList[0],
   weekly: weeklyGoalList[1],
-  monthly: monthlyGoalList[2],
 };
 
 const AuthContext = createContext();

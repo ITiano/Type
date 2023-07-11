@@ -6,11 +6,11 @@ import { useAuth } from "src/context/AuthContextProvider";
 import CustomBtn from "@components/utils/CustomBtn";
 import { useRouter } from "next/navigation";
 import CustomDropDown from "@components/utils/CustomDropDown";
-import { dailyGoalList, monthlyGoalList, weeklyGoalList } from "@helper/utils";
+import { dailyGoalList, weeklyGoalList } from "@helper/utils";
 import { updateUser } from "@services/authApi";
 import { toast } from "react-hot-toast";
 
-const defaultValues = { firstName: "", lastName: "", email: "", daily: "", weekly: "", monthly: "" };
+const defaultValues = { firstName: "", lastName: "", email: "", daily: "", weekly: "" };
 
 const ProfileForm = () => {
   const router = useRouter();
@@ -37,7 +37,7 @@ const ProfileForm = () => {
     setValue((prev) => ({ ...prev, email: user.email, ...user.user_metadata }));
   }, [router, user]);
 
-  const disabled = !value.firstName || !value.lastName || !value.email || !value.daily || !value.weekly || !value.monthly;
+  const disabled = !value.firstName || !value.lastName || !value.email || !value.daily || !value.weekly ;
 
   return (
     <>
@@ -57,7 +57,6 @@ const ProfileForm = () => {
             <div className="flex flex-col gap-3">
               <CustomDropDown value={value} setValue={setValue} name="daily" label="Daily goal" list={dailyGoalList} />
               <CustomDropDown value={value} setValue={setValue} name="weekly" label="weakly goal" list={weeklyGoalList} />
-              <CustomDropDown value={value} setValue={setValue} name="monthly" label="monthly goal" list={monthlyGoalList} />
             </div>
           </div>
         </div>

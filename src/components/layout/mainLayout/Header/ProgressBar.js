@@ -49,7 +49,7 @@ const ProgressBar = ({ width, label, totalLabel, value }) => {
           },
         }}
       >
-        <p className={`text-primary-900 font-bold ${width < 9 ? "text-base" : "text-3xl"}`}>{value}</p>
+        <p className={`text-primary-900 font-bold ${width < 9 ? "text-base" : "text-3xl"}`}>{value}%</p>
         <p className={` ${width < 9 ? "text-xs" : "text-sm"}`}>{totalLabel}</p>
       </CircularProgressbarWithChildren>
       <p className={`font-bold ${width < 9 ? "text-sm" : "text-lg"}`}>{label}</p>
