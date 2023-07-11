@@ -34,6 +34,7 @@ const CourseContainer = ({ data }) => {
     3: { text: "Again", onClick: refreshPage, hidden: false },
   };
 
+
   return (
     <div className="flex-between-center flex-col p-layout min-h-screen max-w-layout px-4">
       {step === 1 && (

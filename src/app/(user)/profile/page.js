@@ -21,7 +21,6 @@ const Profile = async () => {
   const lastWeek = new Date();
   const thisWeek = new Date();
   const Today = new Date();
-  console.log(Today);
   const TodayDayOfWeek = Today.getDay() + 2;
   lastWeek.setDate(Today.getDate() - 7 - TodayDayOfWeek);
   thisWeek.setDate(Today.getDate() - TodayDayOfWeek);
@@ -42,7 +41,7 @@ const Profile = async () => {
       previous.lastWeek.length += 1;
     }
 
-    if (courseDate >= thisWeek.getTime() && courseDate < Today.getTime()) {
+    if (courseDate >= thisWeek.getTime() && courseDate <= Today.getTime()) {
       previous.thisWeek.speed += current.speed;
       previous.thisWeek.accuracy += current.accuracy;
       previous.thisWeek.duration += current.duration;

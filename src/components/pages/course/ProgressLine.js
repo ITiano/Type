@@ -2,20 +2,12 @@ import { LighteningIcon } from "@assets/icons/icons";
 import { useEffect, useState } from "react";
 import React from "react";
 
-const ProgressLine = ({ data, type, error, setStep }) => {
+const ProgressLine = ({ data, type }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     setProgress((type.length * 100) / data.length);
   }, [data.length, type.length]);
-
-  useEffect(() => {
-    if (progress === 100) {
-      // const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
-      // alert(`done, You have ${totalError} errors in ${error.length} characters`);
-      setStep(3);
-    }
-  }, [progress, setStep]);
 
   return (
     <div className="relative w-full my-14">

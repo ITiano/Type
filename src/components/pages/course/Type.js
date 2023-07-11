@@ -23,18 +23,20 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
         const updatedTime = time + 1;
         setValue(() => {
           const typeEntries = type.length;
-          const timePerMinute = updatedTime / 60;
-          const speed = Math.ceil(typeEntries / 5 / timePerMinute) || 0;
+          let timePerMinute = updatedTime / 60;
+          timePerMinute = timePerMinute < 0 ? 1 : timePerMinute;
+          const speed = Math.ceil(typeEntries / timePerMinute) || 0;
           const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
           let accuracy = ((typeEntries - totalError) * 100) / typeEntries;
           accuracy = Math.ceil(accuracy > 0 ? accuracy : defaultAccuracy);
           const score = Math.ceil(accuracy / 20);
+          if (typeEntries === data.length) setStep(3);
           return { speed, score, accuracy };
         });
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [error, isStarted, setValue, type.length, time]);
+  }, [error, isStarted, setValue, type.length, time, setStep, data.length]);
 
   useEffect(() => {
     if (isStarted) {
@@ -45,32 +47,34 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
 
   const onChange = (e) => {
     setIsStarted(true);
-    const length = type.length;
-    const value = e.target.value.split("");
-    const pattern = data.split("");
-    if (value[length] && pattern[length] && value[length]?.toString() === pattern[length]?.toString()) {
-      setType(e.target.value);
-      // turnoff error
-      const index = error.findIndex((item) => item.id === length);
-      if (index >= 0) {
-        const select = { ...error[index] };
-        select.completed = true;
-        const clone = [...error];
-        clone[index] = select;
-        setError(clone);
-      }
-    } else {
-      //  turnon error and create history error type
-      const index = error.findIndex((item) => item.id === length);
-      if (index >= 0) {
-        const select = { ...error[index] };
-        select.count = select.count + 1;
-        select.history = [...select.history, value[length]];
-        const clone = [...error];
-        clone[index] = select;
-        setError(clone);
+    if (type.length !== data.length || !type.length) {
+      const length = type.length;
+      const value = e.target.value.split("");
+      const pattern = data.split("");
+      if (value[length] && pattern[length] && value[length]?.toString() === pattern[length]?.toString()) {
+        setType(e.target.value);
+        // turnoff error
+        const index = error.findIndex((item) => item.id === length);
+        if (index >= 0) {
+          const select = { ...error[index] };
+          select.completed = true;
+          const clone = [...error];
+          clone[index] = select;
+          setError(clone);
+        }
       } else {
-        setError([...error, { id: length, count: 1, history: [value[length]], completed: false }]);
+        //  turnon error and create history error type
+        const index = error.findIndex((item) => item.id === length);
+        if (index >= 0) {
+          const select = { ...error[index] };
+          select.count = select.count + 1;
+          select.history = [...select.history, value[length]];
+          const clone = [...error];
+          clone[index] = select;
+          setError(clone);
+        } else {
+          setError([...error, { id: length, count: 1, history: [value[length]], completed: false }]);
+        }
       }
     }
   };
@@ -124,7 +128,7 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
 
   return (
     <div className="flex-start-start flex-col w-full">
-      <ProgressLine data={data} type={type} error={error} setStep={setStep} />
+      <ProgressLine data={data} type={type} />
       <div className="relative w-full flex-1">
         <div className="w-full flex-wrap gap-y-8 flex-start-center">
           {data.split("").length !== 0 &&

@@ -19,14 +19,14 @@ const ProfileHeader = ({ data }) => {
     return { email, firstName, lastName };
   }, [user?.email, user?.user_metadata?.firstName, user?.user_metadata?.lastName]);
 
-  const { lastWeek, today, thisWeek } = data || {};
+  const { lastWeek, thisWeek } = data || {};
 
   const score = useMemo(() => {
-    const value = lastWeek.accuracy + today.accuracy + thisWeek.accuracy;
-    const length = lastWeek.length + today.length + thisWeek.length;
+    const value = lastWeek.accuracy + thisWeek.accuracy;
+    const length = lastWeek.length + thisWeek.length;
     const accuracy = averageGenerator(value, length);
     return Math.ceil(accuracy / 20);
-  }, [lastWeek, thisWeek, today]);
+  }, [lastWeek, thisWeek]);
 
   useEffect(() => {
     const updateProfile = () => {

@@ -10,9 +10,9 @@ const ProfileActivity = ({ data }) => {
   const { lastWeek, today, thisWeek } = data || {};
 
   const ActivityElementsValues = useMemo(() => {
-    
     const thisWeekSpeed = averageGenerator(thisWeek.speed, thisWeek.length);
     const lastWeekSpeed = averageGenerator(lastWeek.speed, lastWeek.length);
+
     const thisWeekAccuracy = averageGenerator(thisWeek.accuracy, thisWeek.length);
     const lastWeekAccuracy = averageGenerator(lastWeek.accuracy, lastWeek.length);
 
