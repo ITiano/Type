@@ -1,16 +1,21 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Stars from "@components/common/Stars";
 import { AssignImgIcon, LogOutIcon, ShareIcon, UserIcon } from "@assets/icons/icons";
 import { useAuth } from "src/context/AuthContextProvider";
 import { toast } from "react-hot-toast";
-import { updateUser, uploadProfile } from "@services/authApi";
+import { logoutUser, updateUser, uploadProfile } from "@services/authApi";
 import Image from "next/image";
 import { averageGenerator } from "@helper/utils";
+import { useRouter } from "next/navigation";
+import routes from "@routes/routes";
+import Spinner from "@components/utils/Spinner";
 
 const ProfileHeader = ({ data }) => {
+  const { push } = useRouter();
   const inputRef = useRef();
   const [user, setUser] = useAuth();
   const [value, setValue] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { email, lastName, firstName } = useMemo(() => {
     const email = user?.email;
@@ -27,6 +32,17 @@ const ProfileHeader = ({ data }) => {
     const accuracy = averageGenerator(value, length);
     return Math.ceil(accuracy / 20);
   }, [lastWeek, thisWeek]);
+
+  const logoutHandler = useCallback(async () => {
+    setLoading(true);
+    const { error } = await logoutUser();
+    if (error) toast.error("Sth went wrong please try again later");
+    else {
+      push(routes.home.path);
+      setUser(null);
+    }
+    setLoading(false);
+  }, [push, setUser]);
 
   useEffect(() => {
     const updateProfile = () => {
@@ -85,9 +101,9 @@ const ProfileHeader = ({ data }) => {
       </div>
 
       <div className="flex-end-center gap-3">
-        <span className="bg-white rounded-full w-8 h-8 centering cursor-pointer">
-          <LogOutIcon />
-        </span>
+        <button className="bg-white rounded-full w-8 h-8 centering" onClick={logoutHandler}>
+          {loading ? <Spinner /> : <LogOutIcon />}
+        </button>
         <span className="bg-white rounded-full w-8 h-8 centering cursor-pointer">
           <ShareIcon />
         </span>

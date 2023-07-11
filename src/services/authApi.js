@@ -10,3 +10,5 @@ export const uploadProfile = (value) =>
   clientSupabase.storage.from("user_profile").upload(value.name, value, {
     upsert: true,
   });
+
+export const logoutUser = () => clientSupabase.auth.signOut();
