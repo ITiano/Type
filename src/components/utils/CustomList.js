@@ -22,7 +22,7 @@ const CustomList = ({ children, data = [] }) => {
   }, [children, showIcon]);
 
   return (
-    <div className="flex flex-col divide-y border rounded-lg">
+    <div className="flex flex-col divide-y border rounded-lg bg-white">
       <ListHeader total={data?.length} showIcon={showIcon} ref={ref} hasIcon={!!icons?.current?.length}>
         {children}
       </ListHeader>
@@ -53,9 +53,9 @@ const ListHeader = forwardRef(function ListHeader({ children, total, hasIcon, sh
           )
       )}
       {(showIcon || hasIcon) && (
-        <span className="centering" style={{ width: hasIcon && showIcon ? 82 : 48 }}>
+        <div className="centering" style={{ width: hasIcon && showIcon ? 82 : 48 }}>
           {total}
-        </span>
+        </div>
       )}
     </div>
   );
@@ -67,13 +67,13 @@ const ListBodyElement = ({ children, item, icons, showIcon }) => {
 
   const classes = useMemo(() => {
     return {
-      container: `transition-time ${open && "mt-4"}`,
+      container: `transition ${open && "mt-4"}`,
       headerContainer: "flex p-3",
-      itemClick: "transition-time hover:text-primary cursor-pointer",
+      itemClick: "transition hover:text-primary-900 cursor-pointer",
       headerItem: `flex-1 centering ${styles.listHeader}`,
       iconsContainer: "flex-start-center gap-1.5 mx-2",
-      icon: `w-[30px] h-[30px] centering rounded-full hover:bg-primary/20 transition-time cursor-pointer ${open && "rotate-180"}`,
-      bodyContainer: `overflow-hidden transition-time ${open && "border-t"}`,
+      icon: `w-[30px] h-[30px] centering rounded-full hover:bg-primary-900/20 transition cursor-pointer ${open && "rotate-180"}`,
+      bodyContainer: `overflow-hidden transition ${open && "border-t"}`,
       gridContainer: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-4",
     };
   }, [open]);
@@ -90,9 +90,9 @@ const ListBodyElement = ({ children, item, icons, showIcon }) => {
             !hidden &&
             !accordion && (
               <div key={title} data-responsive={responsive} className={classes.headerItem}>
-                <span onClick={() => onClick && onClick(item)} className={onClick && classes.itemClick}>
+                <div onClick={() => onClick && onClick(item)} className={onClick && classes.itemClick}>
                   {value(item)}
-                </span>
+                </div>
               </div>
             )
         )}
@@ -113,7 +113,7 @@ const ListBodyElement = ({ children, item, icons, showIcon }) => {
       </div>
       {/* Accordion body */}
       {showIcon && (
-        <div style={{ height: open ? ref?.current?.clientHeight : 0 }} className={classes.bodyContainer}>
+        <div style={{ height: open ? ref?.current?.clientHeight + "px" : 0 }} className={classes.bodyContainer}>
           <div ref={ref} className={classes.gridContainer}>
             {Children.map(
               children,
@@ -123,9 +123,9 @@ const ListBodyElement = ({ children, item, icons, showIcon }) => {
                 !hidden &&
                 (responsive || accordion) && (
                   <div key={title} data-responsive={responsive} className={styles.listBody}>
-                    <span className={onClick && classes.itemClick} onClick={() => onClick && onClick(item)}>
+                    <div className={onClick && classes.itemClick} onClick={() => onClick && onClick(item)}>
                       {title} : {value(item)}
-                    </span>
+                    </div>
                   </div>
                 )
             )}
@@ -155,12 +155,12 @@ const ListIcons = ({ item, className, children }) => {
   );
 
   return Children.count(children) > 1 ? (
-    <span ref={ref} className="relative">
-      <span onClick={() => setToggle(true)}>
+    <div ref={ref} className="relative">
+      <div onClick={() => setToggle(true)}>
         <DotsIcon className={`rotate-90 ${className}`} />
-      </span>
+      </div>
       <div
-        className={`absolute top-[calc(100%+10px)] right-0 w-[115px] divide-y shadow-lg transition-time bg-white z-10 rounded-md overflow-hidden ${
+        className={`absolute top-[calc(100%+10px)] right-0 w-[115px] divide-y shadow-lg transition bg-white z-10 rounded-md overflow-hidden ${
           toggle ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -168,21 +168,21 @@ const ListIcons = ({ item, className, children }) => {
           <div
             key={title}
             onClick={() => clickHandler(onClick)}
-            className="flex-between-center px-3 py-2 cursor-pointer hover:bg-primary/20 transition-time"
+            className="flex-between-center px-3 py-2 cursor-pointer hover:bg-primary-900/20 transition"
           >
-            <span className="text-sm">{title}</span>
-            <span>{icon}</span>
+            <div className="text-sm">{title}</div>
+            <div>{icon}</div>
           </div>
         ))}
       </div>
-    </span>
+    </div>
   ) : (
-    <span
+    <div
       className={`w-[30px] overflow-hidden whitespace-nowrap centering ${className}`}
       onClick={() => children[0]?.props?.onClick && children[0]?.props?.onClick(item)}
     >
       {children[0]?.props?.icon}
-    </span>
+    </div>
   );
 };
 

@@ -12,6 +12,13 @@ export const weeklyGoalList = [
   { value: 40 * 60, label: "40 min" },
 ];
 
+export const courseKinds = [
+  { value: 1, label: "1" },
+  { value: 2, label: "2" },
+  { value: 3, label: "3" },
+  { value: 4, label: "4" },
+];
+
 export const CoursesIcons = { 1: <CheckIcon />, 2: <PlayIcon />, 3: <LockIcon /> };
 
 export const percentGenerator = (value, total) => (!value || !total ? 0 : Math.ceil((value * 100) / total));
