@@ -1,17 +1,8 @@
 import Stars from "@components/common/Stars";
 import Confetti from "@components/common/Confetti";
-import { addHistory } from "@services/courseApi";
-import React, { useEffect } from "react";
-import { useAuth } from "src/context/AuthContextProvider";
 import CoursesImages from "@components/common/CoursesImages";
 
-const CourseRating = ({ data: { kind, name, id }, value, time }) => {
-  const [user] = useAuth();
-
-  useEffect(() => {
-    addHistory({ ...value, duration: time, course_id: id, user_id: user.id });
-  }, [id, time, user.id, value]);
-
+const CourseRating = ({ data: { kind, name }, value, time }) => {
   return (
     <>
       <div className="centering flex-col gap-2 max-w-xs mx-auto flex-1">
