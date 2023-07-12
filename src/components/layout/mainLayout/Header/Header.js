@@ -9,6 +9,7 @@ import LogoTypiano from "@assets/vectors/LogoTypiano";
 const navItems = [routes.home, routes.courses, routes.aboutUs, routes.contactUs];
 
 const Header = () => {
+  const [mounted, setMounted] = useState(false);
   const [scrollData, setScrollData] = useState({ offsetY: 0, isScrollingDown: false });
 
   useEffect(() => {
@@ -17,11 +18,14 @@ const Header = () => {
         const offsetY = window.scrollY;
         setScrollData({ offsetY, isScrollingDown: offsetY > scrollData.offsetY });
       };
-      updateScrollData();
+      if (!mounted) {
+        setMounted(true);
+        updateScrollData();
+      }
       window.addEventListener("scroll", updateScrollData);
       return () => window.removeEventListener("scroll", updateScrollData);
     }
-  }, [scrollData.offsetY]);
+  }, [mounted, scrollData.offsetY]);
 
   return (
     <header

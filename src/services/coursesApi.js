@@ -1,7 +1,6 @@
-import clientSupabase from "./supabase-client";
 import serverSupabase from "./supabase-server";
 
-export const getCourses = () => serverSupabase.from("courses").select();
+export const getCourses = () => serverSupabase.from("courses").select().order("index", { ascending: true });
 
 export const getHistories = () => serverSupabase.from("histories").select();
 

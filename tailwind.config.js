@@ -44,6 +44,15 @@ module.exports = {
         "2xs": "440px",
         xs: "370px",
       },
+      animation: {
+        skeleton: "skeleton-keyframe 1.5s infinite",
+      },
+      keyframes: {
+        "skeleton-keyframe": {
+          "0%": { "background-position": "100%, 0" },
+          "100%": { "background-position": "0 0" },
+        },
+      },
     },
   },
   plugins: [],

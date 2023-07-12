@@ -2,6 +2,8 @@ import React from "react";
 import CourseContainer from "@components/pages/course/CourseContainer";
 import { getCourseById, getCourseByIndex } from "@services/coursesApi";
 
+export const dynamic = "force-dynamic";
+
 const CourseInfo = async ({ params }) => {
   const {
     data: [courseData],

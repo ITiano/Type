@@ -5,10 +5,11 @@ import { getCourses, getHistories } from "@services/coursesApi";
 export const metadata = { title: routes.courses.title };
 
 export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 const Courses = async () => {
-  const { data: courses, error: coursesError } = await getCourses();
-  const { data: allHistories, error: historiesError } = await getHistories();
+  const result = await Promise.all([getCourses(), getHistories()]);
+  const [{ data: courses, error: coursesError }, { data: allHistories, error: historiesError }] = result;
 
   let defaultStatus = 2;
 

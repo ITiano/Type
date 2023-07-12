@@ -80,7 +80,7 @@ const AuthContainer = () => {
                 <Spinner />
               ) : (
                 <button onClick={onSubmit} className="hover:text-primary-900 transition text-left">
-                  Don’t send email ?
+                  Don’t receive email ?
                 </button>
               )}
             </div>

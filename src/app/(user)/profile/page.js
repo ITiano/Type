@@ -11,6 +11,8 @@ const withoutTime = (date) => {
   return convert;
 };
 
+export const dynamic = "force-dynamic";
+
 const Profile = async () => {
   const initialData = {
     lastWeek: { speed: 0, accuracy: 0, duration: 0, length: 0 },

@@ -1,10 +1,9 @@
-import React, { useCallback } from "react";
+import React from "react";
 import routes from "@routes/routes";
 import CourseDetail from "./CourseDetail";
 import CourseHistory from "./CourseHistory";
 import { HistoryIcon } from "@assets/icons/icons";
 import { useAuth } from "src/context/AuthContextProvider";
-import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
 import { CoursesIcons } from "@helper/utils";
@@ -27,17 +26,12 @@ export default CoursesSection;
 
 const CourseElement = ({ course, kind, setOpen }) => {
   const [user] = useAuth();
-  const router = useRouter();
   const props = { course, kind };
-
-  const navigateHandler = useCallback(() => {
-    user ? router.push(routes.courseId.path(course.id)) : toast.error("You need to login first");
-  }, [course.id, router, user]);
 
   return (
     <div
       className={`flex-between-center p-2 rounded-xl shadow ${course.status === 3 ? "grayscale bg-gray-700" : "bg-white"} ${
-        kind === 1 ? "w-full" : "flex-col w-full max-w-[300px] sm:max-w-full mx-auto h-[280px] pb-8 pt-3"
+        kind === 1 ? "w-full h-[86px]" : "flex-col w-full max-w-[300px] sm:max-w-full mx-auto h-[280px] pb-8 pt-3"
       }`}
     >
       <button
@@ -64,7 +58,7 @@ const CourseElement = ({ course, kind, setOpen }) => {
             onClick={(e) => {
               if (!user) {
                 e.preventDefault();
-                toast.error("You need to login first :)");
+                toast.error("You need to login first");
               }
             }}
           >

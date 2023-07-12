@@ -11,14 +11,14 @@ const ProfileContainer = ({ data }) => {
   const [user] = useAuth();
 
   return (
-    <section className="bg-gray-600 rounded-3xl mx-auto py-6 px-4 2xs:p-10 md:p-12 mb-8 mt-24">
+    <section className="bg-gray-600 rounded-3xl mx-auto py-6 px-4 2xs:p-10 md:p-12 mb-8 m-layout">
       {!user ? (
         <div className="centering">
           <Spinner />
         </div>
       ) : (
         <>
-          <ProfileHeader  data={data}/>
+          <ProfileHeader data={data} />
           <ProfileActivity data={data} />
           <ProfileForm />
         </>
