@@ -1,6 +1,6 @@
 import React from "react";
 import CourseContainer from "@components/pages/course/CourseContainer";
-import { getCourseById, getCourseByIndex } from "@services/coursesApi";
+import { getCourseById, getCourseByName } from "@services/coursesApi";
 
 export const dynamic = "force-dynamic";
 
@@ -13,9 +13,18 @@ export const generateMetadata = async ({ params: { id } }) => {
 const CourseInfo = async ({ params }) => {
   const { data: response, error: courseError } = await getCourseById(params.id);
   const [courseData] = response || [];
-  const { data: prevAndNextData, error: prevAndNextError } = await getCourseByIndex([courseData.index - 1, courseData.index + 1]);
-  const prev = prevAndNextData.find((course) => courseData.index - 1 === course.index);
-  const next = prevAndNextData.find((course) => courseData.index + 1 === course.index);
+  let prev = null;
+  let next = null;
+  if (courseData) {
+    const currentLesson = +courseData.name.slice(-1);
+    const prevLessonName = `Lesson ${currentLesson - 1}`;
+    const nextLessonName = `Lesson ${currentLesson + 1}`;
+    const { data: prevAndNextData, error: prevAndNextError } = await getCourseByName([prevLessonName, nextLessonName]);
+    if (prevAndNextData) {
+      prev = prevAndNextData.find((course) => course.name === prevLessonName);
+      next = prevAndNextData.find((course) => course.name === nextLessonName);
+    }
+  }
   const data = { ...courseData, prev, next };
 
   return <CourseContainer data={data} />;

@@ -75,13 +75,13 @@ const ProfileHeader = ({ data }) => {
           <div className="relative rounded-full overflow-hidden w-16 2xs:w-20 md:w-28 h-16 2xs:h-20 md:h-28">
             {user?.user_metadata?.profile_cover ? (
               <Image
-                height={50}
                 width={50}
+                height={50}
                 quality={100}
                 alt={user.user_metadata.profile_cover}
                 onLoadingComplete={(element) => element.classList.remove("opacity-0")}
                 src={process.env.NEXT_PUBLIC_IMAGE_URL + user.user_metadata.profile_cover}
-                className="w-full h-full object-center object-cover opacity-0 transition duration-300 "
+                className="w-full h-full object-center object-cover opacity-0 transition duration-300"
               />
             ) : (
               <UserIcon className="h-full w-full" />

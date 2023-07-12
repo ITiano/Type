@@ -1,6 +1,6 @@
 import CoursesContainer from "@components/pages/courses/CoursesContainer";
-import routes from "@routes/routes";
 import { getCourses, getHistories } from "@services/coursesApi";
+import routes from "@routes/routes";
 
 export const metadata = { title: routes.courses.title };
 
