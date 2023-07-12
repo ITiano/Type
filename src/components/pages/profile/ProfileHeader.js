@@ -9,20 +9,15 @@ import { averageGenerator } from "@helper/utils";
 import { useRouter } from "next/navigation";
 import routes from "@routes/routes";
 import Spinner from "@components/utils/Spinner";
+import useDisplayUser from "@hooks/useDisplayUser";
 
 const ProfileHeader = ({ data }) => {
   const { push } = useRouter();
   const inputRef = useRef();
+  const userName = useDisplayUser();
   const [user, setUser] = useAuth();
   const [value, setValue] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  const { email, lastName, firstName } = useMemo(() => {
-    const email = user?.email;
-    const firstName = user?.user_metadata?.firstName;
-    const lastName = user?.user_metadata?.lastName;
-    return { email, firstName, lastName };
-  }, [user?.email, user?.user_metadata?.firstName, user?.user_metadata?.lastName]);
 
   const { lastWeek = {}, thisWeek = {} } = data || {};
 
@@ -93,7 +88,7 @@ const ProfileHeader = ({ data }) => {
           </span>
         </div>
         <div>
-          <p className="text-base font-semibold mb-0.5 pl-1">{firstName || lastName ? `${firstName} - ${lastName}` : email}</p>
+          <p className="text-base font-semibold mb-0.5 pl-1">{userName}</p>
           <div className="flex-start-center">
             <Stars value={score} />
           </div>
