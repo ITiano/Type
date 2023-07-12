@@ -2,10 +2,10 @@ import React from "react";
 import HamburgerMenu from "./HamburgerMenu";
 import { useAuth } from "src/context/AuthContextProvider";
 import Link from "next/link";
-import Spinner from "@components/utils/Spinner";
 import routes from "@routes/routes";
 import { ArrowRightIcon, UserIcon } from "@assets/icons/icons";
 import Skeleton from "@components/common/Skeleton";
+import Image from "next/image";
 
 const UserProfile = ({ navItems }) => {
   const [user] = useAuth();
@@ -24,8 +24,21 @@ const UserProfile = ({ navItems }) => {
           </div>
         </Link>
       ) : (
-        <Link className="flex-start-center gap-2" href={routes.profile.path}>
-          <UserIcon className="w-10 border-2 border-primary-900 rounded-full" />
+        <Link
+          href={routes.profile.path}
+          className="flex-start-center gap-2 min-w-[40px] min-h-[40px] border-2 border-primary-900 rounded-full relative"
+        >
+          {user?.user_metadata?.profile_cover ? (
+            <Image
+              fill
+              alt="user profile"
+              onLoadingComplete={(element) => element.classList.remove("opacity-0")}
+              className="object-center object-cover opacity-0 transition duration-300"
+              src={process.env.NEXT_PUBLIC_IMAGE_URL + user.user_metadata.profile_cover}
+            />
+          ) : (
+            <UserIcon />
+          )}
         </Link>
       )}
       <HamburgerMenu navItems={navItems} />

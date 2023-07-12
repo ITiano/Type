@@ -17,6 +17,9 @@ export async function middleware(req) {
   // All routes that needs protection
   const protectedRoutes = [routes.profile.path, routes.courseId.path("")];
 
+  // admins gmail
+  const admins = ["amirshafikhani.official@gmail.com", "jafarnejad.officil@gmail.com"];
+
   // Conditions
   if (!session.data.session) {
     for (const routeIndex in protectedRoutes) {
@@ -24,6 +27,8 @@ export async function middleware(req) {
     }
   } else {
     if (req.nextUrl.pathname.startsWith(routes.auth.path)) return navigateUrl;
+    if (req.nextUrl.pathname.startsWith("/admin") && !admins.find((admin) => admin === session.data.session.user.email))
+      return navigateUrl;
     else return res;
   }
 }

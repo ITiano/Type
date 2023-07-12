@@ -3,9 +3,9 @@ import { getUser } from "@services/authApi";
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const initialUserData = {
+  profile_cover: null,
   firstName: "",
   lastName: "",
-  profile_cover: null,
   daily: dailyGoalList[0],
   weekly: weeklyGoalList[1],
 };
