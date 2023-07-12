@@ -3,7 +3,7 @@ import React from "react";
 
 const CourseReview = ({ data }) => {
   return (
-    <div className="centering flex-col gap-2">
+    <div className="centering flex-col gap-2 flex-1">
       <CoursesImages kind={data.kind} size={120} />
       <p className=" font-semibold pb-1.5 mt-1 text-2xl">{data.name}</p>
       <p className="text-gray-800 text-xs">5min . 8 exercises</p>

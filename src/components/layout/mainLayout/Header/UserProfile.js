@@ -26,7 +26,7 @@ const UserProfile = ({ navItems }) => {
       ) : (
         <Link
           href={routes.profile.path}
-          className="flex-start-center gap-2 min-w-[40px] min-h-[40px] border-2 border-primary-900 rounded-full relative"
+          className="flex-start-center gap-2 min-w-[40px] min-h-[40px] rounded-full relative"
         >
           {user?.user_metadata?.profile_cover ? (
             <Image

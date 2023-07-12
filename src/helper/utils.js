@@ -12,7 +12,7 @@ export const weeklyGoalList = [
   { value: 40 * 60, label: "40 min" },
 ];
 
-export const CoursesIcons = { 1: <CheckIcon />, 2: <PlayIcon />, 3: <LockIcon /> };
+export const CoursesIcons = { 1: <CheckIcon className="text-[#8FE357]" />, 2: <PlayIcon />, 3: <LockIcon /> };
 
 export const percentGenerator = (value, total) => (!value || !total ? 0 : Math.ceil((value * 100) / total));
 
