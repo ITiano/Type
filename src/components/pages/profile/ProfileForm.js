@@ -25,7 +25,7 @@ const ProfileForm = () => {
       const { data, error } = await updateUser(value);
       if (error) toast.error("Sth went wrong please try again");
       else {
-        setUser(data.user);
+        setUser((prev) => ({ ...data.user, user_metadata: { ...prev.user_metadata, ...data.user.user_metadata } }));
         toast.success("Profile updated successfully");
       }
       setLoading(false);
@@ -37,7 +37,7 @@ const ProfileForm = () => {
     setValue((prev) => ({ ...prev, email: user.email, ...user.user_metadata }));
   }, [router, user]);
 
-  const disabled = !value.firstName || !value.lastName || !value.email || !value.daily || !value.weekly ;
+  const disabled = !value.firstName || !value.lastName || !value.email || !value.daily || !value.weekly;
 
   return (
     <>

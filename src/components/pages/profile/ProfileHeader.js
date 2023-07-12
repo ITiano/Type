@@ -53,7 +53,7 @@ const ProfileHeader = ({ data }) => {
           const { data, error } = await updateUser({ ...user.metadata, profile_cover: "user_profile/" + uploadData.path });
           if (error) reject();
           else {
-            setUser(data.user);
+            setUser((prev) => ({ ...data.user, user_metadata: { ...prev.user_metadata, ...data.user.user_metadata } }));
             resolve();
           }
         }
