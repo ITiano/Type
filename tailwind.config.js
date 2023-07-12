@@ -17,6 +17,21 @@ module.exports = {
         form: "url('/images/login/Frame-letter.png')",
         rectangle: "url('/images/public/Rectangle.png')",
       },
+      animation: {
+        skeleton: "skeleton-keyframe 1.5s infinite",
+      },
+      keyframes: {
+        "skeleton-keyframe": {
+          "0%": { "background-position": "100%, 0" },
+          "100%": { "background-position": "0 0" },
+        },
+      },
+      screens: {
+        "2md": "890px",
+        "3xs": "510px",
+        "2xs": "440px",
+        xs: "370px",
+      },
       colors: {
         gray: {
           900: withOpacity("--gray-900"),
@@ -36,21 +51,6 @@ module.exports = {
         },
         dark: {
           900: withOpacity("--dark-900"),
-        },
-      },
-      screens: {
-        "2md": "890px",
-        "3xs": "510px",
-        "2xs": "440px",
-        xs: "370px",
-      },
-      animation: {
-        skeleton: "skeleton-keyframe 1.5s infinite",
-      },
-      keyframes: {
-        "skeleton-keyframe": {
-          "0%": { "background-position": "100%, 0" },
-          "100%": { "background-position": "0 0" },
         },
       },
     },

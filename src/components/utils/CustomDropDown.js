@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import CustomInput from "./CustomInput";
 
 const CustomDropDown = ({ label, className, list, setValue, value, name }) => {
@@ -8,11 +8,14 @@ const CustomDropDown = ({ label, className, list, setValue, value, name }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef();
 
-  const onClick = (item) => {
-    setValue((prev) => ({ ...prev, [name]: item }));
-    setForm({ search: item.label });
-    setOpen(false);
-  };
+  const onClick = useCallback(
+    (item) => {
+      setValue((prev) => ({ ...prev, [name]: item }));
+      setForm({ search: item.label });
+      setOpen(false);
+    },
+    [name, setValue]
+  );
 
   useEffect(() => {
     if (open) {
@@ -23,8 +26,13 @@ const CustomDropDown = ({ label, className, list, setValue, value, name }) => {
   }, [open]);
 
   useEffect(() => {
-    value && value[name] && setForm({ search: value[name].label });
-  }, [name, value]);
+    if (value && value[name]) {
+      if (typeof value[name] === "number" || typeof value[name] === "string") {
+        const find = list.find((item) => item.value === +value[name]);
+        onClick(find);
+      } else setForm({ search: value[name].label });
+    }
+  }, [list, name, onClick, value]);
 
   return (
     <div className="relative" ref={containerRef}>

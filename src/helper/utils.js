@@ -14,6 +14,13 @@ export const weeklyGoalList = [
 
 export const CoursesIcons = { 1: <CheckIcon className="text-[#8FE357]" />, 2: <PlayIcon />, 3: <LockIcon /> };
 
+export const courseKinds = [
+  { value: 1, label: "1" },
+  { value: 2, label: "2" },
+  { value: 3, label: "3" },
+  { value: 4, label: "4" },
+];
+
 export const percentGenerator = (value, total) => (!value || !total ? 0 : Math.ceil((value * 100) / total));
 
 export const averageGenerator = (value, length) => (!value || !length ? 0 : Math.ceil(value / length));

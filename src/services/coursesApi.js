@@ -8,5 +8,3 @@ export const getCourseById = (id) => serverSupabase.from("courses").select().eq(
 
 export const getCourseByName = (names) =>
   serverSupabase.from("courses").select("id, name").in("name", names)
-
-// const { count } = await clientSupabase.from("courses").select("", { count: "exact" });
