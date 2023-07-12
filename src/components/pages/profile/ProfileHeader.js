@@ -69,7 +69,7 @@ const ProfileHeader = ({ data }) => {
   }, [setUser, user.metadata, value]);
 
   return (
-    <div className="flex-between-center mb-8">
+    <div className="flex items-start justify-start flex-col md:flex-row md:!justify-between md:!items-center gap-2 mb-8">
       <div className="flex-start-center gap-4 2xs:gap-5">
         <div className="relative cursor-pointer" onClick={() => inputRef.current.click()}>
           <div className="relative rounded-full overflow-hidden w-16 2xs:w-20 md:w-28 h-16 2xs:h-20 md:h-28">
@@ -81,7 +81,7 @@ const ProfileHeader = ({ data }) => {
                 alt={user.user_metadata.profile_cover}
                 onLoadingComplete={(element) => element.classList.remove("opacity-0")}
                 src={process.env.NEXT_PUBLIC_IMAGE_URL + user.user_metadata.profile_cover}
-                className="w-full h-full object-center object-cover opacity-0 transition duration-500"
+                className="w-full h-full object-center object-cover opacity-0 transition duration-300 "
               />
             ) : (
               <UserIcon className="h-full w-full" />
@@ -100,7 +100,7 @@ const ProfileHeader = ({ data }) => {
         </div>
       </div>
 
-      <div className="flex-end-center gap-3">
+      <div className="flex-end-center gap-3 w-full md:w-auto">
         <button className="bg-white rounded-full w-8 h-8 centering" onClick={logoutHandler}>
           {loading ? <Spinner /> : <LogOutIcon />}
         </button>

@@ -5,15 +5,16 @@ import Link from "next/link";
 import Spinner from "@components/utils/Spinner";
 import routes from "@routes/routes";
 import { ArrowRightIcon, UserIcon } from "@assets/icons/icons";
+import Skeleton from "@components/common/Skeleton";
 
 const UserProfile = ({ navItems }) => {
   const [user] = useAuth();
 
   return (
-    <div className="flex-end-center gap-1 w-[100px] h-[40px]">
+    <div className="flex-end-center gap-1 h-[40px] w-[40px]">
       {user === "" ? (
         <div className="centering w-full">
-          <Spinner className="w-4 h-4 !fill-black" />
+          <Skeleton height={40} className="!rounded-full" />
         </div>
       ) : user === null ? (
         <Link href={routes.auth.path}>

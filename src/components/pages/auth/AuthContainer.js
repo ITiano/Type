@@ -77,7 +77,9 @@ const AuthContainer = () => {
                 Is your email wrong ?
               </button>
               {loading ? (
-                <Spinner />
+                <div className="flex-1 centering">
+                  <Spinner />
+                </div>
               ) : (
                 <button onClick={onSubmit} className="hover:text-primary-900 transition text-left">
                   Don’t receive email ?

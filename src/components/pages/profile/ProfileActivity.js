@@ -54,7 +54,7 @@ const ProfileActivity = ({ data }) => {
   );
 
   return (
-    <div>
+    <div className="mb-10">
       <div className="flex-between-center">
         <p className="font-semibold text-base">Your Activity</p>
         <SettingIcon />

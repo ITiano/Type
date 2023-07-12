@@ -5,9 +5,7 @@ import { getCourseById, getCourseByIndex } from "@services/coursesApi";
 export const dynamic = "force-dynamic";
 
 export const generateMetadata = async ({ params: { id } }) => {
-  const {
-    data: [course],
-  } = await getCourseById(id);
+  const { data: [course] } = await getCourseById(id);
   return { title: course.seo_title, description: course.seo_description };
 };
 

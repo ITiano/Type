@@ -40,8 +40,8 @@ const ProfileForm = () => {
   const disabled = !value.firstName || !value.lastName || !value.email || !value.daily || !value.weekly;
 
   return (
-    <>
-      <p className="mt-10 mb-5 font-semibold text-base">Edit profile</p>
+    <div>
+      <p className="mb-5 font-semibold text-base">Edit profile</p>
       <form onSubmit={onSubmit} noValidate>
         <div className="flex flex-col md:flex-row md:divide-x-2 [&>*]:flex-1">
           <div className="md:pr-6">
@@ -64,7 +64,7 @@ const ProfileForm = () => {
           <CustomBtn type="submit" text="Save change" className="black-btn" disabled={disabled} loading={loading} />
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
