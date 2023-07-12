@@ -5,15 +5,14 @@ import { getCourseById, getCourseByIndex } from "@services/coursesApi";
 export const dynamic = "force-dynamic";
 
 export const generateMetadata = async ({ params: { id } }) => {
-  const { data: [course] } = await getCourseById(id);
-  return { title: course.seo_title, description: course.seo_description };
+  const { data } = await getCourseById(id);
+  const [course] = data || [];
+  return { title: course?.seo_title, description: course?.seo_description };
 };
 
 const CourseInfo = async ({ params }) => {
-  const {
-    data: [courseData],
-    error: courseError,
-  } = await getCourseById(params.id);
+  const { data: response, error: courseError } = await getCourseById(params.id);
+  const [courseData] = response || [];
   const { data: prevAndNextData, error: prevAndNextError } = await getCourseByIndex([courseData.index - 1, courseData.index + 1]);
   const prev = prevAndNextData.find((course) => courseData.index - 1 === course.index);
   const next = prevAndNextData.find((course) => courseData.index + 1 === course.index);

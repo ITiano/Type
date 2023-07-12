@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ProgressLine from "./ProgressLine";
 import React from "react";
 
@@ -10,10 +10,9 @@ const borderLineColor = "border-b-blue-500";
 const defaultAccuracy = 10;
 
 const Type = ({ data = "", setStep, setValue, time, setTime }) => {
-  const ref = useRef();
   const [type, setType] = useState("");
-  const [error, setError] = useState([]);
-  const [show, setShow] = useState(false);
+  const [error, setError] = useState(false);
+  const [historyError, setHistoryError] = useState([]);
   const [isStarted, setIsStarted] = useState(false);
   const [convertedText, setConvertedText] = useState([]);
 
@@ -26,7 +25,7 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
           let timePerMinute = updatedTime / 60;
           timePerMinute = timePerMinute < 0 ? 1 : timePerMinute;
           const speed = Math.ceil(typeEntries / 5 / timePerMinute) || 0;
-          const totalError = error.reduce((sum, item) => (sum = sum + item.count), 0);
+          const totalError = historyError.reduce((sum, item) => (sum = sum + item.count), 0);
           let accuracy = ((typeEntries - totalError) * 100) / typeEntries;
           accuracy = Math.ceil(accuracy > 0 ? accuracy : defaultAccuracy);
           const score = Math.ceil(accuracy / 20);
@@ -36,7 +35,7 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [error, isStarted, setValue, type.length, time, setStep, data.length]);
+  }, [historyError, isStarted, setValue, type.length, time, setStep, data.length]);
 
   useEffect(() => {
     if (isStarted) {
@@ -44,79 +43,6 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
       return () => clearInterval(interval);
     }
   }, [isStarted, setTime, time]);
-
-  const onChange = (e) => {
-    setIsStarted(true);
-    if (type.length !== data.length || !type.length) {
-      const length = type.length;
-      const value = e.target.value.split("");
-      const pattern = data.split("");
-      if (value[length] && pattern[length] && value[length]?.toString() === pattern[length]?.toString()) {
-        setType(e.target.value);
-        // turnoff error
-        const index = error.findIndex((item) => item.id === length);
-        if (index >= 0) {
-          const select = { ...error[index] };
-          select.completed = true;
-          const clone = [...error];
-          clone[index] = select;
-          setError(clone);
-        }
-      } else {
-        //  turnon error and create history error type
-        const index = error.findIndex((item) => item.id === length);
-        if (index >= 0) {
-          const select = { ...error[index] };
-          select.count = select.count + 1;
-          select.history = [...select.history, value[length]];
-          const clone = [...error];
-          clone[index] = select;
-          setError(clone);
-        } else {
-          setError([...error, { id: length, count: 1, history: [value[length]], completed: false }]);
-        }
-      }
-    }
-  };
-
-  const currentWordLength = (wordIndex) => convertedText.slice(0, wordIndex).join("").split("").length;
-
-  const showLastErrorClassName = (index) => {
-    const find = error.find((item) => item.id == index);
-    return find && find.completed ? warningColor : "";
-  };
-
-  const showNowError = (index) => {
-    const find = error.find((item) => item.id == index);
-    if (find && !find.completed)
-      return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
-    else return { text: "", className: "" };
-  };
-
-  const onKeyDown = (e) => {
-    if (
-      (e.keyCode >= 48 && e.keyCode <= 90) ||
-      (e.keyCode >= 96 && e.keyCode <= 111) ||
-      e.keyCode === 173 ||
-      e.keyCode === 188 ||
-      e.keyCode === 190 ||
-      e.keyCode === 191 ||
-      e.keyCode === 192 ||
-      e.keyCode === 219 ||
-      e.keyCode === 220 ||
-      e.keyCode === 221 ||
-      e.keyCode === 222
-    ) {
-      if (!show) setShow(true);
-      setTimeout(() => {
-        setShow(false);
-      }, 200);
-    }
-  };
-
-  useEffect(() => {
-    ref.current.focus();
-  }, []);
 
   useEffect(() => {
     const splitted = data.split(" ");
@@ -126,8 +52,84 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
     setConvertedText(converted);
   }, [data]);
 
+  const onChange = useCallback(
+    ({ target }) => {
+      !isStarted && setIsStarted(true);
+      if (type.length !== data.length || !type.length) {
+        const length = type.length;
+        const value = target.value.split("");
+        const pattern = data.split("");
+        if (value[length] && pattern[length] && value[length]?.toString() === pattern[length]?.toString()) {
+          setType(target.value);
+          // turnoff error
+          const index = historyError.findIndex((item) => item.id === length);
+          if (index >= 0) {
+            const select = { ...historyError[index] };
+            select.completed = true;
+            const clone = [...historyError];
+            clone[index] = select;
+            setHistoryError(clone);
+          }
+        } else {
+          //  turnon error and create history error type
+          const index = historyError.findIndex((item) => item.id === length);
+          if (index >= 0) {
+            const select = { ...historyError[index] };
+            select.count = select.count + 1;
+            select.history = [...select.history, value[length]];
+            const clone = [...historyError];
+            clone[index] = select;
+            setHistoryError(clone);
+          } else {
+            setHistoryError([...historyError, { id: length, count: 1, history: [value[length]], completed: false }]);
+          }
+        }
+      }
+    },
+    [data, historyError, isStarted, type.length]
+  );
+
+  const currentWordLength = useCallback(
+    (wordIndex) => convertedText.slice(0, wordIndex).join("").split("").length,
+    [convertedText]
+  );
+
+  const showLastErrorClassName = useCallback(
+    (index) => {
+      const find = historyError.find((item) => item.id == index);
+      return find && find.completed ? warningColor : "";
+    },
+    [historyError]
+  );
+
+  const showNowError = useCallback(
+    (index) => {
+      const find = historyError.find((item) => item.id == index);
+      if (find && !find.completed)
+        return { text: find.history[find.history.length - 1], className: `${errorColor} text-white text-4xl pb-1` };
+      else return { text: "", className: "" };
+    },
+    [historyError]
+  );
+
+  const onKeyDown = useCallback(
+    ({ keyCode }) => {
+      const isWordKeyCode = keyCode >= 48 && keyCode <= 90;
+      const isNumberKeyCode = keyCode >= 96 && keyCode <= 111;
+      const isSymbol = keyCode === 173 || keyCode === 188 || keyCode === 190 || keyCode === 191 || keyCode === 192;
+      // 173 => Underline || 188 => Comma || 190 => Period || 191 => Slash || 192 => Backtick
+      const isSymbol2 = keyCode === 219 || keyCode === 220 || keyCode === 221 || keyCode === 222;
+      // 219 => BracketLeft || 220 => Backslash || 221 => BracketRight || 222 => Quote'
+      if (isWordKeyCode || isNumberKeyCode || isSymbol || isSymbol2) {
+        if (!error) setError(true);
+        setTimeout(() => setError(false), 200);
+      }
+    },
+    [error]
+  );
+
   return (
-    <div className="flex-start-start flex-col w-full">
+    <div className="flex-start-start flex-col w-full flex-1">
       <ProgressLine data={data} type={type} />
       <div className="relative w-full flex-1">
         <div className="w-full flex-wrap gap-y-8 flex-start-center">
@@ -148,7 +150,7 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
                       >
                         {item}
                         <span
-                          className={`transition absolute inset-0 flex-start-center ${show ? "opacity-100" : "opacity-0"}  ${
+                          className={`transition absolute inset-0 flex-start-center ${error ? "opacity-100" : "opacity-0"}  ${
                             showNowError(length + index).className
                           } `}
                         >
@@ -161,25 +163,14 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
               );
             })}
         </div>
-
-        <input
-          ref={ref}
-          autoFocus
-          type="text"
-          value={type}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          className="resize-none absolute inset-0 w-full h-full opacity-0"
-        />
       </div>
       <input
-        ref={ref}
-        onKeyDown={onKeyDown}
         autoFocus
-        className="resize-none absolute inset-0 w-full h-full opacity-0"
         type="text"
         value={type}
         onChange={onChange}
+        onKeyDown={onKeyDown}
+        className="resize-none fixed z-10 inset-0 w-full h-full opacity-0 !cursor-default"
       />
     </div>
   );

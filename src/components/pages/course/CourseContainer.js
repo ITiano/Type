@@ -46,7 +46,7 @@ const CourseContainer = ({ data }) => {
         <Type data={data?.course} setStep={setStep} setValue={setValue} value={value} time={time} setTime={setTime} />
       )}
       {step === 3 && <CourseRating data={data} setStep={setStep} value={value} time={time} />}
-      <div className="py-10 w-full flex-between-center z-50 relative">
+      <div className="py-10 w-full flex-between-center z-20 relative">
         <div>
           {!backBtnOption[step].hidden && (
             <CustomBtn text={backBtnOption[step].text} onClick={backBtnOption[step].onClick} arrowStartBtn />

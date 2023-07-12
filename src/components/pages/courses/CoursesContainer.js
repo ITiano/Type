@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 import KindSwitcherSection from "@components/pages/courses/KindSwitcherSection";
 import CoursesSection from "@components/pages/courses/CoursesSection";
 import CourseHistoryModal from "@components/pages/courses/CourseHistoryModal";
