@@ -29,15 +29,17 @@ const AddOrEditCourseModal = ({ open, setOpen, initialValue }) => {
         const { error } = await addCourse(data);
         !error && toast.success("Success");
       }
+      setOpen(false);
       setLoading(false);
+      setValue(initialValue);
     },
-    [open, value]
+    [initialValue, open, setOpen, value]
   );
 
   const disableCheck = !value.seo_title || !value.seo_description || !value.name || !value.kind || !value.course;
 
   return (
-    <ModalContainer open={open} setOpen={setOpen}>
+    <ModalContainer open={open} setOpen={setOpen} clear title={open?.id ? "Edit course" : "Add course"}>
       <form onSubmit={submitHandler} className="flex flex-col gap-4 [&>*]:w-full">
         <CustomInput value={value} setValue={setValue} name="name" label="Name" disabled />
         <CustomDropDown value={value} setValue={setValue} name="kind" list={courseKinds} label="Kind" />
