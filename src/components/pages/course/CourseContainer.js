@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import routes from "@routes/routes";
 import { addHistory } from "@services/courseApi";
 import { useAuth } from "src/context/AuthContextProvider";
+import Link from "next/link";
+import { ArrowLeftIcon, HomeIcon } from "@assets/icons/icons";
 
 const initialState = { score: 0, speed: 0, accuracy: 0, duration: 0 };
 
@@ -54,13 +56,31 @@ const CourseContainer = ({ data }) => {
       <div className="py-10 w-full flex-between-center z-20 relative">
         <div>
           {!backBtn[step].hidden && (
-            <CustomBtn text={backBtn[step].text} onClick={backBtn[step].onClick} arrowStartBtn disabled={disabled} />
+            <CustomBtn
+              arrowStartBtn
+              disabled={disabled}
+              text={backBtn[step].text}
+              onClick={backBtn[step].onClick}
+              className="text-xs 2xs:text-base whitespace-nowrap !px-0 2xs:w-44"
+            />
           )}
         </div>
-
+        <div>
+          {(step === 1 || step === 3) && (
+            <Link href={routes.courses.path} onClick={(e) => disabled && e.preventDefault()} className="text-cyan-500">
+              <HomeIcon />
+            </Link>
+          )}
+        </div>
         <div>
           {!nextBtn[step].hidden && (
-            <CustomBtn text={nextBtn[step].text} onClick={nextBtn[step].onClick} arrowEndBtn disabled={disabled} />
+            <CustomBtn
+              arrowEndBtn
+              disabled={disabled}
+              text={nextBtn[step].text}
+              onClick={nextBtn[step].onClick}
+              className="text-xs 2xs:text-base whitespace-nowrap !px-0 2xs:w-44"
+            />
           )}
         </div>
       </div>
