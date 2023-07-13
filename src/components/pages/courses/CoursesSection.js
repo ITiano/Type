@@ -55,6 +55,7 @@ const CourseElement = ({ course, kind, setOpen }) => {
         ) : (
           <Link
             href={routes.courseId.path(course.id)}
+            replace
             onClick={(e) => {
               if (!user) {
                 e.preventDefault();

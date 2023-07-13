@@ -20,7 +20,7 @@ const ProfileActivity = ({ data }) => {
       {
         title: "Current speed",
         icon: <FlashIcon />,
-        amount: thisWeekSpeed + " wpm ",
+        amount: thisWeekSpeed + " WPM ",
         extraAmount: twoPercentGenerator(thisWeekSpeed, lastWeekSpeed),
       },
       {

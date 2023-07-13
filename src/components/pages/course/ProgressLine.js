@@ -10,7 +10,7 @@ const ProgressLine = ({ data, type }) => {
   }, [data.length, type.length]);
 
   return (
-    <div className="relative w-full my-14">
+    <div className="relative w-full my-10">
       <div className="bg-gray-800 bg-opacity-30 h-3 rounded-full relative overflow-hidden">
         <span
           style={{ width: progress + "%" }}

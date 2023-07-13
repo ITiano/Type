@@ -18,7 +18,7 @@ export async function middleware(req) {
   const protectedRoutes = [routes.profile.path, routes.courseId.path("")];
 
   // admins gmail
-  const admins = ["amirshafikhani.official@gmail.com", "jafarnejad.officil@gmail.com"];
+  const admins = [process.env.NEXT_PUBLIC_ADMIN_1, process.env.NEXT_PUBLIC_ADMIN_2];
 
   // Conditions
   if (!session.data.session) {

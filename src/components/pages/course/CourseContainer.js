@@ -9,13 +9,14 @@ import { useRouter } from "next/navigation";
 import routes from "@routes/routes";
 import { addHistory } from "@services/courseApi";
 import { useAuth } from "src/context/AuthContextProvider";
+import Link from "next/link";
+import { ArrowLeftIcon, HomeIcon } from "@assets/icons/icons";
 
-const initialState = { score: 5, speed: 0, accuracy: 100 };
+const initialState = { score: 0, speed: 0, accuracy: 0, duration: 0 };
 
 const CourseContainer = ({ data }) => {
   const [user] = useAuth();
   const [step, setStep] = useState(1);
-  const [time, setTime] = useState(0);
   const { push, refresh } = useRouter();
   const [disabled, setDisabled] = useState(false);
   const [value, setValue] = useState(initialState);
@@ -29,19 +30,19 @@ const CourseContainer = ({ data }) => {
   useEffect(() => {
     const addNewHistory = async () => {
       setDisabled(true);
-      const { error } = await addHistory({ ...value, duration: time, course_id: data.id, user_id: user.id });
+      const { error } = await addHistory({ ...value, course_id: data.id, user_id: user.id });
       !error && setDisabled(false);
     };
     step === 3 && addNewHistory();
-  }, [data, step, time, user.id, value]);
+  }, [data, step, user.id, value]);
 
-  const nextBtnOption = {
+  const nextBtn = {
     1: { text: "Get Started", onClick: () => setStep(2), hidden: false },
     2: { text: "Next", onClick: () => setStep(3), hidden: true },
     3: { text: "Next lesson", onClick: () => push(routes.courseId.path(data.next.id)), hidden: !data.next },
   };
 
-  const backBtnOption = {
+  const backBtn = {
     1: { text: "previous lesson", onClick: () => push(routes.courseId.path(data.prev.id)), hidden: !data.prev },
     2: { text: "back", onClick: () => setStep(1), hidden: false },
     3: { text: "Again", onClick: refreshPage, hidden: false },
@@ -49,25 +50,37 @@ const CourseContainer = ({ data }) => {
 
   return (
     <div className="flex-between-center flex-col p-layout min-h-screen max-w-layout px-4">
-      {step === 1 && (
-        <div className="flex-1 centering">
-          <CourseReview data={data} setStep={setStep} />
-        </div>
-      )}
-      {step === 2 && (
-        <Type data={data?.course} setStep={setStep} setValue={setValue} value={value} time={time} setTime={setTime} />
-      )}
-      {step === 3 && <CourseRating data={data} setStep={setStep} value={value} time={time} />}
+      {step === 1 && <CourseReview data={data} setStep={setStep} />}
+      {step === 2 && <Type data={data?.course} setStep={setStep} value={value} setValue={setValue} />}
+      {step === 3 && <CourseRating data={data} setStep={setStep} value={value} />}
       <div className="py-10 w-full flex-between-center z-20 relative">
         <div>
-          {!backBtnOption[step].hidden && (
-            <CustomBtn text={backBtnOption[step].text} onClick={backBtnOption[step].onClick} arrowStartBtn disabled={disabled} />
+          {!backBtn[step].hidden && (
+            <CustomBtn
+              arrowStartBtn
+              disabled={disabled}
+              text={backBtn[step].text}
+              onClick={backBtn[step].onClick}
+              className="text-xs 2xs:text-base whitespace-nowrap !px-0 2xs:w-44"
+            />
           )}
         </div>
-
         <div>
-          {!nextBtnOption[step].hidden && (
-            <CustomBtn text={nextBtnOption[step].text} onClick={nextBtnOption[step].onClick} arrowEndBtn disabled={disabled} />
+          {(step === 1 || step === 3) && (
+            <Link href={routes.courses.path} onClick={(e) => disabled && e.preventDefault()} className="text-cyan-500">
+              <HomeIcon />
+            </Link>
+          )}
+        </div>
+        <div>
+          {!nextBtn[step].hidden && (
+            <CustomBtn
+              arrowEndBtn
+              disabled={disabled}
+              text={nextBtn[step].text}
+              onClick={nextBtn[step].onClick}
+              className="text-xs 2xs:text-base whitespace-nowrap !px-0 2xs:w-44"
+            />
           )}
         </div>
       </div>

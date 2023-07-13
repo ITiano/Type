@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import ProgressLine from "./ProgressLine";
 import React from "react";
+import CourseShowDetails from "./CourseShowDetails";
 
 const errorColor = "bg-red-800";
 const successColor = "bg-green-900/50";
@@ -9,40 +10,13 @@ const borderLineColor = "border-b-blue-500";
 
 const defaultAccuracy = 10;
 
-const Type = ({ data = "", setStep, setValue, time, setTime }) => {
+const Type = ({ data = "", setStep, value, setValue }) => {
   const [type, setType] = useState("");
   const [error, setError] = useState(false);
   const [historyError, setHistoryError] = useState([]);
   const [isStarted, setIsStarted] = useState(false);
   const [convertedText, setConvertedText] = useState([]);
-
-  useEffect(() => {
-    if (isStarted) {
-      const interval = setInterval(() => {
-        const updatedTime = time + 1;
-        setValue(() => {
-          const typeEntries = type.length;
-          let timePerMinute = updatedTime / 60;
-          timePerMinute = timePerMinute < 0 ? 1 : timePerMinute;
-          const speed = Math.ceil(typeEntries / 5 / timePerMinute) || 0;
-          const totalError = historyError.reduce((sum, item) => (sum = sum + item.count), 0);
-          let accuracy = ((typeEntries - totalError) * 100) / typeEntries;
-          accuracy = Math.ceil(accuracy > 0 ? accuracy : defaultAccuracy);
-          const score = Math.ceil(accuracy / 20);
-          if (typeEntries === data.length) setStep(3);
-          return { speed, score, accuracy };
-        });
-      }, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [historyError, isStarted, setValue, type.length, time, setStep, data.length]);
-
-  useEffect(() => {
-    if (isStarted) {
-      const interval = setInterval(() => setTime(time + 1), 1000);
-      return () => clearInterval(interval);
-    }
-  }, [isStarted, setTime, time]);
+  const temp = useRef({ historyError, type });
 
   useEffect(() => {
     const splitted = data.split(" ");
@@ -51,6 +25,32 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
     }, []);
     setConvertedText(converted);
   }, [data]);
+
+  useEffect(() => {
+    temp.current = { historyError, type };
+  }, [historyError, type]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isStarted) {
+        const { historyError, type } = temp.current;
+        const typeEntries = type.length;
+        setValue((prev) => {
+          const duration = prev.duration + 1;
+          let timePerMinute = duration / 60;
+          timePerMinute = timePerMinute < 0 ? 1 : timePerMinute;
+          const speed = Math.ceil(typeEntries / 5 / timePerMinute) || 0;
+          const totalError = historyError.reduce((sum, item) => (sum = sum + item.count), 0);
+          let accuracy = ((typeEntries - totalError) * 100) / typeEntries;
+          accuracy = Math.ceil(accuracy > 0 ? accuracy : defaultAccuracy);
+          const score = Math.ceil(accuracy / 20);
+          if (typeEntries === data.length) setStep(3);
+          return { score, speed, accuracy, duration };
+        });
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [data, isStarted, setValue, setStep]);
 
   const onChange = useCallback(
     ({ target }) => {
@@ -131,6 +131,7 @@ const Type = ({ data = "", setStep, setValue, time, setTime }) => {
   return (
     <div className="flex-start-start flex-col w-full flex-1">
       <ProgressLine data={data} type={type} />
+      <CourseShowDetails value={value} className="flex-between-center flex-col gap-8 mb-6 3xs:divide-x 3xs:gap-0 3xs:flex-row" />
       <div className="relative w-full flex-1">
         <div className="w-full flex-wrap gap-y-8 flex-start-center">
           {data.split("").length !== 0 &&

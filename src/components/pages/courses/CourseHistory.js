@@ -2,16 +2,16 @@ import React from "react";
 import Link from "next/link";
 import routes from "@routes/routes";
 import Stars from "@components/common/Stars";
-import { CoursesIcons } from "@helper/utils";
+import { CoursesIcons, SecondTimeTranslator } from "@helper/utils";
 
 const CourseHistory = ({ course, history, kind }) => {
   const { status, id } = course;
   const { score, speed, accuracy, duration } = history || {};
 
   const elementsData = [
-    { title: "Speed", value: speed || "-" },
-    { title: "Accuracy", value: accuracy || "-" },
-    { title: "Duration", value: duration || "-" },
+    { title: "Speed", value: speed || "-", suffix: speed && "WPM" },
+    { title: "Accuracy", value: accuracy || "-", suffix: accuracy && "%" },
+    { title: "Duration", value: duration ? SecondTimeTranslator(duration) : "-" },
   ];
 
   return (
@@ -33,13 +33,11 @@ const CourseHistory = ({ course, history, kind }) => {
 
 export default CourseHistory;
 
-const ElementBox = ({ title, value, star, kind, status }) => (
+const ElementBox = ({ title, value, suffix, star, kind, status }) => (
   <div
-    className={`${kind === 1 ? "hidden md:flex-start-start flex-col" : "centering flex-col"} ${
-      status === 1 ? "" : "text-gray-800"
-    } gap-2`}
+    className={`${kind === 1 ? "hidden md:centering" : "centering"} flex-1 flex-col ${status === 1 ? "" : "text-gray-800"} gap-2`}
   >
-    {!star && <p className="text-gray-800 text-xs">{title}</p>}
-    {star ? <Stars value={value} /> : <p className="font-bold text-xs">{value}</p>}
+    {!star && <p className="text-gray-800 text-xs w-full text-center">{title}</p>}
+    {star ? <Stars value={value} /> : <p className="font-bold text-xs text-center w-full">{`${value} ${suffix || ""}`}</p>}
   </div>
 );
