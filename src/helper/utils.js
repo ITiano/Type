@@ -27,3 +27,11 @@ export const averageGenerator = (value, length) => (!value || !length ? 0 : Math
 
 export const twoPercentGenerator = (newValue, oldValue) =>
   !newValue || !oldValue ? 0 : ((newValue - oldValue) / oldValue) * 100;
+
+export const SecondTimeTranslator = (time = 0) => {
+  let minutes = Math.floor(time / 60);
+  if (minutes < 10) minutes = `0${minutes}`;
+  let second = Math.floor(time % 60);
+  if (second < 10) second = `0${second}`;
+  return `${minutes}:${second}`;
+};

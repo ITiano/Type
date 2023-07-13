@@ -131,7 +131,7 @@ const Type = ({ data = "", setStep, value, setValue }) => {
   return (
     <div className="flex-start-start flex-col w-full flex-1">
       <ProgressLine data={data} type={type} />
-      <CourseShowDetails value={value} className="flex-between-center flex-col gap-8 mb-6 md:divide-x md:gap-0 md:flex-row" />
+      <CourseShowDetails value={value} className="flex-between-center flex-col gap-8 mb-6 3xs:divide-x 3xs:gap-0 3xs:flex-row" />
       <div className="relative w-full flex-1">
         <div className="w-full flex-wrap gap-y-8 flex-start-center">
           {data.split("").length !== 0 &&
