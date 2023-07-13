@@ -23,11 +23,11 @@ const AddOrEditCourseModal = ({ open, setOpen, initialValue }) => {
       if (open.id) {
         const data = { ...open, ...value, kind: value?.kind?.value || value?.kind };
         const { error } = await updateCourse(data);
-        !error && toast.success("Success");
+        if (!error) toast.success("Success");
       } else {
         const data = { ...value, kind: value.kind.value };
         const { error } = await addCourse(data);
-        !error && toast.success("Success");
+        if (!error) toast.success("Success");
       }
       setOpen(false);
       setLoading(false);

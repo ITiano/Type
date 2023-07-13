@@ -5,3 +5,5 @@ export const getCoursesCount = () => clientSupabase.from("courses").select("", {
 export const addCourse = (data) => clientSupabase.from("courses").insert(data);
 
 export const updateCourse = (data) => clientSupabase.from("courses").update(data).eq("id", data.id).select();
+
+export const deleteCourse = (id) => clientSupabase.from("courses").delete().eq("id", id);
