@@ -10,7 +10,7 @@ const borderLineColor = "border-b-blue-500";
 
 const defaultAccuracy = 10;
 
-const Type = ({ data = "", setStep, value, setDuration, duration }) => {
+const Type = ({ data = "", setStep, value, setValue }) => {
   const [type, setType] = useState("");
   const [error, setError] = useState(false);
   const [historyError, setHistoryError] = useState([]);
@@ -35,8 +35,8 @@ const Type = ({ data = "", setStep, value, setDuration, duration }) => {
       if (isStarted) {
         const { historyError, type } = temp.current;
         const typeEntries = type.length;
-        setDuration((prev) => {
-          const duration = prev + 1;
+        setValue((prev) => {
+          const duration = prev.duration + 1;
           let timePerMinute = duration / 60;
           timePerMinute = timePerMinute < 0 ? 1 : timePerMinute;
           const speed = Math.ceil(typeEntries / 5 / timePerMinute) || 0;
@@ -45,13 +45,12 @@ const Type = ({ data = "", setStep, value, setDuration, duration }) => {
           accuracy = Math.ceil(accuracy > 0 ? accuracy : defaultAccuracy);
           const score = Math.ceil(accuracy / 20);
           if (typeEntries === data.length) setStep(3);
-          value.current = { score, speed, accuracy, duration };
-          return duration;
+          return { score, speed, accuracy, duration };
         });
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [data, isStarted, setDuration, setStep, value]);
+  }, [data, isStarted, setValue, setStep]);
 
   const onChange = useCallback(
     ({ target }) => {
@@ -132,11 +131,7 @@ const Type = ({ data = "", setStep, value, setDuration, duration }) => {
   return (
     <div className="flex-start-start flex-col w-full flex-1">
       <ProgressLine data={data} type={type} />
-      <CourseShowDetails
-        value={value}
-        duration={duration}
-        className="flex-between-center flex-col gap-8 mb-6 md:divide-x md:gap-0 md:flex-row"
-      />
+      <CourseShowDetails value={value} className="flex-between-center flex-col gap-8 mb-6 md:divide-x md:gap-0 md:flex-row" />
       <div className="relative w-full flex-1">
         <div className="w-full flex-wrap gap-y-8 flex-start-center">
           {data.split("").length !== 0 &&

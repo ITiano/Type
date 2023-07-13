@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Type from "@components/pages/course/Type";
 import CourseRating from "./CourseRating";
 import CourseReview from "./CourseReview";
@@ -10,31 +10,29 @@ import routes from "@routes/routes";
 import { addHistory } from "@services/courseApi";
 import { useAuth } from "src/context/AuthContextProvider";
 
-const initialState = { score: 0, speed: 0, accuracy: 0 };
+const initialState = { score: 0, speed: 0, accuracy: 0, duration: 0 };
 
 const CourseContainer = ({ data }) => {
   const [user] = useAuth();
   const [step, setStep] = useState(1);
   const { push, refresh } = useRouter();
   const [disabled, setDisabled] = useState(false);
-  const value = useRef(initialState);
-  const [duration, setDuration] = useState(0);
+  const [value, setValue] = useState(initialState);
 
   const refreshPage = useCallback(() => {
     refresh(routes.courseId.path(data.id));
-    value.current = initialState;
-    setDuration(0);
+    setValue(initialState);
     setStep(1);
   }, [data.id, refresh]);
 
   useEffect(() => {
     const addNewHistory = async () => {
       setDisabled(true);
-      const { error } = await addHistory({ ...value.current, duration, course_id: data.id, user_id: user.id });
+      const { error } = await addHistory({ ...value, course_id: data.id, user_id: user.id });
       !error && setDisabled(false);
     };
     step === 3 && addNewHistory();
-  }, [data, duration, step, user.id]);
+  }, [data, step, user.id, value]);
 
   const nextBtn = {
     1: { text: "Get Started", onClick: () => setStep(2), hidden: false },
@@ -51,8 +49,8 @@ const CourseContainer = ({ data }) => {
   return (
     <div className="flex-between-center flex-col p-layout min-h-screen max-w-layout px-4">
       {step === 1 && <CourseReview data={data} setStep={setStep} />}
-      {step === 2 && <Type data={data?.course} setStep={setStep} value={value} duration={duration} setDuration={setDuration} />}
-      {step === 3 && <CourseRating data={data} setStep={setStep} value={value} duration={duration} />}
+      {step === 2 && <Type data={data?.course} setStep={setStep} value={value} setValue={setValue} />}
+      {step === 3 && <CourseRating data={data} setStep={setStep} value={value} />}
       <div className="py-10 w-full flex-between-center z-20 relative">
         <div>
           {!backBtn[step].hidden && (

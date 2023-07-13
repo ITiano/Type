@@ -1,8 +1,8 @@
 import { CheckIcon, CloseIcon, WarningIcon } from "@assets/icons/icons";
 import React from "react";
 
-const CourseShowDetails = ({ value, className, disableStatus, duration }) => {
-  const { score, accuracy, speed } = value.current;
+const CourseShowDetails = ({ value, className, disableStatus }) => {
+  const { score, accuracy, speed, duration } = value;
 
   let status;
   if (score === 0) status = { label: "Please start", icon: <CheckIcon />, className: "text-gray-400" };
