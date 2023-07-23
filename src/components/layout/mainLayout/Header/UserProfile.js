@@ -20,13 +20,13 @@ const UserProfile = ({ navItems }) => {
         <Link href={routes.auth.path}>
           <div className="flex-start-center gap-2">
             <span className="font-medium text-black text-sm">Register</span>
-            <ArrowRightIcon />
+            <ArrowRightIcon className="hidden md:block" />
           </div>
         </Link>
       ) : (
         <Link
           href={routes.profile.path}
-          className="flex-start-center gap-2 min-w-[40px] min-h-[40px] rounded-full relative"
+          className="flex-start-center gap-2 min-w-[40px] min-h-[40px] rounded-full relative overflow-hidden"
         >
           {user?.user_metadata?.profile_cover ? (
             <Image

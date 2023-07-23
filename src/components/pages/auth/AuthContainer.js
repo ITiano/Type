@@ -54,12 +54,12 @@ const AuthContainer = () => {
               <span className="h-px bg-gray-300 flex-1"></span>
             </div>
             <div className="centering gap-3 mt-6">
-              <span className="w-12 h-12 centering rounded-full bg-gray-100 cursor-pointer">
+              <button className="w-12 h-12 centering rounded-full bg-gray-100">
                 <GoogleIcon />
-              </span>
-              <span className="w-12 h-12 centering rounded-full bg-gray-100 cursor-pointer">
+              </button>
+              <button className="w-12 h-12 centering rounded-full bg-gray-100">
                 <TwitterIcon />
-              </span>
+              </button>
             </div>
           </>
         ) : (

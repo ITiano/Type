@@ -26,7 +26,7 @@ export const percentGenerator = (value, total) => (!value || !total ? 0 : Math.c
 export const averageGenerator = (value, length) => (!value || !length ? 0 : Math.ceil(value / length));
 
 export const twoPercentGenerator = (newValue, oldValue) =>
-  !newValue || !oldValue ? 0 : ((newValue - oldValue) / oldValue) * 100;
+  !newValue || !oldValue ? 0 : Math.ceil(((newValue - oldValue) / oldValue) * 100);
 
 export const SecondTimeTranslator = (time = 0) => {
   let minutes = Math.floor(time / 60);

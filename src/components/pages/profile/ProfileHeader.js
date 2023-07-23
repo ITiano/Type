@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import Stars from "@components/common/Stars";
 import { AssignImgIcon, LogOutIcon, ShareIcon, UserIcon } from "@assets/icons/icons";
 import { useAuth } from "src/context/AuthContextProvider";
@@ -16,7 +16,6 @@ const ProfileHeader = ({ data }) => {
   const inputRef = useRef();
   const userName = useDisplayUser();
   const [user, setUser] = useAuth();
-  const [value, setValue] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const { lastWeek = {}, thisWeek = {} } = data || {};
@@ -39,29 +38,33 @@ const ProfileHeader = ({ data }) => {
     setLoading(false);
   }, [push, setUser]);
 
-  useEffect(() => {
-    const updateProfile = () => {
-      const promise = new Promise(async (resolve, reject) => {
-        const { data: uploadData, error: uploadError } = await uploadProfile(value);
-        if (uploadError) reject();
-        else {
-          const { data, error } = await updateUser({ ...user.metadata, profile_cover: "user_profile/" + uploadData.path });
-          if (error) reject();
+  const updatedProfile = useCallback(
+    ({ target }) => {
+      const file = target.files[0];
+      if (!file.type.includes("image")) toast.error("This format is not acceptable");
+      else if (file.size > 2000000) toast.error("Uploaded image must be at most 2MB");
+      else {
+        const promise = new Promise(async (resolve, reject) => {
+          const { data: uploadData, error: uploadError } = await uploadProfile(file);
+          if (uploadError) reject();
           else {
-            setUser((prev) => ({ ...data.user, user_metadata: { ...prev.user_metadata, ...data.user.user_metadata } }));
-            resolve();
+            const { data, error } = await updateUser({ ...user.metadata, profile_cover: "user_profile/" + uploadData.path });
+            if (error) reject();
+            else {
+              setUser((prev) => ({ ...data.user, user_metadata: { ...prev.user_metadata, ...data.user.user_metadata } }));
+              resolve();
+            }
           }
-        }
-        setValue(null);
-      });
-      toast.promise(promise, {
-        loading: "pending",
-        error: "Sth went wrong please try again later",
-        success: "Profile photo updated successfully",
-      });
-    };
-    value && updateProfile();
-  }, [setUser, user.metadata, value]);
+        });
+        toast.promise(promise, {
+          loading: "pending",
+          error: "Sth went wrong please try again later",
+          success: "Profile photo updated successfully",
+        });
+      }
+    },
+    [setUser, user.metadata]
+  );
 
   return (
     <div className="flex items-start justify-start flex-col md:flex-row md:!justify-between md:!items-center gap-2 mb-8">
@@ -82,7 +85,7 @@ const ProfileHeader = ({ data }) => {
               <UserIcon className="h-full w-full" />
             )}
           </div>
-          <input type="file" className="hidden" ref={inputRef} onChange={(e) => setValue(e.target.files[0])} />
+          <input type="file" className="hidden" accept="image/*" ref={inputRef} onChange={updatedProfile} />
           <span>
             <AssignImgIcon className="absolute bottom-0 right-0 cursor-pointer w-7 h-7" />
           </span>

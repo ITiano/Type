@@ -61,12 +61,13 @@ const CourseContainer = ({ data }) => {
               disabled={disabled}
               text={backBtn[step].text}
               onClick={backBtn[step].onClick}
-              className="text-xs 2xs:text-base whitespace-nowrap !px-0 2xs:w-44"
+              className="text-xs sm:text-base whitespace-nowrap !px-0 w-[80px] sm:w-44"
+              iconClassName="hidden sm:!block"
             />
           )}
         </div>
         <div>
-          {(step === 1 || step === 3) && (
+          {(step === 3) && (
             <Link href={routes.courses.path} onClick={(e) => disabled && e.preventDefault()} className="text-cyan-500">
               <HomeIcon />
             </Link>
@@ -79,7 +80,8 @@ const CourseContainer = ({ data }) => {
               disabled={disabled}
               text={nextBtn[step].text}
               onClick={nextBtn[step].onClick}
-              className="text-xs 2xs:text-base whitespace-nowrap !px-0 2xs:w-44"
+              className="text-xs sm:text-base whitespace-nowrap !px-0 w-[80px] sm:w-44"
+              iconClassName="hidden sm:!block"
             />
           )}
         </div>

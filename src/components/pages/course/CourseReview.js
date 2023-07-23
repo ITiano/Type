@@ -12,8 +12,8 @@ const CourseReview = ({ data }) => {
         <span className="text-xs text-gray-800">Pro tip!</span>
         <span className="h-px bg-gray-800 bg-opacity-30 flex-1"></span>
       </div>
-      <p className="text-gray-800 text-xs">this is a tip text this is a tip text this is a tip text this is a tip text </p>
-      <p className="text-gray-800 text-xs">this is a tip text this is a tip text this is a tip text </p>
+      <p className="text-gray-800 text-xs text-center">this is a tip text this is a tip text this is a tip text this is a tip text </p>
+      <p className="text-gray-800 text-xs text-center">this is a tip text this is a tip text this is a tip text </p>
     </div>
   );
 };
