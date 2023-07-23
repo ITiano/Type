@@ -15,7 +15,7 @@ export async function middleware(req) {
   const navigateUrl = NextResponse.redirect(new URL(routes.home.path, req.url));
 
   // All routes that needs protection
-  const protectedRoutes = [routes.profile.path, routes.courseId.path("")];
+  const protectedRoutes = [routes.admin.path, routes.profile.path, routes.courseId.path("")];
 
   // admins gmail
   const admins = [process.env.NEXT_PUBLIC_ADMIN_1, process.env.NEXT_PUBLIC_ADMIN_2];
@@ -27,7 +27,7 @@ export async function middleware(req) {
     }
   } else {
     if (req.nextUrl.pathname.startsWith(routes.auth.path)) return navigateUrl;
-    if (req.nextUrl.pathname.startsWith("/admin") && !admins.find((admin) => admin === session.data.session.user.email))
+    if (req.nextUrl.pathname.startsWith(routes.admin.path) && !admins.find((admin) => admin === session.data.session.user.email))
       return navigateUrl;
     else return res;
   }
