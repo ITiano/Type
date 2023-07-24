@@ -11,13 +11,13 @@ const NavigateLinks = ({ className = "" }) => {
 
   return (
     <div className={`flex-start-center gap-4 ${className}`}>
-      <Link href={routes.courses.path} className="btn black-btn font-bold text-lg">
+      <Link href={routes.courses.path} className="btn black-btn font-bold text-base">
         Get started
       </Link>
       {!user && (
         <Link href={routes.auth.path}>
           <div className="flex-start-center gap-1">
-            <span className="font-medium text-black text-lg">Register</span>
+            <span className="font-medium text-black text-base">Register</span>
             <ArrowRightIcon />
           </div>
         </Link>

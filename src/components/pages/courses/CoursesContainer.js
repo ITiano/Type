@@ -11,7 +11,7 @@ const CoursesContainer = ({ data }) => {
   const props = { kind, setKind, open, setOpen, data };
 
   return (
-    <div className="m-layout">
+    <div className="m-layout p-layout">
       <KindSwitcherSection {...props} />
       <CoursesSection {...props} />
       <CourseHistoryModal {...props} />

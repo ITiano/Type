@@ -12,7 +12,7 @@ const ProfileContainer = ({ data }) => {
   const [user] = useAuth();
 
   return (
-    <section className="bg-gray-600 rounded-3xl py-6 px-4 2xs:p-10 md:p-12 mb-8 m-layout">
+    <section className="bg-gray-600 rounded-3xl py-6 px-4 2xs:p-10 md:p-12 mb-8 m-layout p-layout">
       {!user ? (
         <>
           <Skeleton className="h-[104px] sm:h-[120px] md:h-[112px] mb-4" />

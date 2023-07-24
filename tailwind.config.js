@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-poppins)"],
+        type: ["var(--font-droid-sans-mono)"],
       },
       backgroundImage: {
         form: "url('/images/login/Frame-letter.png')",

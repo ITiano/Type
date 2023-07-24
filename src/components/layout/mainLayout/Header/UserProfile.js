@@ -17,12 +17,7 @@ const UserProfile = ({ navItems }) => {
           <Skeleton height={40} className="!rounded-full" />
         </div>
       ) : user === null ? (
-        <Link href={routes.auth.path}>
-          <div className="flex-start-center gap-2">
-            <span className="font-medium text-black text-sm">Register</span>
-            <ArrowRightIcon className="hidden md:block" />
-          </div>
-        </Link>
+        <span></span>
       ) : (
         <Link
           href={routes.profile.path}

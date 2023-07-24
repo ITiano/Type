@@ -1,6 +1,9 @@
 import "../styles/App.css";
 import RootProvider from "@components/layout/RootProvider";
 import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
+
+const DroidSansMono = localFont({ src: "../../public/fonts/DroidSansMono.ttf",variable:"--font-droid-sans-mono" });
 
 export const metadata = {
   title: { default: "Typiano" },
@@ -15,7 +18,7 @@ const poppins = Poppins({
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en" dir="ltr" className={`${poppins.variable} font-sans`}>
+    <html lang="en" dir="ltr" className={`${poppins.variable} ${DroidSansMono.variable} font-sans`}>
       <body>
         <RootProvider>{children}</RootProvider>
       </body>

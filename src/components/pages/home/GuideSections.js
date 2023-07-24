@@ -3,10 +3,12 @@ import KeyboardVector from "@assets/vectors/KeyboardVector";
 
 const GuideSections = () => {
   return (
-    <section className="centering flex-col gap-12 rounded-2xl max-w-full w-full [&>*]:w-full bg-gray-600 mt-[130px] md:mt-[170px] mb-[70px] md:mb-[100px] px-2 2xs:px-4 sm:px-8 py-6 2xs:py-10 sm:py-14">
-      <TextSection />
-      <DotsSection />
-      <KeyboardImageSection />
+    <section className="p-layout">
+      <div className="centering flex-col gap-12 rounded-2xl max-w-full w-full [&>*]:w-full mt-[130px] md:mt-[170px] mb-[70px] md:mb-[100px] px-2 2xs:px-4 sm:px-8 py-6 2xs:py-10 sm:py-14 bg-gray-600">
+        <TextSection />
+        <DotsSection />
+        <KeyboardImageSection />
+      </div>
     </section>
   );
 };

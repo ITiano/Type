@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
     <div>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="max-w-layout p-layout pb-[50px]">
+        <main className="max-w-layout pb-[50px]">
           {Children.map(children, (child) => (
             <CustomFade>
               <div>{child}</div>

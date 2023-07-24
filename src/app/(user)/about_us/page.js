@@ -14,9 +14,9 @@ const teamMembers = [
 
 const AboutUs = () => {
   return (
-    <section className="px-4 mt-28">
+    <section className="px-4 mt-28 p-layout">
       <h2 className="font-bold text-2xl text-center mb-5">Our Team</h2>
-      <p className="text-justify mb-10">
+      <p className="text-justify mb-14">
         Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
         from 45 BC, making it over 2000 years old. Richard McClinton, a Latin professor at Hampden-Sydney College in Virginia,
         looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the

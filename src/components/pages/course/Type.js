@@ -133,25 +133,25 @@ const Type = ({ data = "", setStep, value, setValue }) => {
       <ProgressLine data={data} type={type} />
       <CourseShowDetails value={value} className="flex-between-center flex-col gap-8 mb-6 3xs:divide-x 3xs:gap-0 3xs:flex-row" />
       <div className="relative w-full flex-1">
-        <div className="w-full flex-wrap gap-y-8 flex-start-center">
+        <div className="w-full flex-wrap gap-y-2 flex-start-center">
           {data.split("").length !== 0 &&
             convertedText.map((item, wordIndex) => {
               return (
-                <span key={wordIndex} className="flex-start-center">
+                <span key={wordIndex} className="flex-start-center font-type ">
                   {item.split("").map((item, index) => {
                     const length = currentWordLength(wordIndex);
                     return (
                       <span
                         key={length + index}
-                        className={`mx-px min-w-[1.5rem] h-14 flex-start-center text-4xl border-b-4 rounded-sm relative ${
-                          type.length === length + index ? borderLineColor : "border-b-white"
-                        } ${showLastErrorClassName(length + index)} ${
-                          type[length + index]?.toString() === item?.toString() ? successColor : ""
-                        }`}
+                        className={`mx-px  h-14 centering text-4xl border-b-4 rounded-sm relative ${
+                          item === " " ? "min-w-[1.5rem] " : ""
+                        } ${type.length === length + index ? borderLineColor : "border-b-white"} ${showLastErrorClassName(
+                          length + index
+                        )} ${type[length + index]?.toString() === item?.toString() ? successColor : ""}`}
                       >
                         {item}
                         <span
-                          className={`transition absolute inset-0 flex-start-center ${error ? "opacity-100" : "opacity-0"}  ${
+                          className={`transition absolute inset-0 centering ${error ? "opacity-100" : "opacity-0"}  ${
                             showNowError(length + index).className
                           } `}
                         >

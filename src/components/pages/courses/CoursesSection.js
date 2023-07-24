@@ -54,7 +54,7 @@ const CourseElement = ({ course, kind, setOpen }) => {
           CoursesIcons[course.status]
         ) : (
           <Link
-            href={routes.courseId.path(course.id)}
+            href={!user ? routes.courses.path : routes.courseId.path(course.id)}
             replace
             onClick={(e) => {
               if (!user) {

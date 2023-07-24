@@ -40,7 +40,7 @@ const ContactUsContainer = () => {
   );
 
   return (
-    <section className="w-full max-w-3xl mx-auto mb-8 mt-28">
+    <section className="w-full max-w-3xl mx-auto mb-8 mt-28 p-layout">
       <h2 className="font-bold text-2xl text-center mb-5">Get in touch</h2>
       <p className="text-center mb-8">Contact Us for quote, help or collaboration</p>
       <div className="flex-between-center flex-col sm:flex-row gap-12 shadow-lg p-10 w-full rounded-3xl bg-white">
