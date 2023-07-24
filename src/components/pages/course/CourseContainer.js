@@ -10,7 +10,7 @@ import routes from "@routes/routes";
 import { addHistory } from "@services/courseApi";
 import { useAuth } from "src/context/AuthContextProvider";
 import Link from "next/link";
-import { ArrowLeftIcon, HomeIcon } from "@assets/icons/icons";
+import { HomeIcon } from "@assets/icons/icons";
 
 const initialState = { score: 0, speed: 0, accuracy: 0, duration: 0 };
 
@@ -54,34 +54,34 @@ const CourseContainer = ({ data }) => {
       {step === 2 && <Type data={data?.course} setStep={setStep} value={value} setValue={setValue} />}
       {step === 3 && <CourseRating data={data} setStep={setStep} value={value} />}
       <div className="py-10 w-full flex-between-center z-20 relative">
-        <div>
+        <div className="w-[80px] sm:w-44">
           {!backBtn[step].hidden && (
             <CustomBtn
               arrowStartBtn
               disabled={disabled}
               text={backBtn[step].text}
               onClick={backBtn[step].onClick}
-              className="text-xs sm:text-base whitespace-nowrap !px-0 w-[80px] sm:w-44"
               iconClassName="hidden sm:!block"
+              className="text-xs sm:text-base whitespace-nowrap !px-0"
             />
           )}
         </div>
         <div>
-          {(step === 3) && (
+          {(step === 3 || step === 1) && (
             <Link href={routes.courses.path} onClick={(e) => disabled && e.preventDefault()} className="text-cyan-500">
               <HomeIcon />
             </Link>
           )}
         </div>
-        <div>
+        <div className="w-[80px] sm:w-44">
           {!nextBtn[step].hidden && (
             <CustomBtn
               arrowEndBtn
               disabled={disabled}
               text={nextBtn[step].text}
               onClick={nextBtn[step].onClick}
-              className="text-xs sm:text-base whitespace-nowrap !px-0 w-[80px] sm:w-44"
               iconClassName="hidden sm:!block"
+              className="text-xs sm:text-base whitespace-nowrap !px-0"
             />
           )}
         </div>

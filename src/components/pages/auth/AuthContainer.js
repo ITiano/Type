@@ -2,7 +2,7 @@
 
 import CustomBtn from "@components/utils/CustomBtn";
 import CustomInput, { isEmailValidation } from "@components/utils/CustomInput";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { verifyUser } from "@services/authApi";
 import { GoogleIcon, TwitterIcon } from "@assets/icons/icons";
 import Spinner from "@components/utils/Spinner";

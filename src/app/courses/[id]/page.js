@@ -15,11 +15,13 @@ const CourseInfo = async ({ params }) => {
   const [courseData] = response || [];
   let prev = null;
   let next = null;
+  if (courseError) throw new Error("Error");
   if (courseData) {
-    const currentLesson = +courseData.name.slice(-1);
+    const currentLesson = +courseData.name.replace("Lesson ", "");
     const prevLessonName = `Lesson ${currentLesson - 1}`;
     const nextLessonName = `Lesson ${currentLesson + 1}`;
     const { data: prevAndNextData, error: prevAndNextError } = await getCourseByName([prevLessonName, nextLessonName]);
+    if (prevAndNextError) throw new Error("Error");
     if (prevAndNextData) {
       prev = prevAndNextData.find((course) => course.name === prevLessonName);
       next = prevAndNextData.find((course) => course.name === nextLessonName);
