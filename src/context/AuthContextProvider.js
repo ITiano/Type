@@ -1,6 +1,7 @@
 import { dailyGoalList, weeklyGoalList } from "@helper/utils";
 import { getUser } from "@services/authApi";
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import toast from "react-hot-toast";
 
 const initialUserData = {
   profile_cover: null,
@@ -18,8 +19,10 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const getUserData = async () => {
       const { data, error } = await getUser();
-      if (error) setUser(null);
-      else setUser({ ...data.user, user_metadata: { ...initialUserData, ...data.user.user_metadata } });
+      if (error) {
+        error.status !== 401 && toast.error(error.message);
+        setUser(null);
+      } else setUser({ ...data.user, user_metadata: { ...initialUserData, ...data.user.user_metadata } });
     };
     getUserData();
   }, []);

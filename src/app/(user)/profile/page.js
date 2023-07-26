@@ -33,6 +33,8 @@ const Profile = async () => {
 
   const { data = [], error } = await getHistories();
 
+  if (error) throw new Error(error.message);
+
   const convertData = data.reduce((previous, current) => {
     const courseDate = withoutTime(current.created_at).getTime();
 

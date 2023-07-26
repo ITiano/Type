@@ -36,7 +36,8 @@ const AdminContainer = ({ data }) => {
     const lastItemId = data[data.length - 1].id;
     setLoading(true);
     const { error } = await deleteCourse(lastItemId);
-    if (!error) {
+    if (error) toast.error(error.message);
+    else {
       toast.success("Success");
       router.replace(pathname);
     }

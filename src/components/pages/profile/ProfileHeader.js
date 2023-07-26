@@ -30,7 +30,7 @@ const ProfileHeader = ({ data }) => {
   const logoutHandler = useCallback(async () => {
     setLoading(true);
     const { error } = await logoutUser();
-    if (error) toast.error("Sth went wrong please try again later");
+    if (error) toast.error(error.message);
     else {
       push(routes.home.path);
       setUser(null);
