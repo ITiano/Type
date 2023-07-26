@@ -4,9 +4,9 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 import toast from "react-hot-toast";
 
 const initialUserData = {
-  profile_cover: null,
-  firstName: "",
   lastName: "",
+  firstName: "",
+  profile_cover: null,
   daily: dailyGoalList[0],
   weekly: weeklyGoalList[1],
 };
@@ -21,10 +21,8 @@ const AuthContextProvider = ({ children }) => {
       await fetch(`https://ipinfo.io/?token=${process.env.NEXT_PUBLIC_APIINFO}`)
         .then(async (res) => {
           const { country } = await res.json();
-          alert(country);
           country === "IR" && toast.error("For the best performance, consider turning on your VPN");
         })
-        .catch(() => toast.error("For the best performance, consider turning on your VPN"));
     };
     process.env.NODE_ENV === "production" && getIPInfo();
 
