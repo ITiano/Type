@@ -143,15 +143,15 @@ const Type = ({ data = "", setStep, value, setValue }) => {
                     return (
                       <span
                         key={length + index}
-                        className={`mx-px  h-14 centering text-4xl border-b-4 rounded-sm relative ${
-                          item === " " ? "min-w-[1.5rem] " : ""
-                        } ${type.length === length + index ? borderLineColor : "border-b-white"} ${showLastErrorClassName(
-                          length + index
-                        )} ${type[length + index]?.toString() === item?.toString() ? successColor : ""}`}
+                        className={`mx-px h-10 sm:h-14 min-w-[1.2rem] md:min-w-[1.5rem] centering text-2xl sm:text-4xl border-b-4 rounded-sm relative ${
+                          type.length === length + index ? borderLineColor : "border-b-white"
+                        } ${showLastErrorClassName(length + index)} ${
+                          type[length + index]?.toString() === item?.toString() ? successColor : ""
+                        }`}
                       >
                         {item}
                         <span
-                          className={`transition absolute inset-0 centering ${error ? "opacity-100" : "opacity-0"}  ${
+                          className={`transition absolute inset-0 centering text-2xl sm:text-4xl ${error ? "opacity-100" : "opacity-0"}  ${
                             showNowError(length + index).className
                           } `}
                         >

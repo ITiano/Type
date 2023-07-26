@@ -21,7 +21,8 @@ const AuthContainer = () => {
       if (!formError) {
         setLoading(true);
         const { error } = await verifyUser(value);
-        if (!error) step === 1 ? setStep(2) : toast.success("please check your email address.");
+        if (error) toast.error("Something went wrong. Please try again");
+        else step === 1 ? setStep(2) : toast.success("please check your email address.");
         setLoading(false);
       } else setError(formError);
     },

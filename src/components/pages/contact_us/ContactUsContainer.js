@@ -28,7 +28,7 @@ const ContactUsContainer = () => {
       if (user) {
         setLoading(true);
         const { error } = await addContactUs({ ...value, user_id: user.id });
-        if (error) toast.error("Sth went wrong please try again later");
+        if (error) toast.error("Something went wrong. Please try again");
         else {
           setValue(initialValues);
           toast.success("Form submitted successfully and we will see it soon");

@@ -11,6 +11,7 @@ import { addHistory } from "@services/courseApi";
 import { useAuth } from "src/context/AuthContextProvider";
 import Link from "next/link";
 import { HomeIcon } from "@assets/icons/icons";
+import toast from "react-hot-toast";
 
 const initialState = { score: 0, speed: 0, accuracy: 0, duration: 0 };
 
@@ -31,7 +32,8 @@ const CourseContainer = ({ data }) => {
     const addNewHistory = async () => {
       setDisabled(true);
       const { error } = await addHistory({ ...value, course_id: data.id, user_id: user.id });
-      !error && setDisabled(false);
+      if (error) toast.error("Something went wrong. Please try again");
+      else setDisabled(false);
     };
     step === 3 && addNewHistory();
   }, [data, step, user.id, value]);

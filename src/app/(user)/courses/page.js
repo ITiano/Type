@@ -11,6 +11,8 @@ const Courses = async () => {
   const result = await Promise.all([getCourses(), getHistories()]);
   const [{ data: courses, error: coursesError }, { data: allHistories, error: historiesError }] = result;
 
+  if (coursesError || historiesError) throw new Error("Error");
+
   let defaultStatus = 2;
 
   const data = courses.reduce((prev, current) => {
