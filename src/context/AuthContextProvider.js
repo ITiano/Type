@@ -17,6 +17,16 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
 
   useEffect(() => {
+    const getIPInfo = async () => {
+      await fetch(`https://ipinfo.io/?token=${process.env.NEXT_PUBLIC_APIINFO}`)
+        .then(async (res) => {
+          const { country } = await res.json();
+          country === "IR" && toast.error("For the best performance, consider turning on your VPN");
+        })
+        .catch(() => toast.error("For the best performance, consider turning on your VPN"));
+    };
+    process.env.NODE_ENV === "production" && getIPInfo();
+
     const getUserData = async () => {
       const { data, error } = await getUser();
       if (error) {

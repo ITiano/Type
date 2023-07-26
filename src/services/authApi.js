@@ -12,3 +12,4 @@ export const uploadProfile = (value) =>
   });
 
 export const logoutUser = () => clientSupabase.auth.signOut();
+
