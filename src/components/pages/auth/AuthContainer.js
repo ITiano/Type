@@ -2,7 +2,7 @@
 
 import CustomBtn from "@components/utils/CustomBtn";
 import CustomInput, { isEmailValidation } from "@components/utils/CustomInput";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { verifyUser } from "@services/authApi";
 import { GoogleIcon, TwitterIcon } from "@assets/icons/icons";
 import Spinner from "@components/utils/Spinner";
@@ -21,8 +21,7 @@ const AuthContainer = () => {
       if (!formError) {
         setLoading(true);
         const { error } = await verifyUser(value);
-        if (error) toast.error("Something went wrong. Please try again");
-        else step === 1 ? setStep(2) : toast.success("please check your email address.");
+        if (!error) step === 1 ? setStep(2) : toast.success("please check your email address.");
         setLoading(false);
       } else setError(formError);
     },
