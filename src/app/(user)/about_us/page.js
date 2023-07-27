@@ -7,7 +7,7 @@ export const metadata = { title: routes.aboutUs.title };
 const teamMembers = [
   { name: "Mobina Mirbagheri", position: "UiUx Design", image: "/images/avatar/Mobina.png" },
   { name: "Fateme Rasolzadeh", position: "FrontEnd Developer", image: "/images/avatar/Fateme.png" },
-  { name: "Amir Shafikhani", position: "FrontEnd Developer", image: "/images/avatar/Soheil.png" },
+  { name: "Amir Shafikhani", position: "FrontEnd Developer", image: "/images/avatar/Amir.png" },
   { name: "Soheil jafarnejad", position: "FrontEnd Developer", image: "/images/avatar/Soheil.png" },
   { name: "Ruhollah Mozafari", position: "BackEnd Developer  ", image: "/images/avatar/Ruhollah.png" },
 ];
