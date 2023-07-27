@@ -4,7 +4,7 @@ import { useAuth } from "src/context/AuthContextProvider";
 import { averageGenerator, percentGenerator, twoPercentGenerator } from "@helper/utils";
 import { useMemo } from "react";
 
-const ProfileActivity = ({ data }) => {
+const ProfileActivity = ({ data, isShare }) => {
   const [user] = useAuth();
   const { daily, weekly } = user?.user_metadata;
   const { lastWeek = {}, today = {}, thisWeek = {} } = data || {};
@@ -66,7 +66,7 @@ const ProfileActivity = ({ data }) => {
       </div>
 
       <p className="font-semibold text-base mt-8">Time Spent</p>
-      <div className="flex-between-center flex-col md:flex-row gap-x-3 gap-y-10 mt-5 max-w-xl mx-auto">
+      <div className={`flex-between-center ${isShare ? "" : "flex-col md:flex-row"} gap-x-3 gap-y-10 mt-5 max-w-xl mx-auto`}>
         {charts.map((item) => {
           return <ProgressBar key={item.id} {...item} />;
         })}

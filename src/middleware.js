@@ -22,15 +22,15 @@ export async function middleware(req) {
 
   // Conditions
 
-  if (session.error)
-    return new NextResponse(
-      JSON.stringify({
-        message:
-          "Access Blocked Content Unlock websites and content that may be restricted in your region with the power of a VPN.",
-      }),
-      { status: 403, headers: { "content-type": "application/json" } }
-    );
-  else if (!session.data.session) {
+  // if (session.error)
+  //   return new NextResponse(
+  //     JSON.stringify({
+  //       message:
+  //         "Access Blocked Content Unlock websites and content that may be restricted in your region with the power of a VPN.",
+  //     }),
+  //     { status: 403, headers: { "content-type": "application/json" } }
+  //   );
+  if (!session.data.session) {
     for (const routeIndex in protectedRoutes) {
       if (req.nextUrl.pathname.startsWith(protectedRoutes[routeIndex])) return navigateUrl;
     }

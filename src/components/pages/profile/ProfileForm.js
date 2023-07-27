@@ -40,7 +40,7 @@ const ProfileForm = () => {
   const disabled = !value.firstName || !value.lastName || !value.email || !value.daily || !value.weekly;
 
   return (
-    <div className="delete-for-share">
+    <div>
       <p className="mb-5 font-semibold text-base">Edit profile</p>
       <form onSubmit={onSubmit} noValidate>
         <div className="flex flex-col md:flex-row md:divide-x-2 [&>*]:flex-1">
