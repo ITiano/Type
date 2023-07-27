@@ -11,7 +11,7 @@ import routes from "@routes/routes";
 import Spinner from "@components/utils/Spinner";
 import useDisplayUser from "@hooks/useDisplayUser";
 
-const ProfileHeader = ({ data }) => {
+const ProfileHeader = ({ data, onShare }) => {
   const { push } = useRouter();
   const inputRef = useRef();
   const userName = useDisplayUser();
@@ -102,7 +102,7 @@ const ProfileHeader = ({ data }) => {
         <button className="bg-white rounded-full w-8 h-8 centering" onClick={logoutHandler}>
           {loading ? <Spinner /> : <LogOutIcon />}
         </button>
-        <span className="bg-white rounded-full w-8 h-8 centering cursor-pointer">
+        <span onClick={onShare} className="bg-white rounded-full w-8 h-8 centering cursor-pointer">
           <ShareIcon />
         </span>
       </div>
