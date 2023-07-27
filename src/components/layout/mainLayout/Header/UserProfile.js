@@ -21,14 +21,14 @@ const UserProfile = ({ navItems }) => {
       ) : (
         <Link
           href={routes.profile.path}
-          className="flex-start-center gap-2 min-w-[40px] min-h-[40px] rounded-full relative overflow-hidden"
+          className="flex-start-center gap-2 min-w-[40px] min-h-[40px] border rounded-full relative overflow-hidden"
         >
           {user?.user_metadata?.profile_cover ? (
             <Image
               fill
               alt="user profile"
               onLoadingComplete={(element) => element.classList.remove("opacity-0")}
-              className="object-center object-cover opacity-0 transition duration-300"
+              className="object-center object-cover opacity-0 transition duration-100"
               src={process.env.NEXT_PUBLIC_IMAGE_URL + user.user_metadata.profile_cover}
             />
           ) : (
