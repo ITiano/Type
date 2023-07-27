@@ -16,7 +16,7 @@ const Header = () => {
     if (typeof window !== undefined) {
       const updateScrollData = () => {
         const offsetY = window.scrollY;
-        setScrollData({ offsetY, isScrollingDown: offsetY > scrollData.offsetY });
+        setScrollData((prev) => ({ offsetY, isScrollingDown: offsetY > prev.offsetY }));
       };
       if (!mounted) {
         setMounted(true);
@@ -25,7 +25,7 @@ const Header = () => {
       window.addEventListener("scroll", updateScrollData);
       return () => window.removeEventListener("scroll", updateScrollData);
     }
-  }, [mounted, scrollData.offsetY]);
+  }, [mounted]);
 
   return (
     <header
