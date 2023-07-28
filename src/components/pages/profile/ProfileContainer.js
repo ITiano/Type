@@ -28,8 +28,8 @@ const ProfileContainer = ({ data }) => {
           "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!";
         const url = "https://typiano.vercel.app/";
         const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], fileName + ".png")];
-        if (navigator.canShare) {
-          await navigator.share({ title, text, url, files });
+        if (navigator.canShare && navigator.canShare({ files })) {
+          await navigator.share({ title, text, files });
         } else {
           toast.error("Web Share API is not supported in this browser.");
           const download = document.createElement("a");
