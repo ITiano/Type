@@ -22,7 +22,7 @@ const ProfileContainer = ({ data }) => {
       const fileName = name.toLowerCase() + "-" + date;
 
       try {
-        const imageDataUrl = await htmlToImage.toPng(ref);
+        const imageDataUrl = await htmlToImage.toPng(ref.current);
         const title = "tsettt";
         const text = "test";
         const url = "https://typiano.vercel.app/";
