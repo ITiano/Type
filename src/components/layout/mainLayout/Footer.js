@@ -21,7 +21,15 @@ const Footer = () => {
               </Link>
             ))}
           </div>
-          <p className="text-gray-900 text-xs mt-8 text-center tracking-widest">&copy; {years} Itiano, All rights reserved</p>
+          <p className="text-gray-900 text-xs mt-8 text-center tracking-widest">
+            &copy; {years}{" "}
+            {
+              <a href="https://github.com/ITiano" className="text-primary-900 font-bold" target="_blank">
+                ITiano
+              </a>
+            }
+            , All rights reserved
+          </p>
         </div>
       </footer>
     </div>
