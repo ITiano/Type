@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import ProfileHeader from "./ProfileHeader";
 import ProfileForm from "./ProfileForm";
 import { useAuth } from "src/context/AuthContextProvider";
@@ -11,9 +11,11 @@ import toast from "react-hot-toast";
 const ProfileContainer = ({ data }) => {
   const [user] = useAuth();
   const ref = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   const onShare = async () => {
     if (user?.user_metadata && ref.current) {
+      setLoading(true);
       const { email, firstName, lastName } = user.user_metadata;
       const name = firstName || lastName ? `${firstName || ""}${firstName ? " " : ""}${lastName || ""}` : email;
       let date = new Date();
@@ -22,24 +24,27 @@ const ProfileContainer = ({ data }) => {
       const fileName = name.toLowerCase() + "-" + date;
 
       try {
-        const imageDataUrl = await htmlToImage.toPng(ref.current);
+        const imageFile = await htmlToImage.toBlob(ref.current);
         const title = "Typiano - Your 10-Finger Typing Maestro.";
         const text =
           "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!";
         const url = "https://typiano.vercel.app/";
-        const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], fileName + ".png", { type: "image/png" })];
-
+        const files = [new File([imageFile], fileName + ".png", { type: "image/png" })];
         if (navigator.canShare && navigator.canShare({ files })) {
           await navigator.share({ title, text, url, files });
+          setLoading(false);
         } else {
+          const imageDataUrl = await htmlToImage.toPng(ref.current);
           toast.error("Web Share API is not supported in this browser.");
           const download = document.createElement("a");
           download.href = imageDataUrl;
           download.download = fileName;
           download.click();
+          setLoading(false);
         }
       } catch (error) {
         console.log("Error Web share :", error);
+        setLoading(false);
       }
     }
   };
@@ -54,7 +59,7 @@ const ProfileContainer = ({ data }) => {
         </>
       ) : (
         <div className="relative overflow-hidden">
-          <ProfileHeader onShare={onShare} data={data} />
+          <ProfileHeader onShare={onShare} data={data} shareLoading={loading} />
           <ProfileActivity data={data} />
           <ProfileForm />
 
