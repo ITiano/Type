@@ -26,9 +26,16 @@ const ProfileContainer = ({ data }) => {
         const title = "tsettt";
         const text = "test";
         const url = "https://typiano.vercel.app/";
-        const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], "image/png")];
-        if (navigator.canShare && navigator.canShare({ files })) {
-          await navigator.share({ title, text, files });
+        if (
+          navigator.canShare &&
+          navigator.canShare({ files: [new File([new Blob([imageDataUrl], { type: "image/png" })], "image/png")] })
+        ) {
+          await navigator.share({
+            title,
+            text,
+            url,
+            files: [new File([new Blob([imageDataUrl], { type: "image/png" })], "image/png")],
+          });
         } else {
           toast.error("Web Share API is not supported in this browser.");
           const download = document.createElement("a");
@@ -38,7 +45,6 @@ const ProfileContainer = ({ data }) => {
         }
       } catch (error) {
         console.log(error);
-        toast.error("Error Web share : ", error.message);
       }
     }
   };
