@@ -10,33 +10,36 @@ import toast from "react-hot-toast";
 
 const ProfileContainer = ({ data }) => {
   const [user] = useAuth();
-  const ref = useRef();
+  const ref = useRef(null);
 
   const onShare = async () => {
-    try {
-      const imageDataUrl = await htmlToImage.toPng(ref.current);
-      const title = "Typiano - Your 10-Finger Typing Maestro.";
-      const text =
-        "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!";
-      const url = "https://typiano.vercel.app/";
-      const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], "image.png")];
-      if (navigator.canShare) {
-        await navigator.canShare({ title, text, url, files });
-      } else {
-        const { email, firstName, lastName } = user.user_metadata;
-        let name = firstName || lastName ? `${firstName || ""}${firstName ? " " : ""}${lastName || ""}` : email;
-        let date = new Date();
-        date = date.toISOString();
-        date = date.substring(0, 10);
+    if (user?.user_metadata && ref.current) {
+      const { email, firstName, lastName } = user.user_metadata;
+      const name = firstName || lastName ? `${firstName || ""}${firstName ? " " : ""}${lastName || ""}` : email;
+      let date = new Date();
+      date = date.toISOString();
+      date = date.substring(0, 10);
+      const fileName = name.toLowerCase() + "-" + date;
 
-        toast.error("Web Share API is not supported in this browser.");
-        const download = document.createElement("a");
-        download.href = imageDataUrl;
-        download.download = name.toLowerCase() + "-" + date;
-        download.click();
+      try {
+        const imageDataUrl = await htmlToImage.toPng(ref.current);
+        const title = "Typiano - Your 10-Finger Typing Maestro.";
+        const text =
+          "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!";
+        const url = "https://typiano.vercel.app/";
+        const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], fileName + ".png")];
+        if (navigator.canShare) {
+          await navigator.share({ title, text, url, files });
+        } else {
+          toast.error("Web Share API is not supported in this browser.");
+          const download = document.createElement("a");
+          download.href = imageDataUrl;
+          download.download = fileName;
+          download.click();
+        }
+      } catch (error) {
+        console.error("Error converting HTML to image : ", error);
       }
-    } catch (error) {
-      console.error("Error converting HTML to image : ", error);
     }
   };
 
