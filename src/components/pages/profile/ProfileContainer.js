@@ -17,7 +17,10 @@ const ProfileContainer = ({ data }) => {
     if (user?.user_metadata && ref.current) {
       setLoading(true);
       const { email, firstName, lastName } = user.user_metadata;
-      const name = firstName || lastName ? `${firstName || ""}${firstName ? " " : ""}${lastName || ""}` : email;
+      let name = firstName || lastName ? `${firstName || ""}${firstName ? " " : ""}${lastName || ""}` : email;
+
+      if (!name) name = user?.email;
+
       let date = new Date();
       date = date.toISOString();
       date = date.substring(0, 10);
