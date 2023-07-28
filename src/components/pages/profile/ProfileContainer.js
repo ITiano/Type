@@ -15,18 +15,13 @@ const ProfileContainer = ({ data }) => {
   const onShare = async () => {
     try {
       const imageDataUrl = await htmlToImage.toPng(ref.current);
-
-      const title = "Improve your typing speed with our 10-finger typing app!";
-      const text = `Enhance your typing skills and achieve greater speed and accuracy with engaging lessons and interactive exercises. Try it now and become a typing expert in no time!
-      Visit our website: www.typiano.vercel.app
-      #TypingSkills #10FingerTyping #ProductivityApp`;
-
-      if (navigator.share) {
-        await navigator.share({
-          title: title,
-          text: text,
-        });
-        alert("success")
+      const title = "Typiano - Your 10-Finger Typing Maestro.";
+      const text =
+        "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!";
+      const url = www.typiano.vercel.app;
+      const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], "image.png")];
+      if (navigator.canShare) {
+        await navigator.canShare({ title, text, url, files });
       } else {
         const { email, firstName, lastName } = user.user_metadata;
         let name = firstName || lastName ? `${firstName || ""}${firstName ? " " : ""}${lastName || ""}` : email;
