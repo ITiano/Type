@@ -23,11 +23,11 @@ const ProfileContainer = ({ data }) => {
 
       try {
         const imageDataUrl = await htmlToImage.toPng(ref.current);
-        const title = "Typiano - Your 10-Finger Typing Maestro.";
+        const title = "tsettt";
         const text =
-          "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!";
+          "test";
         const url = "https://typiano.vercel.app/";
-        const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], fileName + ".png")];
+        const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], "image/png")];
         if (navigator.canShare && navigator.canShare({ files })) {
           await navigator.share({ title, text, files });
         } else {
@@ -38,7 +38,7 @@ const ProfileContainer = ({ data }) => {
           download.click();
         }
       } catch (error) {
-        console.error("Error converting HTML to image : ", error);
+        toast.error("Error Web share : ", error);
       }
     }
   };
