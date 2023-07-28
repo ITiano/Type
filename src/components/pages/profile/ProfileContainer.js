@@ -25,12 +25,13 @@ const ProfileContainer = ({ data }) => {
 
       try {
         const imageFile = await htmlToImage.toBlob(ref.current);
-        const title = "Typiano - Your 10-Finger Typing Maestro.";
-        const text =
-          "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential! Visit Typiano's website: https://typiano.vercel.app/";
+        const url = `Typiano - Your 10-Finger Typing Maestro.
+        Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!
+        Visit Typiano's website: https://typiano.vercel.app/
+        `;
         const files = [new File([imageFile], fileName + ".png", { type: "image/png" })];
         if (navigator.canShare && navigator.canShare({ files })) {
-          await navigator.share({ title, text, files });
+          await navigator.share({ url, files });
           setLoading(false);
         } else {
           const imageDataUrl = await htmlToImage.toPng(ref.current);
