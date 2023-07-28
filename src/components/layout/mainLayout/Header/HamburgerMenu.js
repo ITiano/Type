@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import NavItem from "./NavItem";
 import { MenuBarIcon } from "@assets/icons/icons";
 import LogoTypiano from "@assets/vectors/LogoTypiano";
+import routes from "@routes/routes";
 
 const HamburgerMenu = ({ navItems }) => {
   const menuRef = useRef();
@@ -25,9 +26,11 @@ const HamburgerMenu = ({ navItems }) => {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <LogoTypiano className="flex-start-center px-2 pt-2" />
+        <div onClick={setOpen && (() => setOpen(false))}>
+          <LogoTypiano className="flex-start-center px-2 pt-2" />
+        </div>
 
-        {navItems.map((navItem) => (
+        {[...navItems, routes.profile].map((navItem) => (
           <NavItem key={navItem.path} navItem={navItem} setOpen={setOpen} className="mx-2" />
         ))}
 
