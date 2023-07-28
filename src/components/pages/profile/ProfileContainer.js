@@ -22,10 +22,9 @@ const ProfileContainer = ({ data }) => {
       const fileName = name.toLowerCase() + "-" + date;
 
       try {
-        const imageDataUrl = await htmlToImage.toPng(ref.current);
+        const imageDataUrl = await htmlToImage.toPng(ref);
         const title = "tsettt";
-        const text =
-          "test";
+        const text = "test";
         const url = "https://typiano.vercel.app/";
         const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], "image/png")];
         if (navigator.canShare && navigator.canShare({ files })) {
@@ -38,7 +37,8 @@ const ProfileContainer = ({ data }) => {
           download.click();
         }
       } catch (error) {
-        toast.error("Error Web share : ", error);
+        console.log(error);
+        toast.error("Error Web share : ", error.message);
       }
     }
   };
