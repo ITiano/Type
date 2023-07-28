@@ -23,19 +23,14 @@ const ProfileContainer = ({ data }) => {
 
       try {
         const imageDataUrl = await htmlToImage.toPng(ref.current);
-        const title = "tsettt";
-        const text = "test";
+        const title = "Typiano - Your 10-Finger Typing Maestro.";
+        const text =
+          "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!";
         const url = "https://typiano.vercel.app/";
-        if (
-          navigator.canShare &&
-          navigator.canShare({ files: [new File([new Blob([imageDataUrl], { type: "image/png" })], "image/png")] })
-        ) {
-          await navigator.share({
-            title,
-            text,
-            url,
-            files: [new File([new Blob([imageDataUrl], { type: "image/png" })], "image/png")],
-          });
+        const files = [new File([], fileName + ".png", { type: "image/png" })];
+
+        if (navigator.canShare && navigator.canShare({ files })) {
+          await navigator.share({ title, text, url, files });
         } else {
           toast.error("Web Share API is not supported in this browser.");
           const download = document.createElement("a");
@@ -44,7 +39,7 @@ const ProfileContainer = ({ data }) => {
           download.click();
         }
       } catch (error) {
-        console.log(error);
+        console.log("Error Web share :", error);
       }
     }
   };
