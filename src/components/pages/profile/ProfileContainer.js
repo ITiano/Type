@@ -25,8 +25,8 @@ const ProfileContainer = ({ data }) => {
         await navigator.share({
           title: title,
           text: text,
-          url: imageDataUrl,
         });
+        alert("success")
       } else {
         const { email, firstName, lastName } = user.user_metadata;
         let name = firstName || lastName ? `${firstName || ""}${firstName ? " " : ""}${lastName || ""}` : email;
