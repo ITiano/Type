@@ -27,7 +27,7 @@ const ProfileContainer = ({ data }) => {
         const text =
           "Step into a world of typing excellence with Typiano! Improve your typing speed, accuracy, and efficiency through engaging lessons and challenging exercises. Whether you're a beginner or a seasoned typist, Typiano will help you become a typing virtuoso. Embrace the joy of typing and unlock your true potential!";
         const url = "https://typiano.vercel.app/";
-        const files = [new File([], fileName + ".png", { type: "image/png" })];
+        const files = [new File([new Blob([imageDataUrl], { type: "image/png" })], fileName + ".png", { type: "image/png" })];
 
         if (navigator.canShare && navigator.canShare({ files })) {
           await navigator.share({ title, text, url, files });
