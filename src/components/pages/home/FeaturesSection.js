@@ -44,7 +44,7 @@ export default FeaturesSection;
 const FeaturesText = ({ className }) => {
   return (
     <div className={`centering flex-col w-full ${className}`}>
-      <h4 className="font-semibold text-3xl border-b-[6px] border-b-primary-900 pb-3 mb-3">Features</h4>
+      <h4 className="font-semibold text-2xl md:text-3xl border-b-4 md:border-b-[6px] border-b-primary-900 pb-3 mb-3">Features</h4>
       <p className="text-gray-900">Description regarding the title</p>
     </div>
   );
@@ -52,10 +52,10 @@ const FeaturesText = ({ className }) => {
 
 const Box = ({ title, description, image }) => {
   return (
-    <div className="centering flex-col bg-white shadow shadow-slate-200 rounded-3xl p-6">
+    <div className="centering flex-col bg-white shadow border-t border-t-slate-200 shadow-slate-200 rounded-3xl p-6">
       <CoursesImages kind={image.kind} size={image.size} />
-      <h5 className="font-medium text-xl mb-5 whitespace-nowrap">{title}</h5>
-      <p className="text-gray-900 text-base text-center">{description}</p>
+      <h5 className="font-medium text-lg md:text-xl mb-3 md:mb-5 whitespace-nowrap">{title}</h5>
+      <p className="text-gray-900 md:text-base text-center">{description}</p>
     </div>
   );
 };

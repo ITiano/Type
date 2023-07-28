@@ -16,13 +16,13 @@ const HamburgerMenu = ({ navItems }) => {
 
   return (
     <div className="md:hidden">
-      <button onClick={() => setOpen(true)} className="centering">
+      <button onClick={() => setOpen(true)} className="centering bg-gray-100 rounded-lg">
         <MenuBarIcon className="cursor-pointer" />
       </button>
 
       <div
         ref={menuRef}
-        className={`max-h-screen h-screen overflow-auto fixed top-0 left-0 max-w-[250px] w-full bg-white z-50 flex flex-col gap-4 transition ${
+        className={`max-h-screen h-screen overflow-auto fixed top-0 left-0 max-w-[250px] w-full bg-white z-50 flex flex-col gap-4 transition-all duration-300 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >

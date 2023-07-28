@@ -46,8 +46,7 @@ const AboutUs = () => {
       <p className="text-justify mb-14 leading-6">
         Together, we form a vibrant and united team, flourishing through collaboration and embracing every challenge that comes
         our way. We firmly believe that the combination of diverse talents and perspectives ignites the fire of creativity within
-        us, empowering us to overcome any obstacle that may arise. Our unyielding dedication to continuous learning and
-        self-improvement ensures that we remain at the forefront of the ever-evolving tech landscape. At{" "}
+        us, empowering us to overcome any obstacle that may arise. Our unyielding dedication to continuous learning. At{" "}
         {
           <a href="https://github.com/ITiano" className="text-primary-900 font-bold" target="_blank">
             ITiano

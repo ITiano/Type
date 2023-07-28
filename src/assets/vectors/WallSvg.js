@@ -34,6 +34,7 @@ const WallSvg = () => {
           x2="0.000286852"
           y2="1812"
           gradientUnits="userSpaceOnUse"
+          className="md:hidden"
         >
           <stop offset="0.360446" stopColor="#D9D9D9" />
           <stop offset="0.503661" stopColor="white" />
