@@ -8,15 +8,17 @@ import { Toaster } from "react-hot-toast";
 import AuthContextProvider from "src/context/AuthContextProvider";
 
 const RootProvider = ({ children }) => {
-  const [open, setOpen] = useState(!localStorage.getItem("modal-vpn"));
+  const [open, setOpen] = useState(typeof window !== "undefined" && !localStorage.getItem("modal-vpn"));
 
   return (
     <>
       <ModalContainer open={open}>
-        <p className="leading-7">To ensure the best experience while using our service, we highly recommend using a Virtual Private Network (VPN).</p>
+        <p className="leading-7">
+          To ensure the best experience while using our service, we highly recommend using a Virtual Private Network (VPN).
+        </p>
         <CustomBtn
           text="Yes, I got it"
-          className="black-btn rounded-md w-full mt-4 py-3 text-base"
+          className="black-btn rounded-md w-full mt-4 py-3 md:py-2.5 text-base md:text-sm"
           onClick={() => {
             localStorage.setItem("modal-vpn", true);
             setOpen(false);
