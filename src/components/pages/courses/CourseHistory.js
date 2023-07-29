@@ -1,12 +1,15 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import routes from "@routes/routes";
 import Stars from "@components/common/Stars";
 import { CoursesIcons, SecondTimeTranslator } from "@helper/utils";
+import { useAuth } from "src/context/AuthContextProvider";
 
 const CourseHistory = ({ course, history, kind }) => {
   const { status, id } = course;
   const { score, speed, accuracy, duration } = history || {};
+  const [user] = useAuth();
 
   const elementsData = [
     { title: "Speed", value: speed || "-", suffix: speed && "WPM" },
@@ -19,7 +22,22 @@ const CourseHistory = ({ course, history, kind }) => {
       <div className={`centering gap-4 ${kind === 1 ? "hidden 3xs:flex" : ""}`}>
         <ElementBox title="Score" value={score || 0} kind={kind} status={status} star />
         {kind === 2 &&
-          (status === 3 ? CoursesIcons[status] : <Link href={routes.courseId.path(id)}>{CoursesIcons[status]}</Link>)}
+          (status === 3 ? (
+            CoursesIcons[status]
+          ) : (
+            <Link
+              href={!user ? routes.courses.path : routes.courseId.path(id)}
+              replace
+              onClick={(e) => {
+                if (!user) {
+                  e.preventDefault();
+                  toast.error("You need to login first");
+                }
+              }}
+            >
+              {CoursesIcons[status]}
+            </Link>
+          ))}
       </div>
 
       <div className={`flex-1 ${kind === 1 ? "flex-start-center gap-2 md:gap-8" : "centering gap-6"}`}>
@@ -34,11 +52,7 @@ const CourseHistory = ({ course, history, kind }) => {
 export default CourseHistory;
 
 const ElementBox = ({ title, value, suffix, star, kind, status }) => (
-  <div
-    className={`${kind === 1 ? "md:centering" : "centering"} flex-1 flex-col ${
-      status === 1 ? "" : "text-gray-800"
-    } gap-2`}
-  >
+  <div className={`${kind === 1 ? "md:centering" : "centering"} flex-1 flex-col ${status === 1 ? "" : "text-gray-800"} gap-2`}>
     {!star && <p className={`text-gray-800 text-xs w-full text-center ${kind === 1 ? "hidden 2xs:block" : ""}`}>{title}</p>}
     {star ? <Stars value={value} /> : <p className="font-bold text-xs text-center w-full">{`${value} ${suffix || ""}`}</p>}
   </div>

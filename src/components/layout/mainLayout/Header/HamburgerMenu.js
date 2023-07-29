@@ -30,7 +30,7 @@ const HamburgerMenu = ({ navItems }) => {
           <LogoTypiano className="flex-start-center px-2 pt-2" />
         </div>
 
-        {[...navItems, routes.profile].map((navItem) => (
+        {navItems.map((navItem) => (
           <NavItem key={navItem.path} navItem={navItem} setOpen={setOpen} className="mx-2" />
         ))}
 
