@@ -12,30 +12,40 @@ const teamMembers = [
     position: "UiUx Design",
     image: "/images/avatar/Mobina.png",
     href: "https://www.linkedin.com/in/mobina-m-7645b0152/",
+    height: 130,
+    width: 120,
   },
   {
     name: "Fateme Rasolzadeh",
     position: "FrontEnd Developer",
     image: "/images/avatar/Fateme.png",
     href: "https://www.linkedin.com/in/fatemerasolzade/",
+    height: 130,
+    width: 120,
   },
   {
     name: "Soheil jafarnejad",
     position: "FrontEnd Developer",
     image: "/images/avatar/Soheil.png",
     href: "https://www.linkedin.com/in/soheiljafarnejad/",
+    height: 130,
+    width: 120,
   },
   {
     name: "Amir Shafikhani",
     position: "FrontEnd Developer",
     image: "/images/avatar/Amir.png",
     href: "https://www.linkedin.com/in/amir-shafikhani-966086261",
+    height: 130,
+    width: 110,
   },
   {
     name: "Ruhollah Mozafari",
     position: "BackEnd Developer  ",
     image: "/images/avatar/Ruhollah.png",
     href: "https://www.linkedin.com/in/ruhollahmozafari/",
+    height: 130,
+    width: 120,
   },
 ];
 
@@ -71,13 +81,15 @@ const AboutUs = () => {
 
 export default AboutUs;
 
-const TeamMember = ({ image, name, position, href }) => (
+const TeamMember = ({ image, name, position, href, height, width }) => (
   <Link
     target="_blank"
     href={href}
-    className="flex-1 self-start w-full max-w-[300px] mx-auto sm:max-w-full p-6 shadow-lg rounded-3xl centering flex-col bg-white"
+    className="flex-1 self-start w-full max-w-[300px] h-[250px] mx-auto sm:max-w-full p-6 shadow-lg rounded-3xl centering flex-col bg-white"
   >
-    <Image width={120} height={120} src={image} alt={name} />
+    <div className="relative" style={{ height: height + "px", width: width + "px" }}>
+      <Image fill className="w-full h-full" src={image} alt={name} />
+    </div>
     <p className="text-gray-800 mt-5">{position}</p>
     <p className="text-lg font-bold mt-1">{name}</p>
   </Link>
