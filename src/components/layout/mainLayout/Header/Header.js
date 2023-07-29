@@ -5,7 +5,6 @@ import routes from "@routes/routes";
 import Navbar from "./Navbar";
 import UserProfile from "./UserProfile";
 import LogoTypiano from "@assets/vectors/LogoTypiano";
-import toast from "react-hot-toast";
 
 const navItems = [routes.home, routes.courses, routes.aboutUs, routes.contactUs];
 
