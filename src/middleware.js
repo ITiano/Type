@@ -41,3 +41,7 @@ export async function middleware(req) {
     else return res;
   }
 }
+
+export const config = {
+  matcher: ["/admin", "/auth", "/courses/:path*"],
+};

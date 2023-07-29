@@ -13,15 +13,13 @@ const Header = () => {
   const [scroll, setScroll] = useState(0);
   const ref = useRef(window.scrollY);
 
-  useEffect(() => {
-    window.onscroll = () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll === 0) setScroll(0);
-      else if (ref.center > currentScroll) setScroll(1);
-      else setScroll(-1);
-      ref.center = currentScroll;
-    };
-  }, []);
+  window.onscroll = () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll === 0) setScroll(0);
+    else if (ref.center > currentScroll) setScroll(1);
+    else setScroll(-1);
+    ref.center = currentScroll;
+  };
 
   return (
     <header

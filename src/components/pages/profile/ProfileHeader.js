@@ -74,6 +74,7 @@ const ProfileHeader = ({ data, onShare, shareLoading }) => {
             {user?.user_metadata?.profile_cover ? (
               <Image
                 width={50}
+                unoptimized
                 height={50}
                 quality={100}
                 alt={user.user_metadata.profile_cover}
