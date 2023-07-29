@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full h-[70px] top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 max-w-layout flex-between-center px-3 md:px-4 ${
+      className={`fixed w-full h-[70px] top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 md:px-4 ${
         scroll === 1
           ? "bg-white/40 backdrop-blur-md shadow -translate-y-0"
           : scroll === -1
@@ -33,9 +33,11 @@ const Header = () => {
           : "bg-transparent -translate-y-0 !h-[60px]"
       }`}
     >
-      <LogoTypiano className="text-dark-900 font-bold text-center text-base" />
-      <Navbar navItems={navItems} />
-      <UserProfile navItems={navItems} />
+      <div className="max-w-layout flex-between-center px-3  h-full">
+        <LogoTypiano className="text-dark-900 font-bold text-center text-base" />
+        <Navbar navItems={navItems} />
+        <UserProfile navItems={navItems} />
+      </div>
     </header>
   );
 };
