@@ -2,7 +2,7 @@
   "name": "typiano",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev -p 7001",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

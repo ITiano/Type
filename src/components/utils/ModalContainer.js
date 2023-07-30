@@ -1,32 +1,11 @@
-import { CloseIcon } from "@assets/icons/icons";
-import React, { useEffect, useRef, useState } from "react";
+"use client";
+
 import { createPortal } from "react-dom";
+import { CloseIcon } from "@assets/icons/icons";
+import React, { memo, useEffect, useMemo, useState } from "react";
 
-const classes = {
-  transition: "transition",
-  outerWrapper: "fixed top-0 left-0 z-50 min-h-screen centering w-full h-full bg-black/70",
-  innerWrapper:
-    "max-h-[90vh] 3xs:max-h-[85vh] lg:max-h-[900px] h-full w-full mt-auto 3xs:my-auto max-w-[1400px] overflow-hidden 3xs:px-5",
-  innerContainer: "bg-white overflow-auto max-h-full disable-scrollbar p-[17px] min-w-full 3xs:min-w-[400px]",
-};
-
-const ModalContainer = ({
-  open,
-  title,
-  clear,
-  setOpen,
-  children,
-  necessary,
-  width = 25,
-  yesOrNoModal,
-  className = "",
-  height = "fit-content",
-}) => {
-  const modalRef = useRef();
+const Modal = ({ children, open, setOpen, width, height, necessary, yesOrNoModal, title, clear, className = "" }) => {
   const [mounted, setMounted] = useState(false);
-  const [size, setSize] = useState({ width, height });
-
-  const necessaryCloseHandler = (e) => !necessary && modalRef.current.contains(e.target) && setOpen && setOpen(false);
 
   useEffect(() => {
     setMounted(true);
@@ -36,46 +15,36 @@ const ModalContainer = ({
     open ? document.body.classList.add("!overflow-hidden") : document.body.classList.remove("!overflow-hidden");
   }, [open]);
 
-  useEffect(() => {
-    const values = { width, height };
-    !isNaN(width) && (values.width = `${width}vw`);
-    !isNaN(height) && (values.height = `${height}vh`);
-    setSize(values);
-  }, [height, width]);
+  const classes = useMemo(
+    () => ({
+      container: `h-[100svh] bg-black/50 fixed inset-0 transition-time z-50 flex ${
+        open ? "opacity-100 visible backdrop-blur-sm" : "opacity-0 invisible"
+      }`,
+      innerWrapper: `transition-time bg-white overflow-auto ${className}`,
+      mobileSize: `w-full rounded-[10px_10px_0px_0px] mt-auto p-3 max-h-[90%] ${yesOrNoModal ? "hidden" : "sm:hidden"} ${
+        open ? "translate-y-0" : "translate-y-full"
+      }`,
+      desktopSize: `rounded-[10px] min-w-[310px] sm:min-w-[450px] max-w-[calc(100%-100px)] xl:max-w-[1200px] max-h-[85%] m-auto p-4 ${
+        !yesOrNoModal && "hidden sm:block"
+      }`,
+    }),
+    [className, open, yesOrNoModal]
+  );
 
-  const outerWrapperOpenCondition = open ? "opacity-100 visible backdrop-blur-sm" : "opacity-0 invisible";
-  const outerWrapperYerOrNoModalCondition = yesOrNoModal ? "p-3" : "lg:py-8";
-  const innerWrapperOpenCondition = `${open ? "translate-y-0" : "translate-y-full"} 3xs:!translate-y-0`;
-  const innerWrapperYerOrNoModalCondition = yesOrNoModal ? "centering" : "flex-center-end 3xs:items-center";
-  const innerContainerYerOrNoModalCondition = yesOrNoModal ? "rounded-[10px]" : "rounded-[10px_10px_0px_0px] 3xs:rounded-[10px]";
+  const preventClosing = (e) => e.stopPropagation();
 
   return mounted ? (
     createPortal(
-      <div
-        ref={modalRef}
-        onClick={necessaryCloseHandler}
-        className={`${open && classes.transition} ${
-          classes.outerWrapper
-        } ${outerWrapperOpenCondition} ${outerWrapperYerOrNoModalCondition}`}
-      >
-        <div className={`${classes.innerWrapper} ${innerWrapperOpenCondition} ${innerWrapperYerOrNoModalCondition}`}>
-          <div
-            style={size}
-            onClick={(e) => e.stopPropagation()}
-            className={`${innerContainerYerOrNoModalCondition} ${classes.innerContainer} ${className}`}
-          >
-            {(clear || title) && (
-              <div className="flex-between-center mb-3">
-                {title && <div>{title}</div>}
-                {clear && (
-                  <span onClick={() => setOpen(false)} className="cursor-pointer">
-                    <CloseIcon />
-                  </span>
-                )}
-              </div>
-            )}
-            {children}
-          </div>
+      <div className={classes.container} onClick={() => !necessary && setOpen(false)}>
+        {/* Mobile size */}
+        <div style={{ height }} onClick={preventClosing} className={`${classes.mobileSize} ${classes.innerWrapper}`}>
+          <TopHeader clear={clear} title={title} setOpen={setOpen} />
+          {children}
+        </div>
+        {/* Desktop size */}
+        <div style={{ width, height }} onClick={preventClosing} className={`${classes.desktopSize} ${classes.innerWrapper}`}>
+          <TopHeader clear={clear} title={title} setOpen={setOpen} />
+          {children}
         </div>
       </div>,
       document.body
@@ -85,4 +54,19 @@ const ModalContainer = ({
   );
 };
 
-export default ModalContainer;
+export default memo(Modal);
+
+const TopHeader = ({ title, clear, setOpen }) => {
+  return (
+    (clear || title) && (
+      <div className={`mb-3 ${title ? "flex-between-center" : "flex-end-center"}`}>
+        {title && <div>{title}</div>}
+        {clear && (
+          <button onClick={() => setOpen && setOpen(false)}>
+            <CloseIcon />
+          </button>
+        )}
+      </div>
+    )
+  );
+};

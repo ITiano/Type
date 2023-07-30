@@ -1,33 +1,27 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import routes from "@routes/routes";
 import Navbar from "./Navbar";
 import UserProfile from "./UserProfile";
 import LogoTypiano from "@assets/vectors/LogoTypiano";
+import useScroll from "@hooks/useScroll";
 
 const navItems = [routes.home, routes.courses, routes.aboutUs, routes.contactUs];
 
 const Header = () => {
-  const [scroll, setScroll] = useState(0);
-  const ref = useRef(window.scrollY);
-
-  window.onscroll = () => {
-    const currentScroll = window.scrollY;
-    if (currentScroll === 0) setScroll(0);
-    else if (ref.center > currentScroll) setScroll(1);
-    else setScroll(-1);
-    ref.center = currentScroll;
-  };
+  const { isInTop, isScrollingDown } = useScroll();
 
   return (
     <header
       className={`fixed w-full h-[70px] top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 md:px-4 ${
-        scroll === 1
+        isInTop
+          ? "bg-transparent -translate-y-0 !h-[60px]"
+          : !isScrollingDown
           ? "bg-white/40 backdrop-blur-md shadow -translate-y-0"
-          : scroll === -1
+          : isScrollingDown
           ? "-translate-y-full"
-          : "bg-transparent -translate-y-0 !h-[60px]"
+          : ""
       }`}
     >
       <div className="max-w-layout flex-between-center px-3  h-full">
