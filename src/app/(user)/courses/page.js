@@ -11,7 +11,7 @@ const Courses = async () => {
   const result = await Promise.all([getCourses(), getHistories()]);
   const [{ data: courses, error: coursesError }, { data: allHistories, error: historiesError }] = result;
 
-  if (coursesError || historiesError) throw new Error("Error");
+  if (coursesError || historiesError) throw new Error(coursesError.message || historiesError.message);
 
   let defaultStatus = 2;
 

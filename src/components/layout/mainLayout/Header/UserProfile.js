@@ -3,7 +3,7 @@ import HamburgerMenu from "./HamburgerMenu";
 import { useAuth } from "src/context/AuthContextProvider";
 import Link from "next/link";
 import routes from "@routes/routes";
-import { ArrowRightIcon, UserIcon } from "@assets/icons/icons";
+import { UserIcon } from "@assets/icons/icons";
 import Skeleton from "@components/common/Skeleton";
 import Image from "next/image";
 

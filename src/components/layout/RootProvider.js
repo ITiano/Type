@@ -12,13 +12,13 @@ const RootProvider = ({ children }) => {
 
   return (
     <>
-      <ModalContainer open={open}>
+      <ModalContainer necessary open={open} width="300px">
         <p className="leading-7">
           To ensure the best experience while using our service, we highly recommend using a Virtual Private Network (VPN).
         </p>
         <CustomBtn
           text="Yes, I got it"
-          className="black-btn rounded-md w-full mt-4 py-3 md:py-2.5 text-base md:text-sm"
+          className="black-btn rounded-md w-full mt-4 py-3 sm:py-2.5 text-base sm:text-sm"
           onClick={() => {
             localStorage.setItem("modal-vpn", true);
             setOpen(false);

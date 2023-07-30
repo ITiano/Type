@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import { CloseIcon } from "@assets/icons/icons";
 import React, { memo, useEffect, useMemo, useState } from "react";
 
-const Modal = ({ children, open, setOpen, width, height, necessary, yesOrNoModal, title, clear, className = "" }) => {
+const ModalContainer = ({ children, open, setOpen, width, height, necessary, yesOrNoModal, title, clear, className = "" }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -20,11 +20,11 @@ const Modal = ({ children, open, setOpen, width, height, necessary, yesOrNoModal
       container: `h-[100svh] bg-black/50 fixed inset-0 transition-time z-50 flex ${
         open ? "opacity-100 visible backdrop-blur-sm" : "opacity-0 invisible"
       }`,
-      innerWrapper: `transition-time bg-white overflow-auto ${className}`,
+      innerWrapper: `transition-time bg-white overflow-auto w-full ${className}`,
       mobileSize: `w-full rounded-[10px_10px_0px_0px] mt-auto p-3 max-h-[90%] ${yesOrNoModal ? "hidden" : "sm:hidden"} ${
         open ? "translate-y-0" : "translate-y-full"
       }`,
-      desktopSize: `rounded-[10px] min-w-[310px] sm:min-w-[450px] max-w-[calc(100%-100px)] xl:max-w-[1200px] max-h-[85%] m-auto p-4 ${
+      desktopSize: `rounded-[10px] min-w-[310px] sm:min-w-[450px] max-w-[calc(100%-100px)] xl:max-w-[1000px] max-h-[85%] m-auto p-4 ${
         !yesOrNoModal && "hidden sm:block"
       }`,
     }),
@@ -54,7 +54,7 @@ const Modal = ({ children, open, setOpen, width, height, necessary, yesOrNoModal
   );
 };
 
-export default memo(Modal);
+export default memo(ModalContainer);
 
 const TopHeader = ({ title, clear, setOpen }) => {
   return (
