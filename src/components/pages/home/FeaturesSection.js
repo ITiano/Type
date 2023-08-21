@@ -3,19 +3,19 @@ import CoursesImages from "@components/common/CoursesImages";
 
 const boxData = [
   {
-    image: { kind: 4, size: 120 },
+    image: { kind: 4, size: 110, className: "mt-5" },
     title: "Interactive Lessons",
     description:
       "Typiano offers interactive typing lessons that guide users through proper finger placement, key exercises, and progressively challenging typing drills.",
   },
   {
-    image: { kind: 5, size: 160 },
+    image: { kind: 5, size: 160, className: "-mb-8" },
     title: "Typing Certifications",
     description:
       "The option to earn typing certificates or badges upon achieving specific typing proficiency levels adds motivation for users to excel.",
   },
   {
-    image: { kind: 6, size: 160 },
+   image: { kind: 6, size: 160, className: "-mb-8" },
     title: "Error Analysis",
     description:
       "Providing feedback on common mistakes and areas for improvement can help learners identify and correct their typing errors.",
@@ -53,7 +53,9 @@ const FeaturesText = ({ className }) => {
 const Box = ({ title, description, image }) => {
   return (
     <div className="centering flex-col bg-white shadow border-t border-t-slate-200 shadow-slate-200 rounded-3xl p-6">
-      <CoursesImages kind={image.kind} size={image.size} />
+      <div className={image.className}>
+        <CoursesImages kind={image.kind} size={image.size} />
+      </div>
       <h5 className="font-medium text-lg md:text-xl mb-3 md:mb-5 whitespace-nowrap">{title}</h5>
       <p className="text-gray-900 md:text-base text-center">{description}</p>
     </div>

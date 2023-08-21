@@ -1,13 +1,13 @@
 import React from "react";
 
-const BookSvg = () => {
+const BookSvg = ({ className }) => {
   return (
     <svg
       width="234"
       height="234"
       viewBox="0 0 234 234"
       fill="none"
-      className="scale-[130%]"
+      className={`scale-[130%] ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >

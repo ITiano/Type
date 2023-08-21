@@ -1,13 +1,13 @@
 import React from "react";
 
-const VlcSvg = () => {
+const VlcSvg = ({ className }) => {
   return (
     <svg
       width="258"
       height="238"
       viewBox="0 0 258 238"
       fill="none"
-      className="scale-[150%]"
+      className={`scale-[150%] ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
