@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import CustomBtn from "@components/utils/CustomBtn";
+import CustomBtn from "src/common/CustomBtn";
 
 const Error = ({ reset }) => {
   return (

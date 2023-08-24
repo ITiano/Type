@@ -12,20 +12,25 @@
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 *::-webkit-scrollbar {
   display: none;
 }
+
 html {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 img {
   pointer-events: none;
 }
+
 .skeleton {
   background: linear-gradient(90deg, #eeeeee 0%, #eeeeee 35%, #dddddd 45%, #dddddd 55%, #eeeeee 65%, #eeeeee 100%);
   background-size: 300%;
 }
+
 @layer base {
   :root {
     --primary-900: 170, 230, 240;

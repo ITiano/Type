@@ -1,4 +1,4 @@
-import CoursesContainer from "@components/pages/courses/CoursesContainer";
+import CoursesContainer from "src/app/(user)/courses/components/CoursesContainer";
 import { getCourses, getHistories } from "@services/coursesApi";
 import routes from "@routes/routes";
 

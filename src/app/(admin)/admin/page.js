@@ -1,4 +1,4 @@
-import AdminContainer from "@components/pages/admin/AdminContainer";
+import AdminContainer from "src/app/(admin)/components/AdminContainer";
 import { getCourses } from "@services/coursesApi";
 
 export const metadata = { title: "admin" };

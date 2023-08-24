@@ -1,5 +1,5 @@
 import React from "react";
-import CourseContainer from "@components/pages/course/CourseContainer";
+import CourseContainer from "src/app/courses/components/CourseContainer";
 import { getCourseById, getCourseByName } from "@services/coursesApi";
 
 export const dynamic = "force-dynamic";

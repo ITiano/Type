@@ -1,6 +1,6 @@
-import FeaturesSection from "@components/pages/home/FeaturesSection";
-import GuideSections from "@components/pages/home/GuideSections";
-import HomeSection from "@components/pages/home/HomeSection";
+import FeaturesSection from "src/app/(user)/components/FeaturesSection";
+import GuideSections from "src/app/(user)/components/GuideSections";
+import HomeSection from "src/app/(user)/components/HomeSection";
 import React from "react";
 
 const Home = () => {

@@ -1,7 +1,7 @@
 import React, { Children } from "react";
-import CustomFade from "@components/utils/CustomFade";
-import Footer from "@components/layout/mainLayout/Footer";
-import Header from "@components/layout/mainLayout/Header/Header";
+import CustomFade from "src/common/CustomFade";
+import Footer from "src/app/(user)/components/Footer";
+import Header from "src/app/(user)/components/Header/Header";
 
 const MainLayout = ({ children }) => {
   return (

@@ -1,4 +1,4 @@
-import ProfileContainer from "@components/pages/profile/ProfileContainer";
+import ProfileContainer from "src/app/(user)/profile/components/ProfileContainer";
 import routes from "@routes/routes";
 import { getHistories } from "@services/coursesApi";
 import React from "react";

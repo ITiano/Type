@@ -1,4 +1,4 @@
-import AuthContainer from "@components/pages/auth/AuthContainer";
+import AuthContainer from "src/app/auth/components/AuthContainer";
 import routes from "@routes/routes";
 import React from "react";
 

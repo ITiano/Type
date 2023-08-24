@@ -1,5 +1,5 @@
-import Skeleton from "@components/common/Skeleton";
-import KindSwitcherSection from "@components/pages/courses/KindSwitcherSection";
+import Skeleton from "src/common/Skeleton";
+import KindSwitcherSection from "src/app/(user)/courses/components/KindSwitcherSection";
 import React from "react";
 
 const CoursesLoading = () => {
@@ -19,7 +19,6 @@ const CoursesLoading = () => {
         <Skeleton height={86} />
       </div>
     </div>
-    
   );
 };
 
