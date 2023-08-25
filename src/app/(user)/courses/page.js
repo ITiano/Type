@@ -1,6 +1,7 @@
-import CoursesContainer from "src/app/(user)/courses/components/CoursesContainer";
-import { getCourses, getHistories } from "@services/coursesApi";
 import routes from "@routes/routes";
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import CoursesContainer from "src/app/(user)/courses/components/CoursesContainer";
 
 export const metadata = { title: routes.courses.title };
 
@@ -8,7 +9,13 @@ export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
 const Courses = async () => {
-  const result = await Promise.all([getCourses(), getHistories()]);
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+
+  const getHistories = supabase.from("histories").select();
+  const getCourses = supabase.from("courses").select().order("created_at", { ascending: true });
+
+  const result = await Promise.all([getCourses, getHistories]);
   const [{ data: courses, error: coursesError }, { data: allHistories, error: historiesError }] = result;
 
   if (coursesError || historiesError) throw new Error(coursesError.message || historiesError.message);

@@ -1,7 +1,8 @@
-import ProfileContainer from "src/app/(user)/profile/components/ProfileContainer";
-import routes from "@routes/routes";
-import { getHistories } from "@services/coursesApi";
 import React from "react";
+import routes from "@routes/routes";
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import ProfileContainer from "src/app/(user)/profile/components/ProfileContainer";
 
 export const metadata = { title: routes.profile.title };
 
@@ -14,6 +15,9 @@ const withoutTime = (date) => {
 export const dynamic = "force-dynamic";
 
 const Profile = async () => {
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+
   const initialData = {
     lastWeek: { speed: 0, accuracy: 0, duration: 0, length: 0 },
     thisWeek: { speed: 0, accuracy: 0, duration: 0, length: 0 },
@@ -31,7 +35,7 @@ const Profile = async () => {
   thisWeek.setHours(0, 0, 0, 0);
   Today.setHours(0, 0, 0, 0);
 
-  const { data = [], error } = await getHistories();
+  const { data = [], error } = await supabase.from("histories").select();
 
   if (error) throw new Error(error.message);
 
